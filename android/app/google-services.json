@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1055728123366",
+    "project_id": "sewera-90b87",
+    "storage_bucket": "sewera-90b87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055728123366:android:c09ea931009d0fe6446a27",
+        "android_client_info": {
+          "package_name": "com.mycompany.sewera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055728123366-9m8n0onpomud196c9p66u6gq6dvbvldq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD17i0BMU2na7QVuKiL4Tr9AeEF003Me4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055728123366-9m8n0onpomud196c9p66u6gq6dvbvldq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1055728123366-4e2vu6rh8outs9jrmbuhn657s3thumuj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.sewera"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
