@@ -52,8 +52,6 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>In order to search nearby, this app requires access to your current location.</string>
@@ -62,11 +60,6 @@
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
 
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>fetch</string>
-        <string>remote-notification</string>
-    </array>
 
 
 	<key>UILaunchStoryboardName</key>
