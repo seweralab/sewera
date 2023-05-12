@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -120,16 +119,6 @@ class _SupportWidgetState extends State<SupportWidget> {
                     },
                   ),
                 ],
-              ),
-            ),
-            wrapWithModel(
-              model: _model.customnavbarModel,
-              updateCallback: () => setState(() {}),
-              child: CustomnavbarWidget(
-                supportactive: true,
-                homeactive: false,
-                orderactive: false,
-                profileactive: false,
               ),
             ),
           ],

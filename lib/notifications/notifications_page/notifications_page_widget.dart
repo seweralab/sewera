@@ -258,7 +258,10 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                           wrapWithModel(
                             model: _model.topNotificationModel2,
                             updateCallback: () => setState(() {}),
-                            child: TopNotificationWidget(),
+                            child: TopNotificationWidget(
+                              isDisbaledHome: false,
+                              isDisabledNotification: true,
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

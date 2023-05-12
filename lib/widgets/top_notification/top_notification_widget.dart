@@ -9,7 +9,16 @@ import 'top_notification_model.dart';
 export 'top_notification_model.dart';
 
 class TopNotificationWidget extends StatefulWidget {
-  const TopNotificationWidget({Key? key}) : super(key: key);
+  const TopNotificationWidget({
+    Key? key,
+    bool? isDisbaledHome,
+    bool? isDisabledNotification,
+  })  : this.isDisbaledHome = isDisbaledHome ?? false,
+        this.isDisabledNotification = isDisabledNotification ?? false,
+        super(key: key);
+
+  final bool isDisbaledHome;
+  final bool isDisabledNotification;
 
   @override
   _TopNotificationWidgetState createState() => _TopNotificationWidgetState();
@@ -58,6 +67,10 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                if (widget.isDisbaledHome) {
+                  return;
+                }
+
                 context.pushNamed('HomePage2');
               },
               child: SvgPicture.asset(
@@ -77,6 +90,10 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      if (widget.isDisabledNotification) {
+                        return;
+                      }
+
                       context.pushNamed('NotificationsPage');
                     },
                     child: Icon(

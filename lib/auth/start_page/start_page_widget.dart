@@ -190,7 +190,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                   fontFamily: 'Fira Sans',
                                   color: Colors.white,
                                 ),
-                        elevation: 2.0,
+                        elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,

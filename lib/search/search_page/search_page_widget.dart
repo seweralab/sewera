@@ -59,7 +59,10 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
               wrapWithModel(
                 model: _model.topNotificationModel,
                 updateCallback: () => setState(() {}),
-                child: TopNotificationWidget(),
+                child: TopNotificationWidget(
+                  isDisbaledHome: false,
+                  isDisabledNotification: false,
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(18.0, 10.0, 18.0, 10.0),

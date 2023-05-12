@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
@@ -29,9 +28,6 @@ class QuizSelectAddrModel extends FlutterFlowModel {
 
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
-  // State field(s) for GoogleMap widget.
-  LatLng? googleMapsCenter;
-  final googleMapsController = Completer<GoogleMapController>();
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;

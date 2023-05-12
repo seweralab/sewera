@@ -113,7 +113,10 @@ class _QuizPage2NoServiceDateWidgetState
                                   wrapWithModel(
                                     model: _model.topNotificationModel,
                                     updateCallback: () => setState(() {}),
-                                    child: TopNotificationWidget(),
+                                    child: TopNotificationWidget(
+                                      isDisbaledHome: true,
+                                      isDisabledNotification: true,
+                                    ),
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),

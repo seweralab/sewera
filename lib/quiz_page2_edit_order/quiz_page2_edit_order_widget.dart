@@ -131,7 +131,10 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                       wrapWithModel(
                                         model: _model.topNotificationModel,
                                         updateCallback: () => setState(() {}),
-                                        child: TopNotificationWidget(),
+                                        child: TopNotificationWidget(
+                                          isDisbaledHome: true,
+                                          isDisabledNotification: true,
+                                        ),
                                       ),
                                       Align(
                                         alignment:

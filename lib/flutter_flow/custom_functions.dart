@@ -772,3 +772,17 @@ List<String> splitBy(
     return [];
   }
 }
+
+Color? pincodeBorderErr(bool isErr) {
+  if (isErr) {
+    return Color.fromRGBO(235, 87, 87, 1);
+  }
+}
+
+Color pincodeTextErrColor(bool isErr) {
+  if (isErr) {
+    return Color.fromRGBO(235, 87, 87, 1);
+  } else {
+    return Color.fromRGBO(64, 84, 96, 1);
+  }
+}

@@ -1752,6 +1752,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                       fontFamily: 'Fira Sans',
                                       color: Colors.white,
                                     ),
+                                elevation: 0.0,
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,

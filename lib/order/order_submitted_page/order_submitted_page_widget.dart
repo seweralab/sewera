@@ -56,7 +56,10 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
                   wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(),
+                    child: TopNotificationWidget(
+                      isDisbaledHome: false,
+                      isDisabledNotification: false,
+                    ),
                   ),
                   Padding(
                     padding:

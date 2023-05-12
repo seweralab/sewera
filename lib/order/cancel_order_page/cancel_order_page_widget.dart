@@ -80,7 +80,10 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
                   wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(),
+                    child: TopNotificationWidget(
+                      isDisbaledHome: true,
+                      isDisabledNotification: true,
+                    ),
                   ),
                   Padding(
                     padding:
@@ -383,6 +386,7 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
                           fontFamily: 'Fira Sans',
                           color: Colors.white,
                         ),
+                    elevation: 0.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,

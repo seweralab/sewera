@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class SMSPageModel extends FlutterFlowModel {
   bool showSendBtn = false;
 
   bool showTimer = true;
+
+  bool showErr = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -46,5 +49,4 @@ class SMSPageModel extends FlutterFlowModel {
   }
 
   /// Additional helper methods are added here.
-
 }

@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
@@ -37,7 +36,6 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -50,9 +48,6 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
         _model.showInputErr = false;
       });
     });
-
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
-        .then((loc) => setState(() => currentUserLocationValue = loc));
   }
 
   @override
@@ -66,20 +61,6 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    if (currentUserLocationValue == null) {
-      return Container(
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        child: Center(
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: CircularProgressIndicator(
-              color: FlutterFlowTheme.of(context).primary,
-            ),
-          ),
-        ),
-      );
-    }
 
     return StreamBuilder<OrdersRecord>(
       stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
@@ -101,7 +82,6 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
-            resizeToAvoidBottomInset: false,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
               child: Column(
@@ -110,7 +90,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.8,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
@@ -211,52 +191,6 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: 250.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Builder(builder: (context) {
-                                    final _googleMapMarker =
-                                        currentUserLocationValue;
-                                    return FlutterFlowGoogleMap(
-                                      controller: _model.googleMapsController,
-                                      onCameraIdle: (latLng) => setState(() =>
-                                          _model.googleMapsCenter = latLng),
-                                      initialLocation:
-                                          _model.googleMapsCenter ??=
-                                              currentUserLocationValue!,
-                                      markers: [
-                                        if (_googleMapMarker != null)
-                                          FlutterFlowMarker(
-                                            _googleMapMarker.serialize(),
-                                            _googleMapMarker,
-                                            () async {
-                                              setState(() {
-                                                _model.textController?.text =
-                                                    _model.googleMapsCenter!
-                                                        .toString();
-                                              });
-                                            },
-                                          ),
-                                      ],
-                                      markerColor: GoogleMarkerColor.green,
-                                      mapType: MapType.normal,
-                                      style: GoogleMapStyle.standard,
-                                      initialZoom: 14.0,
-                                      allowInteraction: true,
-                                      allowZoom: true,
-                                      showZoomControls: true,
-                                      showLocation: true,
-                                      showCompass: false,
-                                      showMapToolbar: false,
-                                      showTraffic: false,
-                                      centerMapOnMarkerTap: true,
-                                    );
-                                  }),
-                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 0.0),

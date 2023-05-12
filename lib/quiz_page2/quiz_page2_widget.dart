@@ -609,7 +609,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                       wrapWithModel(
                                         model: _model.topNotificationModel2,
                                         updateCallback: () => setState(() {}),
-                                        child: TopNotificationWidget(),
+                                        child: TopNotificationWidget(
+                                          isDisbaledHome: true,
+                                          isDisabledNotification: true,
+                                        ),
                                       ),
                                       Align(
                                         alignment:

@@ -335,7 +335,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                             text: 'Сохранить',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 40.0,
+                              height: 48.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -347,7 +347,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Colors.white,
                                   ),
-                              elevation: 2.0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,

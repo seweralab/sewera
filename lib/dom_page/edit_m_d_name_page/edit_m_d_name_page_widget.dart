@@ -220,7 +220,7 @@ class _EditMDNamePageWidgetState extends State<EditMDNamePageWidget> {
                             text: 'Сохранить',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 40.0,
+                              height: 48.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -232,7 +232,7 @@ class _EditMDNamePageWidgetState extends State<EditMDNamePageWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Colors.white,
                                   ),
-                              elevation: 2.0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
