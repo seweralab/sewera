@@ -498,7 +498,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           extentRatio: 0.25,
                                                           children: [
                                                             SlidableAction(
-                                                              label: 'null',
+                                                              // label: 'null',
                                                               backgroundColor:
                                                                   Color(
                                                                       0xFFF3F4F5),
