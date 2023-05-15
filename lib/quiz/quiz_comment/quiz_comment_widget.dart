@@ -649,7 +649,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 48.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
