@@ -379,16 +379,18 @@ String inputFromUserFields(
   }
   var output = '';
   if (inputname != '') {
-    switch (inputname) {
-      case 'md_septic':
-        output = mdseptic;
-        break;
-      case 'md_type':
-        output = mdtype;
-        break;
-      case 'md_area':
-        output = mdarea;
-        break;
+    if (inputname != '') {
+      switch (inputname) {
+        case 'Септик':
+          output = mdseptic;
+          break;
+        case 'Тип':
+          output = mdtype;
+          break;
+        case 'Площадь':
+          output = mdarea;
+          break;
+      }
     }
   }
   return output;

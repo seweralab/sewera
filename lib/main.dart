@@ -146,14 +146,15 @@ class _NavBarPageState extends State<NavBarPage> {
       'EditMDPage': EditMDPageWidget(),
       'EditMDSepticPage': EditMDSepticPageWidget(),
       'EditMDTypePage': EditMDTypePageWidget(),
+      'OrderSubmittedPage': OrderSubmittedPageWidget(),
     };
     var currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     // final currentIndex = 2;
     if (currentIndex >= 3 && currentIndex <= 13) {
-      currentIndex = 1;
+      currentIndex = 2;
     }
     if (currentIndex > 13) {
-      currentIndex = 0;
+      currentIndex = 1;
     }
     return Scaffold(
       body: _currentPage ?? tabs[_currentPageName],

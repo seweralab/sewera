@@ -315,7 +315,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'orderSubmittedPage',
           path: '/orderSubmittedPage',
-          builder: (context, params) => OrderSubmittedPageWidget(),
+          // builder: (context, params) => OrderSubmittedPageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'OrderSubmittedPage')
+              : OrderSubmittedPageWidget(),
         ),
         FFRoute(
           name: 'QuizPage2Edit',

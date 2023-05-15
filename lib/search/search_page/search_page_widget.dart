@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'search_page_model.dart';
 export 'search_page_model.dart';
 
@@ -65,103 +66,136 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 10.0, 18.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(18, 10, 18, 10),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(),
-                  child: TextFormField(
-                    controller: _model.searchFieldController,
-                    onChanged: (_) => EasyDebounce.debounce(
-                      '_model.searchFieldController',
-                      Duration(milliseconds: 10),
-                      () async {
-                        setState(() => _model.algoliaSearchResults = null);
-                        await ServicesRecord.search(
-                          term: _model.searchFieldController.text,
-                          useCache: true,
-                        )
-                            .then((r) => _model.algoliaSearchResults = r)
-                            .onError(
-                                (_, __) => _model.algoliaSearchResults = [])
-                            .whenComplete(() => setState(() {}));
-                      },
-                    ),
-                    autofocus: true,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: 'Найти услугу в каталоге',
-                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 18, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.safePop();
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Color(0xFF586A74),
+                            size: 20,
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      filled: true,
-                      fillColor: Color(0xFFF3F4F5),
-                      suffixIcon: _model.searchFieldController!.text.isNotEmpty
-                          ? InkWell(
-                              onTap: () async {
-                                _model.searchFieldController?.clear();
-                                setState(
-                                    () => _model.algoliaSearchResults = null);
-                                await ServicesRecord.search(
-                                  term: _model.searchFieldController.text,
-                                  useCache: true,
-                                )
-                                    .then(
-                                        (r) => _model.algoliaSearchResults = r)
-                                    .onError((_, __) =>
-                                        _model.algoliaSearchResults = [])
-                                    .whenComplete(() => setState(() {}));
-
-                                setState(() {});
-                              },
-                              child: Icon(
-                                Icons.clear,
-                                color: Colors.black,
-                                size: 16.0,
+                      Expanded(
+                        child: TextFormField(
+                          controller: _model.searchFieldController,
+                          onChanged: (_) => EasyDebounce.debounce(
+                            '_model.searchFieldController',
+                            Duration(milliseconds: 10),
+                            () async {
+                              setState(
+                                  () => _model.algoliaSearchResults = null);
+                              await ServicesRecord.search(
+                                term: _model.searchFieldController.text,
+                                useCache: true,
+                              )
+                                  .then((r) => _model.algoliaSearchResults = r)
+                                  .onError((_, __) =>
+                                      _model.algoliaSearchResults = [])
+                                  .whenComplete(() => setState(() {}));
+                            },
+                          ),
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            hintText: 'Найти услугу в каталоге',
+                            hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
                               ),
-                            )
-                          : null,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator: _model.searchFieldControllerValidator
-                        .asValidator(context),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            filled: true,
+                            fillColor: Color(0xFFF3F4F5),
+                            suffixIcon: _model
+                                    .searchFieldController!.text.isNotEmpty
+                                ? InkWell(
+                                    onTap: () async {
+                                      _model.searchFieldController?.clear();
+                                      setState(() =>
+                                          _model.algoliaSearchResults = null);
+                                      await ServicesRecord.search(
+                                        term: _model.searchFieldController.text,
+                                        useCache: true,
+                                      )
+                                          .then((r) =>
+                                              _model.algoliaSearchResults = r)
+                                          .onError((_, __) =>
+                                              _model.algoliaSearchResults = [])
+                                          .whenComplete(() => setState(() {}));
+
+                                      setState(() {});
+                                    },
+                                    child: Icon(
+                                      Icons.clear,
+                                      color: Colors.black,
+                                      size: 16,
+                                    ),
+                                  )
+                                : null,
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          validator: _model.searchFieldControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(18, 10, 18, 10),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                 child: Builder(
                   builder: (context) {
                     if (_model.algoliaSearchResults == null) {
                       return Center(
                         child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
+                          width: 50,
+                          height: 50,
                           child: CircularProgressIndicator(
                             color: FlutterFlowTheme.of(context).primary,
                           ),
@@ -182,8 +216,8 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 16.0),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -219,16 +253,16 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                 },
                                 child: Container(
                                   width: double.infinity,
-                                  height: 48.0,
+                                  height: 48,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFF3F4F5),
-                                    borderRadius: BorderRadius.circular(40.0),
+                                    borderRadius: BorderRadius.circular(40),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1, 0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          23.0, 0.0, 0.0, 0.0),
+                                          23, 0, 0, 0),
                                       child: Text(
                                         algoliaResultsItem.title!,
                                         style: FlutterFlowTheme.of(context)
@@ -243,8 +277,8 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                 functions.totaldecr(
                                     _model.algoliaSearchResults!.length))
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 16.0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -270,10 +304,10 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                   },
                                   child: Container(
                                     width: double.infinity,
-                                    height: 48.0,
+                                    height: 48,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFF3F4F5),
-                                      borderRadius: BorderRadius.circular(40.0),
+                                      borderRadius: BorderRadius.circular(40),
                                     ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -281,21 +315,21 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  23.0, 0.0, 0.0, 0.0),
+                                                  23, 0, 0, 0),
                                           child: SvgPicture.asset(
                                             'assets/images/noservice.svg',
-                                            width: 24.0,
-                                            height: 24.0,
+                                            width: 24,
+                                            height: 24,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1, 0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
+                                                    12, 0, 0, 0),
                                             child: Text(
                                               'Тут нет моей услуги',
                                               style:
@@ -319,8 +353,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
               if ((_model.searchFieldController.text != '') &&
                   (_model.algoliaSearchResults?.length == 0))
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 16),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -345,29 +378,29 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                     },
                     child: Container(
                       width: double.infinity,
-                      height: 48.0,
+                      height: 48,
                       decoration: BoxDecoration(
                         color: Color(0xFFF3F4F5),
-                        borderRadius: BorderRadius.circular(40.0),
+                        borderRadius: BorderRadius.circular(40),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                23.0, 0.0, 0.0, 0.0),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(23, 0, 0, 0),
                             child: SvgPicture.asset(
                               'assets/images/noservice.svg',
-                              width: 24.0,
-                              height: 24.0,
+                              width: 24,
+                              height: 24,
                               fit: BoxFit.cover,
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1, 0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 0.0),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Text(
                                 'Тут нет моей услуги',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
