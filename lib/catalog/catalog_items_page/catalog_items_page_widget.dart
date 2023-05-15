@@ -529,19 +529,19 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                     ),
                   ],
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: wrapWithModel(
-                    model: _model.customnavbarModel,
-                    updateCallback: () => setState(() {}),
-                    child: CustomnavbarWidget(
-                      supportactive: false,
-                      homeactive: true,
-                      orderactive: false,
-                      profileactive: false,
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: AlignmentDirectional(0.0, 1.0),
+                //   child: wrapWithModel(
+                //     model: _model.customnavbarModel,
+                //     updateCallback: () => setState(() {}),
+                //     child: CustomnavbarWidget(
+                //       supportactive: false,
+                //       homeactive: true,
+                //       orderactive: false,
+                //       profileactive: false,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

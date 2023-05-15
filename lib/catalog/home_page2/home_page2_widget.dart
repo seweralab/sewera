@@ -981,16 +981,16 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                     ),
                   ),
                 ),
-                wrapWithModel(
-                  model: _model.customnavbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: CustomnavbarWidget(
-                    supportactive: false,
-                    homeactive: true,
-                    orderactive: false,
-                    profileactive: false,
-                  ),
-                ),
+                // wrapWithModel(
+                //   model: _model.customnavbarModel,
+                //   updateCallback: () => setState(() {}),
+                //   child: CustomnavbarWidget(
+                //     supportactive: false,
+                //     homeactive: true,
+                //     orderactive: false,
+                //     profileactive: false,
+                //   ),
+                // ),
               ],
             ),
           ),

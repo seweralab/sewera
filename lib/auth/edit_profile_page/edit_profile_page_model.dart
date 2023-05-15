@@ -23,20 +23,19 @@ class EditProfilePageModel extends FlutterFlowModel {
   String uploadedFileUrl = '';
 
   // Model for customnavbar component.
-  late CustomnavbarModel customnavbarModel;
+  // late CustomnavbarModel customnavbarModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     topNotificationModel = createModel(context, () => TopNotificationModel());
-    customnavbarModel = createModel(context, () => CustomnavbarModel());
+    // customnavbarModel = createModel(context, () => CustomnavbarModel());
   }
 
   void dispose() {
     topNotificationModel.dispose();
-    customnavbarModel.dispose();
+    // customnavbarModel.dispose();
   }
 
   /// Additional helper methods are added here.
-
 }

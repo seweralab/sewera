@@ -143,16 +143,16 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
                   ),
                 ],
               ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.customnavbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: CustomnavbarWidget(
-                    supportactive: false,
-                  ),
-                ),
-              ),
+              // Align(
+              //   alignment: AlignmentDirectional(0.0, 1.0),
+              //   child: wrapWithModel(
+              //     model: _model.customnavbarModel,
+              //     updateCallback: () => setState(() {}),
+              //     child: CustomnavbarWidget(
+              //       supportactive: false,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

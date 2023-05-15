@@ -25,13 +25,13 @@ class EditProfileNamePageModel extends FlutterFlowModel {
   TextEditingController? patronymicFieldController;
   String? Function(BuildContext, String?)? patronymicFieldControllerValidator;
   // Model for customnavbar component.
-  late CustomnavbarModel customnavbarModel;
+  // late CustomnavbarModel customnavbarModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     topNotificationModel = createModel(context, () => TopNotificationModel());
-    customnavbarModel = createModel(context, () => CustomnavbarModel());
+    // customnavbarModel = createModel(context, () => CustomnavbarModel());
   }
 
   void dispose() {
@@ -39,9 +39,8 @@ class EditProfileNamePageModel extends FlutterFlowModel {
     surnameFieldController?.dispose();
     nameFieldController?.dispose();
     patronymicFieldController?.dispose();
-    customnavbarModel.dispose();
+    // customnavbarModel.dispose();
   }
 
   /// Additional helper methods are added here.
-
 }

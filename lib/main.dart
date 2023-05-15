@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
@@ -159,9 +160,6 @@ class _NavBarPageState extends State<NavBarPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
-          print(currentIndex);
-          print(_currentPage);
-          print(_currentPageName);
           if (i == 3) {
             showModalBottomSheet(
               isScrollControlled: true,
@@ -191,26 +189,59 @@ class _NavBarPageState extends State<NavBarPage> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/attach.png'),
-            activeIcon: Image.asset('assets/images/attach.png'),
+            // icon: Image.asset('assets/images/attach.png'),
+            icon: SvgPicture.asset(
+              'assets/images/home.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/home_active.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
             label: 'Главный',
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/orders.svg'),
-            activeIcon: Image.asset('assets/images/orders_active.svg'),
+            icon: SvgPicture.asset(
+              'assets/images/orders.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/orders_active.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
             label: 'Заказы',
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/profile.svg'),
-            activeIcon: Image.asset('assets/images/profile_active.svg'),
+            icon: SvgPicture.asset(
+              'assets/images/profile.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/profile_active.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
             label: 'Профиль',
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/images/support.svg'),
-            activeIcon: Image.asset('assets/images/support_active.svg'),
+            icon: SvgPicture.asset(
+              'assets/images/support.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/support_active.svg',
+              height: 20.0,
+              width: 20.0,
+            ),
             label: 'Поддержка',
             tooltip: '',
           )

@@ -1189,19 +1189,19 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                   ],
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.customnavbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: CustomnavbarWidget(
-                    supportactive: false,
-                    homeactive: false,
-                    orderactive: false,
-                    profileactive: true,
-                  ),
-                ),
-              ),
+              // Align(
+              //   alignment: AlignmentDirectional(0.0, 1.0),
+              //   child: wrapWithModel(
+              //     model: _model.customnavbarModel,
+              //     updateCallback: () => setState(() {}),
+              //     child: CustomnavbarWidget(
+              //       supportactive: false,
+              //       homeactive: false,
+              //       orderactive: false,
+              //       profileactive: true,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
