@@ -22,7 +22,7 @@ class SearchPageModel extends FlutterFlowModel {
   // Algolia Search Results from action on SearchField
   List<ServicesRecord>? algoliaSearchResults = [];
   // Stores action output result for [Backend Call - Create Document] action in Container widget.
-  OrdersRecord? newOrderSearch;
+  OrdersRecord? newOrder;
 
   /// Initialization and disposal methods.
 

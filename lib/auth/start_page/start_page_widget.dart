@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
-
 import 'start_page_model.dart';
 export 'start_page_model.dart';
 
@@ -62,12 +61,27 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 158.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.0, -1.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 127.0),
+                            child: SvgPicture.asset(
+                              'assets/images/logo.svg',
+                              width: 32.0,
+                              height: 32.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 12.0),
                           child: Text(
                             'Добро пожаловать',
                             textAlign: TextAlign.center,
@@ -80,25 +94,27 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 24.0),
                           child: Text(
                             'Введите номер телефона, чтобы войти или зарегистрироваться',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.getFont(
                               'Fira Sans',
                               color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 14,
+                              fontSize: 14.0,
                               height: 1.2,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 24.0),
                           child: Container(
                             width: double.infinity,
-                            height: 48,
+                            height: 48.0,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: TextFormField(
                               controller: _model.phonefieldController,
@@ -111,30 +127,30 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
                                 fillColor: Color(0xFFF3F4F5),
@@ -183,10 +199,11 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                           text: 'Продолжить',
                           options: FFButtonOptions(
                             width: double.infinity,
-                            height: 48,
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                            iconPadding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            height: 48.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
@@ -194,30 +211,18 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                   fontFamily: 'Fira Sans',
                                   color: Colors.white,
                                 ),
-                            elevation: 0,
+                            elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1,
+                              width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ],
                     ),
                   ),
                 ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, -1),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 127, 0, 0),
-                  child: SvgPicture.asset(
-                    'assets/images/logo.svg',
-                    width: 32,
-                    height: 32,
-                    fit: BoxFit.cover,
-                  ),
-                ),
               ),
             ],
           ),

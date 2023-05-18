@@ -81,12 +81,6 @@ class FFAppState extends ChangeNotifier {
     _currentOrder = _value;
   }
 
-  String _test = '';
-  String get test => _test;
-  set test(String _value) {
-    _test = _value;
-  }
-
   String _currentRadioQuiz = '';
   String get currentRadioQuiz => _currentRadioQuiz;
   set currentRadioQuiz(String _value) {
@@ -147,28 +141,16 @@ class FFAppState extends ChangeNotifier {
     _currentQuizDeadline = _value;
   }
 
-  String _adress = '';
-  String get adress => _adress;
-  set adress(String _value) {
-    _adress = _value;
-  }
-
   LatLng? _locationLatLng;
   LatLng? get locationLatLng => _locationLatLng;
   set locationLatLng(LatLng? _value) {
     _locationLatLng = _value;
   }
 
-  String _routeDistance = '';
-  String get routeDistance => _routeDistance;
-  set routeDistance(String _value) {
-    _routeDistance = _value;
-  }
-
-  String _routeDuration = '';
-  String get routeDuration => _routeDuration;
-  set routeDuration(String _value) {
-    _routeDuration = _value;
+  String _currentQuizAddr = '';
+  String get currentQuizAddr => _currentQuizAddr;
+  set currentQuizAddr(String _value) {
+    _currentQuizAddr = _value;
   }
 }
 

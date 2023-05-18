@@ -83,7 +83,7 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 32.0, 0.0, 32.0),
+                                  0.0, 16.0, 0.0, 14.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -157,194 +157,177 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                   ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 16.0),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: AuthUserStreamWidget(
-                                  builder: (context) => TextFormField(
-                                    controller: _model.textController,
-                                    onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.textController',
-                                      Duration(milliseconds: 300),
-                                      () async {
-                                        _model.apiResultx2g =
-                                            await DaDataSuggestionCall.call(
-                                          query: _model.textController.text,
-                                        );
-                                        setState(() {
-                                          _model.showSuggestions = true;
-                                        });
+                          AuthUserStreamWidget(
+                            builder: (context) => TextFormField(
+                              controller: _model.textController,
+                              onChanged: (_) => EasyDebounce.debounce(
+                                '_model.textController',
+                                Duration(milliseconds: 300),
+                                () async {
+                                  _model.apiResultx2g =
+                                      await DaDataSuggestionCall.call(
+                                    query: _model.textController.text,
+                                  );
+                                  setState(() {
+                                    _model.showSuggestions = true;
+                                  });
 
-                                        setState(() {});
-                                      },
-                                    ),
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Укажите ваш адрес',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall,
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                    ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
-                                  ),
-                                ),
+                                  setState(() {});
+                                },
                               ),
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Укажите ваш адрес',
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).bodySmall,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                filled: true,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                              ),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              validator: _model.textControllerValidator
+                                  .asValidator(context),
                             ),
                           ),
-                          Stack(
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 24.0, 0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    final usersUpdateData =
-                                        createUsersRecordData(
-                                      addr: _model.textController.text,
-                                    );
-                                    await currentUserReference!
-                                        .update(usersUpdateData);
-                                  },
-                                  text: 'Сохранить',
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 48.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Fira Sans',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 0.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 18.0, 0.0, 0.0),
+                            child: Stack(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 24.0, 0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      final usersUpdateData =
+                                          createUsersRecordData(
+                                        addr: _model.textController.text,
+                                      );
+                                      await currentUserReference!
+                                          .update(usersUpdateData);
+                                    },
+                                    text: 'Сохранить',
+                                    options: FFButtonOptions(
+                                      width: double.infinity,
+                                      height: 48.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Fira Sans',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
-                              ),
-                              if ((_model.showSuggestions == true) &&
-                                  (_model.textController.text != ''))
-                                Builder(
-                                  builder: (context) {
-                                    final addr =
-                                        DaDataSuggestionCall.suggestionValue(
-                                              (_model.apiResultx2g?.jsonBody ??
-                                                  ''),
-                                            )?.toList() ??
-                                            [];
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: addr.length,
-                                      itemBuilder: (context, addrIndex) {
-                                        final addrItem = addr[addrIndex];
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            setState(() {
-                                              _model.textController?.text =
-                                                  addrItem.toString();
-                                            });
-                                            setState(() {
-                                              _model.showSuggestions = false;
-                                            });
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            elevation: 1.0,
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        3.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  addrItem.toString(),
-                                                  style: FlutterFlowTheme.of(
+                                if ((_model.showSuggestions == true) &&
+                                    (_model.textController.text != ''))
+                                  Builder(
+                                    builder: (context) {
+                                      final addr =
+                                          DaDataSuggestionCall.suggestionValue(
+                                                (_model.apiResultx2g
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )?.toList() ??
+                                              [];
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: addr.length,
+                                        itemBuilder: (context, addrIndex) {
+                                          final addrItem = addr[addrIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                _model.textController?.text =
+                                                    addrItem.toString();
+                                              });
+                                              setState(() {
+                                                _model.showSuggestions = false;
+                                              });
+                                            },
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: 1.0,
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 40.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .secondaryBackground,
+                                                ),
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          3.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    addrItem.toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -352,19 +335,19 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                   ),
                 ],
               ),
-              // Align(
-              //   alignment: AlignmentDirectional(0.0, 1.0),
-              //   child: wrapWithModel(
-              //     model: _model.customnavbarModel,
-              //     updateCallback: () => setState(() {}),
-              //     child: CustomnavbarWidget(
-              //       supportactive: false,
-              //       homeactive: false,
-              //       orderactive: false,
-              //       profileactive: true,
-              //     ),
-              //   ),
-              // ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 1.0),
+                child: wrapWithModel(
+                  model: _model.customnavbarModel,
+                  updateCallback: () => setState(() {}),
+                  child: CustomnavbarWidget(
+                    supportactive: false,
+                    homeactive: false,
+                    orderactive: false,
+                    profileactive: true,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

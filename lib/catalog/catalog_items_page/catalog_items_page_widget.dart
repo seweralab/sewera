@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -529,19 +528,6 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                     ),
                   ],
                 ),
-                // Align(
-                //   alignment: AlignmentDirectional(0.0, 1.0),
-                //   child: wrapWithModel(
-                //     model: _model.customnavbarModel,
-                //     updateCallback: () => setState(() {}),
-                //     child: CustomnavbarWidget(
-                //       supportactive: false,
-                //       homeactive: true,
-                //       orderactive: false,
-                //       profileactive: false,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

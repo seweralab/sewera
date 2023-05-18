@@ -49,7 +49,7 @@ class _NotificationConfigPageWidgetState
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
           child: Container(
             width: double.infinity,
@@ -279,19 +279,19 @@ class _NotificationConfigPageWidgetState
                     ],
                   ),
                 ),
-                // Align(
-                //   alignment: AlignmentDirectional(0.0, 1.0),
-                //   child: wrapWithModel(
-                //     model: _model.customnavbarModel,
-                //     updateCallback: () => setState(() {}),
-                //     child: CustomnavbarWidget(
-                //       supportactive: false,
-                //       homeactive: false,
-                //       orderactive: false,
-                //       profileactive: false,
-                //     ),
-                //   ),
-                // ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: wrapWithModel(
+                    model: _model.customnavbarModel,
+                    updateCallback: () => setState(() {}),
+                    child: CustomnavbarWidget(
+                      supportactive: false,
+                      homeactive: false,
+                      orderactive: false,
+                      profileactive: false,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -761,16 +761,16 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                   ),
                 ],
               ),
-              // wrapWithModel(
-              //   model: _model.customnavbarModel,
-              //   updateCallback: () => setState(() {}),
-              //   child: CustomnavbarWidget(
-              //     supportactive: false,
-              //     homeactive: false,
-              //     orderactive: false,
-              //     profileactive: true,
-              //   ),
-              // ),
+              wrapWithModel(
+                model: _model.customnavbarModel,
+                updateCallback: () => setState(() {}),
+                child: CustomnavbarWidget(
+                  supportactive: false,
+                  homeactive: false,
+                  orderactive: false,
+                  profileactive: true,
+                ),
+              ),
             ],
           ),
         ),

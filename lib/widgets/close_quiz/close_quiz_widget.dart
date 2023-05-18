@@ -101,6 +101,9 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
             FFButtonWidget(
               onPressed: () async {
                 await FFAppState().currentOrder!.delete();
+                setState(() {
+                  FFAppState().currentOrder = null;
+                });
 
                 context.pushNamed('HomePage2');
               },
@@ -129,6 +132,9 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                     status: 'Не оформлен',
                   );
                   await FFAppState().currentOrder!.update(ordersUpdateData);
+                  setState(() {
+                    FFAppState().currentOrder = null;
+                  });
 
                   context.pushNamed('HomePage2');
                 },

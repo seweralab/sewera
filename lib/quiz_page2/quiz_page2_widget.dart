@@ -162,7 +162,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                   _model.topNotificationModel1,
                                               updateCallback: () =>
                                                   setState(() {}),
-                                              child: TopNotificationWidget(),
+                                              child: TopNotificationWidget(
+                                                isDisbaledHome: true,
+                                                isDisabledNotification: true,
+                                              ),
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
@@ -189,14 +192,45 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        setState(() {
-                                                          FFAppState()
-                                                                  .currentQuizIndex =
-                                                              FFAppState()
-                                                                      .currentQuizIndex +
-                                                                  -1;
-                                                        });
-                                                        context.safePop();
+                                                        if (FFAppState()
+                                                                .currentQuizIndex >
+                                                            0) {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .currentQuizIndex =
+                                                                FFAppState()
+                                                                        .currentQuizIndex +
+                                                                    -1;
+                                                          });
+                                                          context.safePop();
+                                                        } else {
+                                                          await showModalBottomSheet(
+                                                            isScrollControlled:
+                                                                true,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            enableDrag: false,
+                                                            context: context,
+                                                            builder:
+                                                                (bottomSheetContext) {
+                                                              return GestureDetector(
+                                                                onTap: () => FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _unfocusNode),
+                                                                child: Padding(
+                                                                  padding: MediaQuery.of(
+                                                                          bottomSheetContext)
+                                                                      .viewInsets,
+                                                                  child:
+                                                                      CloseQuizWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              setState(() {}));
+                                                        }
                                                       },
                                                       child: Row(
                                                         mainAxisSize:

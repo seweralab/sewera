@@ -29,6 +29,7 @@ class RouteViewStatic extends StatefulWidget {
 
   final double? height;
   final double? width;
+
   final LatLng startCoordinate;
   final String iOSGoogleMapsApiKey;
   final String androidGoogleMapsApiKey;
@@ -64,6 +65,7 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
   // LatLng _center = LatLng(37.7749, -122.4194);
   void _onTextChanged(String value) async {
     final suggestions = await _getAddressSuggestions(value);
+    FFAppState().currentQuizAddr = value;
     setState(() {
       _suggestions = suggestions;
     });
@@ -150,6 +152,7 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
           // Обновляем значение текстового поля
           print('get address');
           print(address);
+          FFAppState().currentQuizAddr = address;
           _addressTextController.text = address;
         });
         // return address;
@@ -308,6 +311,7 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                   controller: _addressTextController,
                   onChanged: _onTextChanged,
                   onSubmitted: (String value) {
+                    FFAppState().currentQuizAddr = value;
                     _suggestions.clear();
                   },
                   focusNode: _addressFocusNode,
@@ -338,10 +342,13 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                       onTap: () {
                         _addressTextController.text = _suggestions[index].value;
                         // print(_suggestions[index]);
+                        FFAppState().currentQuizAddr =
+                            _suggestions[index].value;
                         _addressFocusNode.requestFocus();
                         _onSuggestionTap(_suggestions[index].latitude,
                             _suggestions[index].longitude);
                         _suggestions.clear();
+                        // FFAppState().currentQuizAddr = _suggestions[index].value;
                       },
                     );
                   },

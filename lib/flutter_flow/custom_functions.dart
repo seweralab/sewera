@@ -379,18 +379,16 @@ String inputFromUserFields(
   }
   var output = '';
   if (inputname != '') {
-    if (inputname != '') {
-      switch (inputname) {
-        case 'Септик':
-          output = mdseptic;
-          break;
-        case 'Тип':
-          output = mdtype;
-          break;
-        case 'Площадь':
-          output = mdarea;
-          break;
-      }
+    switch (inputname) {
+      case 'Септик':
+        output = mdseptic;
+        break;
+      case 'Тип':
+        output = mdtype;
+        break;
+      case 'Площадь':
+        output = mdarea;
+        break;
     }
   }
   return output;
@@ -432,13 +430,7 @@ String splitQuizDetails(
 }
 
 List<String> cancelOrderCheckboxes() {
-  var items = [
-    'Дорого',
-    'Долго',
-    'Не устроила цена',
-    'Не хочу отвечать',
-    'input'
-  ];
+  var items = ['Дорого', 'Долго', 'Не устроила цена', 'Не хочу отвечать'];
   return items;
 }
 

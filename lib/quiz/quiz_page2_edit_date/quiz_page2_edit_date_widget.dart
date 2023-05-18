@@ -1,19 +1,19 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
+import '/widgets/calendar/calendar_widget.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'quiz_page2_edit_date_model.dart';
@@ -245,48 +245,87 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget>
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   18.0, 0.0, 18.0, 0.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: FlutterFlowRadioButton(
-                                  options:
-                                      functions.quizGetRadioDates().toList(),
-                                  onChanged: (val) async {
-                                    setState(() {});
-                                    setState(() {
-                                      _model.showTopError = false;
-                                    });
-                                  },
-                                  controller:
-                                      _model.radioButtonValueController ??=
-                                          FormFieldController<String>(
-                                              columnOrdersRecord.deadline!),
-                                  optionHeight: 50.0,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Fira Sans',
-                                        color: Colors.black,
-                                      ),
-                                  selectedTextStyle:
-                                      FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Fira Sans',
-                                            color: Colors.black,
-                                            lineHeight: 1.2,
+                              child: Builder(
+                                builder: (context) {
+                                  final radios =
+                                      functions.quizGetRadioDates().toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: radios.length,
+                                    itemBuilder: (context, radiosIndex) {
+                                      final radiosItem = radios[radiosIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 10.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            setState(() {
+                                              _model.selected = radiosItem;
+                                            });
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Stack(
+                                                children: [
+                                                  if (radiosItem !=
+                                                      _model.selected)
+                                                    SvgPicture.asset(
+                                                      'assets/images/radio_clear.svg',
+                                                      width: 24.0,
+                                                      height: 24.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  if (radiosItem ==
+                                                      _model.selected)
+                                                    SvgPicture.asset(
+                                                      'assets/images/radio_check.svg',
+                                                      width: 24.0,
+                                                      height: 24.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                ],
+                                              ),
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.75,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 0.0, 0.0, 0.0),
+                                                  child: AutoSizeText(
+                                                    radiosItem,
+                                                    maxLines: 2,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                  buttonPosition: RadioButtonPosition.left,
-                                  direction: Axis.vertical,
-                                  radioButtonColor: Color(0xFF00BB67),
-                                  inactiveRadioButtonColor: Color(0x8A000000),
-                                  toggleable: false,
-                                  horizontalAlignment: WrapAlignment.start,
-                                  verticalAlignment: WrapCrossAlignment.start,
-                                ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ),
                           ],
@@ -296,63 +335,44 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget>
                               18.0, 0.0, 18.0, 20.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              if (_model.radioButtonValue != null &&
-                                  _model.radioButtonValue != '') {
-                                if (_model.radioButtonValue ==
+                              if (_model.selected != null &&
+                                  _model.selected != '') {
+                                if (_model.selected ==
                                     'Выберу день в календаре') {
-                                  final _datePickedDate = await showDatePicker(
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                    isDismissible: false,
+                                    enableDrag: false,
                                     context: context,
-                                    initialDate: getCurrentTimestamp,
-                                    firstDate: getCurrentTimestamp,
-                                    lastDate: DateTime(2050),
-                                  );
-
-                                  if (_datePickedDate != null) {
-                                    setState(() {
-                                      _model.datePicked = DateTime(
-                                        _datePickedDate.year,
-                                        _datePickedDate.month,
-                                        _datePickedDate.day,
-                                      );
-                                    });
-                                  }
-                                  if (_model.datePicked != null) {
-                                    final ordersUpdateData1 =
-                                        createOrdersRecordData(
-                                      deadline: dateTimeFormat(
-                                        'd/M/y',
-                                        _model.datePicked,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      ),
-                                    );
-                                    await FFAppState()
-                                        .currentOrder!
-                                        .update(ordersUpdateData1);
-
-                                    context.pushNamed(
-                                      'QuizSendOrder',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.rightToLeft,
+                                    builder: (bottomSheetContext) {
+                                      return GestureDetector(
+                                        onTap: () => FocusScope.of(context)
+                                            .requestFocus(_unfocusNode),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.of(bottomSheetContext)
+                                                  .viewInsets,
+                                          child: Container(
+                                            height: 460.0,
+                                            child: CalendarWidget(),
+                                          ),
                                         ),
-                                      },
-                                    );
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
 
-                                    return;
-                                  } else {
-                                    return;
-                                  }
+                                  return;
                                 } else {
-                                  final ordersUpdateData2 =
+                                  final ordersUpdateData =
                                       createOrdersRecordData(
-                                    deadline: _model.radioButtonValue,
+                                    deadline: _model.selected,
                                   );
                                   await FFAppState()
                                       .currentOrder!
-                                      .update(ordersUpdateData2);
+                                      .update(ordersUpdateData);
 
                                   context.pushNamed(
                                     'QuizSendOrder',

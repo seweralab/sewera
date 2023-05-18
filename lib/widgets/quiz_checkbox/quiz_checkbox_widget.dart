@@ -225,7 +225,7 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
                       controller: _model.textController,
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController',
-                        Duration(milliseconds: 2000),
+                        Duration(milliseconds: 100),
                         () async {
                           setState(() {
                             FFAppState().currentCheckInputQuiz =

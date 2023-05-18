@@ -1,10 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -23,13 +21,15 @@ class CancelOrderPageModel extends FlutterFlowModel {
 
   bool? showTopError = true;
 
+  List<String> selected = [];
+  void addToSelected(String item) => selected.add(item);
+  void removeFromSelected(String item) => selected.remove(item);
+  void removeAtIndexFromSelected(int index) => selected.removeAt(index);
+
   ///  State fields for stateful widgets in this page.
 
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues;
-  FormFieldController<List<String>>? checkboxGroupValueController;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;

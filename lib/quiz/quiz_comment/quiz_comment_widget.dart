@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import 'quiz_comment_model.dart';
 export 'quiz_comment_model.dart';
 
@@ -61,8 +60,8 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 50.0,
+              height: 50.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -95,8 +94,8 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                             child: TopNotificationWidget(),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(18, 32, 18, 32),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 32.0, 18.0, 32.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -115,11 +114,11 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 18, 0),
+                                            0.0, 0.0, 18.0, 0.0),
                                         child: Icon(
                                           Icons.arrow_back_sharp,
                                           color: Colors.black,
-                                          size: 24,
+                                          size: 24.0,
                                         ),
                                       ),
                                       Text(
@@ -128,14 +127,14 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Fira Sans',
-                                              fontSize: 20,
+                                              fontSize: 20.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
                                     ],
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -165,7 +164,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                       child: Icon(
                                         Icons.close,
                                         color: Colors.black,
-                                        size: 24,
+                                        size: 24.0,
                                       ),
                                     ),
                                   ),
@@ -174,8 +173,8 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 0.0, 18.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
@@ -187,16 +186,17 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 16),
+                                        0.0, 0.0, 0.0, 16.0),
                                     child: Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFF3F4F5),
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            16, 16, 16, 16),
+                                            16.0, 16.0, 16.0, 16.0),
                                         child: TextFormField(
                                           controller: _model.textController ??=
                                               TextEditingController(
@@ -207,14 +207,14 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             hintText:
-                                                'Важные1 вещи о заказе, которые следует знать исполнителю',
+                                                'Важные вещи о заказе, которые следует знать исполнителю',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodySmall,
                                             enabledBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0x00000000),
-                                                width: 1,
+                                                width: 1.0,
                                               ),
                                               borderRadius:
                                                   const BorderRadius.only(
@@ -225,7 +225,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0x00000000),
-                                                width: 1,
+                                                width: 1.0,
                                               ),
                                               borderRadius:
                                                   const BorderRadius.only(
@@ -236,7 +236,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             errorBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0x00000000),
-                                                width: 1,
+                                                width: 1.0,
                                               ),
                                               borderRadius:
                                                   const BorderRadius.only(
@@ -248,7 +248,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                 UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0x00000000),
-                                                width: 1,
+                                                width: 1.0,
                                               ),
                                               borderRadius:
                                                   const BorderRadius.only(
@@ -268,10 +268,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(-1, 0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 10),
+                                          0.0, 0.0, 0.0, 10.0),
                                       child: Text(
                                         'Загрузите файлы или фотки, так будет ещё понятнее, что делать.',
                                         style: FlutterFlowTheme.of(context)
@@ -279,7 +279,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             .override(
                                               fontFamily: 'Fira Sans',
                                               color: Color(0xFF586A74),
-                                              fontSize: 14,
+                                              fontSize: 14.0,
                                             ),
                                       ),
                                     ),
@@ -309,11 +309,14 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             gridDelegate:
                                                 SliverGridDelegateWithFixedCrossAxisCount(
                                               crossAxisCount: 3,
-                                              crossAxisSpacing: 10,
-                                              mainAxisSpacing: 10,
-                                              childAspectRatio: 1,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 1.0,
                                             ),
+                                            primary: false,
                                             shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
                                             scrollDirection: Axis.vertical,
                                             itemCount: mdPhotosEdit.length,
                                             itemBuilder:
@@ -322,7 +325,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                   mdPhotosEdit[
                                                       mdPhotosEditIndex];
                                               return Container(
-                                                width: 90,
+                                                width: 90.0,
                                                 child: Stack(
                                                   children: [
                                                     if (mdPhotosEditItem !=
@@ -331,10 +334,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                       Material(
                                                         color:
                                                             Colors.transparent,
-                                                        elevation: 0,
+                                                        elevation: 0.0,
                                                         child: Container(
-                                                          width: 100,
-                                                          height: 100,
+                                                          width: 100.0,
+                                                          height: 100.0,
                                                           decoration:
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
@@ -347,10 +350,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            4,
-                                                                            4,
-                                                                            0),
+                                                                            0.0,
+                                                                            4.0,
+                                                                            4.0,
+                                                                            0.0),
                                                                 child: InkWell(
                                                                   splashColor:
                                                                       Colors
@@ -397,14 +400,14 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                         ClipRRect(
                                                                       borderRadius:
                                                                           BorderRadius.circular(
-                                                                              8),
+                                                                              8.0),
                                                                       child: Image
                                                                           .network(
                                                                         mdPhotosEditItem,
                                                                         width:
-                                                                            100,
+                                                                            100.0,
                                                                         height:
-                                                                            100,
+                                                                            100.0,
                                                                         fit: BoxFit
                                                                             .cover,
                                                                       ),
@@ -415,21 +418,24 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        1, -1),
+                                                                        1.0,
+                                                                        -1.0),
                                                                 child: Material(
                                                                   color: Colors
                                                                       .transparent,
-                                                                  elevation: 4,
+                                                                  elevation:
+                                                                      4.0,
                                                                   shape:
                                                                       RoundedRectangleBorder(
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(9),
+                                                                        BorderRadius.circular(
+                                                                            9.0),
                                                                   ),
                                                                   child:
                                                                       Container(
-                                                                    width: 18,
-                                                                    height: 18,
+                                                                    width: 18.0,
+                                                                    height:
+                                                                        18.0,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
@@ -437,7 +443,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                           .primaryBtnText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
-                                                                              9),
+                                                                              9.0),
                                                                     ),
                                                                     child:
                                                                         InkWell(
@@ -473,7 +479,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                         color: Colors
                                                                             .black,
                                                                         size:
-                                                                            10,
+                                                                            10.0,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -490,7 +496,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    0, 4, 4, 0),
+                                                                    0.0,
+                                                                    4.0,
+                                                                    4.0,
+                                                                    0.0),
                                                         child: InkWell(
                                                           splashColor: Colors
                                                               .transparent,
@@ -592,17 +601,17 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                           child: Material(
                                                             color: Colors
                                                                 .transparent,
-                                                            elevation: 0,
+                                                            elevation: 0.0,
                                                             shape:
                                                                 RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          8),
+                                                                          8.0),
                                                             ),
                                                             child: Container(
-                                                              width: 100,
-                                                              height: 100,
+                                                              width: 100.0,
+                                                              height: 100.0,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: FlutterFlowTheme.of(
@@ -620,7 +629,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            8),
+                                                                            8.0),
                                                                 shape: BoxShape
                                                                     .rectangle,
                                                               ),
@@ -646,7 +655,8 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,

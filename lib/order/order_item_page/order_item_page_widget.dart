@@ -1,12 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/radio_cashback_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -118,15 +118,25 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                           size: 24.0,
                                         ),
                                       ),
-                                      Text(
-                                        orderItemPageOrdersRecord.servicename!,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Fira Sans',
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.7,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Text(
+                                          orderItemPageOrdersRecord
+                                              .servicename!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Fira Sans',
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -1232,7 +1242,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 8.0, 0.0),
                                             child: Text(
-                                              'Сумма: ${_model.oldPrice > 0 ? _model.oldPrice.toString() : orderItemPageOrdersRecord.cost?.toString()} ₽',
+                                              'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString() : orderItemPageOrdersRecord.cost?.toString()} ₽',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1244,7 +1254,9 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                       ),
                                             ),
                                           ),
-                                          if (_model.oldPrice > 0)
+                                          if (_model.radioCashbackModel
+                                                  .localOldPrice >
+                                              0)
                                             Container(
                                               decoration: BoxDecoration(
                                                 color: Color(0xFFF2FBF6),
@@ -1306,169 +1318,32 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             alignment:
                                                 AlignmentDirectional(0.0, -1.0),
                                             children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 24.0),
-                                                child: AuthUserStreamWidget(
-                                                  builder: (context) => Builder(
-                                                    builder: (context) {
-                                                      final radios = functions
-                                                          .orderCachbackOptions(
-                                                              orderItemPageOrdersRecord
-                                                                  .cost!,
-                                                              orderItemPageOrdersRecord
-                                                                  .cashback,
-                                                              valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.cashback,
-                                                                  0))
-                                                          .toList();
-                                                      return ListView.builder(
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        shrinkWrap: true,
-                                                        scrollDirection:
-                                                            Axis.vertical,
-                                                        itemCount:
-                                                            radios.length,
-                                                        itemBuilder: (context,
-                                                            radiosIndex) {
-                                                          final radiosItem =
-                                                              radios[
-                                                                  radiosIndex];
-                                                          return Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        12.0,
-                                                                        0.0,
-                                                                        12.0),
-                                                            child: InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                setState(() {
-                                                                  _model.radioCashback =
-                                                                      radiosItem;
-                                                                });
-                                                                setState(() {
-                                                                  _model.oldPrice = functions.updateOldPrice(
-                                                                      _model
-                                                                          .radioCashback!,
-                                                                      valueOrDefault(
-                                                                          currentUserDocument
-                                                                              ?.cashback,
-                                                                          0),
-                                                                      orderItemPageOrdersRecord
-                                                                          .cost);
-                                                                });
-                                                              },
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Stack(
-                                                                    children: [
-                                                                      if (radiosItem !=
-                                                                          _model
-                                                                              .radioCashback)
-                                                                        SvgPicture
-                                                                            .asset(
-                                                                          'assets/images/radio_clear.svg',
-                                                                          width:
-                                                                              24.0,
-                                                                          height:
-                                                                              24.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      if ((radiosItem ==
-                                                                              _model
-                                                                                  .radioCashback) &&
-                                                                          functions.isRadioContainsValue(
-                                                                              radiosItem,
-                                                                              'Получить'))
-                                                                        SvgPicture
-                                                                            .asset(
-                                                                          'assets/images/radio_cashactive.svg',
-                                                                          width:
-                                                                              24.0,
-                                                                          height:
-                                                                              24.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      if ((radiosItem ==
-                                                                              _model
-                                                                                  .radioCashback) &&
-                                                                          !functions.isRadioContainsValue(
-                                                                              radiosItem,
-                                                                              'Получить'))
-                                                                        SvgPicture
-                                                                            .asset(
-                                                                          'assets/images/radio_check.svg',
-                                                                          width:
-                                                                              24.0,
-                                                                          height:
-                                                                              24.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                    ],
-                                                                  ),
-                                                                  Expanded(
-                                                                    child:
-                                                                        Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.8,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            AutoSizeText(
-                                                                          radiosItem,
-                                                                          maxLines:
-                                                                              2,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyMedium,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      );
-                                                    },
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    wrapWithModel(
+                                                  model:
+                                                      _model.radioCashbackModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  updateOnChange: true,
+                                                  child: RadioCashbackWidget(
+                                                    cost:
+                                                        orderItemPageOrdersRecord
+                                                            .cost!,
+                                                    cashback:
+                                                        orderItemPageOrdersRecord
+                                                            .cashback!,
+                                                    radioCashback: functions
+                                                        .orderCachbackOptions(
+                                                            orderItemPageOrdersRecord
+                                                                .cost!,
+                                                            orderItemPageOrdersRecord
+                                                                .cashback,
+                                                            valueOrDefault(
+                                                                currentUserDocument
+                                                                    ?.cashback,
+                                                                0))
+                                                        .first,
                                                   ),
                                                 ),
                                               ),
@@ -1712,9 +1587,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                 final ordersUpdateData = {
                                   ...createOrdersRecordData(
                                     status: 'Подтверждён',
-                                    cachbackSelect: _model.radioCashback,
+                                    cachbackSelect: _model
+                                        .radioCashbackModel.localRadioCashback,
                                     cachbackUsed: functions.cashBackUsed(
-                                        _model.radioCashback!,
+                                        _model.radioCashbackModel
+                                            .localRadioCashback!,
                                         valueOrDefault(
                                             currentUserDocument?.cashback, 0)),
                                   ),
@@ -1725,7 +1602,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
 
                                 final usersUpdateData = createUsersRecordData(
                                   cashback: functions.cashbackUserUser(
-                                      _model.radioCashback!,
+                                      _model.radioCashbackModel
+                                          .localRadioCashback!,
                                       valueOrDefault(
                                           currentUserDocument?.cashback, 0),
                                       functions.addcashback(
@@ -1834,6 +1712,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   description:
                                       orderItemPageOrdersRecord.description,
                                   orderDate: getCurrentTimestamp,
+                                  service: orderItemPageOrdersRecord.service,
                                 );
                                 var ordersRecordReference =
                                     OrdersRecord.collection.doc();
@@ -1849,7 +1728,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   FFAppState().currentQuizIndex = 0;
                                 });
 
-                                context.pushNamed('QuizSelectDate');
+                                context.pushNamed(
+                                  'QuizPage2',
+                                  queryParams: {
+                                    'serviceRef': serializeParam(
+                                      orderItemPageOrdersRecord.service,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
 
                                 setState(() {});
                               },
