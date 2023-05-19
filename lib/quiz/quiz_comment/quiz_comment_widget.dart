@@ -315,6 +315,8 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             ),
                                             primary: false,
                                             shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
                                             scrollDirection: Axis.vertical,
                                             itemCount: mdPhotosEdit.length,
                                             itemBuilder:

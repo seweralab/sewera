@@ -76,7 +76,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                               18.0, 10.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
-                            height: 51.0,
+                            height: 56.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFF3F4F5),
                               borderRadius: BorderRadius.circular(8.0),
@@ -113,8 +113,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         0.0, 0.0, 12.0, 0.0),
                                     child: Icon(
                                       Icons.search,
-                                      color: Colors.black,
-                                      size: 16.0,
+                                      color: Color(0xFF526970),
+                                      size: 20,
                                     ),
                                   ),
                                 ],
@@ -498,7 +498,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           extentRatio: 0.25,
                                                           children: [
                                                             SlidableAction(
-                                                              label: 'null',
+                                                              // label: 'null',
                                                               backgroundColor:
                                                                   Color(
                                                                       0xFFF3F4F5),

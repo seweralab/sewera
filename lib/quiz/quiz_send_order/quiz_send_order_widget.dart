@@ -845,6 +845,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                 1.0,
                                                           ),
                                                           shrinkWrap: true,
+                                                          physics:
+                                                              NeverScrollableScrollPhysics(),
                                                           scrollDirection:
                                                               Axis.vertical,
                                                           itemCount:
