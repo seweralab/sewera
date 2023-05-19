@@ -52,6 +52,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,8 +74,8 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
+                            width: 40.0,
+                            height: 40.0,
                             child: CircularProgressIndicator(
                               color: FlutterFlowTheme.of(context).primary,
                             ),
@@ -100,8 +101,8 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                             if (!snapshot.hasData) {
                               return Center(
                                 child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
+                                  width: 40.0,
+                                  height: 40.0,
                                   child: CircularProgressIndicator(
                                     color: FlutterFlowTheme.of(context).primary,
                                   ),

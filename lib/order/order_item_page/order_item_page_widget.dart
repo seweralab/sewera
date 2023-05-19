@@ -60,8 +60,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -75,6 +75,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -127,8 +128,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                               .secondaryBackground,
                                         ),
                                         child: Text(
-                                          orderItemPageOrdersRecord
-                                              .servicename!,
+                                          orderItemPageOrdersRecord.servicename,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -164,9 +164,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  if ((orderItemPageOrdersRecord.changedFields!
-                                              .toList()
-                                              .length >
+                                  if ((orderItemPageOrdersRecord
+                                              .changedFields.length >
                                           0) &&
                                       (_model.showInfoChanged == true))
                                     Align(
@@ -448,7 +447,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     14.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               orderItemPageOrdersRecord
-                                                  .deadline!,
+                                                  .deadline,
                                               maxLines: 3,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -481,7 +480,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     14.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              orderItemPageOrdersRecord.addr!,
+                                              orderItemPageOrdersRecord.addr,
                                               maxLines: 3,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -567,7 +566,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                       builder: (context) {
                                         final listDetails = functions
                                             .listQuizItems(
-                                                orderItemPageOrdersRecord.quiz!)
+                                                orderItemPageOrdersRecord.quiz)
                                             .map((e) => e)
                                             .toList();
                                         return Column(
@@ -589,7 +588,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                               listDetailsItem,
                                                               'name'),
                                                           orderItemPageOrdersRecord
-                                                              .changedFields!
+                                                              .changedFields
                                                               .toList()),
                                                 ),
                                                 child: Padding(
@@ -645,7 +644,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                       ),
                                                       if (functions.isOrderQuizFieldChanged(
                                                               orderItemPageOrdersRecord
-                                                                  .changedFields!
+                                                                  .changedFields
                                                                   .toList(),
                                                               functions.jsonMDecode(
                                                                   listDetailsItem,
@@ -694,7 +693,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         color: functions.orderChangedColor(
                                             'deadline',
                                             orderItemPageOrdersRecord
-                                                .changedFields!
+                                                .changedFields
                                                 .toList()),
                                       ),
                                       child: Padding(
@@ -730,7 +729,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   ),
                                                   Text(
                                                     orderItemPageOrdersRecord
-                                                        .deadline!,
+                                                        .deadline,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
@@ -741,7 +740,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             if (functions
                                                     .isOrderQuizFieldChanged(
                                                         orderItemPageOrdersRecord
-                                                            .changedFields!
+                                                            .changedFields
                                                             .toList(),
                                                         'deadline') ==
                                                 true)
@@ -776,7 +775,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         color: functions.orderChangedColor(
                                             'addr',
                                             orderItemPageOrdersRecord
-                                                .changedFields!
+                                                .changedFields
                                                 .toList()),
                                       ),
                                       child: Padding(
@@ -812,7 +811,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   ),
                                                   Text(
                                                     orderItemPageOrdersRecord
-                                                        .addr!,
+                                                        .addr,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
@@ -823,7 +822,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             if (functions
                                                     .isOrderQuizFieldChanged(
                                                         orderItemPageOrdersRecord
-                                                            .changedFields!
+                                                            .changedFields
                                                             .toList(),
                                                         'addr') ==
                                                 true)
@@ -862,7 +861,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                           color: functions.orderChangedColor(
                                               'description',
                                               orderItemPageOrdersRecord
-                                                  .changedFields!
+                                                  .changedFields
                                                   .toList()),
                                         ),
                                         child: Padding(
@@ -901,7 +900,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     ),
                                                     Text(
                                                       orderItemPageOrdersRecord
-                                                          .description!,
+                                                          .description,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -913,7 +912,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                               if (functions
                                                       .isOrderQuizFieldChanged(
                                                           orderItemPageOrdersRecord
-                                                              .changedFields!
+                                                              .changedFields
                                                               .toList(),
                                                           'description') ==
                                                   true)
@@ -951,7 +950,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         color: functions.orderChangedColor(
                                             'comment',
                                             orderItemPageOrdersRecord
-                                                .changedFields!
+                                                .changedFields
                                                 .toList()),
                                       ),
                                       child: Padding(
@@ -987,7 +986,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   ),
                                                   Text(
                                                     orderItemPageOrdersRecord
-                                                        .comment!,
+                                                        .comment,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
@@ -998,7 +997,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             if (functions
                                                     .isOrderQuizFieldChanged(
                                                         orderItemPageOrdersRecord
-                                                            .changedFields!
+                                                            .changedFields
                                                             .toList(),
                                                         'comment') ==
                                                 true)
@@ -1023,9 +1022,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         ),
                                       ),
                                     ),
-                                  if (orderItemPageOrdersRecord.photos!
-                                          .toList()
-                                          .length >
+                                  if (orderItemPageOrdersRecord.photos.length >
                                       0)
                                     Container(
                                       width: double.infinity,
@@ -1071,7 +1068,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     final mdPhotosEdit = functions
                                                         .propImagesList(
                                                             orderItemPageOrdersRecord
-                                                                .photos!
+                                                                .photos
                                                                 .toList())
                                                         .toList();
                                                     return GridView.builder(
@@ -1203,7 +1200,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: Text(
-                                      'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost!, orderItemPageOrdersRecord.cachbackUsed!).toString()} ₽',
+                                      'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed).toString()} ₽',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -1216,7 +1213,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                 ],
                               ),
                             ),
-                          if ((orderItemPageOrdersRecord.cost! > 0) &&
+                          if ((orderItemPageOrdersRecord.cost > 0) &&
                               (orderItemPageOrdersRecord.status ==
                                   'Подтвердите'))
                             Padding(
@@ -1242,7 +1239,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 8.0, 0.0),
                                             child: Text(
-                                              'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString() : orderItemPageOrdersRecord.cost?.toString()} ₽',
+                                              'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString() : orderItemPageOrdersRecord.cost.toString()} ₽',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1266,7 +1263,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     .fromSTEB(
                                                         10.0, 2.0, 10.0, 2.0),
                                                 child: Text(
-                                                  '${orderItemPageOrdersRecord.cost?.toString()} ₽',
+                                                  '${orderItemPageOrdersRecord.cost.toString()} ₽',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1329,14 +1326,14 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   child: RadioCashbackWidget(
                                                     cost:
                                                         orderItemPageOrdersRecord
-                                                            .cost!,
+                                                            .cost,
                                                     cashback:
                                                         orderItemPageOrdersRecord
-                                                            .cashback!,
+                                                            .cashback,
                                                     radioCashback: functions
                                                         .orderCachbackOptions(
                                                             orderItemPageOrdersRecord
-                                                                .cost!,
+                                                                .cost,
                                                             orderItemPageOrdersRecord
                                                                 .cashback,
                                                             valueOrDefault(
@@ -1348,7 +1345,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 ),
                                               ),
                                               if (orderItemPageOrdersRecord
-                                                      .cashback! >
+                                                      .cashback >
                                                   0)
                                                 Align(
                                                   alignment:
@@ -1428,7 +1425,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                             ),
                                                             Text(
                                                               orderItemPageOrdersRecord
-                                                                  .cashback!
+                                                                  .cashback
                                                                   .toString()
                                                                   .maybeHandleOverflow(
                                                                       maxChars:
@@ -1607,7 +1604,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                       valueOrDefault(
                                           currentUserDocument?.cashback, 0),
                                       functions.addcashback(
-                                          orderItemPageOrdersRecord.cost!,
+                                          orderItemPageOrdersRecord.cost,
                                           orderItemPageOrdersRecord.cashback)),
                                 );
                                 await currentUserReference!
@@ -1743,7 +1740,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                               text: 'Повторить заказ',
                               icon: Icon(
                                 Icons.refresh,
-                                size: 15.0,
+                                size: 16.0,
                               ),
                               options: FFButtonOptions(
                                 width: double.infinity,

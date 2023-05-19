@@ -61,8 +61,8 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -76,6 +76,7 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +111,7 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 12.0, 0.0),
+                                          0.0, 0.0, 18.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -121,8 +122,8 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
                                         },
                                         child: Icon(
                                           Icons.arrow_back,
-                                          color: Colors.black,
-                                          size: 24.0,
+                                          color: Color(0xFF526970),
+                                          size: 20.0,
                                         ),
                                       ),
                                     ),

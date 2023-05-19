@@ -52,6 +52,7 @@ class _EditMDSepticPageWidgetState extends State<EditMDSepticPageWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(

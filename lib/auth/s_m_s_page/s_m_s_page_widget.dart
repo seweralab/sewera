@@ -64,6 +64,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -271,7 +272,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                           }
 
                                           _navigate = () => context.goNamedAuth(
-                                              'HomePage2', mounted);
+                                              'HomePage2', context.mounted);
                                           if (!loggedIn) {
                                             setState(() {
                                               _model.showSendBtn = false;

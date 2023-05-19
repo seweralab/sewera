@@ -34,6 +34,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
     _model = createModel(context, () => StartPageModel());
 
     _model.phonefieldController ??= TextEditingController(text: widget.phone);
+    authManager.handlePhoneAuthStateChanges(context);
   }
 
   @override
@@ -54,6 +55,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -181,10 +183,10 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                             await authManager.beginPhoneAuth(
                               context: context,
                               phoneNumber: phoneNumberVal,
-                              onCodeSent: () async {
+                              onCodeSent: (context) async {
                                 context.goNamedAuth(
                                   'SMSPage',
-                                  mounted,
+                                  context.mounted,
                                   queryParams: {
                                     'phone': serializeParam(
                                       _model.phonefieldController.text,

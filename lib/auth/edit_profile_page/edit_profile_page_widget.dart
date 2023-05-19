@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +50,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +73,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 32.0, 0.0, 32.0),
+                            0.0, 16.0, 0.0, 25.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -725,7 +725,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                             await authManager.signOut();
                             GoRouter.of(context).clearRedirectLocation();
 
-                            context.pushNamedAuth('StartPage', mounted);
+                            context.pushNamedAuth('StartPage', context.mounted);
                           },
                           text: 'Выйти из аккаунта',
                           icon: Icon(
@@ -760,16 +760,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                     ),
                   ),
                 ],
-              ),
-              wrapWithModel(
-                model: _model.customnavbarModel,
-                updateCallback: () => setState(() {}),
-                child: CustomnavbarWidget(
-                  supportactive: false,
-                  homeactive: false,
-                  orderactive: false,
-                  profileactive: true,
-                ),
               ),
             ],
           ),

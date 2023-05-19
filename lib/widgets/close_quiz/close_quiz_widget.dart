@@ -103,6 +103,9 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                 await FFAppState().currentOrder!.delete();
                 setState(() {
                   FFAppState().currentOrder = null;
+                  FFAppState().currentQuizTopErr = false;
+                  FFAppState().currentCheckInputQuizErr = false;
+                  FFAppState().currentQuizRadieInputErr = false;
                 });
 
                 context.pushNamed('HomePage2');
@@ -134,6 +137,9 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                   await FFAppState().currentOrder!.update(ordersUpdateData);
                   setState(() {
                     FFAppState().currentOrder = null;
+                    FFAppState().currentQuizTopErr = false;
+                    FFAppState().currentCheckInputQuizErr = false;
+                    FFAppState().currentQuizRadieInputErr = false;
                   });
 
                   context.pushNamed('HomePage2');

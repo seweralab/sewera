@@ -81,16 +81,16 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
           child: Container(
             width: double.infinity,
-            height: 350.0,
+            height: 380.0,
             child: custom_widgets.Datetimewidget(
               width: double.infinity,
-              height: 350.0,
+              height: 380.0,
               textf: 'yyyy',
             ),
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 24.0),
           child: FFButtonWidget(
             onPressed: () async {
               if (FFAppState().currentQuizDeadline !=

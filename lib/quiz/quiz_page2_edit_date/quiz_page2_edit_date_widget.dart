@@ -74,6 +74,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: StreamBuilder<OrdersRecord>(
             stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
             builder: (context, snapshot) {
@@ -81,8 +82,8 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget>
               if (!snapshot.hasData) {
                 return Center(
                   child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
+                    width: 40.0,
+                    height: 40.0,
                     child: CircularProgressIndicator(
                       color: FlutterFlowTheme.of(context).primary,
                     ),

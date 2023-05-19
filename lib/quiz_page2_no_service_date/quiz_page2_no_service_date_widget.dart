@@ -83,6 +83,7 @@ class _QuizPage2NoServiceDateWidgetState
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
           body: SafeArea(
+            top: true,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

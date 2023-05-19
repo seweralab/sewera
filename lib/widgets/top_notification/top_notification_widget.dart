@@ -75,8 +75,8 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
               },
               child: SvgPicture.asset(
                 'assets/images/logo.svg',
-                width: 22.0,
-                height: 22.0,
+                width: 26.0,
+                height: 26.0,
                 fit: BoxFit.cover,
               ),
             ),
@@ -99,7 +99,7 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
                     child: Icon(
                       Icons.notifications,
                       color: Color(0xFFB8BFC4),
-                      size: 24.0,
+                      size: 26.0,
                     ),
                   ),
                 ),

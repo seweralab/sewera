@@ -52,6 +52,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               SingleChildScrollView(

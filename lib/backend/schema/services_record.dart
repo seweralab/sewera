@@ -1,66 +1,105 @@
 import 'dart:async';
 
 import 'package:from_css_color/from_css_color.dart';
+import '/backend/algolia/algolia_manager.dart';
+
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'services_record.g.dart';
+class ServicesRecord extends FirestoreRecord {
+  ServicesRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class ServicesRecord
-    implements Built<ServicesRecord, ServicesRecordBuilder> {
-  static Serializer<ServicesRecord> get serializer =>
-      _$servicesRecordSerializer;
+  // "title" field.
+  String? _title;
+  String get title => _title ?? '';
+  bool hasTitle() => _title != null;
 
-  String? get title;
+  // "category" field.
+  List<String>? _category;
+  List<String> get category => _category ?? const [];
+  bool hasCategory() => _category != null;
 
-  BuiltList<String>? get category;
+  // "order" field.
+  int? _order;
+  int get order => _order ?? 0;
+  bool hasOrder() => _order != null;
 
-  int? get order;
+  // "popular" field.
+  bool? _popular;
+  bool get popular => _popular ?? false;
+  bool hasPopular() => _popular != null;
 
-  bool? get popular;
+  // "cashback" field.
+  int? _cashback;
+  int get cashback => _cashback ?? 0;
+  bool hasCashback() => _cashback != null;
 
-  int? get cashback;
+  // "img" field.
+  List<RowyImgStruct>? _img;
+  List<RowyImgStruct> get img => _img ?? const [];
+  bool hasImg() => _img != null;
 
-  BuiltList<RowyImgStruct>? get img;
+  // "synonims" field.
+  List<String>? _synonims;
+  List<String> get synonims => _synonims ?? const [];
+  bool hasSynonims() => _synonims != null;
 
-  BuiltList<String>? get synonims;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(ServicesRecordBuilder builder) => builder
-    ..title = ''
-    ..category = ListBuilder()
-    ..order = 0
-    ..popular = false
-    ..cashback = 0
-    ..img = ListBuilder()
-    ..synonims = ListBuilder();
+  void _initializeFields() {
+    _title = snapshotData['title'] as String?;
+    _category = getDataList(snapshotData['category']);
+    _order = snapshotData['order'] as int?;
+    _popular = snapshotData['popular'] as bool?;
+    _cashback = snapshotData['cashback'] as int?;
+    _img = getStructList(
+      snapshotData['img'],
+      RowyImgStruct.fromMap,
+    );
+    _synonims = getDataList(snapshotData['synonims']);
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('services');
 
-  static Stream<ServicesRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<ServicesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => ServicesRecord.fromSnapshot(s));
 
-  static Future<ServicesRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<ServicesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => ServicesRecord.fromSnapshot(s));
+
+  static ServicesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      ServicesRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
+
+  static ServicesRecord getDocumentFromData(
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      ServicesRecord._(reference, mapFromFirestore(data));
 
   static ServicesRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
-      ServicesRecord(
-        (c) => c
-          ..title = snapshot.data['title']
-          ..category = safeGet(() => ListBuilder(snapshot.data['category']))
-          ..order = snapshot.data['order']?.round()
-          ..popular = snapshot.data['popular']
-          ..cashback = snapshot.data['cashback']?.round()
-          ..img = safeGet(() => ListBuilder(
-              snapshot.data['img'].map((data) => createRowyImgStruct(
+      ServicesRecord.getDocumentFromData(
+        {
+          'title': snapshot.data['title'],
+          'category': safeGet(
+            () => snapshot.data['category'].toList(),
+          ),
+          'order': snapshot.data['order']?.round(),
+          'popular': snapshot.data['popular'],
+          'cashback': snapshot.data['cashback']?.round(),
+          'img': safeGet(
+            () => (snapshot.data['img'] as Iterable)
+                .map(
+                  (data) => createRowyImgStruct(
                     lastModifiedTS:
                         (data as Map<String, dynamic>)['lastModifiedTS']
                             ?.round(),
@@ -70,9 +109,15 @@ abstract class ServicesRecord
                     type: (data as Map<String, dynamic>)['type'],
                     create: true,
                     clearUnsetFields: false,
-                  ).toBuilder())))
-          ..synonims = safeGet(() => ListBuilder(snapshot.data['synonims']))
-          ..ffRef = ServicesRecord.collection.doc(snapshot.objectID),
+                  ).toMap(),
+                )
+                .toList(),
+          ),
+          'synonims': safeGet(
+            () => snapshot.data['synonims'].toList(),
+          ),
+        },
+        ServicesRecord.collection.doc(snapshot.objectID),
       );
 
   static Future<List<ServicesRecord>> search({
@@ -93,14 +138,9 @@ abstract class ServicesRecord
           )
           .then((r) => r.map(fromAlgolia).toList());
 
-  ServicesRecord._();
-  factory ServicesRecord([void Function(ServicesRecordBuilder) updates]) =
-      _$ServicesRecord;
-
-  static ServicesRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+  @override
+  String toString() =>
+      'ServicesRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createServicesRecordData({
@@ -109,18 +149,13 @@ Map<String, dynamic> createServicesRecordData({
   bool? popular,
   int? cashback,
 }) {
-  final firestoreData = serializers.toFirestore(
-    ServicesRecord.serializer,
-    ServicesRecord(
-      (s) => s
-        ..title = title
-        ..category = null
-        ..order = order
-        ..popular = popular
-        ..cashback = cashback
-        ..img = null
-        ..synonims = null,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'title': title,
+      'order': order,
+      'popular': popular,
+      'cashback': cashback,
+    }.withoutNulls,
   );
 
   return firestoreData;

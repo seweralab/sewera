@@ -1,31 +1,74 @@
-import 'dart:async';
+// ignore_for_file: unnecessary_getters_setters
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../index.dart';
-import '../serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
 
-part 'quiz_item_struct.g.dart';
+import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-abstract class QuizItemStruct
-    implements Built<QuizItemStruct, QuizItemStructBuilder> {
-  static Serializer<QuizItemStruct> get serializer =>
-      _$quizItemStructSerializer;
+class QuizItemStruct extends FFFirebaseStruct {
+  QuizItemStruct({
+    String? name,
+    String? value,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
+  })  : _name = name,
+        _value = value,
+        super(firestoreUtilData);
 
-  String? get name;
+  // "name" field.
+  String? _name;
+  String get name => _name ?? '';
+  set name(String? val) => _name = val;
+  bool hasName() => _name != null;
 
-  String? get value;
+  // "value" field.
+  String? _value;
+  String get value => _value ?? '';
+  set value(String? val) => _value = val;
+  bool hasValue() => _value != null;
 
-  /// Utility class for Firestore updates
-  FirestoreUtilData get firestoreUtilData;
+  static QuizItemStruct fromMap(Map<String, dynamic> data) => QuizItemStruct(
+        name: data['name'] as String?,
+        value: data['value'] as String?,
+      );
 
-  static void _initializeBuilder(QuizItemStructBuilder builder) => builder
-    ..name = ''
-    ..value = ''
-    ..firestoreUtilData = FirestoreUtilData();
+  static QuizItemStruct? maybeFromMap(dynamic data) =>
+      data is Map<String, dynamic> ? QuizItemStruct.fromMap(data) : null;
 
-  QuizItemStruct._();
-  factory QuizItemStruct([void Function(QuizItemStructBuilder) updates]) =
-      _$QuizItemStruct;
+  Map<String, dynamic> toMap() => {
+        'name': _name,
+        'value': _value,
+      }.withoutNulls;
+
+  @override
+  Map<String, dynamic> toSerializableMap() => {
+        'name': serializeParam(
+          _name,
+          ParamType.String,
+        ),
+        'value': serializeParam(
+          _value,
+          ParamType.String,
+        ),
+      }.withoutNulls;
+
+  static QuizItemStruct fromSerializableMap(Map<String, dynamic> data) =>
+      QuizItemStruct(
+        name: deserializeParam(
+          data['name'],
+          ParamType.String,
+          false,
+        ),
+        value: deserializeParam(
+          data['value'],
+          ParamType.String,
+          false,
+        ),
+      );
+
+  @override
+  String toString() => 'QuizItemStruct(${toMap()})';
 }
 
 QuizItemStruct createQuizItemStruct({
@@ -37,27 +80,23 @@ QuizItemStruct createQuizItemStruct({
   bool delete = false,
 }) =>
     QuizItemStruct(
-      (q) => q
-        ..name = name
-        ..value = value
-        ..firestoreUtilData = FirestoreUtilData(
-          clearUnsetFields: clearUnsetFields,
-          create: create,
-          delete: delete,
-          fieldValues: fieldValues,
-        ),
+      name: name,
+      value: value,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
 
 QuizItemStruct? updateQuizItemStruct(
   QuizItemStruct? quizItem, {
   bool clearUnsetFields = true,
 }) =>
-    quizItem != null
-        ? (quizItem.toBuilder()
-              ..firestoreUtilData =
-                  FirestoreUtilData(clearUnsetFields: clearUnsetFields))
-            .build()
-        : null;
+    quizItem
+      ?..firestoreUtilData =
+          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
 
 void addQuizItemStructData(
   Map<String, dynamic> firestoreData,
@@ -81,8 +120,6 @@ void addQuizItemStructData(
 
   final create = quizItem.firestoreUtilData.create;
   firestoreData.addAll(create ? mergeNestedFields(nestedData) : nestedData);
-
-  return;
 }
 
 Map<String, dynamic> getQuizItemFirestoreData(
@@ -92,8 +129,7 @@ Map<String, dynamic> getQuizItemFirestoreData(
   if (quizItem == null) {
     return {};
   }
-  final firestoreData =
-      serializers.toFirestore(QuizItemStruct.serializer, quizItem);
+  final firestoreData = mapToFirestore(quizItem.toMap());
 
   // Add any Firestore field values
   quizItem.firestoreUtilData.fieldValues
@@ -105,4 +141,4 @@ Map<String, dynamic> getQuizItemFirestoreData(
 List<Map<String, dynamic>> getQuizItemListFirestoreData(
   List<QuizItemStruct>? quizItems,
 ) =>
-    quizItems?.map((q) => getQuizItemFirestoreData(q, true)).toList() ?? [];
+    quizItems?.map((e) => getQuizItemFirestoreData(e, true)).toList() ?? [];

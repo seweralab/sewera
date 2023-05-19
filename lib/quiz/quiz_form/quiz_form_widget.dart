@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -85,8 +86,8 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
           if (!snapshot.hasData) {
             return Center(
               child: SizedBox(
-                width: 50.0,
-                height: 50.0,
+                width: 40.0,
+                height: 40.0,
                 child: CircularProgressIndicator(
                   color: FlutterFlowTheme.of(context).primary,
                 ),
@@ -106,8 +107,8 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                 if (!snapshot.hasData) {
                   return Center(
                     child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
+                      width: 40.0,
+                      height: 40.0,
                       child: CircularProgressIndicator(
                         color: FlutterFlowTheme.of(context).primary,
                       ),
@@ -183,7 +184,7 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                                                       .secondaryBackground,
                                             ),
                                             child: AutoSizeText(
-                                              containerSelectQuizRecord.title!,
+                                              containerSelectQuizRecord.title,
                                               maxLines: 2,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -343,9 +344,9 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                                                                 String>(
                                                             functions.setInitialRadio(
                                                                 columnOrdersRecord
-                                                                    .quiz!,
+                                                                    .quiz,
                                                                 containerSelectQuizRecord
-                                                                    .title!)!),
+                                                                    .title)!),
                                                     optionHeight: 50.0,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
@@ -866,7 +867,7 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                                             _model.formTextController ??=
                                                 TextEditingController(
                                           text: functions.inputFromUserFields(
-                                              containerSelectQuizRecord.input!,
+                                              containerSelectQuizRecord.input,
                                               valueOrDefault(
                                                   currentUserDocument?.mdSeptic,
                                                   ''),
@@ -876,8 +877,8 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                                               valueOrDefault(
                                                   currentUserDocument?.mdType,
                                                   ''),
-                                              columnOrdersRecord.quiz!,
-                                              containerSelectQuizRecord.title!),
+                                              columnOrdersRecord.quiz,
+                                              containerSelectQuizRecord.title),
                                         ),
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.formTextController',
@@ -1006,13 +1007,13 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                         onPressed: () async {
                           setState(() {
                             _model.localVal = functions.newCustomFunction2(
-                                containerSelectQuizRecord.type!,
+                                containerSelectQuizRecord.type,
                                 _model.formTextController.text,
                                 _model.localVal);
                           });
                           if (functions.isFillData(
                               _model.localVal,
-                              containerSelectQuizRecord.type!,
+                              containerSelectQuizRecord.type,
                               _model.checkboxGroupValues?.toList(),
                               _model.textController2.text)) {
                             final ordersUpdateData = createOrdersRecordData(
@@ -1020,10 +1021,10 @@ class _QuizFormWidgetState extends State<QuizFormWidget> {
                                 functions.orderQuizUpdate(
                                     getJsonField(
                                       functions.jsonEncodeQuiz(
-                                          columnOrdersRecord.quiz!),
+                                          columnOrdersRecord.quiz),
                                       r'''$''',
                                     ),
-                                    containerSelectQuizRecord.title!,
+                                    containerSelectQuizRecord.title,
                                     _model.localVal,
                                     widget.ref!),
                                 r'''$''',

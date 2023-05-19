@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -63,8 +62,8 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -78,6 +77,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 1.0,
@@ -193,7 +193,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 16.0),
                                   child: Text(
-                                    notificationPageNotificationsRecord.title!,
+                                    notificationPageNotificationsRecord.title,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -204,7 +204,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                   ),
                                 ),
                                 Text(
-                                  notificationPageNotificationsRecord.text!,
+                                  notificationPageNotificationsRecord.text,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -217,16 +217,6 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                           ),
                         ),
                       ],
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: wrapWithModel(
-                        model: _model.customnavbarModel,
-                        updateCallback: () => setState(() {}),
-                        child: CustomnavbarWidget(
-                          supportactive: false,
-                        ),
-                      ),
                     ),
                   ],
                 ),

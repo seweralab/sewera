@@ -1,58 +1,70 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'catalog_record.g.dart';
+class CatalogRecord extends FirestoreRecord {
+  CatalogRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class CatalogRecord
-    implements Built<CatalogRecord, CatalogRecordBuilder> {
-  static Serializer<CatalogRecord> get serializer => _$catalogRecordSerializer;
+  // "title" field.
+  String? _title;
+  String get title => _title ?? '';
+  bool hasTitle() => _title != null;
 
-  String? get title;
+  // "icon" field.
+  List<RowyImgStruct>? _icon;
+  List<RowyImgStruct> get icon => _icon ?? const [];
+  bool hasIcon() => _icon != null;
 
-  BuiltList<RowyImgStruct>? get icon;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(CatalogRecordBuilder builder) => builder
-    ..title = ''
-    ..icon = ListBuilder();
+  void _initializeFields() {
+    _title = snapshotData['title'] as String?;
+    _icon = getStructList(
+      snapshotData['icon'],
+      RowyImgStruct.fromMap,
+    );
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('catalog');
 
-  static Stream<CatalogRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<CatalogRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => CatalogRecord.fromSnapshot(s));
 
-  static Future<CatalogRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<CatalogRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => CatalogRecord.fromSnapshot(s));
 
-  CatalogRecord._();
-  factory CatalogRecord([void Function(CatalogRecordBuilder) updates]) =
-      _$CatalogRecord;
+  static CatalogRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      CatalogRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static CatalogRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      CatalogRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'CatalogRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createCatalogRecordData({
   String? title,
 }) {
-  final firestoreData = serializers.toFirestore(
-    CatalogRecord.serializer,
-    CatalogRecord(
-      (c) => c
-        ..title = title
-        ..icon = null,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'title': title,
+    }.withoutNulls,
   );
 
   return firestoreData;

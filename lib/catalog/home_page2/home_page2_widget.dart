@@ -53,6 +53,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
           key: scaffoldKey,
           backgroundColor: Colors.white,
           body: SafeArea(
+            top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +76,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                               18.0, 10.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
-                            height: 48.0,
+                            height: 51.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFF3F4F5),
                               borderRadius: BorderRadius.circular(8.0),
@@ -137,8 +138,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
+                                    width: 40.0,
+                                    height: 40.0,
                                     child: CircularProgressIndicator(
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -164,8 +165,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                 decoration: BoxDecoration(
                                   color: valueOrDefault<Color>(
                                     functions.colorNotification(
-                                        notificationsNotificationsRecord!
-                                            .type!),
+                                        notificationsNotificationsRecord!.type),
                                     Color(0xFFD0FFA1),
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
@@ -215,7 +215,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                   16.0, 0.0, 16.0, 0.0),
                                           child: Text(
                                             notificationsNotificationsRecord!
-                                                .text!,
+                                                .text,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
@@ -237,8 +237,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                               if (!snapshot.hasData) {
                                                 return Center(
                                                   child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
+                                                    width: 40.0,
+                                                    height: 40.0,
                                                     child:
                                                         CircularProgressIndicator(
                                                       color:
@@ -347,8 +347,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                             if (!snapshot.hasData) {
                               return Center(
                                 child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
+                                  width: 40.0,
+                                  height: 40.0,
                                   child: CircularProgressIndicator(
                                     color: FlutterFlowTheme.of(context).primary,
                                   ),
@@ -498,7 +498,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           extentRatio: 0.25,
                                                           children: [
                                                             SlidableAction(
-                                                              // label: 'null',
+                                                              label: 'null',
                                                               backgroundColor:
                                                                   Color(
                                                                       0xFFF3F4F5),
@@ -516,7 +516,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                         child: ListTile(
                                                           title: Text(
                                                             unformedItem
-                                                                .servicename!,
+                                                                .servicename,
                                                             textAlign:
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
@@ -584,8 +584,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                               if (!snapshot.hasData) {
                                 return Center(
                                   child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
+                                    width: 40.0,
+                                    height: 40.0,
                                     child: CircularProgressIndicator(
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -644,23 +644,22 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 16.0, 0.0),
                                                     child: Image.network(
-                                                      columnCatalogRecord.icon!
-                                                          .toList()
-                                                          .first
-                                                          .downloadURL!,
+                                                      columnCatalogRecord.icon
+                                                          .first.downloadURL,
                                                       width: 20.0,
                                                       height: 20.0,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
                                                   Text(
-                                                    columnCatalogRecord.title!,
+                                                    columnCatalogRecord.title,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
+                                                          fontSize: 17.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -695,8 +694,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                 if (!snapshot.hasData) {
                                                   return Center(
                                                     child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 40.0,
+                                                      height: 40.0,
                                                       child:
                                                           CircularProgressIndicator(
                                                         color:
@@ -941,10 +940,9 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         child: Image
                                                                             .network(
                                                                           listViewInnerServicesRecord
-                                                                              .img!
-                                                                              .toList()
+                                                                              .img
                                                                               .first
-                                                                              .downloadURL!,
+                                                                              .downloadURL,
                                                                           width:
                                                                               130.0,
                                                                           height:
@@ -969,12 +967,12 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         child:
                                                                             Text(
                                                                           listViewInnerServicesRecord
-                                                                              .title!,
+                                                                              .title,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Fira Sans',
-                                                                                fontSize: 12.0,
+                                                                                fontSize: 14.0,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -984,7 +982,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                               ),
                                                             ),
                                                           if (listViewInnerServicesRecord
-                                                                  .cashback! >
+                                                                  .cashback >
                                                               0)
                                                             Align(
                                                               alignment:
@@ -1075,7 +1073,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         ),
                                                                         Text(
                                                                           listViewInnerServicesRecord
-                                                                              .cashback!
+                                                                              .cashback
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium

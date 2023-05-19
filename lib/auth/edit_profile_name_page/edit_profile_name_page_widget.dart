@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +56,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -86,7 +86,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 32.0, 0.0, 32.0),
+                                  0.0, 16.0, 0.0, 25.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -173,21 +173,21 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                   hintText: 'Введите вашу фамилию',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodySmall,
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xFF00BB67),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  errorBorder: UnderlineInputBorder(
+                                  errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -195,7 +195,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  focusedErrorBorder: UnderlineInputBorder(
+                                  focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -227,21 +227,21 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                   hintText: 'Введите ваше имя',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodySmall,
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xFF00BB67),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  errorBorder: UnderlineInputBorder(
+                                  errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -249,7 +249,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  focusedErrorBorder: UnderlineInputBorder(
+                                  focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -280,21 +280,21 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                   hintText: 'Введите ваше отчество',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodySmall,
-                                  enabledBorder: UnderlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xFF00BB67),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  errorBorder: UnderlineInputBorder(
+                                  errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -302,7 +302,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
-                                  focusedErrorBorder: UnderlineInputBorder(
+                                  focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
@@ -360,19 +360,6 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                     ),
                   ),
                 ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.customnavbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: CustomnavbarWidget(
-                    supportactive: false,
-                    homeactive: false,
-                    orderactive: false,
-                    profileactive: true,
-                  ),
-                ),
               ),
             ],
           ),

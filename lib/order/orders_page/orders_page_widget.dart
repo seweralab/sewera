@@ -54,8 +54,8 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -69,6 +69,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Stack(
@@ -315,9 +316,9 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                     child:
                                                                         SizedBox(
                                                                       width:
-                                                                          50.0,
+                                                                          40.0,
                                                                       height:
-                                                                          50.0,
+                                                                          40.0,
                                                                       child:
                                                                           CircularProgressIndicator(
                                                                         color: FlutterFlowTheme.of(context)
@@ -380,7 +381,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                                                                                   child: Text(
-                                                                                    columnOrdersRecord.servicename!,
+                                                                                    columnOrdersRecord.servicename,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Fira Sans',
                                                                                           fontSize: 14.0,
@@ -552,7 +553,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                     child: Align(
                                                                                       alignment: AlignmentDirectional(1.0, 0.0),
                                                                                       child: Text(
-                                                                                        columnOrdersRecord.deadline!,
+                                                                                        columnOrdersRecord.deadline,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                       ),
                                                                                     ),
@@ -616,9 +617,9 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                           child:
                                                                               SizedBox(
                                                                             width:
-                                                                                50.0,
+                                                                                40.0,
                                                                             height:
-                                                                                50.0,
+                                                                                40.0,
                                                                             child:
                                                                                 CircularProgressIndicator(
                                                                               color: FlutterFlowTheme.of(context).primary,
@@ -676,7 +677,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                                                                                       child: Text(
-                                                                                        listViewOrdersRecord.servicename!,
+                                                                                        listViewOrdersRecord.servicename,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Fira Sans',
                                                                                               fontSize: 14.0,
@@ -767,7 +768,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                         child: Align(
                                                                                           alignment: AlignmentDirectional(1.0, 0.0),
                                                                                           child: AutoSizeText(
-                                                                                            listViewOrdersRecord.deadline!,
+                                                                                            listViewOrdersRecord.deadline,
                                                                                             maxLines: 2,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                           ),

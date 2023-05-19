@@ -64,6 +64,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
           body: SafeArea(
+            top: true,
             child: StreamBuilder<OrdersRecord>(
               stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
               builder: (context, snapshot) {
@@ -71,8 +72,8 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                 if (!snapshot.hasData) {
                   return Center(
                     child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
+                      width: 40.0,
+                      height: 40.0,
                       child: CircularProgressIndicator(
                         color: FlutterFlowTheme.of(context).primary,
                       ),
@@ -97,8 +98,8 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
+                                width: 40.0,
+                                height: 40.0,
                                 child: CircularProgressIndicator(
                                   color: FlutterFlowTheme.of(context).primary,
                                 ),
@@ -204,8 +205,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                         decoration:
                                                             BoxDecoration(),
                                                         child: Text(
-                                                          quizQuizRecord!
-                                                              .title!,
+                                                          quizQuizRecord!.title,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -332,12 +332,11 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                     updateCallback: () =>
                                                         setState(() {}),
                                                     child: QuizRadioWidget(
-                                                      selects: functions
-                                                          .splitBy(
+                                                      selects:
+                                                          functions.splitBy(
                                                               quizQuizRecord!
                                                                   .options,
-                                                              '||')
-                                                          .toList(),
+                                                              '||'),
                                                       quizJSON:
                                                           columnOrdersRecord
                                                               .quiz,
@@ -360,12 +359,11 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                     updateCallback: () =>
                                                         setState(() {}),
                                                     child: QuizCheckboxWidget(
-                                                      selects: functions
-                                                          .splitBy(
+                                                      selects:
+                                                          functions.splitBy(
                                                               quizQuizRecord!
                                                                   .options,
-                                                              '||')
-                                                          .toList(),
+                                                              '||'),
                                                       quizJSON:
                                                           columnOrdersRecord
                                                               .quiz,
@@ -470,7 +468,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                         BoxDecoration(),
                                                                     child: Text(
                                                                       quizQuizRecord!
-                                                                          .title!,
+                                                                          .title,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -631,13 +629,13 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                               TextEditingController(
                                                                         text: functions.inputFromUserFields(
                                                                             quizQuizRecord!
-                                                                                .input!,
+                                                                                .input,
                                                                             valueOrDefault(currentUserDocument?.mdSeptic,
                                                                                 ''),
                                                                             valueOrDefault(currentUserDocument?.mdArea, ''),
                                                                             valueOrDefault(currentUserDocument?.mdType, ''),
-                                                                            columnOrdersRecord.quiz!,
-                                                                            quizQuizRecord!.title!),
+                                                                            columnOrdersRecord.quiz,
+                                                                            quizQuizRecord!.title),
                                                                       ),
                                                                       onChanged:
                                                                           (_) =>
@@ -848,7 +846,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                 FFAppState()
                                                                     .currentRadioQuiz,
                                                                 quizQuizRecord!
-                                                                    .title!,
+                                                                    .title,
                                                                 quizQuizRecord!
                                                                     .reference,
                                                                 columnOrdersRecord
@@ -877,7 +875,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                               FFAppState()
                                                                   .currentRadioQuiz,
                                                               quizQuizRecord!
-                                                                  .title!,
+                                                                  .title,
                                                               quizQuizRecord!
                                                                   .reference,
                                                               columnOrdersRecord
@@ -921,7 +919,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                             createOrdersRecordData(
                                                           quiz: functions.quizPage2updateLocalValCheckbox(
                                                               columnOrdersRecord
-                                                                  .quiz!,
+                                                                  .quiz,
                                                               FFAppState()
                                                                   .currentCheckInputQuiz,
                                                               FFAppState()
@@ -930,7 +928,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                               quizQuizRecord!
                                                                   .reference,
                                                               quizQuizRecord!
-                                                                  .title!),
+                                                                  .title),
                                                           status: 'Не оформлен',
                                                         );
                                                         await columnOrdersRecord
@@ -951,7 +949,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                         quiz: functions
                                                             .quizPage2updateLocalValCheckbox(
                                                                 columnOrdersRecord
-                                                                    .quiz!,
+                                                                    .quiz,
                                                                 FFAppState()
                                                                     .currentCheckInputQuiz,
                                                                 FFAppState()
@@ -960,7 +958,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                 quizQuizRecord!
                                                                     .reference,
                                                                 quizQuizRecord!
-                                                                    .title!),
+                                                                    .title),
                                                         status: 'Не оформлен',
                                                       );
                                                       await columnOrdersRecord
@@ -989,10 +987,11 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                           .quizPage2updateLocalValInput(
                                                               columnOrdersRecord
                                                                   .quiz,
-                                                              _model.quizInputController
+                                                              _model
+                                                                  .quizInputController
                                                                   .text,
                                                               quizQuizRecord!
-                                                                  .title!,
+                                                                  .title,
                                                               quizQuizRecord!
                                                                   .reference),
                                                       status: 'Не оформлен',

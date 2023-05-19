@@ -70,8 +70,8 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -92,6 +92,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: StreamBuilder<OrdersRecord>(
                 stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
                 builder: (context, snapshot) {
@@ -99,8 +100,8 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                   if (!snapshot.hasData) {
                     return Center(
                       child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
+                        width: 40.0,
+                        height: 40.0,
                         child: CircularProgressIndicator(
                           color: FlutterFlowTheme.of(context).primary,
                         ),
@@ -198,7 +199,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                           ),
                                                           Text(
                                                             quizPage2EditQuizRecord!
-                                                                .title!,
+                                                                .title,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -409,7 +410,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                                                     _model.localVal = _model.radioButtonValue;
                                                                                   });
                                                                                 },
-                                                                                controller: _model.radioButtonValueController ??= FormFieldController<String>(functions.setInitialRadio(columnOrdersRecord.quiz!, quizPage2EditQuizRecord!.title!)!),
+                                                                                controller: _model.radioButtonValueController ??= FormFieldController<String>(functions.setInitialRadio(columnOrdersRecord.quiz, quizPage2EditQuizRecord!.title)!),
                                                                                 optionHeight: 50.0,
                                                                                 textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Fira Sans',
@@ -454,7 +455,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                                                       width: double.infinity,
                                                                                       child: TextFormField(
                                                                                         controller: _model.textController1 ??= TextEditingController(
-                                                                                          text: functions.setInitialRadioInput(columnOrdersRecord.quiz!, quizPage2EditQuizRecord!.title!),
+                                                                                          text: functions.setInitialRadioInput(columnOrdersRecord.quiz, quizPage2EditQuizRecord!.title),
                                                                                         ),
                                                                                         onChanged: (_) => EasyDebounce.debounce(
                                                                                           '_model.textController1',
@@ -626,8 +627,8 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                                           FormFieldController<
                                                                               List<String>>(
                                                                         functions.setInitialCheckbox(
-                                                                            columnOrdersRecord.quiz!,
-                                                                            quizPage2EditQuizRecord!.title!),
+                                                                            columnOrdersRecord.quiz,
+                                                                            quizPage2EditQuizRecord!.title),
                                                                       ),
                                                                       activeColor:
                                                                           FlutterFlowTheme.of(context)
@@ -685,7 +686,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                                               width: double.infinity,
                                                                               child: TextFormField(
                                                                                 controller: _model.textController2 ??= TextEditingController(
-                                                                                  text: functions.setInitialCheckboxInput(columnOrdersRecord.quiz!, quizPage2EditQuizRecord!.title!),
+                                                                                  text: functions.setInitialCheckboxInput(columnOrdersRecord.quiz, quizPage2EditQuizRecord!.title),
                                                                                 ),
                                                                                 onChanged: (_) => EasyDebounce.debounce(
                                                                                   '_model.textController2',
@@ -846,7 +847,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                                       TextEditingController(
                                                                     text: functions.inputFromUserFields(
                                                                         quizPage2EditQuizRecord!
-                                                                            .input!,
+                                                                            .input,
                                                                         valueOrDefault(
                                                                             currentUserDocument
                                                                                 ?.mdSeptic,
@@ -860,9 +861,9 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                                                 ?.mdType,
                                                                             ''),
                                                                         columnOrdersRecord
-                                                                            .quiz!,
+                                                                            .quiz,
                                                                         quizPage2EditQuizRecord!
-                                                                            .title!),
+                                                                            .title),
                                                                   ),
                                                                   onChanged: (_) =>
                                                                       EasyDebounce
@@ -1068,7 +1069,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                 .quizPage2updateLocalValRadio(
                                                     _model.radioButtonValue!,
                                                     quizPage2EditQuizRecord!
-                                                        .title!,
+                                                        .title,
                                                     quizPage2EditQuizRecord!
                                                         .reference,
                                                     columnOrdersRecord.quiz,
@@ -1087,17 +1088,15 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                       } else {
                                         final ordersUpdateData2 =
                                             createOrdersRecordData(
-                                          quiz:
-                                              functions
-                                                  .quizPage2updateLocalValRadio(
-                                                      _model.radioButtonValue!,
-                                                      quizPage2EditQuizRecord!
-                                                          .title!,
-                                                      quizPage2EditQuizRecord!
-                                                          .reference,
-                                                      columnOrdersRecord.quiz,
-                                                      _model.textController1
-                                                          .text),
+                                          quiz: functions
+                                              .quizPage2updateLocalValRadio(
+                                                  _model.radioButtonValue!,
+                                                  quizPage2EditQuizRecord!
+                                                      .title,
+                                                  quizPage2EditQuizRecord!
+                                                      .reference,
+                                                  columnOrdersRecord.quiz,
+                                                  _model.textController1.text),
                                         );
                                         await FFAppState()
                                             .currentOrder!
@@ -1125,7 +1124,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                 createOrdersRecordData(
                                               quiz: functions
                                                   .quizPage2updateLocalValCheckbox(
-                                                      columnOrdersRecord.quiz!,
+                                                      columnOrdersRecord.quiz,
                                                       _model
                                                           .textController2.text,
                                                       _model
@@ -1134,7 +1133,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                       quizPage2EditQuizRecord!
                                                           .reference,
                                                       quizPage2EditQuizRecord!
-                                                          .title!),
+                                                          .title),
                                             );
                                             await columnOrdersRecord.reference
                                                 .update(ordersUpdateData3);
@@ -1150,8 +1149,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                             quiz:
                                                 functions
                                                     .quizPage2updateLocalValCheckbox(
-                                                        columnOrdersRecord
-                                                            .quiz!,
+                                                        columnOrdersRecord.quiz,
                                                         _model.textController2
                                                             .text,
                                                         _model
@@ -1160,7 +1158,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                         quizPage2EditQuizRecord!
                                                             .reference,
                                                         quizPage2EditQuizRecord!
-                                                            .title!),
+                                                            .title),
                                           );
                                           await columnOrdersRecord.reference
                                               .update(ordersUpdateData4);
@@ -1184,7 +1182,7 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                   _model
                                                       .formTextController.text,
                                                   quizPage2EditQuizRecord!
-                                                      .title!,
+                                                      .title,
                                                   quizPage2EditQuizRecord!
                                                       .reference),
                                         );

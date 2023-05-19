@@ -1,120 +1,189 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'users_record.g.dart';
+class UsersRecord extends FirestoreRecord {
+  UsersRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
-  static Serializer<UsersRecord> get serializer => _$usersRecordSerializer;
+  // "email" field.
+  String? _email;
+  String get email => _email ?? '';
+  bool hasEmail() => _email != null;
 
-  String? get email;
+  // "display_name" field.
+  String? _displayName;
+  String get displayName => _displayName ?? '';
+  bool hasDisplayName() => _displayName != null;
 
-  @BuiltValueField(wireName: 'display_name')
-  String? get displayName;
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
 
-  @BuiltValueField(wireName: 'photo_url')
-  String? get photoUrl;
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
 
-  String? get uid;
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
 
-  @BuiltValueField(wireName: 'created_time')
-  DateTime? get createdTime;
+  // "phone_number" field.
+  String? _phoneNumber;
+  String get phoneNumber => _phoneNumber ?? '';
+  bool hasPhoneNumber() => _phoneNumber != null;
 
-  @BuiltValueField(wireName: 'phone_number')
-  String? get phoneNumber;
+  // "orders" field.
+  DocumentReference? _orders;
+  DocumentReference? get orders => _orders;
+  bool hasOrders() => _orders != null;
 
-  DocumentReference? get orders;
+  // "cashback" field.
+  int? _cashback;
+  int get cashback => _cashback ?? 0;
+  bool hasCashback() => _cashback != null;
 
-  int? get cashback;
+  // "surname" field.
+  String? _surname;
+  String get surname => _surname ?? '';
+  bool hasSurname() => _surname != null;
 
-  String? get surname;
+  // "patronymic" field.
+  String? _patronymic;
+  String get patronymic => _patronymic ?? '';
+  bool hasPatronymic() => _patronymic != null;
 
-  String? get patronymic;
+  // "birthday" field.
+  String? _birthday;
+  String get birthday => _birthday ?? '';
+  bool hasBirthday() => _birthday != null;
 
-  String? get birthday;
+  // "md_name" field.
+  String? _mdName;
+  String get mdName => _mdName ?? '';
+  bool hasMdName() => _mdName != null;
 
-  @BuiltValueField(wireName: 'md_name')
-  String? get mdName;
+  // "md_type" field.
+  String? _mdType;
+  String get mdType => _mdType ?? '';
+  bool hasMdType() => _mdType != null;
 
-  @BuiltValueField(wireName: 'md_type')
-  String? get mdType;
+  // "addr" field.
+  String? _addr;
+  String get addr => _addr ?? '';
+  bool hasAddr() => _addr != null;
 
-  String? get addr;
+  // "coords" field.
+  LatLng? _coords;
+  LatLng? get coords => _coords;
+  bool hasCoords() => _coords != null;
 
-  LatLng? get coords;
+  // "md_septic" field.
+  String? _mdSeptic;
+  String get mdSeptic => _mdSeptic ?? '';
+  bool hasMdSeptic() => _mdSeptic != null;
 
-  @BuiltValueField(wireName: 'md_septic')
-  String? get mdSeptic;
+  // "md_area" field.
+  String? _mdArea;
+  String get mdArea => _mdArea ?? '';
+  bool hasMdArea() => _mdArea != null;
 
-  @BuiltValueField(wireName: 'md_area')
-  String? get mdArea;
+  // "md_photos" field.
+  List<String>? _mdPhotos;
+  List<String> get mdPhotos => _mdPhotos ?? const [];
+  bool hasMdPhotos() => _mdPhotos != null;
 
-  @BuiltValueField(wireName: 'md_photos')
-  BuiltList<String>? get mdPhotos;
+  // "photo" field.
+  String? _photo;
+  String get photo => _photo ?? '';
+  bool hasPhoto() => _photo != null;
 
-  String? get photo;
+  // "push" field.
+  bool? _push;
+  bool get push => _push ?? false;
+  bool hasPush() => _push != null;
 
-  bool? get push;
+  // "sms" field.
+  bool? _sms;
+  bool get sms => _sms ?? false;
+  bool hasSms() => _sms != null;
 
-  bool? get sms;
+  // "email_notifications" field.
+  bool? _emailNotifications;
+  bool get emailNotifications => _emailNotifications ?? false;
+  bool hasEmailNotifications() => _emailNotifications != null;
 
-  @BuiltValueField(wireName: 'email_notifications')
-  bool? get emailNotifications;
+  // "no_orders" field.
+  bool? _noOrders;
+  bool get noOrders => _noOrders ?? false;
+  bool hasNoOrders() => _noOrders != null;
 
-  @BuiltValueField(wireName: 'no_orders')
-  bool? get noOrders;
+  // "new_notification" field.
+  bool? _newNotification;
+  bool get newNotification => _newNotification ?? false;
+  bool hasNewNotification() => _newNotification != null;
 
-  @BuiltValueField(wireName: 'new_notification')
-  bool? get newNotification;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(UsersRecordBuilder builder) => builder
-    ..email = ''
-    ..displayName = ''
-    ..photoUrl = ''
-    ..uid = ''
-    ..phoneNumber = ''
-    ..cashback = 0
-    ..surname = ''
-    ..patronymic = ''
-    ..birthday = ''
-    ..mdName = ''
-    ..mdType = ''
-    ..addr = ''
-    ..mdSeptic = ''
-    ..mdArea = ''
-    ..mdPhotos = ListBuilder()
-    ..photo = ''
-    ..push = false
-    ..sms = false
-    ..emailNotifications = false
-    ..noOrders = false
-    ..newNotification = false;
+  void _initializeFields() {
+    _email = snapshotData['email'] as String?;
+    _displayName = snapshotData['display_name'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _phoneNumber = snapshotData['phone_number'] as String?;
+    _orders = snapshotData['orders'] as DocumentReference?;
+    _cashback = snapshotData['cashback'] as int?;
+    _surname = snapshotData['surname'] as String?;
+    _patronymic = snapshotData['patronymic'] as String?;
+    _birthday = snapshotData['birthday'] as String?;
+    _mdName = snapshotData['md_name'] as String?;
+    _mdType = snapshotData['md_type'] as String?;
+    _addr = snapshotData['addr'] as String?;
+    _coords = snapshotData['coords'] as LatLng?;
+    _mdSeptic = snapshotData['md_septic'] as String?;
+    _mdArea = snapshotData['md_area'] as String?;
+    _mdPhotos = getDataList(snapshotData['md_photos']);
+    _photo = snapshotData['photo'] as String?;
+    _push = snapshotData['push'] as bool?;
+    _sms = snapshotData['sms'] as bool?;
+    _emailNotifications = snapshotData['email_notifications'] as bool?;
+    _noOrders = snapshotData['no_orders'] as bool?;
+    _newNotification = snapshotData['new_notification'] as bool?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
 
-  static Stream<UsersRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<UsersRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => UsersRecord.fromSnapshot(s));
 
-  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) => ref
-      .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => UsersRecord.fromSnapshot(s));
 
-  UsersRecord._();
-  factory UsersRecord([void Function(UsersRecordBuilder) updates]) =
-      _$UsersRecord;
+  static UsersRecord fromSnapshot(DocumentSnapshot snapshot) => UsersRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static UsersRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      UsersRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createUsersRecordData({
@@ -142,35 +211,32 @@ Map<String, dynamic> createUsersRecordData({
   bool? noOrders,
   bool? newNotification,
 }) {
-  final firestoreData = serializers.toFirestore(
-    UsersRecord.serializer,
-    UsersRecord(
-      (u) => u
-        ..email = email
-        ..displayName = displayName
-        ..photoUrl = photoUrl
-        ..uid = uid
-        ..createdTime = createdTime
-        ..phoneNumber = phoneNumber
-        ..orders = orders
-        ..cashback = cashback
-        ..surname = surname
-        ..patronymic = patronymic
-        ..birthday = birthday
-        ..mdName = mdName
-        ..mdType = mdType
-        ..addr = addr
-        ..coords = coords
-        ..mdSeptic = mdSeptic
-        ..mdArea = mdArea
-        ..mdPhotos = null
-        ..photo = photo
-        ..push = push
-        ..sms = sms
-        ..emailNotifications = emailNotifications
-        ..noOrders = noOrders
-        ..newNotification = newNotification,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'email': email,
+      'display_name': displayName,
+      'photo_url': photoUrl,
+      'uid': uid,
+      'created_time': createdTime,
+      'phone_number': phoneNumber,
+      'orders': orders,
+      'cashback': cashback,
+      'surname': surname,
+      'patronymic': patronymic,
+      'birthday': birthday,
+      'md_name': mdName,
+      'md_type': mdType,
+      'addr': addr,
+      'coords': coords,
+      'md_septic': mdSeptic,
+      'md_area': mdArea,
+      'photo': photo,
+      'push': push,
+      'sms': sms,
+      'email_notifications': emailNotifications,
+      'no_orders': noOrders,
+      'new_notification': newNotification,
+    }.withoutNulls,
   );
 
   return firestoreData;

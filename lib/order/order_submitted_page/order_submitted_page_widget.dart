@@ -1,6 +1,5 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,6 +46,7 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -142,16 +142,6 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
                     ),
                   ),
                 ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.customnavbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: CustomnavbarWidget(
-                    supportactive: false,
-                  ),
-                ),
               ),
             ],
           ),

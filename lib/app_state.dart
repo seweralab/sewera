@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'backend/backend.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -57,6 +58,13 @@ class FFAppState extends ChangeNotifier {
     _currentServiceQuizArr.removeAt(_index);
   }
 
+  void updateCurrentServiceQuizArrAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_currentServiceQuizArr[_index]);
+  }
+
   List<LatLng> _coords = [];
   List<LatLng> get coords => _coords;
   set coords(List<LatLng> _value) {
@@ -73,6 +81,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromCoords(int _index) {
     _coords.removeAt(_index);
+  }
+
+  void updateCoordsAtIndex(
+    int _index,
+    Function(LatLng) updateFn,
+  ) {
+    updateFn(_coords[_index]);
   }
 
   DocumentReference? _currentOrder;
@@ -115,6 +130,13 @@ class FFAppState extends ChangeNotifier {
 
   void removeAtIndexFromCurrentCheckQuiz(int _index) {
     _currentCheckQuiz.removeAt(_index);
+  }
+
+  void updateCurrentCheckQuizAtIndex(
+    int _index,
+    Function(String) updateFn,
+  ) {
+    updateFn(_currentCheckQuiz[_index]);
   }
 
   String _currentCheckInputQuiz = '';

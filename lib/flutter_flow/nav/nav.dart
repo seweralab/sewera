@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
-import '../../backend/backend.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '../../auth/base_auth_user_provider.dart';
 import '../../backend/push_notifications/push_notifications_handler.dart'
@@ -71,13 +72,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : OnBoardingPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : OnBoardingPageWidget(),
         ),
         FFRoute(
           name: 'StartPage',
@@ -99,7 +100,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'ProfilePage')
               : ProfilePageWidget(),
-          // builder: (context, params) => ProfilePageWidget(),
         ),
         FFRoute(
           name: 'CatalogItemsPage',
@@ -107,9 +107,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CatalogItemsPageWidget(
             catalog: params.getParam('catalog', ParamType.String),
           ),
-          // builder: (context, params) => params.isEmpty
-          //     ? NavBarPage(initialPage: 'CatalogItemsPage')
-          //     : CatalogItemsPageWidget(),
         ),
         FFRoute(
           name: 'QuizSelectDate',
@@ -162,97 +159,63 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditProfilePage',
           path: '/editProfilePage',
-          // builder: (context, params) => EditProfilePageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditProfilePage')
-              : EditProfilePageWidget(),
+          builder: (context, params) => EditProfilePageWidget(),
         ),
         FFRoute(
           name: 'EditProfileNamePage',
           path: '/editProfileNamePage',
-          // builder: (context, params) => EditProfileNamePageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditProfileNamePage')
-              : EditProfileNamePageWidget(),
+          builder: (context, params) => EditProfileNamePageWidget(),
         ),
         FFRoute(
           name: 'EditProfileEmailPage',
           path: '/editProfileEmailPage',
-          // builder: (context, params) => EditProfileEmailPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditProfileEmailPage')
-              : EditProfileEmailPageWidget(),
+          builder: (context, params) => EditProfileEmailPageWidget(),
         ),
         FFRoute(
           name: 'EditProfileBirthdayPage',
           path: '/editProfileBirthdayPage',
-          // builder: (context, params) => EditProfileBirthdayPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditProfileBirthdayPage')
-              : EditProfileBirthdayPageWidget(),
+          builder: (context, params) => EditProfileBirthdayPageWidget(),
         ),
         FFRoute(
           name: 'EditProfilePhonePage',
           path: '/editProfilePhonePage',
-          // builder: (context, params) => EditProfilePhonePageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditProfilePhonePage')
-              : EditProfilePhonePageWidget(),
+          builder: (context, params) => EditProfilePhonePageWidget(),
         ),
         FFRoute(
           name: 'EditMDPage',
           path: '/editMDPage',
-          // builder: (context, params) => EditMDPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditMDPage')
-              : EditMDPageWidget(),
+          builder: (context, params) => EditMDPageWidget(),
         ),
         FFRoute(
           name: 'EditMDNamePage',
           path: '/editMDNamePage',
-          // builder: (context, params) => EditMDNamePageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditMDNamePage')
-              : EditMDNamePageWidget(),
+          builder: (context, params) => EditMDNamePageWidget(),
         ),
         FFRoute(
           name: 'EditMDAreaPage',
           path: '/editMDAreaPage',
-          // builder: (context, params) => EditMDAreaPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditMDAreaPage')
-              : EditMDAreaPageWidget(),
+          builder: (context, params) => EditMDAreaPageWidget(),
         ),
         FFRoute(
           name: 'EditMDTypePage',
           path: '/editMDTypePage',
-          // builder: (context, params) => EditMDTypePageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditMDTypePage')
-              : EditMDTypePageWidget(),
+          builder: (context, params) => EditMDTypePageWidget(),
         ),
         FFRoute(
           name: 'EditMDSepticPage',
           path: '/editMDSepticPage',
-          // builder: (context, params) => EditMDSepticPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditMDSepticPage')
-              : EditMDSepticPageWidget(),
+          builder: (context, params) => EditMDSepticPageWidget(),
         ),
         FFRoute(
           name: 'EditMDAddrPage',
           path: '/editMDAddrPage',
-          // builder: (context, params) => EditMDAddrPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'EditMDAddrPage')
-              : EditMDAddrPageWidget(),
+          builder: (context, params) => EditMDAddrPageWidget(),
         ),
         FFRoute(
           name: 'ordersPage',
           path: '/ordersPage',
-          // builder: (context, params) => OrdersPageWidget(),
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'OrdersPage')
+              ? NavBarPage(initialPage: 'ordersPage')
               : OrdersPageWidget(),
         ),
         FFRoute(
@@ -306,7 +269,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'cancelOrderPage',
           path: '/cancelOrderPage',
           asyncParams: {
-            'order': getDoc(['orders'], OrdersRecord.serializer),
+            'order': getDoc(['orders'], OrdersRecord.fromSnapshot),
           },
           builder: (context, params) => CancelOrderPageWidget(
             order: params.getParam('order', ParamType.Document),
@@ -315,10 +278,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'orderSubmittedPage',
           path: '/orderSubmittedPage',
-          // builder: (context, params) => OrderSubmittedPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'OrderSubmittedPage')
-              : OrderSubmittedPageWidget(),
+          builder: (context, params) => OrderSubmittedPageWidget(),
         ),
         FFRoute(
           name: 'QuizPage2Edit',
@@ -523,7 +483,8 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList, collectionNamePath);
+    return deserializeParam<T>(param, type, isList,
+        collectionNamePath: collectionNamePath);
   }
 }
 
@@ -556,7 +517,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/startPage';
+            return '/onBoardingPage';
           }
           return null;
         },
@@ -570,10 +531,13 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/slide_1.png',
-                    fit: BoxFit.contain,
+                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/splash.png',
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 )
               : PushNotificationsHandler(child: page);
@@ -614,6 +578,6 @@ class TransitionInfo {
   static TransitionInfo appDefault() => TransitionInfo(
         hasTransition: true,
         transitionType: PageTransitionType.rightToLeft,
-        duration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 150),
       );
 }

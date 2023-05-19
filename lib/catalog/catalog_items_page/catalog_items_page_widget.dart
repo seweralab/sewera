@@ -55,6 +55,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Align(
             alignment: AlignmentDirectional(0.0, 1.0),
             child: Stack(
@@ -193,8 +194,8 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                       if (!snapshot.hasData) {
                                         return Center(
                                           child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
+                                            width: 40.0,
+                                            height: 40.0,
                                             child: CircularProgressIndicator(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -316,7 +317,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                             children: [
                                                               AutoSizeText(
                                                                 listViewServicesRecord
-                                                                    .title!
+                                                                    .title
                                                                     .maybeHandleOverflow(
                                                                         maxChars:
                                                                             30),
@@ -337,7 +338,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                         .max,
                                                                 children: [
                                                                   if (listViewServicesRecord
-                                                                          .cashback! >
+                                                                          .cashback >
                                                                       0)
                                                                     Container(
                                                                       decoration:
@@ -396,7 +397,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                             ),
                                                                             Text(
                                                                               valueOrDefault<String>(
-                                                                                listViewServicesRecord.cashback?.toString(),
+                                                                                listViewServicesRecord.cashback.toString(),
                                                                                 '0',
                                                                               ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -454,7 +455,18 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                         Colors.transparent,
                                                     onTap: () async {
                                                       context.pushNamed(
-                                                          'QuizSelectDate');
+                                                        'QuizNoService',
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          kTransitionInfoKey:
+                                                              TransitionInfo(
+                                                            hasTransition: true,
+                                                            transitionType:
+                                                                PageTransitionType
+                                                                    .rightToLeft,
+                                                          ),
+                                                        },
+                                                      );
                                                     },
                                                     child: Container(
                                                       width: double.infinity,

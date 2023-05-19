@@ -79,9 +79,12 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   Widget build(BuildContext context) => _loading
       ? Container(
           color: FlutterFlowTheme.of(context).primaryBtnText,
-          child: Image.asset(
-            'assets/images/splash.png',
-            fit: BoxFit.contain,
+          child: Center(
+            child: Image.asset(
+              'assets/images/splash.png',
+              width: MediaQuery.of(context).size.width * 0.7,
+              fit: BoxFit.contain,
+            ),
           ),
         )
       : widget.child;
@@ -190,7 +193,7 @@ final parametersBuilderMap =
   'cancelOrderPage': (data) async => ParameterData(
         allParams: {
           'order': await getDocumentParameter<OrdersRecord>(
-              data, 'order', OrdersRecord.serializer),
+              data, 'order', OrdersRecord.fromSnapshot),
         },
       ),
   'orderSubmittedPage': ParameterData.none(),

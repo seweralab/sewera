@@ -68,6 +68,7 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,7 +123,7 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
                                             .secondaryBackground,
                                       ),
                                       child: AutoSizeText(
-                                        widget.order!.servicename!
+                                        widget.order!.servicename
                                             .maybeHandleOverflow(maxChars: 28),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium

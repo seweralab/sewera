@@ -60,8 +60,8 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -75,6 +75,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -300,8 +301,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                         builder: (context) {
                                           final mdPhotosEdit = functions
                                               .propImagesList(
-                                                  quizCommentOrdersRecord
-                                                      .photos!
+                                                  quizCommentOrdersRecord.photos
                                                       .toList())
                                               .toList();
                                           return GridView.builder(
@@ -315,8 +315,6 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                             ),
                                             primary: false,
                                             shrinkWrap: true,
-                                            physics:
-                                                NeverScrollableScrollPhysics(),
                                             scrollDirection: Axis.vertical,
                                             itemCount: mdPhotosEdit.length,
                                             itemBuilder:

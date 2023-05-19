@@ -56,8 +56,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 50.0,
-              height: 50.0,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -71,6 +71,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: SafeArea(
+              top: true,
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -196,7 +197,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                   14.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             quizSendOrderOrdersRecord
-                                                .servicename!,
+                                                .servicename,
                                             maxLines: 3,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -226,7 +227,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   14.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            quizSendOrderOrdersRecord.deadline!,
+                                            quizSendOrderOrdersRecord.deadline,
                                             maxLines: 3,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -256,7 +257,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   14.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            quizSendOrderOrdersRecord.addr!,
+                                            quizSendOrderOrdersRecord.addr,
                                             maxLines: 3,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -349,7 +350,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                             final quizitem = functions
                                                 .listQuizItems(
                                                     quizSendOrderOrdersRecord
-                                                        .quiz!)
+                                                        .quiz)
                                                 .toList();
                                             return Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -512,7 +513,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                       ),
                                                       Text(
                                                         quizSendOrderOrdersRecord
-                                                            .deadline!,
+                                                            .deadline,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -591,7 +592,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         ),
                                                         Text(
                                                           quizSendOrderOrdersRecord
-                                                              .addr!,
+                                                              .addr,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
@@ -682,7 +683,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         ),
                                                         Text(
                                                           quizSendOrderOrdersRecord
-                                                              .description!,
+                                                              .description,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
@@ -762,7 +763,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         ),
                                                         Text(
                                                           quizSendOrderOrdersRecord
-                                                              .comment!,
+                                                              .comment,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
@@ -827,7 +828,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         final mdPhotosEdit = functions
                                                             .propImagesList(
                                                                 quizSendOrderOrdersRecord
-                                                                    .photos!
+                                                                    .photos
                                                                     .toList())
                                                             .toList();
                                                         return GridView.builder(

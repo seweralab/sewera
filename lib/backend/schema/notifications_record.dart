@@ -1,60 +1,88 @@
 import 'dart:async';
 
+import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+
 import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
-part 'notifications_record.g.dart';
+class NotificationsRecord extends FirestoreRecord {
+  NotificationsRecord._(
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
+    _initializeFields();
+  }
 
-abstract class NotificationsRecord
-    implements Built<NotificationsRecord, NotificationsRecordBuilder> {
-  static Serializer<NotificationsRecord> get serializer =>
-      _$notificationsRecordSerializer;
+  // "title" field.
+  String? _title;
+  String get title => _title ?? '';
+  bool hasTitle() => _title != null;
 
-  String? get title;
+  // "text" field.
+  String? _text;
+  String get text => _text ?? '';
+  bool hasText() => _text != null;
 
-  String? get text;
+  // "date" field.
+  DateTime? _date;
+  DateTime? get date => _date;
+  bool hasDate() => _date != null;
 
-  DateTime? get date;
+  // "viewed" field.
+  bool? _viewed;
+  bool get viewed => _viewed ?? false;
+  bool hasViewed() => _viewed != null;
 
-  bool? get viewed;
+  // "user" field.
+  DocumentReference? _user;
+  DocumentReference? get user => _user;
+  bool hasUser() => _user != null;
 
-  DocumentReference? get user;
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
 
-  String? get type;
+  // "service" field.
+  DocumentReference? _service;
+  DocumentReference? get service => _service;
+  bool hasService() => _service != null;
 
-  DocumentReference? get service;
-
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
-
-  static void _initializeBuilder(NotificationsRecordBuilder builder) => builder
-    ..title = ''
-    ..text = ''
-    ..viewed = false
-    ..type = '';
+  void _initializeFields() {
+    _title = snapshotData['title'] as String?;
+    _text = snapshotData['text'] as String?;
+    _date = snapshotData['date'] as DateTime?;
+    _viewed = snapshotData['viewed'] as bool?;
+    _user = snapshotData['user'] as DocumentReference?;
+    _type = snapshotData['type'] as String?;
+    _service = snapshotData['service'] as DocumentReference?;
+  }
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('notifications');
 
-  static Stream<NotificationsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+  static Stream<NotificationsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => NotificationsRecord.fromSnapshot(s));
 
   static Future<NotificationsRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      ref.get().then((s) => NotificationsRecord.fromSnapshot(s));
 
-  NotificationsRecord._();
-  factory NotificationsRecord(
-          [void Function(NotificationsRecordBuilder) updates]) =
-      _$NotificationsRecord;
+  static NotificationsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      NotificationsRecord._(
+        snapshot.reference,
+        mapFromFirestore(snapshot.data() as Map<String, dynamic>),
+      );
 
   static NotificationsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+    Map<String, dynamic> data,
+    DocumentReference reference,
+  ) =>
+      NotificationsRecord._(reference, mapFromFirestore(data));
+
+  @override
+  String toString() =>
+      'NotificationsRecord(reference: ${reference.path}, data: $snapshotData)';
 }
 
 Map<String, dynamic> createNotificationsRecordData({
@@ -66,18 +94,16 @@ Map<String, dynamic> createNotificationsRecordData({
   String? type,
   DocumentReference? service,
 }) {
-  final firestoreData = serializers.toFirestore(
-    NotificationsRecord.serializer,
-    NotificationsRecord(
-      (n) => n
-        ..title = title
-        ..text = text
-        ..date = date
-        ..viewed = viewed
-        ..user = user
-        ..type = type
-        ..service = service,
-    ),
+  final firestoreData = mapToFirestore(
+    <String, dynamic>{
+      'title': title,
+      'text': text,
+      'date': date,
+      'viewed': viewed,
+      'user': user,
+      'type': type,
+      'service': service,
+    }.withoutNulls,
   );
 
   return firestoreData;
