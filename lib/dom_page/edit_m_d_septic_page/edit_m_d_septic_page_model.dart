@@ -13,25 +13,25 @@ import 'package:provider/provider.dart';
 class EditMDSepticPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // State field(s) for septicField widget.
   TextEditingController? septicFieldController;
   String? Function(BuildContext, String?)? septicFieldControllerValidator;
   // Model for customnavbar component.
   late CustomnavbarModel customnavbarModel;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    topNotificationModel = createModel(context, () => TopNotificationModel());
     customnavbarModel = createModel(context, () => CustomnavbarModel());
+    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     septicFieldController?.dispose();
     customnavbarModel.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

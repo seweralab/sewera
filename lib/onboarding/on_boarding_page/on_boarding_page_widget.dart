@@ -1,3 +1,4 @@
+import '/auth/base_auth_user_provider.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -6,6 +7,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'on_boarding_page_model.dart';
 export 'on_boarding_page_model.dart';
 
@@ -45,7 +47,6 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: Stack(
         children: [
           Image.asset(
@@ -63,7 +64,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                   Expanded(
                     child: Container(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 1.0,
+                      height: MediaQuery.of(context).size.height * 1,
                       child: Stack(
                         children: [
                           PageView(
@@ -79,7 +80,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                     children: [
                                       Container(
                                         width: double.infinity,
-                                        height: 500.0,
+                                        height: 500,
                                         decoration: BoxDecoration(),
                                         child: Image.asset(
                                           'assets/images/slide_1.png',
@@ -92,12 +93,11 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                         ),
                                       ),
                                       Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                        alignment: AlignmentDirectional(0, 0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 16.0),
+                                                  0, 0, 0, 16),
                                           child: Text(
                                             'Добро пожаловать  в приложение Sewera!',
                                             textAlign: TextAlign.center,
@@ -105,7 +105,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 22.0,
+                                                  fontSize: 22,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -113,7 +113,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
+                                            18, 0, 18, 0),
                                         child: Text(
                                           'Узнайте больше о преимуществах использования мобильного приложения!',
                                           textAlign: TextAlign.center,
@@ -145,12 +145,11 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                         ),
                                       ),
                                       Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                        alignment: AlignmentDirectional(0, 0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 16.0),
+                                                  0, 0, 0, 16),
                                           child: Text(
                                             'Это удобно!',
                                             textAlign: TextAlign.center,
@@ -158,7 +157,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 22.0,
+                                                  fontSize: 22,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -166,7 +165,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
+                                            18, 0, 18, 0),
                                         child: Text(
                                           'Здесь вы можете поручить специалистам Sewera разные бытовые задачи. \nНапример, постричь газон  или обслужить бойлер',
                                           textAlign: TextAlign.center,
@@ -194,12 +193,11 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                         fit: BoxFit.cover,
                                       ),
                                       Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                        alignment: AlignmentDirectional(0, 0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 16.0),
+                                                  0, 0, 0, 16),
                                           child: Text(
                                             'Не пропустите важное',
                                             textAlign: TextAlign.center,
@@ -207,7 +205,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 22.0,
+                                                  fontSize: 22,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -215,7 +213,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 36.0),
+                                            18, 0, 18, 36),
                                         child: Text(
                                           'Включите уведомления и будьте уверены, что не пропустите дату обслуживания вашего септика или выгодную скидку.',
                                           textAlign: TextAlign.center,
@@ -229,7 +227,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
+                                            18, 0, 18, 0),
                                         child: FFButtonWidget(
                                           onPressed: () {
                                             print('Button pressed ...');
@@ -237,13 +235,13 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                           text: 'Включить',
                                           options: FFButtonOptions(
                                             width: double.infinity,
-                                            height: 48.0,
+                                            height: 48,
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
+                                                    0, 0, 0, 0),
                                             iconPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
+                                                    0, 0, 0, 0),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
                                             textStyle:
@@ -255,10 +253,10 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                                     ),
                                             borderSide: BorderSide(
                                               color: Colors.transparent,
-                                              width: 1.0,
+                                              width: 1,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                           ),
                                         ),
                                       ),
@@ -278,12 +276,11 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                         fit: BoxFit.cover,
                                       ),
                                       Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                        alignment: AlignmentDirectional(0, 0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 16.0),
+                                                  0, 0, 0, 16),
                                           child: Text(
                                             'Бонусы и скидки',
                                             textAlign: TextAlign.center,
@@ -291,7 +288,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 22.0,
+                                                  fontSize: 22,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -299,7 +296,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
+                                            18, 0, 18, 0),
                                         child: Text(
                                           'Получите скидку 1000₽  на первый заказ!',
                                           textAlign: TextAlign.center,
@@ -318,7 +315,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                             ],
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.95),
+                            alignment: AlignmentDirectional(0, 0.95),
                             child: smooth_page_indicator.SmoothPageIndicator(
                               controller: _model.pageViewController ??=
                                   PageController(initialPage: 0),
@@ -332,10 +329,10 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                 );
                               },
                               effect: smooth_page_indicator.SlideEffect(
-                                spacing: 8.0,
-                                radius: 16.0,
-                                dotWidth: 75.0,
-                                dotHeight: 3.0,
+                                spacing: 8,
+                                radius: 16,
+                                dotWidth: 75,
+                                dotHeight: 3,
                                 dotColor:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 activeDotColor:
@@ -353,41 +350,92 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                await _model.pageViewController?.nextPage(
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.ease,
-                );
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(1.0, -1.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 48),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await _model.pageViewController?.previousPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.ease,
+                    );
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    height: double.infinity,
+                    decoration: BoxDecoration(),
+                  ),
+                ),
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    if (pageViewCurrentIndex < 4) {
+                      await _model.pageViewController?.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.ease,
+                      );
+                    } else {
+                      if (loggedIn == true) {
                         context.pushNamed('HomePage2');
-                      },
-                      child: Icon(
-                        Icons.close,
-                        color: Color(0xFF526970),
-                        size: 24.0,
-                      ),
+
+                        return;
+                      } else {
+                        context.pushNamed('StartPage');
+
+                        return;
+                      }
+                    }
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    height: double.infinity,
+                    decoration: BoxDecoration(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(20, 44, 20, 20),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(1, -1),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      if (loggedIn == true) {
+                        context.pushNamed('HomePage2');
+
+                        return;
+                      } else {
+                        context.pushNamed('StartPage');
+
+                        return;
+                      }
+                    },
+                    child: Icon(
+                      Icons.close,
+                      color: Color(0xFF526970),
+                      size: 24,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

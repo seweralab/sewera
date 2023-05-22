@@ -27,8 +27,6 @@ class QuizPage2EditModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController;
   // State field(s) for TextField widget.
@@ -43,6 +41,8 @@ class QuizPage2EditModel extends FlutterFlowModel {
   // State field(s) for formText widget.
   TextEditingController? formTextController;
   String? Function(BuildContext, String?)? formTextControllerValidator;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -51,10 +51,10 @@ class QuizPage2EditModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     textController1?.dispose();
     textController2?.dispose();
     formTextController?.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

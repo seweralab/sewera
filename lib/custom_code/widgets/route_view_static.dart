@@ -13,6 +13,7 @@ import 'dart:math' show cos, sqrt, asin;
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' hide LatLng;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as latlng;
 
@@ -72,6 +73,20 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
     });
   }
 
+  bool _compassEnabled = true;
+  bool _mapToolbarEnabled = true;
+  CameraTargetBounds _cameraTargetBounds = CameraTargetBounds.unbounded;
+  MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
+  MapType _mapType = MapType.normal;
+  bool _rotateGesturesEnabled = true;
+  bool _scrollGesturesEnabled = true;
+  bool _tiltGesturesEnabled = true;
+  bool _zoomControlsEnabled = true;
+  bool _zoomGesturesEnabled = true;
+  bool _indoorViewEnabled = true;
+  bool _myLocationEnabled = true;
+  bool _myTrafficEnabled = false;
+  bool _myLocationButtonEnabled = true;
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
   }
@@ -245,8 +260,24 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
             child: GoogleMap(
               onMapCreated: _onMapCreated,
               onTap: _onMapTap,
+
               markers: markers,
               initialCameraPosition: _initialLocation,
+              compassEnabled: _compassEnabled,
+              mapToolbarEnabled: _mapToolbarEnabled,
+              cameraTargetBounds: _cameraTargetBounds,
+              minMaxZoomPreference: _minMaxZoomPreference,
+              mapType: _mapType,
+              rotateGesturesEnabled: _rotateGesturesEnabled,
+              scrollGesturesEnabled: _scrollGesturesEnabled,
+              tiltGesturesEnabled: _tiltGesturesEnabled,
+              zoomGesturesEnabled: _zoomGesturesEnabled,
+              zoomControlsEnabled: _zoomControlsEnabled,
+              indoorViewEnabled: _indoorViewEnabled,
+              myLocationEnabled: _myLocationEnabled,
+              myLocationButtonEnabled: _myLocationButtonEnabled,
+              trafficEnabled: _myTrafficEnabled,
+              // onCameraMove: _updateCameraPosition,
             ),
           ),
           AnimatedPositioned(

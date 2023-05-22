@@ -28,11 +28,11 @@ class CancelOrderPageModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -41,8 +41,8 @@ class CancelOrderPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     textController?.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

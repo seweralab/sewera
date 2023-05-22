@@ -45,13 +45,17 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        body: SafeArea(
-          top: true,
-          child: Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56.0),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   wrapWithModel(
                     model: _model.topNotificationModel,
@@ -61,89 +65,85 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
                       isDisabledNotification: false,
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
-                    child: Column(
+                ],
+              ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
+            ),
+            toolbarHeight: 0.0,
+            elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                  child: SvgPicture.asset(
+                    'assets/images/ordersicon_active.svg',
+                    width: 28.0,
+                    height: 32.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: Text(
+                    'Заказ оформлен!',
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF00BB67),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('ordersPage');
+                    },
+                    child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 24.0),
-                          child: SvgPicture.asset(
-                            'assets/images/ordersicon_active.svg',
-                            width: 28.0,
-                            height: 32.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
+                              0.0, 0.0, 16.0, 0.0),
                           child: Text(
-                            'Заказ оформлен!',
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 48.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF00BB67),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              context.pushNamed('ordersPage');
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 16.0, 0.0),
-                                  child: Text(
-                                    'Перейти в заказы',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Fira Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.arrow_forward,
+                            'Перейти в заказы',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Fira Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBtnText,
-                                  size: 18.0,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              ],
-                            ),
                           ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          size: 18.0,
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    width: 0.0,
-                    height: 0.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

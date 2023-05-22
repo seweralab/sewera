@@ -18,8 +18,6 @@ import 'package:provider/provider.dart';
 class QuizCommentModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
@@ -30,18 +28,20 @@ class QuizCommentModel extends FlutterFlowModel {
 
   // Model for NetBtn component.
   late NetBtnModel netBtnModel;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    topNotificationModel = createModel(context, () => TopNotificationModel());
     netBtnModel = createModel(context, () => NetBtnModel());
+    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     textController?.dispose();
     netBtnModel.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

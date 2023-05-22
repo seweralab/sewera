@@ -53,6 +53,35 @@ class _EditProfileBirthdayPageWidgetState
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56.0),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  wrapWithModel(
+                    model: _model.topNotificationModel,
+                    updateCallback: () => setState(() {}),
+                    child: TopNotificationWidget(
+                      isDisbaledHome: false,
+                      isDisabledNotification: false,
+                    ),
+                  ),
+                ],
+              ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
+            ),
+            toolbarHeight: 0.0,
+            elevation: 0.0,
+          ),
+        ),
         body: SafeArea(
           top: true,
           child: Stack(
@@ -68,11 +97,6 @@ class _EditProfileBirthdayPageWidgetState
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        wrapWithModel(
-                          model: _model.topNotificationModel,
-                          updateCallback: () => setState(() {}),
-                          child: TopNotificationWidget(),
-                        ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               18.0, 0.0, 18.0, 0.0),

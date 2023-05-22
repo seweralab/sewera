@@ -13,25 +13,25 @@ import 'package:provider/provider.dart';
 class EditMDNamePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // State field(s) for nameField widget.
   TextEditingController? nameFieldController;
   String? Function(BuildContext, String?)? nameFieldControllerValidator;
   // Model for customnavbar component.
   late CustomnavbarModel customnavbarModel;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    topNotificationModel = createModel(context, () => TopNotificationModel());
     customnavbarModel = createModel(context, () => CustomnavbarModel());
+    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     nameFieldController?.dispose();
     customnavbarModel.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

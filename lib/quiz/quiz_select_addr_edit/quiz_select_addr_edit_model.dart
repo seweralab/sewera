@@ -23,21 +23,21 @@ class QuizSelectAddrEditModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // Model for NetBtn component.
   late NetBtnModel netBtnModel;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    topNotificationModel = createModel(context, () => TopNotificationModel());
     netBtnModel = createModel(context, () => NetBtnModel());
+    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     netBtnModel.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

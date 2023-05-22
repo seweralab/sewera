@@ -20,21 +20,21 @@ class QuizPageModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // Models for quizForm dynamic component.
   late FlutterFlowDynamicModels<QuizFormModel> quizFormModels;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    topNotificationModel = createModel(context, () => TopNotificationModel());
     quizFormModels = FlutterFlowDynamicModels(() => QuizFormModel());
+    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     quizFormModels.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

@@ -49,6 +49,34 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+          automaticallyImplyLeading: false,
+          actions: [],
+          flexibleSpace: FlexibleSpaceBar(
+            title: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.topNotificationModel,
+                    updateCallback: () => setState(() {}),
+                    child: TopNotificationWidget(
+                      isDisbaledHome: false,
+                      isDisabledNotification: false,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            centerTitle: true,
+            expandedTitleScale: 1.0,
+          ),
+          elevation: 0.0,
+        ),
         body: SafeArea(
           top: true,
           child: Column(
@@ -58,11 +86,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  wrapWithModel(
-                    model: _model.topNotificationModel,
-                    updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(),
-                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),

@@ -68,6 +68,35 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(56.0),
+              child: AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+                automaticallyImplyLeading: false,
+                actions: [],
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      wrapWithModel(
+                        model: _model.topNotificationModel,
+                        updateCallback: () => setState(() {}),
+                        child: TopNotificationWidget(
+                          isDisbaledHome: false,
+                          isDisabledNotification: false,
+                        ),
+                      ),
+                    ],
+                  ),
+                  centerTitle: true,
+                  expandedTitleScale: 1.0,
+                ),
+                toolbarHeight: 0.0,
+                elevation: 0.0,
+              ),
+            ),
             body: SafeArea(
               top: true,
               child: Align(
@@ -103,13 +132,6 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              wrapWithModel(
-                                                model: _model
-                                                    .topNotificationModel1,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: TopNotificationWidget(),
-                                              ),
                                               Text(
                                                 'Заказы',
                                                 style:
@@ -199,14 +221,6 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                wrapWithModel(
-                                                  model: _model
-                                                      .topNotificationModel2,
-                                                  updateCallback: () =>
-                                                      setState(() {}),
-                                                  child:
-                                                      TopNotificationWidget(),
-                                                ),
                                                 Text(
                                                   'Заказы',
                                                   style: FlutterFlowTheme.of(

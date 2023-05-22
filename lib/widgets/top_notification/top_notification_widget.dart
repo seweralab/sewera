@@ -54,9 +54,7 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
-        ),
+        decoration: BoxDecoration(),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

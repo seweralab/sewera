@@ -44,7 +44,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
+    bool isNavigating = false;
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: WillPopScope(
@@ -844,6 +844,13 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
+                                                                  if (isNavigating) {
+                                                                    return; // Игнорировать повторные нажатия
+                                                                  }
+                                                                  setState(() {
+                                                                    isNavigating =
+                                                                        true; // Установить флаг блокировки навигации
+                                                                  });
                                                                   var _shouldSetState =
                                                                       false;
                                                                   if (FFAppState()
@@ -904,7 +911,11 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         ),
                                                                       }.withoutNulls,
                                                                     );
-
+                                                                    setState(
+                                                                        () {
+                                                                      isNavigating =
+                                                                          false; // Сбросить флаг блокировки навигации
+                                                                    });
                                                                     if (_shouldSetState)
                                                                       setState(
                                                                           () {});
@@ -915,10 +926,6 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                           () {});
                                                                     return;
                                                                   }
-
-                                                                  if (_shouldSetState)
-                                                                    setState(
-                                                                        () {});
                                                                 },
                                                                 child: Column(
                                                                   mainAxisSize:

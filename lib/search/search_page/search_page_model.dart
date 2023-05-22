@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 class SearchPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - Create Document] action in Container widget.
+  OrdersRecord? newOrder;
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
   // State field(s) for SearchField widget.
@@ -21,8 +23,6 @@ class SearchPageModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? searchFieldControllerValidator;
   // Algolia Search Results from action on SearchField
   List<ServicesRecord>? algoliaSearchResults = [];
-  // Stores action output result for [Backend Call - Create Document] action in Container widget.
-  OrdersRecord? newOrder;
 
   /// Initialization and disposal methods.
 
@@ -36,4 +36,5 @@ class SearchPageModel extends FlutterFlowModel {
   }
 
   /// Additional helper methods are added here.
+
 }

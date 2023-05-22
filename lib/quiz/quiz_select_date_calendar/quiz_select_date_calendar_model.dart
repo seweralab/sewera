@@ -15,27 +15,27 @@ import 'package:provider/provider.dart';
 class QuizSelectDateCalendarModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay;
   // Model for NetBtn component.
   late NetBtnModel netBtnModel;
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    topNotificationModel = createModel(context, () => TopNotificationModel());
     calendarSelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
     netBtnModel = createModel(context, () => NetBtnModel());
+    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
-    topNotificationModel.dispose();
     netBtnModel.dispose();
+    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

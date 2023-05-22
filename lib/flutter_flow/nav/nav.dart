@@ -263,10 +263,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'QuizSendOrder',
           path: '/quizSendOrder',
-          // builder: (context, params) => QuizSendOrderWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'QuizSendOrder')
-              : QuizSendOrderWidget(),
+          builder: (context, params) => QuizSendOrderWidget(),
+          // builder: (context, params) => params.isEmpty
+          //     ? NavBarPage(initialPage: 'QuizSendOrder')
+          //     : QuizSendOrderWidget(),
         ),
         FFRoute(
           name: 'orderItemPage',

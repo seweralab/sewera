@@ -165,27 +165,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ),
                                                   );
                                                 },
-                                                child: Hero(
-                                                  tag: valueOrDefault(
+                                                child: Image.network(
+                                                  valueOrDefault(
                                                       currentUserDocument
                                                           ?.photo,
                                                       ''),
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                    child: Image.network(
-                                                      valueOrDefault(
-                                                          currentUserDocument
-                                                              ?.photo,
-                                                          ''),
-                                                      width: 48,
-                                                      height: 48,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                                  width: 48,
+                                                  height: 48,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
@@ -716,6 +703,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                       childAspectRatio: 1,
                                                     ),
                                                     primary: false,
+                                                    physics:
+                                                        NeverScrollableScrollPhysics(),
                                                     shrinkWrap: true,
                                                     scrollDirection:
                                                         Axis.vertical,
@@ -895,7 +884,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('test');
+                              context.pushNamed('onBoardingPage');
                             },
                             child: Container(
                               width: double.infinity,
