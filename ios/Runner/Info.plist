@@ -9,8 +9,14 @@
             <key>NSAllowsArbitraryLoads</key>
             <true/>
 	</dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+<key>CFBundleDevelopmentRegion</key>
+  <array>
+     <string>ru-RU</string>
+  </array>
+<key>CFBundleLocalizations</key>
+  <array>
+     <string>ru-RU</string>
+  </array>
 	<key>CFBundleDisplayName</key>
 	<string>sewera</string>
 	<key>CFBundleExecutable</key>
