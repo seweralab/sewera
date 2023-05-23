@@ -83,49 +83,49 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (!kIsWeb) ...[
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                child: ListTile(
-                  title: Text(
-                    'Choose Source',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.getFont(
-                      pickerFontFamily,
-                      color: textColor.withOpacity(0.65),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                  ),
-                  tileColor: backgroundColor,
-                  dense: false,
-                ),
-              ),
-              const Divider(),
-            ],
+            // if (!kIsWeb) ...[
+            //   Padding(
+            //     padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+            //     child: ListTile(
+            //       title: Text(
+            //         'Выберите источник',
+            //         textAlign: TextAlign.center,
+            //         style: GoogleFonts.getFont(
+            //           pickerFontFamily,
+            //           color: textColor.withOpacity(0.65),
+            //           fontWeight: FontWeight.w500,
+            //           fontSize: 20,
+            //         ),
+            //       ),
+            //       tileColor: backgroundColor,
+            //       dense: false,
+            //     ),
+            //   ),
+            //   const Divider(),
+            // ],
             if (allowPhoto && allowVideo) ...[
               createUploadMediaListTile(
-                'Gallery (Photo)',
+                'Выбрать фото',
                 MediaSource.photoGallery,
               ),
               const Divider(),
               createUploadMediaListTile(
-                'Gallery (Video)',
+                'Выбрать видео',
                 MediaSource.videoGallery,
               ),
             ] else if (allowPhoto)
               createUploadMediaListTile(
-                'Gallery',
+                'Галлерея',
                 MediaSource.photoGallery,
               )
             else
               createUploadMediaListTile(
-                'Gallery',
+                'Галлерея',
                 MediaSource.videoGallery,
               ),
             if (!kIsWeb) ...[
               const Divider(),
-              createUploadMediaListTile('Camera', MediaSource.camera),
+              createUploadMediaListTile('Сделать фото', MediaSource.camera),
               const Divider(),
             ],
             const SizedBox(height: 10),
