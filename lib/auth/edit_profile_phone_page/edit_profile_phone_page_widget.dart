@@ -244,6 +244,7 @@ class _EditProfilePhonePageWidgetState
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
+                              context.safePop();
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(

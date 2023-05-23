@@ -518,6 +518,7 @@ String? setInitialCheckboxInput(
   Map<String, dynamic> jsonMap = json.decode(quizJSON);
   if (jsonMap[quizName] != null && jsonMap[quizName] != '') {
     var vals = json.decode(jsonMap[quizName]);
+    print(vals);
     if (vals['input'] != null &&
         vals['input'] != 'false' &&
         vals['inputval'] != null &&
@@ -780,4 +781,11 @@ Color pincodeTextErrColor(bool isErr) {
   } else {
     return Color.fromRGBO(64, 84, 96, 1);
   }
+}
+
+String? testCombineCheckboxes(List<String>? list) {
+  if (list == null) {
+    return null;
+  }
+  return list.join(',');
 }

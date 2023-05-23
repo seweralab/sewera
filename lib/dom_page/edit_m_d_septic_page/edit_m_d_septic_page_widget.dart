@@ -240,6 +240,7 @@ class _EditMDSepticPageWidgetState extends State<EditMDSepticPageWidget> {
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
+                              context.safePop();
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(

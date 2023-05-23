@@ -240,6 +240,7 @@ class _EditMDAreaPageWidgetState extends State<EditMDAreaPageWidget> {
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
+                              context.safePop();
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(

@@ -240,6 +240,7 @@ class _EditProfileEmailPageWidgetState
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
+                              context.safePop();
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(

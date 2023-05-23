@@ -176,8 +176,8 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(18.0, 32.0,
-                                                          18.0, 32.0),
+                                                      .fromSTEB(
+                                                          18.0, 0.0, 18.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -295,46 +295,34 @@ class _QuizPage2EditWidgetState extends State<QuizPage2EditWidget> {
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            -1.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  48.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        width: 277.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xFFFFEE83),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      10.0,
-                                                                      8.0,
-                                                                      10.0),
-                                                          child: Text(
-                                                            'Нужно выбрать хотя бы один вариант',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                          ),
+                                                            0.0, 0.0),
+                                                    child: Container(
+                                                      width: 277.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFFFFEE83),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    10.0,
+                                                                    8.0,
+                                                                    10.0),
+                                                        child: Text(
+                                                          'Нужно выбрать хотя бы один вариант',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                fontSize: 14.0,
+                                                              ),
                                                         ),
                                                       ),
                                                     ),

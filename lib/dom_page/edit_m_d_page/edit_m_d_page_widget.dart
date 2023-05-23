@@ -930,6 +930,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                 ),
                                                 primary: false,
                                                 shrinkWrap: true,
+                                                physics:
+                                                    NeverScrollableScrollPhysics(),
                                                 scrollDirection: Axis.vertical,
                                                 itemCount: mdPhotosEdit.length,
                                                 itemBuilder: (context,
@@ -1207,40 +1209,41 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                     .update(
                                                                         usersUpdateData);
                                                               },
-                                                              child: Container(
-                                                                width: 100.0,
-                                                                height: 100.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  image:
-                                                                      DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: Image
-                                                                        .asset(
-                                                                      'assets/images/attach.png',
-                                                                    ).image,
-                                                                  ),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      blurRadius:
-                                                                          4.0,
-                                                                      color: Color(
-                                                                          0x33000000),
-                                                                      offset: Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                    )
-                                                                  ],
+                                                              child: Material(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                elevation: 0.0,
+                                                                shape:
+                                                                    RoundedRectangleBorder(
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
                                                                               8.0),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
+                                                                ),
+                                                                child:
+                                                                    Container(
+                                                                  width: 100.0,
+                                                                  height: 100.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      image: Image
+                                                                          .asset(
+                                                                        'assets/images/attach.png',
+                                                                      ).image,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),

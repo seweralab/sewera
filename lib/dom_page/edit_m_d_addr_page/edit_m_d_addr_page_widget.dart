@@ -261,6 +261,7 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                       );
                                       await currentUserReference!
                                           .update(usersUpdateData);
+                                      context.safePop();
                                     },
                                     text: 'Сохранить',
                                     options: FFButtonOptions(

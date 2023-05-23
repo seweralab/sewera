@@ -193,7 +193,6 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Фамилия',
                                   hintText: 'Введите вашу фамилию',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodySmall,
@@ -247,7 +246,6 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Имя',
                                   hintText: 'Введите ваше имя',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodySmall,
@@ -300,7 +298,6 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Отчество',
                                   hintText: 'Введите ваше отчество',
                                   hintStyle:
                                       FlutterFlowTheme.of(context).bodySmall,
@@ -355,6 +352,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
+                              context.safePop();
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(

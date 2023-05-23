@@ -53,8 +53,9 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
           FFAppState().currentCheckInputQuiz = functions
               .setInitialCheckboxInput(widget.quizJSON!, widget.quizName!)!;
         });
-      } else {
-        return;
+        setState(() {
+          _model.textController?.text = FFAppState().currentCheckInputQuiz;
+        });
       }
     });
 
@@ -237,7 +238,7 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
                               .currentCheckQuiz
                               .contains(functions.defineInput())) {
                             setState(() {
-                              FFAppState().currentCheckInputQuiz = 'input';
+                              FFAppState().addToCurrentCheckQuiz('input');
                             });
                           }
                         },

@@ -240,6 +240,7 @@ class _EditMDTypePageWidgetState extends State<EditMDTypePageWidget> {
                               );
                               await currentUserReference!
                                   .update(usersUpdateData);
+                              context.safePop();
                             },
                             text: 'Сохранить',
                             options: FFButtonOptions(

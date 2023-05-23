@@ -116,7 +116,7 @@ class _QuizSelectDateWidgetState extends State<QuizSelectDateWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 32.0, 18.0, 32.0),
+                                18.0, 0.0, 18.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -195,28 +195,24 @@ class _QuizSelectDateWidgetState extends State<QuizSelectDateWidget> {
                           ),
                           if (_model.showTopErr == true)
                             Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    45.0, 0.0, 0.0, 0.0),
-                                child: Container(
-                                  width: 277.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFFFEE83),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 10.0, 8.0, 10.0),
-                                    child: Text(
-                                      'Нужно выбрать хотя бы один вариант',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Fira Sans',
-                                            fontSize: 14.0,
-                                          ),
-                                    ),
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Container(
+                                width: 277.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFFEE83),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 10.0, 8.0, 10.0),
+                                  child: Text(
+                                    'Нужно выбрать хотя бы один вариант',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Fira Sans',
+                                          fontSize: 14.0,
+                                        ),
                                   ),
                                 ),
                               ),

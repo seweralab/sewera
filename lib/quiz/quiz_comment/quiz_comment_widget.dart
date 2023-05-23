@@ -9,6 +9,7 @@ import '/widgets/close_quiz/close_quiz_widget.dart';
 import '/widgets/net_btn/net_btn_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,7 +55,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<OrdersRecord>(
-      future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
+      future: (_model.documentRequestCompleter ??= Completer<OrdersRecord>()
+            ..complete(
+                OrdersRecord.getDocumentOnce(FFAppState().currentOrder!)))
+          .future,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -495,6 +499,11 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                         await quizCommentOrdersRecord
                                                                             .reference
                                                                             .update(ordersUpdateData);
+                                                                        setState(() =>
+                                                                            _model.documentRequestCompleter =
+                                                                                null);
+                                                                        await _model
+                                                                            .waitForDocumentRequestCompleted();
                                                                       },
                                                                       child:
                                                                           Icon(
@@ -621,6 +630,11 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                 .reference
                                                                 .update(
                                                                     ordersUpdateData);
+                                                            setState(() => _model
+                                                                    .documentRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForDocumentRequestCompleted();
                                                           },
                                                           child: Material(
                                                             color: Colors

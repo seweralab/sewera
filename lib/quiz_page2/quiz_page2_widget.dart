@@ -19,7 +19,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'quiz_page2_model.dart';
 export 'quiz_page2_model.dart';
 
@@ -53,8 +52,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 0,
-          end: 1,
+          begin: 0.0,
+          end: 1.0,
         ),
       ],
     ),
@@ -86,7 +85,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56),
+            preferredSize: Size.fromHeight(56.0),
             child: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
               automaticallyImplyLeading: false,
@@ -110,8 +109,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                 centerTitle: true,
                 expandedTitleScale: 1.0,
               ),
-              toolbarHeight: 0,
-              elevation: 0,
+              toolbarHeight: 0.0,
+              elevation: 0.0,
             ),
           ),
           body: SafeArea(
@@ -123,8 +122,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                 if (!snapshot.hasData) {
                   return Center(
                     child: SizedBox(
-                      width: 40,
-                      height: 40,
+                      width: 40.0,
+                      height: 40.0,
                       child: CircularProgressIndicator(
                         color: FlutterFlowTheme.of(context).primary,
                       ),
@@ -150,8 +149,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 40,
-                                height: 40,
+                                width: 40.0,
+                                height: 40.0,
                                 child: CircularProgressIndicator(
                                   color: FlutterFlowTheme.of(context).primary,
                                 ),
@@ -164,7 +163,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                               : null;
                           return Container(
                             width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 1,
+                            height: MediaQuery.of(context).size.height * 1.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -174,8 +173,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                 if (!(quizQuizRecord != null))
                                   Container(
                                     width: double.infinity,
-                                    height:
-                                        MediaQuery.of(context).size.height * 1,
+                                    height: MediaQuery.of(context).size.height *
+                                        1.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -189,17 +188,20 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Align(
-                                              alignment:
-                                                  AlignmentDirectional(0, 0),
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
                                               child: Stack(
-                                                alignment:
-                                                    AlignmentDirectional(0, 0),
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                18, 16, 18, 14),
+                                                                18.0,
+                                                                16.0,
+                                                                18.0,
+                                                                14.0),
                                                     child: InkWell(
                                                       splashColor:
                                                           Colors.transparent,
@@ -266,16 +268,16 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            18,
-                                                                            0),
+                                                                            0.0,
+                                                                            0.0,
+                                                                            18.0,
+                                                                            0.0),
                                                                 child: Icon(
                                                                   Icons
                                                                       .arrow_back_sharp,
                                                                   color: Colors
                                                                       .black,
-                                                                  size: 24,
+                                                                  size: 24.0,
                                                                 ),
                                                               ),
                                                               Text(
@@ -287,7 +289,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                       fontFamily:
                                                                           'Fira Sans',
                                                                       fontSize:
-                                                                          20,
+                                                                          20.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -298,7 +300,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                           Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0, 0),
+                                                                    0.0, 0.0),
                                                             child: InkWell(
                                                               splashColor: Colors
                                                                   .transparent,
@@ -344,7 +346,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 Icons.close,
                                                                 color: Colors
                                                                     .black,
-                                                                size: 24,
+                                                                size: 24.0,
                                                               ),
                                                             ),
                                                           ),
@@ -358,43 +360,37 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              -1, 0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(45, 0,
-                                                                    0, 0),
-                                                        child: Container(
-                                                          width: 277,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0xFFFFEE83),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8,
-                                                                        10,
-                                                                        8,
-                                                                        10),
-                                                            child: Text(
-                                                              'Нужно выбрать хотя бы один вариант',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Fira Sans',
-                                                                    fontSize:
-                                                                        14,
-                                                                  ),
-                                                            ),
+                                                              0.0, 0.0),
+                                                      child: Container(
+                                                        width: 277.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFFFEE83),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      10.0,
+                                                                      8.0,
+                                                                      10.0),
+                                                          child: Text(
+                                                            'Нужно выбрать хотя бы один вариант',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Fira Sans',
+                                                                  fontSize:
+                                                                      14.0,
+                                                                ),
                                                           ),
                                                         ),
                                                       ),
@@ -404,7 +400,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(18, 0, 18, 0),
+                                                  .fromSTEB(
+                                                      18.0, 0.0, 18.0, 0.0),
                                               child: Container(
                                                 width: double.infinity,
                                                 decoration: BoxDecoration(
@@ -431,10 +428,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                           padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      0,
-                                                                      10,
-                                                                      0,
-                                                                      10),
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0),
                                                           child: InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
@@ -472,9 +469,9 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                           .asset(
                                                                         'assets/images/radio_clear.svg',
                                                                         width:
-                                                                            24,
+                                                                            24.0,
                                                                         height:
-                                                                            24,
+                                                                            24.0,
                                                                         fit: BoxFit
                                                                             .cover,
                                                                       ),
@@ -485,9 +482,9 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                           .asset(
                                                                         'assets/images/radio_check.svg',
                                                                         width:
-                                                                            24,
+                                                                            24.0,
                                                                         height:
-                                                                            24,
+                                                                            24.0,
                                                                         fit: BoxFit
                                                                             .cover,
                                                                       ),
@@ -509,10 +506,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            16,
-                                                                            0,
-                                                                            0,
-                                                                            0),
+                                                                            16.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child:
                                                                         AutoSizeText(
                                                                       radiosItem,
@@ -539,7 +536,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  18, 0, 18, 20),
+                                                  18.0, 0.0, 18.0, 20.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               if (FFAppState()
@@ -572,7 +569,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                   bottomSheetContext)
                                                               .viewInsets,
                                                           child: Container(
-                                                            height: 500,
+                                                            height: 500.0,
                                                             child:
                                                                 CalendarWidget(),
                                                           ),
@@ -619,11 +616,11 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                             text: 'Продолжить',
                                             options: FFButtonOptions(
                                               width: double.infinity,
-                                              height: 48,
+                                              height: 48.0,
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
@@ -634,13 +631,13 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                         fontFamily: 'Fira Sans',
                                                         color: Colors.white,
                                                       ),
-                                              elevation: 0,
+                                              elevation: 0.0,
                                               borderSide: BorderSide(
                                                 color: Colors.transparent,
-                                                width: 1,
+                                                width: 1.0,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(8),
+                                                  BorderRadius.circular(8.0),
                                             ),
                                           ),
                                         ),
@@ -655,13 +652,16 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Align(
-                                        alignment: AlignmentDirectional(0, 0),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Stack(
-                                          alignment: AlignmentDirectional(0, 0),
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(18, 16, 18, 14),
+                                                  .fromSTEB(
+                                                      18.0, 16.0, 18.0, 14.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -683,8 +683,11 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 18, 0),
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      18.0,
+                                                                      0.0),
                                                           child: InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
@@ -696,21 +699,31 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              setState(() {
-                                                                FFAppState()
-                                                                        .currentQuizIndex =
-                                                                    FFAppState()
-                                                                            .currentQuizIndex +
-                                                                        -1;
-                                                              });
-                                                              context.safePop();
+                                                              FFAppState()
+                                                                      .currentQuizIndex =
+                                                                  FFAppState()
+                                                                          .currentQuizIndex +
+                                                                      -1;
+
+                                                              context.pushNamed(
+                                                                'QuizPage2',
+                                                                queryParams: {
+                                                                  'serviceRef':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .serviceRef,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
                                                             },
                                                             child: Icon(
                                                               Icons
                                                                   .arrow_back_sharp,
                                                               color:
                                                                   Colors.black,
-                                                              size: 24,
+                                                              size: 24.0,
                                                             ),
                                                           ),
                                                         ),
@@ -730,7 +743,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Fira Sans',
-                                                                fontSize: 20,
+                                                                fontSize: 20.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -742,7 +755,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0, 0),
+                                                            0.0, 0.0),
                                                     child: InkWell(
                                                       splashColor:
                                                           Colors.transparent,
@@ -784,7 +797,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                       child: Icon(
                                                         Icons.close,
                                                         color: Colors.black,
-                                                        size: 24,
+                                                        size: 24.0,
                                                       ),
                                                     ),
                                                   ),
@@ -793,36 +806,32 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                             ),
                                             if (FFAppState().currentQuizTopErr)
                                               Align(
-                                                alignment:
-                                                    AlignmentDirectional(-1, 0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(48, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 277,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xFFFFEE83),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  8, 10, 8, 10),
-                                                      child: Text(
-                                                        'Нужно выбрать хотя бы один вариант',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  fontSize: 14,
-                                                                ),
-                                                      ),
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Container(
+                                                  width: 277.0,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xFFFFEE83),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 10.0,
+                                                                8.0, 10.0),
+                                                    child: Text(
+                                                      'Нужно выбрать хотя бы один вариант',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                fontSize: 14.0,
+                                                              ),
                                                     ),
                                                   ),
                                                 ),
@@ -839,7 +848,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                   'select')
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(18, 0, 18, 10),
+                                                      .fromSTEB(18.0, 0.0, 18.0,
+                                                          10.0),
                                                   child: wrapWithModel(
                                                     model:
                                                         _model.quizRadioModel,
@@ -865,7 +875,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                   'multiselect')
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(18, 0, 18, 10),
+                                                      .fromSTEB(18.0, 0.0, 18.0,
+                                                          10.0),
                                                   child: wrapWithModel(
                                                     model: _model
                                                         .quizCheckboxModel,
@@ -894,215 +905,17 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0, 0),
+                                                          0.0, 0.0),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                18, 0, 18, 0),
+                                                            .fromSTEB(18.0, 0.0,
+                                                                18.0, 0.0),
                                                     child: Stack(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              0, 0),
+                                                              0.0, 0.0),
                                                       children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      18,
-                                                                      32,
-                                                                      18,
-                                                                      32),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  if (FFAppState()
-                                                                          .currentQuizIndex >
-                                                                      0)
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              18,
-                                                                              0),
-                                                                      child:
-                                                                          InkWell(
-                                                                        splashColor:
-                                                                            Colors.transparent,
-                                                                        focusColor:
-                                                                            Colors.transparent,
-                                                                        hoverColor:
-                                                                            Colors.transparent,
-                                                                        highlightColor:
-                                                                            Colors.transparent,
-                                                                        onTap:
-                                                                            () async {
-                                                                          setState(
-                                                                              () {
-                                                                            FFAppState().currentQuizIndex =
-                                                                                FFAppState().currentQuizIndex + -1;
-                                                                          });
-                                                                          context
-                                                                              .safePop();
-                                                                        },
-                                                                        child:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .arrow_back_sharp,
-                                                                          color:
-                                                                              Colors.black,
-                                                                          size:
-                                                                              24,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  Container(
-                                                                    width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.7,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child: Text(
-                                                                      quizQuizRecord!
-                                                                          .title,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Fira Sans',
-                                                                            fontSize:
-                                                                                20,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0, 0),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      enableDrag:
-                                                                          false,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (bottomSheetContext) {
-                                                                        return GestureDetector(
-                                                                          onTap: () =>
-                                                                              FocusScope.of(context).requestFocus(_unfocusNode),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.of(bottomSheetContext).viewInsets,
-                                                                            child:
-                                                                                CloseQuizWidget(),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        setState(
-                                                                            () {}));
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons.close,
-                                                                    color: Colors
-                                                                        .black,
-                                                                    size: 24,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        if (FFAppState()
-                                                                .currentQuizTopErr ==
-                                                            true)
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1, 0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          48,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                              child: Container(
-                                                                width: 277,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: Color(
-                                                                      0xFFFFEE83),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          8,
-                                                                          10,
-                                                                          8,
-                                                                          10),
-                                                                  child: Text(
-                                                                    'Нужно выбрать хотя бы один вариант',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Fira Sans',
-                                                                          fontSize:
-                                                                              14,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
                                                         if ((quizQuizRecord!
                                                                     .type !=
                                                                 'select') &&
@@ -1118,10 +931,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            10,
-                                                                            0,
-                                                                            0),
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child:
                                                                     Container(
                                                                   width: double
@@ -1129,8 +942,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
+                                                                        BorderRadius.circular(
+                                                                            8.0),
                                                                   ),
                                                                   child:
                                                                       AuthUserStreamWidget(
@@ -1198,10 +1011,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                             color:
                                                                                 functions.borderErrorColor(_model.showInputError),
                                                                             width:
-                                                                                1,
+                                                                                1.0,
                                                                           ),
                                                                           borderRadius:
-                                                                              BorderRadius.circular(8),
+                                                                              BorderRadius.circular(8.0),
                                                                         ),
                                                                         focusedBorder:
                                                                             OutlineInputBorder(
@@ -1210,10 +1023,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
-                                                                                1,
+                                                                                1.0,
                                                                           ),
                                                                           borderRadius:
-                                                                              BorderRadius.circular(8),
+                                                                              BorderRadius.circular(8.0),
                                                                         ),
                                                                         errorBorder:
                                                                             OutlineInputBorder(
@@ -1222,10 +1035,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
-                                                                                1,
+                                                                                1.0,
                                                                           ),
                                                                           borderRadius:
-                                                                              BorderRadius.circular(8),
+                                                                              BorderRadius.circular(8.0),
                                                                         ),
                                                                         focusedErrorBorder:
                                                                             OutlineInputBorder(
@@ -1234,20 +1047,20 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                             color:
                                                                                 Color(0x00000000),
                                                                             width:
-                                                                                1,
+                                                                                1.0,
                                                                           ),
                                                                           borderRadius:
-                                                                              BorderRadius.circular(8),
+                                                                              BorderRadius.circular(8.0),
                                                                         ),
                                                                         filled:
                                                                             true,
                                                                         fillColor:
                                                                             Color(0xFFF3F4F5),
                                                                         contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            8,
-                                                                            0),
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1266,15 +1079,16 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          0, 0),
+                                                                          0.0,
+                                                                          0.0),
                                                                   child:
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            15,
-                                                                            0,
-                                                                            0),
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Row(
                                                                       mainAxisSize:
                                                                           MainAxisSize
@@ -1282,33 +1096,33 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                       children: [
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0,
-                                                                              1,
-                                                                              0,
-                                                                              0),
+                                                                              0.0,
+                                                                              1.0,
+                                                                              0.0,
+                                                                              0.0),
                                                                           child:
                                                                               SvgPicture.asset(
                                                                             'assets/images/confirm.svg',
                                                                             width:
-                                                                                14,
+                                                                                14.0,
                                                                             height:
-                                                                                14,
+                                                                                14.0,
                                                                             fit:
                                                                                 BoxFit.cover,
                                                                           ),
                                                                         ),
                                                                         Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              12,
-                                                                              0,
-                                                                              0,
-                                                                              0),
+                                                                              12.0,
+                                                                              0.0,
+                                                                              0.0,
+                                                                              0.0),
                                                                           child:
                                                                               Text(
                                                                             'Это поле нужно заполнить',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Fira Sans',
-                                                                                  fontSize: 12,
+                                                                                  fontSize: 12.0,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1331,7 +1145,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  18, 0, 18, 20),
+                                                  18.0, 0.0, 18.0, 20.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               if (quizQuizRecord!.type ==
@@ -1558,11 +1372,11 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                             text: 'Продолжить',
                                             options: FFButtonOptions(
                                               width: double.infinity,
-                                              height: 48,
+                                              height: 48.0,
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
@@ -1573,13 +1387,13 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                         fontFamily: 'Fira Sans',
                                                         color: Colors.white,
                                                       ),
-                                              elevation: 0,
+                                              elevation: 0.0,
                                               borderSide: BorderSide(
                                                 color: Colors.transparent,
-                                                width: 1,
+                                                width: 1.0,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(8),
+                                                  BorderRadius.circular(8.0),
                                             ),
                                           ),
                                         ),

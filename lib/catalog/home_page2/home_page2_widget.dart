@@ -44,28 +44,49 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    bool isNavigating = false;
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: Colors.white,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(56.0),
+            child: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+              automaticallyImplyLeading: false,
+              actions: [],
+              flexibleSpace: FlexibleSpaceBar(
+                title: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    wrapWithModel(
+                      model: _model.topNotificationModel,
+                      updateCallback: () => setState(() {}),
+                      child: TopNotificationWidget(
+                        isDisbaledHome: true,
+                        isDisabledNotification: false,
+                      ),
+                    ),
+                  ],
+                ),
+                centerTitle: true,
+                expandedTitleScale: 1.0,
+              ),
+              toolbarHeight: 0.0,
+              elevation: 0.0,
+            ),
+          ),
           body: SafeArea(
             top: true,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                wrapWithModel(
-                  model: _model.topNotificationModel,
-                  updateCallback: () => setState(() {}),
-                  child: TopNotificationWidget(
-                    isDisbaledHome: true,
-                    isDisabledNotification: false,
-                  ),
-                ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
@@ -76,7 +97,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                               18.0, 10.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
-                            height: 56.0,
+                            height: 51.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFF3F4F5),
                               borderRadius: BorderRadius.circular(8.0),
@@ -114,7 +135,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     child: Icon(
                                       Icons.search,
                                       color: Color(0xFF526970),
-                                      size: 20,
+                                      size: 20.0,
                                     ),
                                   ),
                                 ],
@@ -498,7 +519,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           extentRatio: 0.25,
                                                           children: [
                                                             SlidableAction(
-                                                              // label: 'null',
+                                                              // label: '',
                                                               backgroundColor:
                                                                   Color(
                                                                       0xFFF3F4F5),
@@ -670,7 +691,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            height: 180.0,
+                                            height: 190.0,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -844,13 +865,6 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
-                                                                  if (isNavigating) {
-                                                                    return; // Игнорировать повторные нажатия
-                                                                  }
-                                                                  setState(() {
-                                                                    isNavigating =
-                                                                        true; // Установить флаг блокировки навигации
-                                                                  });
                                                                   var _shouldSetState =
                                                                       false;
                                                                   if (FFAppState()
@@ -911,11 +925,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         ),
                                                                       }.withoutNulls,
                                                                     );
-                                                                    setState(
-                                                                        () {
-                                                                      isNavigating =
-                                                                          false; // Сбросить флаг блокировки навигации
-                                                                    });
+
                                                                     if (_shouldSetState)
                                                                       setState(
                                                                           () {});
@@ -926,11 +936,15 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                           () {});
                                                                     return;
                                                                   }
+
+                                                                  if (_shouldSetState)
+                                                                    setState(
+                                                                        () {});
                                                                 },
                                                                 child: Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
-                                                                          .min,
+                                                                          .max,
                                                                   mainAxisAlignment:
                                                                       MainAxisAlignment
                                                                           .start,
@@ -975,6 +989,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                             Text(
                                                                           listViewInnerServicesRecord
                                                                               .title,
+                                                                          maxLines:
+                                                                              3,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(

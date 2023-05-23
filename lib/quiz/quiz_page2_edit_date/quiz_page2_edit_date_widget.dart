@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'quiz_page2_edit_date_model.dart';
 export 'quiz_page2_edit_date_model.dart';
 
@@ -55,7 +54,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56),
+          preferredSize: Size.fromHeight(56.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
@@ -79,8 +78,8 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
               centerTitle: true,
               expandedTitleScale: 1.0,
             ),
-            toolbarHeight: 0,
-            elevation: 0,
+            toolbarHeight: 0.0,
+            elevation: 0.0,
           ),
         ),
         body: SafeArea(
@@ -92,8 +91,8 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
               if (!snapshot.hasData) {
                 return Center(
                   child: SizedBox(
-                    width: 40,
-                    height: 40,
+                    width: 40.0,
+                    height: 40.0,
                     child: CircularProgressIndicator(
                       color: FlutterFlowTheme.of(context).primary,
                     ),
@@ -109,13 +108,13 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0, 0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Stack(
-                          alignment: AlignmentDirectional(0, 0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  18, 32, 18, 32),
+                                  18.0, 0.0, 18.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -135,11 +134,11 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 18, 0),
+                                                  0.0, 0.0, 18.0, 0.0),
                                           child: Icon(
                                             Icons.arrow_back_sharp,
                                             color: Colors.black,
-                                            size: 24,
+                                            size: 24.0,
                                           ),
                                         ),
                                         Text(
@@ -148,14 +147,14 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Fira Sans',
-                                                fontSize: 20,
+                                                fontSize: 20.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
                                       ],
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0, 0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -185,7 +184,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                         child: Icon(
                                           Icons.close,
                                           color: Colors.black,
-                                          size: 24,
+                                          size: 24.0,
                                         ),
                                       ),
                                     ),
@@ -195,28 +194,24 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                             ),
                             if (_model.showTopError == true)
                               Align(
-                                alignment: AlignmentDirectional(-1, 0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      45, 0, 0, 0),
-                                  child: Container(
-                                    width: 277,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFFFEE83),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 10, 8, 10),
-                                      child: Text(
-                                        'Нужно выбрать хотя бы один вариант',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Fira Sans',
-                                              fontSize: 14,
-                                            ),
-                                      ),
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Container(
+                                  width: 277.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFFFEE83),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 10.0, 8.0, 10.0),
+                                    child: Text(
+                                      'Нужно выбрать хотя бы один вариант',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Fira Sans',
+                                            fontSize: 14.0,
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -225,7 +220,8 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            18.0, 0.0, 18.0, 0.0),
                         child: Builder(
                           builder: (context) {
                             final radios =
@@ -239,7 +235,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                 final radiosItem = radios[radiosIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 10),
+                                      0.0, 10.0, 0.0, 10.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -262,15 +258,15 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                             if (radiosItem != _model.selected)
                                               SvgPicture.asset(
                                                 'assets/images/radio_clear.svg',
-                                                width: 24,
-                                                height: 24,
+                                                width: 24.0,
+                                                height: 24.0,
                                                 fit: BoxFit.cover,
                                               ),
                                             if (radiosItem == _model.selected)
                                               SvgPicture.asset(
                                                 'assets/images/radio_check.svg',
-                                                width: 24,
-                                                height: 24,
+                                                width: 24.0,
+                                                height: 24.0,
                                                 fit: BoxFit.cover,
                                               ),
                                           ],
@@ -287,7 +283,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    16, 0, 0, 0),
+                                                    16.0, 0.0, 0.0, 0.0),
                                             child: AutoSizeText(
                                               radiosItem,
                                               maxLines: 2,
@@ -309,7 +305,8 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 20),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 20.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (_model.selected != null && _model.selected != '') {
@@ -329,7 +326,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                     padding: MediaQuery.of(bottomSheetContext)
                                         .viewInsets,
                                     child: Container(
-                                      height: 460,
+                                      height: 460.0,
                                       child: CalendarWidget(),
                                     ),
                                   ),
@@ -369,21 +366,23 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                       text: 'Сохранить',
                       options: FFButtonOptions(
                         width: double.infinity,
-                        height: 48,
-                        elevation: 0,
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                        iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        height: 48.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Fira Sans',
                                   color: Colors.white,
                                 ),
+                        elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

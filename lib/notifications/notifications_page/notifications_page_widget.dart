@@ -86,7 +86,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                         updateCallback: () => setState(() {}),
                         child: TopNotificationWidget(
                           isDisbaledHome: false,
-                          isDisabledNotification: false,
+                          isDisabledNotification: true,
                         ),
                       ),
                     ],
