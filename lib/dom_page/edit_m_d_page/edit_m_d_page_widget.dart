@@ -2,8 +2,10 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
+import '/flutter_flow/flutter_flow_media_display.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/upload_data.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -12,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import 'edit_m_d_page_model.dart';
 export 'edit_m_d_page_model.dart';
 
@@ -53,7 +54,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56),
+          preferredSize: Size.fromHeight(60.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
@@ -77,8 +78,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
               centerTitle: true,
               expandedTitleScale: 1.0,
             ),
-            toolbarHeight: 0,
-            elevation: 0,
+            toolbarHeight: 0.0,
+            elevation: 0.0,
           ),
         ),
         body: SafeArea(
@@ -90,7 +91,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -98,7 +100,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 14),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 16.0, 0.0, 14.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -112,7 +115,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 18, 0),
+                                      0.0, 0.0, 18.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -124,7 +127,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                     child: Icon(
                                       Icons.arrow_back_sharp,
                                       color: Colors.black,
-                                      size: 24,
+                                      size: 24.0,
                                     ),
                                   ),
                                 ),
@@ -134,7 +137,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Fira Sans',
-                                        fontSize: 20,
+                                        fontSize: 20.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
@@ -146,13 +149,14 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                     ),
                     Container(
                       width: double.infinity,
-                      height: 8,
+                      height: 8.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).lineColor,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 48),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 48.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -165,7 +169,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 18, 18, 0),
+                                    18.0, 18.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -204,7 +208,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -214,26 +219,28 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                     children: [
                                                       Text(
                                                         'Название',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0x81102938),
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0x81102938),
+                                                              fontSize: 12.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
                                                       ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    0, 10),
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
                                                         child:
                                                             AuthUserStreamWidget(
                                                           builder: (context) =>
@@ -254,7 +261,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans',
-                                                                  fontSize: 16,
+                                                                  fontSize:
+                                                                      16.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -270,17 +278,17 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                             Icon(
                                               Icons.chevron_right,
                                               color: Color(0xFF6F7F87),
-                                              size: 24,
+                                              size: 24.0,
                                             ),
                                           ],
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 10),
+                                            0.0, 0.0, 0.0, 10.0),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 1,
+                                          height: 1.0,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFE8EAEC),
                                           ),
@@ -292,7 +300,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 0, 18, 0),
+                                    18.0, 0.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -331,7 +339,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -341,26 +350,28 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                     children: [
                                                       Text(
                                                         'Тип',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0x81102938),
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0x81102938),
+                                                              fontSize: 12.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
                                                       ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    0, 10),
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
                                                         child:
                                                             AuthUserStreamWidget(
                                                           builder: (context) =>
@@ -381,7 +392,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans',
-                                                                  fontSize: 16,
+                                                                  fontSize:
+                                                                      16.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -397,17 +409,17 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                             Icon(
                                               Icons.chevron_right,
                                               color: Color(0xFF6F7F87),
-                                              size: 24,
+                                              size: 24.0,
                                             ),
                                           ],
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 10),
+                                            0.0, 0.0, 0.0, 10.0),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 1,
+                                          height: 1.0,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFE8EAEC),
                                           ),
@@ -419,7 +431,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 0, 18, 0),
+                                    18.0, 0.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -458,7 +470,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -468,26 +481,28 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                     children: [
                                                       Text(
                                                         'Адрес',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0x81102938),
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0x81102938),
+                                                              fontSize: 12.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
                                                       ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    0, 10),
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
                                                         child:
                                                             AuthUserStreamWidget(
                                                           builder: (context) =>
@@ -517,7 +532,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans',
-                                                                  fontSize: 16,
+                                                                  fontSize:
+                                                                      16.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -533,17 +549,17 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                             Icon(
                                               Icons.chevron_right,
                                               color: Color(0xFF6F7F87),
-                                              size: 24,
+                                              size: 24.0,
                                             ),
                                           ],
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 10),
+                                            0.0, 0.0, 0.0, 10.0),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 1,
+                                          height: 1.0,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFE8EAEC),
                                           ),
@@ -555,7 +571,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 0, 18, 0),
+                                    18.0, 0.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -594,7 +610,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -604,26 +621,28 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                     children: [
                                                       Text(
                                                         'Площадь',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0x81102938),
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0x81102938),
+                                                              fontSize: 12.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
                                                       ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    0, 10),
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
                                                         child:
                                                             AuthUserStreamWidget(
                                                           builder: (context) =>
@@ -644,7 +663,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans',
-                                                                  fontSize: 16,
+                                                                  fontSize:
+                                                                      16.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -660,17 +680,17 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                             Icon(
                                               Icons.chevron_right,
                                               color: Color(0xFF6F7F87),
-                                              size: 24,
+                                              size: 24.0,
                                             ),
                                           ],
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 10),
+                                            0.0, 0.0, 0.0, 10.0),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 1,
+                                          height: 1.0,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFE8EAEC),
                                           ),
@@ -682,7 +702,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 0, 18, 0),
+                                    18.0, 0.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -721,7 +741,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -731,26 +752,28 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                     children: [
                                                       Text(
                                                         'Септик',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0x81102938),
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0x81102938),
+                                                              fontSize: 12.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
                                                       ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    0, 10),
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
                                                         child:
                                                             AuthUserStreamWidget(
                                                           builder: (context) =>
@@ -771,7 +794,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans',
-                                                                  fontSize: 16,
+                                                                  fontSize:
+                                                                      16.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -787,17 +811,17 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                             Icon(
                                               Icons.chevron_right,
                                               color: Color(0xFF6F7F87),
-                                              size: 24,
+                                              size: 24.0,
                                             ),
                                           ],
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 10),
+                                            0.0, 0.0, 0.0, 10.0),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 1,
+                                          height: 1.0,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFE8EAEC),
                                           ),
@@ -809,7 +833,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 18, 18, 0),
+                                    18.0, 18.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -838,7 +862,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -849,8 +874,11 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    0, 16),
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    16.0),
                                                         child: Text(
                                                           'Фотографии и документы',
                                                           style: FlutterFlowTheme
@@ -861,7 +889,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                     'Fira Sans',
                                                                 color: Color(
                                                                     0x81102938),
-                                                                fontSize: 12,
+                                                                fontSize: 12.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -898,9 +926,9 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                 gridDelegate:
                                                     SliverGridDelegateWithFixedCrossAxisCount(
                                                   crossAxisCount: 3,
-                                                  crossAxisSpacing: 10,
-                                                  mainAxisSpacing: 10,
-                                                  childAspectRatio: 1,
+                                                  crossAxisSpacing: 10.0,
+                                                  mainAxisSpacing: 10.0,
+                                                  childAspectRatio: 1.0,
                                                 ),
                                                 primary: false,
                                                 shrinkWrap: true,
@@ -912,7 +940,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                       mdPhotosEdit[
                                                           mdPhotosEditIndex];
                                                   return Container(
-                                                    width: 90,
+                                                    width: 90.0,
                                                     child: Stack(
                                                       children: [
                                                         if (mdPhotosEditItem !=
@@ -920,8 +948,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                             mdPhotosEditItem !=
                                                                 '')
                                                           Container(
-                                                            width: 100,
-                                                            height: 100,
+                                                            width: 100.0,
+                                                            height: 100.0,
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
@@ -933,10 +961,10 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0,
-                                                                          4,
-                                                                          4,
-                                                                          0),
+                                                                          0.0,
+                                                                          4.0,
+                                                                          4.0,
+                                                                          0.0),
                                                                   child:
                                                                       InkWell(
                                                                     splashColor:
@@ -984,14 +1012,14 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                       child:
                                                                           ClipRRect(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(8),
+                                                                            BorderRadius.circular(8.0),
                                                                         child: Image
                                                                             .network(
                                                                           mdPhotosEditItem,
                                                                           width:
-                                                                              100,
+                                                                              100.0,
                                                                           height:
-                                                                              100,
+                                                                              100.0,
                                                                           fit: BoxFit
                                                                               .cover,
                                                                         ),
@@ -1002,31 +1030,32 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          1,
-                                                                          -1),
+                                                                          1.0,
+                                                                          -1.0),
                                                                   child:
                                                                       Material(
                                                                     color: Colors
                                                                         .transparent,
                                                                     elevation:
-                                                                        4,
+                                                                        4.0,
                                                                     shape:
                                                                         RoundedRectangleBorder(
                                                                       borderRadius:
                                                                           BorderRadius.circular(
-                                                                              9),
+                                                                              9.0),
                                                                     ),
                                                                     child:
                                                                         Container(
-                                                                      width: 18,
+                                                                      width:
+                                                                          18.0,
                                                                       height:
-                                                                          18,
+                                                                          18.0,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryBtnText,
                                                                         borderRadius:
-                                                                            BorderRadius.circular(9),
+                                                                            BorderRadius.circular(9.0),
                                                                       ),
                                                                       child:
                                                                           InkWell(
@@ -1057,7 +1086,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                           color:
                                                                               Colors.black,
                                                                           size:
-                                                                              10,
+                                                                              10.0,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1074,10 +1103,10 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        4,
-                                                                        4,
-                                                                        0),
+                                                                        0.0,
+                                                                        4.0,
+                                                                        4.0,
+                                                                        0.0),
                                                             child: InkWell(
                                                               splashColor: Colors
                                                                   .transparent,
@@ -1185,18 +1214,18 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                               child: Material(
                                                                 color: Colors
                                                                     .transparent,
-                                                                elevation: 0,
+                                                                elevation: 0.0,
                                                                 shape:
                                                                     RoundedRectangleBorder(
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              8),
+                                                                              8.0),
                                                                 ),
                                                                 child:
                                                                     Container(
-                                                                  width: 100,
-                                                                  height: 100,
+                                                                  width: 100.0,
+                                                                  height: 100.0,
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
@@ -1212,8 +1241,8 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                                                       ).image,
                                                                     ),
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(8),
+                                                                        BorderRadius.circular(
+                                                                            8.0),
                                                                     shape: BoxShape
                                                                         .rectangle,
                                                                   ),
@@ -1231,6 +1260,70 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => Builder(
+                                    builder: (context) {
+                                      final ggg = functions
+                                          .propImagesList((currentUserDocument
+                                                      ?.mdPhotos
+                                                      ?.toList() ??
+                                                  [])
+                                              .toList())
+                                          .toList();
+                                      return GridView.builder(
+                                        padding: EdgeInsets.zero,
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 1,
+                                          crossAxisSpacing: 10.0,
+                                          mainAxisSpacing: 10.0,
+                                          childAspectRatio: 1.0,
+                                        ),
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: ggg.length,
+                                        itemBuilder: (context, gggIndex) {
+                                          final gggItem = ggg[gggIndex];
+                                          return FlutterFlowMediaDisplay(
+                                            path: gggItem,
+                                            imageBuilder: (path) => ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                path,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    1.3,
+                                                height: 130.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            videoPlayerBuilder: (path) =>
+                                                FlutterFlowVideoPlayer(
+                                              path: path,
+                                              width: double.infinity,
+                                              height: 370.0,
+                                              aspectRatio: 1.50,
+                                              autoPlay: false,
+                                              looping: true,
+                                              showControls: true,
+                                              allowFullScreen: true,
+                                              allowPlaybackSpeedMenu: true,
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
                                 ),
                               ),

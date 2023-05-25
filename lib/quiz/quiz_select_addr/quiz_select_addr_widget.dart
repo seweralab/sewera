@@ -2,8 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
-import '/widgets/net_btn/net_btn_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -103,7 +103,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(56.0),
+              preferredSize: Size.fromHeight(60.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -146,84 +146,121 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 16.0, 18.0, 14.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.safePop();
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
+                          Stack(
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    18.0, 16.0, 18.0, 14.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.safePop();
+                                  },
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 18.0, 0.0),
-                                        child: Icon(
-                                          Icons.arrow_back_sharp,
-                                          color: Colors.black,
-                                          size: 24.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Где нужна услуга?',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Fira Sans',
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w500,
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 18.0, 0.0),
+                                            child: Icon(
+                                              Icons.arrow_back_sharp,
+                                              color: Colors.black,
+                                              size: 24.0,
                                             ),
+                                          ),
+                                          Text(
+                                            'Где нужна услуга?',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Fira Sans',
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (bottomSheetContext) {
+                                                return GestureDetector(
+                                                  onTap: () =>
+                                                      FocusScope.of(context)
+                                                          .requestFocus(
+                                                              _unfocusNode),
+                                                  child: Padding(
+                                                    padding: MediaQuery.of(
+                                                            bottomSheetContext)
+                                                        .viewInsets,
+                                                    child: CloseQuizWidget(),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Icon(
+                                            Icons.close,
+                                            color: Colors.black,
+                                            size: 24.0,
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          enableDrag: false,
-                                          context: context,
-                                          builder: (bottomSheetContext) {
-                                            return GestureDetector(
-                                              onTap: () => FocusScope.of(
-                                                      context)
-                                                  .requestFocus(_unfocusNode),
-                                              child: Padding(
-                                                padding: MediaQuery.of(
-                                                        bottomSheetContext)
-                                                    .viewInsets,
-                                                child: CloseQuizWidget(),
+                                ),
+                              ),
+                              if (FFAppState().currentQuizTopErr)
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 277.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFFFEE83),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 10.0, 8.0, 10.0),
+                                        child: Text(
+                                          'Нужно выбрать хотя бы один вариант',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Fira Sans',
+                                                fontSize: 14.0,
                                               ),
-                                            );
-                                          },
-                                        ).then((value) => setState(() {}));
-                                      },
-                                      child: Icon(
-                                        Icons.close,
-                                        color: Colors.black,
-                                        size: 24.0,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
+                                ),
+                            ],
                           ),
                           Container(
                             width: double.infinity,
@@ -257,14 +294,14 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
+                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
                         if (FFAppState().currentQuizAddr != '') {
+                          setState(() {
+                            FFAppState().currentQuizTopErr = false;
+                          });
+
                           final ordersUpdateData = createOrdersRecordData(
                             addr: FFAppState().currentQuizAddr,
                           );
@@ -285,12 +322,31 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                           setState(() {
                             _model.showInputErr = true;
                           });
+                          setState(() {
+                            FFAppState().currentQuizTopErr = true;
+                          });
                         }
                       },
-                      child: wrapWithModel(
-                        model: _model.netBtnModel,
-                        updateCallback: () => setState(() {}),
-                        child: NetBtnWidget(),
+                      text: 'Продолжить',
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 48.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Fira Sans',
+                                  color: Colors.white,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

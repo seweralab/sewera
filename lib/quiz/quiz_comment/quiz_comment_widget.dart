@@ -4,9 +4,9 @@ import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
-import '/widgets/net_btn/net_btn_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
@@ -79,7 +79,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(56.0),
+              preferredSize: Size.fromHeight(60.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -124,7 +124,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 32.0, 18.0, 32.0),
+                                18.0, 16.0, 18.0, 14.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -694,13 +694,9 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
+                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
                         final ordersUpdateData = createOrdersRecordData(
                           comment: _model.textController.text,
                         );
@@ -709,10 +705,26 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
 
                         context.pushNamed('QuizSendOrder');
                       },
-                      child: wrapWithModel(
-                        model: _model.netBtnModel,
-                        updateCallback: () => setState(() {}),
-                        child: NetBtnWidget(),
+                      text: 'Продолжить',
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 48.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Fira Sans',
+                                  color: Colors.white,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

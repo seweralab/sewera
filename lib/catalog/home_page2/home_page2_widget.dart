@@ -52,35 +52,6 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56.0),
-            child: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-              automaticallyImplyLeading: false,
-              actions: [],
-              flexibleSpace: FlexibleSpaceBar(
-                title: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    wrapWithModel(
-                      model: _model.topNotificationModel,
-                      updateCallback: () => setState(() {}),
-                      child: TopNotificationWidget(
-                        isDisbaledHome: true,
-                        isDisabledNotification: false,
-                      ),
-                    ),
-                  ],
-                ),
-                centerTitle: true,
-                expandedTitleScale: 1.0,
-              ),
-              toolbarHeight: 0.0,
-              elevation: 0.0,
-            ),
-          ),
           body: SafeArea(
             top: true,
             child: Column(
@@ -92,6 +63,14 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        wrapWithModel(
+                          model: _model.topNotificationModel,
+                          updateCallback: () => setState(() {}),
+                          child: TopNotificationWidget(
+                            isDisbaledHome: true,
+                            isDisabledNotification: false,
+                          ),
+                        ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               18.0, 10.0, 18.0, 0.0),
@@ -595,108 +574,104 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                             );
                           },
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 0.0, 0.0),
-                          child: StreamBuilder<List<CatalogRecord>>(
-                            stream: queryCatalogRecord(),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    child: CircularProgressIndicator(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                    ),
+                        StreamBuilder<List<CatalogRecord>>(
+                          stream: queryCatalogRecord(),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  child: CircularProgressIndicator(
+                                    color: FlutterFlowTheme.of(context).primary,
                                   ),
-                                );
-                              }
-                              List<CatalogRecord> columnCatalogRecordList =
-                                  snapshot.data!;
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: List.generate(
-                                    columnCatalogRecordList.length,
-                                    (columnIndex) {
-                                  final columnCatalogRecord =
-                                      columnCatalogRecordList[columnIndex];
-                                  return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 20.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 15.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'CatalogItemsPage',
-                                                  queryParams: {
-                                                    'catalog': serializeParam(
-                                                      columnCatalogRecord.title,
-                                                      ParamType.String,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                16.0, 0.0),
-                                                    child: Image.network(
-                                                      columnCatalogRecord.icon
-                                                          .first.downloadURL,
-                                                      width: 20.0,
-                                                      height: 20.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  Text(
+                                ),
+                              );
+                            }
+                            List<CatalogRecord> columnCatalogRecordList =
+                                snapshot.data!;
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children:
+                                  List.generate(columnCatalogRecordList.length,
+                                      (columnIndex) {
+                                final columnCatalogRecord =
+                                    columnCatalogRecordList[columnIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 20.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  18.0, 0.0, 0.0, 15.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'CatalogItemsPage',
+                                                queryParams: {
+                                                  'catalog': serializeParam(
                                                     columnCatalogRecord.title,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 17.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                    ParamType.String,
                                                   ),
-                                                ],
-                                              ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 16.0, 0.0),
+                                                  child: Image.network(
+                                                    columnCatalogRecord
+                                                        .icon.first.downloadURL,
+                                                    width: 20.0,
+                                                    height: 20.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  columnCatalogRecord.title,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          Container(
-                                            width: double.infinity,
-                                            height: 190.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          height: 190.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 0.0, 0.0),
                                             child: StreamBuilder<
                                                 List<ServicesRecord>>(
                                               stream: queryServicesRecord(
@@ -757,102 +732,11 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                   .title ==
                                                               functions
                                                                   .defineAllServicesText())
-                                                            InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                context
-                                                                    .pushNamed(
-                                                                  'CatalogItemsPage',
-                                                                  queryParams: {
-                                                                    'catalog':
-                                                                        serializeParam(
-                                                                      columnCatalogRecord
-                                                                          .title,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              },
-                                                              child: Container(
-                                                                width: 130.0,
-                                                                height: 130.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              16.0),
-                                                                ),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.2),
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .arrow_forward_rounded,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryBtnText,
-                                                                        size:
-                                                                            51.0,
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          18.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'Все услуги',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Fira Sans',
-                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                              fontSize: 12.0,
-                                                                              fontWeight: FontWeight.w500,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          if (listViewInnerServicesRecord
-                                                                  .title !=
-                                                              functions
-                                                                  .defineAllServicesText())
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0,
+                                                                      -1.0),
                                                               child: InkWell(
                                                                 splashColor: Colors
                                                                     .transparent,
@@ -865,143 +749,247 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
-                                                                  var _shouldSetState =
-                                                                      false;
-                                                                  if (FFAppState()
-                                                                          .currentOrder ==
-                                                                      null) {
-                                                                    FFAppState()
-                                                                        .currentQuizIndex = 0;
-
-                                                                    final ordersCreateData =
-                                                                        createOrdersRecordData(
-                                                                      status:
-                                                                          'Создан',
-                                                                      cost: 0,
-                                                                      client:
-                                                                          currentUserReference,
-                                                                      service:
-                                                                          listViewInnerServicesRecord
-                                                                              .reference,
-                                                                      servicename:
-                                                                          listViewInnerServicesRecord
-                                                                              .title,
-                                                                      orderDate:
-                                                                          getCurrentTimestamp,
-                                                                      cashback:
-                                                                          listViewInnerServicesRecord
-                                                                              .cashback,
-                                                                    );
-                                                                    var ordersRecordReference =
-                                                                        OrdersRecord
-                                                                            .collection
-                                                                            .doc();
-                                                                    await ordersRecordReference
-                                                                        .set(
-                                                                            ordersCreateData);
-                                                                    _model.newOrder =
-                                                                        OrdersRecord.getDocumentFromData(
-                                                                            ordersCreateData,
-                                                                            ordersRecordReference);
-                                                                    _shouldSetState =
-                                                                        true;
-                                                                    FFAppState()
-                                                                            .currentOrder =
-                                                                        _model
-                                                                            .newOrder!
-                                                                            .reference;
-
-                                                                    context
-                                                                        .pushNamed(
-                                                                      'QuizPage2',
-                                                                      queryParams:
-                                                                          {
-                                                                        'serviceRef':
-                                                                            serializeParam(
-                                                                          listViewInnerServicesRecord
-                                                                              .reference,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                    );
-
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  } else {
-                                                                    if (_shouldSetState)
-                                                                      setState(
-                                                                          () {});
-                                                                    return;
-                                                                  }
-
-                                                                  if (_shouldSetState)
-                                                                    setState(
-                                                                        () {});
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'CatalogItemsPage',
+                                                                    queryParams:
+                                                                        {
+                                                                      'catalog':
+                                                                          serializeParam(
+                                                                        columnCatalogRecord
+                                                                            .title,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
                                                                 },
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              -1.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          listViewInnerServicesRecord
-                                                                              .img
-                                                                              .first
-                                                                              .downloadURL,
-                                                                          width:
-                                                                              130.0,
-                                                                          height:
-                                                                              130.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                child:
+                                                                    Container(
+                                                                  width: 130.0,
+                                                                  height: 130.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            16.0),
+                                                                  ),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .end,
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.2),
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .arrow_forward_rounded,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBtnText,
+                                                                          size:
+                                                                              51.0,
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              -1.0,
-                                                                              0.0),
-                                                                      child:
-                                                                          Padding(
+                                                                      Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
-                                                                            8.0,
+                                                                            10.0,
                                                                             0.0,
-                                                                            0.0),
+                                                                            18.0),
                                                                         child:
                                                                             Text(
-                                                                          listViewInnerServicesRecord
-                                                                              .title,
-                                                                          maxLines:
-                                                                              3,
+                                                                          'Все услуги',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Fira Sans',
-                                                                                fontSize: 14.0,
+                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                fontSize: 12.0,
+                                                                                fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
+                                                              ),
+                                                            ),
+                                                          if (listViewInnerServicesRecord
+                                                                  .title !=
+                                                              functions
+                                                                  .defineAllServicesText())
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                var _shouldSetState =
+                                                                    false;
+                                                                if (FFAppState()
+                                                                        .currentOrder ==
+                                                                    null) {
+                                                                  FFAppState()
+                                                                      .currentQuizIndex = 0;
+
+                                                                  final ordersCreateData =
+                                                                      createOrdersRecordData(
+                                                                    status:
+                                                                        'Создан',
+                                                                    cost: 0,
+                                                                    client:
+                                                                        currentUserReference,
+                                                                    service:
+                                                                        listViewInnerServicesRecord
+                                                                            .reference,
+                                                                    servicename:
+                                                                        listViewInnerServicesRecord
+                                                                            .title,
+                                                                    orderDate:
+                                                                        getCurrentTimestamp,
+                                                                    cashback:
+                                                                        listViewInnerServicesRecord
+                                                                            .cashback,
+                                                                  );
+                                                                  var ordersRecordReference =
+                                                                      OrdersRecord
+                                                                          .collection
+                                                                          .doc();
+                                                                  await ordersRecordReference
+                                                                      .set(
+                                                                          ordersCreateData);
+                                                                  _model.newOrder =
+                                                                      OrdersRecord.getDocumentFromData(
+                                                                          ordersCreateData,
+                                                                          ordersRecordReference);
+                                                                  _shouldSetState =
+                                                                      true;
+                                                                  FFAppState()
+                                                                          .currentOrder =
+                                                                      _model
+                                                                          .newOrder!
+                                                                          .reference;
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'QuizPage2',
+                                                                    queryParams:
+                                                                        {
+                                                                      'serviceRef':
+                                                                          serializeParam(
+                                                                        listViewInnerServicesRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+
+                                                                  if (_shouldSetState)
+                                                                    setState(
+                                                                        () {});
+                                                                  return;
+                                                                } else {
+                                                                  if (_shouldSetState)
+                                                                    setState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                              },
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Stack(
+                                                                    children: [
+                                                                      if (listViewInnerServicesRecord.img.first.downloadURL !=
+                                                                              null &&
+                                                                          listViewInnerServicesRecord.img.first.downloadURL !=
+                                                                              '')
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.network(
+                                                                            listViewInnerServicesRecord.img.first.downloadURL,
+                                                                            width:
+                                                                                130.0,
+                                                                            height:
+                                                                                130.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      if (listViewInnerServicesRecord.img.first.downloadURL ==
+                                                                              null ||
+                                                                          listViewInnerServicesRecord.img.first.downloadURL ==
+                                                                              '')
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            'assets/images/no_service.png',
+                                                                            width:
+                                                                                130.0,
+                                                                            height:
+                                                                                130.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                    ],
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          8.0,
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        listViewInnerServicesRecord
+                                                                            .title,
+                                                                        maxLines:
+                                                                            3,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Fira Sans',
+                                                                              fontSize: 14.0,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ),
                                                           if (listViewInnerServicesRecord
@@ -1018,7 +1006,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
-                                                                            16.0,
+                                                                            8.0,
                                                                             0.0),
                                                                 child:
                                                                     Container(
@@ -1132,14 +1120,14 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                               },
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  );
-                                }),
-                              );
-                            },
-                          ),
+                                  ),
+                                );
+                              }),
+                            );
+                          },
                         ),
                       ],
                     ),

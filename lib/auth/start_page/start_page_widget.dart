@@ -174,8 +174,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                 !phoneNumberVal.startsWith('+')) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text(
-                                      'Phone Number is required and has to start with +.'),
+                                  content: Text('Телефонный номер обязателен'),
                                 ),
                               );
                               return;

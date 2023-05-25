@@ -257,7 +257,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                                 .showSnackBar(
                                               SnackBar(
                                                 content: Text(
-                                                    'Enter SMS verification code.'),
+                                                    'Введите код подтверждения'),
                                               ),
                                             );
                                             return;

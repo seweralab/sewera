@@ -49,19 +49,19 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-          automaticallyImplyLeading: false,
-          actions: [],
-          flexibleSpace: FlexibleSpaceBar(
-            title: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                  child: wrapWithModel(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
                     child: TopNotificationWidget(
@@ -69,13 +69,13 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                       isDisabledNotification: false,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
             ),
-            centerTitle: true,
-            expandedTitleScale: 1.0,
+            elevation: 0.0,
           ),
-          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,

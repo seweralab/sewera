@@ -54,7 +54,7 @@ class _EditProfilePhonePageWidgetState
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56.0),
+          preferredSize: Size.fromHeight(60.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,

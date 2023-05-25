@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +53,7 @@ class _EditProfileEmailPageWidgetState
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56.0),
+          preferredSize: Size.fromHeight(60.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
@@ -270,19 +269,6 @@ class _EditProfileEmailPageWidgetState
                     ),
                   ),
                 ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.customnavbarModel,
-                  updateCallback: () => setState(() {}),
-                  child: CustomnavbarWidget(
-                    supportactive: false,
-                    homeactive: false,
-                    orderactive: false,
-                    profileactive: true,
-                  ),
-                ),
               ),
             ],
           ),

@@ -55,14 +55,14 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56.0),
+          preferredSize: Size.fromHeight(48.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Column(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -98,10 +98,10 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 10.0, 18.0, 0.0),
+                              18.0, 6.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
-                            height: 48.0,
+                            height: 51.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFF3F4F5),
                               borderRadius: BorderRadius.circular(8.0),
@@ -138,8 +138,8 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                         0.0, 0.0, 12.0, 0.0),
                                     child: Icon(
                                       Icons.search,
-                                      color: Colors.black,
-                                      size: 16.0,
+                                      color: Color(0xFF526970),
+                                      size: 20.0,
                                     ),
                                   ),
                                 ],

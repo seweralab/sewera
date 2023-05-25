@@ -2,8 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
-import '/widgets/net_btn/net_btn_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -100,7 +100,7 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(56.0),
+              preferredSize: Size.fromHeight(60.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -248,13 +248,9 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
+                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
                         if (FFAppState().currentQuizAddr != '') {
                           final ordersUpdateData = createOrdersRecordData(
                             addr: FFAppState().currentQuizAddr,
@@ -278,10 +274,26 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                           });
                         }
                       },
-                      child: wrapWithModel(
-                        model: _model.netBtnModel,
-                        updateCallback: () => setState(() {}),
-                        child: NetBtnWidget(),
+                      text: 'Продолжить',
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 48.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Fira Sans',
+                                  color: Colors.white,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

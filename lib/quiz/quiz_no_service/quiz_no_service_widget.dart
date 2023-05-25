@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/widgets/net_btn/net_btn_widget.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -60,28 +60,31 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56.0),
+          preferredSize: Size.fromHeight(60.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
-              title: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  wrapWithModel(
-                    model: _model.topNotificationModel,
-                    updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(
-                      isDisbaledHome: false,
-                      isDisabledNotification: false,
+              title: Align(
+                alignment: AlignmentDirectional(0.0, -1.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    wrapWithModel(
+                      model: _model.topNotificationModel,
+                      updateCallback: () => setState(() {}),
+                      child: TopNotificationWidget(
+                        isDisbaledHome: false,
+                        isDisabledNotification: false,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              centerTitle: true,
+              centerTitle: false,
               expandedTitleScale: 1.0,
             ),
             toolbarHeight: 0.0,
@@ -130,7 +133,7 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
                                     child: Icon(
                                       Icons.arrow_back,
                                       color: Color(0xFF586A74),
-                                      size: 20.0,
+                                      size: 26.0,
                                     ),
                                   ),
                                 ),
@@ -371,13 +374,9 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
+                padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
                     if (_model.searchFieldController.text != '') {
                       final ordersCreateData = createOrdersRecordData(
                         status: 'Не оформлен',
@@ -404,10 +403,24 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
 
                     setState(() {});
                   },
-                  child: wrapWithModel(
-                    model: _model.netBtnModel,
-                    updateCallback: () => setState(() {}),
-                    child: NetBtnWidget(),
+                  text: 'Продолжить',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 48.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Fira Sans',
+                          color: Colors.white,
+                        ),
+                    elevation: 0.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ),

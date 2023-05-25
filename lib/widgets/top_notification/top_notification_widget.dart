@@ -51,7 +51,7 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 8.0),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(),

@@ -196,7 +196,7 @@ class _QuizRadioWidgetState extends State<QuizRadioWidget> {
                     decoration: BoxDecoration(),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.textController,
                         onChanged: (_) => EasyDebounce.debounce(
@@ -262,7 +262,7 @@ class _QuizRadioWidgetState extends State<QuizRadioWidget> {
             Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(45.0, 0.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [

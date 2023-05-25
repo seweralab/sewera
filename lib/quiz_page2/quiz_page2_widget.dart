@@ -85,7 +85,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56.0),
+            preferredSize: Size.fromHeight(60.0),
             child: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
               automaticallyImplyLeading: false,
@@ -536,7 +536,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  18.0, 0.0, 18.0, 20.0),
+                                                  18.0, 0.0, 18.0, 12.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               if (FFAppState()
@@ -554,7 +554,6 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryBtnText,
-                                                    isDismissible: false,
                                                     enableDrag: false,
                                                     context: context,
                                                     builder:
@@ -653,10 +652,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, -1.0),
                                         child: Stack(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, -1.0),
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -704,6 +703,9 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                   FFAppState()
                                                                           .currentQuizIndex +
                                                                       -1;
+                                                              FFAppState()
+                                                                      .currentQuizTopErr =
+                                                                  false;
 
                                                               context.pushNamed(
                                                                 'QuizPage2',
@@ -735,6 +737,9 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                             0.7,
                                                         decoration:
                                                             BoxDecoration(),
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.0, 0.0),
                                                         child: Text(
                                                           quizQuizRecord!.title,
                                                           style: FlutterFlowTheme
@@ -807,31 +812,38 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                             if (FFAppState().currentQuizTopErr)
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Container(
-                                                  width: 277.0,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFFFEE83),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 10.0,
-                                                                8.0, 10.0),
-                                                    child: Text(
-                                                      'Нужно выбрать хотя бы один вариант',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Fira Sans',
-                                                                fontSize: 14.0,
-                                                              ),
+                                                    0.0, -1.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 10.0, 0.0, 0.0),
+                                                  child: Container(
+                                                    width: 277.0,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFFFEE83),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8.0,
+                                                                  10.0,
+                                                                  8.0,
+                                                                  10.0),
+                                                      child: Text(
+                                                        'Нужно выбрать хотя бы один вариант',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              fontSize: 14.0,
+                                                            ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -927,150 +939,137 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
+                                                              AuthUserStreamWidget(
+                                                                builder:
+                                                                    (context) =>
+                                                                        TextFormField(
+                                                                  controller: _model
+                                                                          .textController ??=
+                                                                      TextEditingController(
+                                                                    text: functions.inputFromUserFields(
+                                                                        quizQuizRecord!
+                                                                            .input,
+                                                                        valueOrDefault(
+                                                                            currentUserDocument
+                                                                                ?.mdSeptic,
+                                                                            ''),
+                                                                        valueOrDefault(
+                                                                            currentUserDocument
+                                                                                ?.mdArea,
+                                                                            ''),
+                                                                        valueOrDefault(
+                                                                            currentUserDocument
+                                                                                ?.mdType,
+                                                                            ''),
+                                                                        columnOrdersRecord
+                                                                            .quiz,
+                                                                        quizQuizRecord!
+                                                                            .title),
+                                                                  ),
+                                                                  onChanged: (_) =>
+                                                                      EasyDebounce
+                                                                          .debounce(
+                                                                    '_model.textController',
+                                                                    Duration(
+                                                                        milliseconds:
+                                                                            100),
+                                                                    () async {
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState().currentCheckInputQuiz = _model
+                                                                            .textController
+                                                                            .text;
+                                                                        FFAppState().currentCheckInputQuizErr =
+                                                                            false;
+                                                                        FFAppState().currentQuizTopErr =
+                                                                            false;
+                                                                      });
+                                                                      if (!FFAppState()
+                                                                          .currentCheckQuiz
+                                                                          .contains(
+                                                                              functions.defineInput())) {
+                                                                        setState(
+                                                                            () {
+                                                                          FFAppState()
+                                                                              .addToCurrentCheckQuiz('input');
+                                                                        });
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                  obscureText:
+                                                                      false,
                                                                   decoration:
-                                                                      BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                  ),
-                                                                  child:
-                                                                      AuthUserStreamWidget(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            TextFormField(
-                                                                      controller:
-                                                                          _model.quizInputController ??=
-                                                                              TextEditingController(
-                                                                        text: functions.inputFromUserFields(
-                                                                            quizQuizRecord!
-                                                                                .input,
-                                                                            valueOrDefault(currentUserDocument?.mdSeptic,
-                                                                                ''),
-                                                                            valueOrDefault(currentUserDocument?.mdArea, ''),
-                                                                            valueOrDefault(currentUserDocument?.mdType, ''),
-                                                                            columnOrdersRecord.quiz,
-                                                                            quizQuizRecord!.title),
+                                                                      InputDecoration(
+                                                                    hintText:
+                                                                        'Укажите своё значение',
+                                                                    hintStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmall,
+                                                                    enabledBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: functions
+                                                                            .borderErrorColor(_model.showInputError),
+                                                                        width:
+                                                                            1.0,
                                                                       ),
-                                                                      onChanged:
-                                                                          (_) =>
-                                                                              EasyDebounce.debounce(
-                                                                        '_model.quizInputController',
-                                                                        Duration(
-                                                                            milliseconds:
-                                                                                10),
-                                                                        () async {
-                                                                          setState(
-                                                                              () {
-                                                                            _model.showInputError =
-                                                                                false;
-                                                                          });
-                                                                          setState(
-                                                                              () {
-                                                                            FFAppState().currentQuizTopErr =
-                                                                                false;
-                                                                          });
-                                                                        },
-                                                                      ),
-                                                                      onFieldSubmitted:
-                                                                          (_) async {
-                                                                        setState(
-                                                                            () {
-                                                                          _model.showInputError =
-                                                                              false;
-                                                                        });
-                                                                        setState(
-                                                                            () {
-                                                                          FFAppState().currentQuizTopErr =
-                                                                              false;
-                                                                        });
-                                                                      },
-                                                                      obscureText:
-                                                                          false,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        hintText:
-                                                                            'Укажите свое значение',
-                                                                        hintStyle:
-                                                                            FlutterFlowTheme.of(context).bodySmall,
-                                                                        enabledBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                functions.borderErrorColor(_model.showInputError),
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                        focusedBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                        errorBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                        focusedErrorBorder:
-                                                                            OutlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1.0,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(8.0),
-                                                                        ),
-                                                                        filled:
-                                                                            true,
-                                                                        fillColor:
-                                                                            Color(0xFFF3F4F5),
-                                                                        contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium,
-                                                                      validator: _model
-                                                                          .quizInputControllerValidator
-                                                                          .asValidator(
-                                                                              context),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
                                                                     ),
+                                                                    focusedBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    errorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1.0,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                    ),
+                                                                    filled:
+                                                                        true,
+                                                                    fillColor:
+                                                                        Color(
+                                                                            0xFFF3F4F5),
                                                                   ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium,
+                                                                  validator: _model
+                                                                      .textControllerValidator
+                                                                      .asValidator(
+                                                                          context),
                                                                 ),
                                                               ),
                                                               if (_model
@@ -1145,7 +1144,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  18.0, 0.0, 18.0, 20.0),
+                                                  18.0, 0.0, 18.0, 12.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               if (quizQuizRecord!.type ==
@@ -1301,10 +1300,10 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                     return;
                                                   }
                                                 } else {
-                                                  if (_model.quizInputController
+                                                  if (_model.textController
                                                               .text !=
                                                           null &&
-                                                      _model.quizInputController
+                                                      _model.textController
                                                               .text !=
                                                           '') {
                                                     final ordersUpdateData5 =
@@ -1314,7 +1313,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                               columnOrdersRecord
                                                                   .quiz,
                                                               _model
-                                                                  .quizInputController
+                                                                  .textController
                                                                   .text,
                                                               quizQuizRecord!
                                                                   .title,
@@ -1336,28 +1335,26 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                 }
                                               }
 
-                                              setState(() {
-                                                FFAppState().currentQuizIndex =
-                                                    FFAppState()
-                                                            .currentQuizIndex +
-                                                        1;
-                                                FFAppState().currentRadioQuiz =
-                                                    '';
-                                                FFAppState()
-                                                    .currentQuizRadioInput = '';
-                                                FFAppState()
-                                                        .currentQuizRadieInputErr =
-                                                    false;
-                                                FFAppState().currentCheckQuiz =
-                                                    [];
-                                                FFAppState()
-                                                    .currentCheckInputQuiz = '';
-                                                FFAppState()
-                                                        .currentCheckInputQuizErr =
-                                                    false;
-                                                FFAppState().currentQuizTopErr =
-                                                    false;
-                                              });
+                                              FFAppState().currentQuizIndex =
+                                                  FFAppState()
+                                                          .currentQuizIndex +
+                                                      1;
+                                              FFAppState().currentRadioQuiz =
+                                                  '';
+                                              FFAppState()
+                                                  .currentQuizRadioInput = '';
+                                              FFAppState()
+                                                      .currentQuizRadieInputErr =
+                                                  false;
+                                              FFAppState().currentCheckQuiz =
+                                                  [];
+                                              FFAppState()
+                                                  .currentCheckInputQuiz = '';
+                                              FFAppState()
+                                                      .currentCheckInputQuizErr =
+                                                  false;
+                                              FFAppState().currentQuizTopErr =
+                                                  false;
 
                                               context.pushNamed(
                                                 'QuizPage2',

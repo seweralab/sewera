@@ -115,12 +115,12 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
               ),
             ] else if (allowPhoto)
               createUploadMediaListTile(
-                'Галлерея',
+                'Галерея',
                 MediaSource.photoGallery,
               )
             else
               createUploadMediaListTile(
-                'Галлерея',
+                'Галерея',
                 MediaSource.videoGallery,
               ),
             if (!kIsWeb) ...[
@@ -231,7 +231,7 @@ bool validateFileFormat(String filePath, BuildContext context) {
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
     ..showSnackBar(SnackBar(
-      content: Text('Invalid file format: ${mime(filePath)}'),
+      content: Text('Неверный формат файла '),
     ));
   return false;
 }

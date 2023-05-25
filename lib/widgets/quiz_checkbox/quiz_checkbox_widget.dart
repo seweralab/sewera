@@ -120,27 +120,31 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Stack(
-                              children: [
-                                if (!FFAppState()
-                                    .currentCheckQuiz
-                                    .contains(radiosItem))
-                                  SvgPicture.asset(
-                                    'assets/images/check.svg',
-                                    width: 24.0,
-                                    height: 24.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                if (FFAppState()
-                                    .currentCheckQuiz
-                                    .contains(radiosItem))
-                                  SvgPicture.asset(
-                                    'assets/images/check_active.svg',
-                                    width: 24.0,
-                                    height: 24.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                              ],
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 2.0, 0.0),
+                              child: Stack(
+                                children: [
+                                  if (!FFAppState()
+                                      .currentCheckQuiz
+                                      .contains(radiosItem))
+                                    SvgPicture.asset(
+                                      'assets/images/check.svg',
+                                      width: 24.0,
+                                      height: 24.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  if (FFAppState()
+                                      .currentCheckQuiz
+                                      .contains(radiosItem))
+                                    SvgPicture.asset(
+                                      'assets/images/check_active.svg',
+                                      width: 24.0,
+                                      height: 24.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                ],
+                              ),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.8,
@@ -170,7 +174,7 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
           },
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
           child: InkWell(
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,
@@ -221,7 +225,8 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   decoration: BoxDecoration(),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController,
                       onChanged: (_) => EasyDebounce.debounce(
@@ -245,7 +250,7 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
                       ),
                       obscureText: false,
                       decoration: InputDecoration(
-                        hintText: 'Укажите своё значение',
+                        hintText: 'Другое',
                         hintStyle: FlutterFlowTheme.of(context).bodySmall,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -293,7 +298,7 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
           Align(
             alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(45.0, 0.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

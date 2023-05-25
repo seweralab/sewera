@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/widgets/net_btn/net_btn_widget.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,9 +25,7 @@ class QuizNoServiceModel extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // Model for NetBtn component.
-  late NetBtnModel netBtnModel;
-  // Stores action output result for [Backend Call - Create Document] action in NetBtn widget.
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? orderFromNoService;
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
@@ -35,14 +33,12 @@ class QuizNoServiceModel extends FlutterFlowModel {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    netBtnModel = createModel(context, () => NetBtnModel());
     topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
     searchFieldController?.dispose();
     textController2?.dispose();
-    netBtnModel.dispose();
     topNotificationModel.dispose();
   }
 

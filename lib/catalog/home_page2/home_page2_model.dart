@@ -15,12 +15,12 @@ import 'package:provider/provider.dart';
 class HomePage2Model extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? newOrderfromNotificationMainPage;
   // Stores action output result for [Backend Call - Create Document] action in Services widget.
   OrdersRecord? newOrder;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 

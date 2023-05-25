@@ -83,7 +83,7 @@ class _QuizPage2NoServiceDateWidgetState
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(56.0),
+            preferredSize: Size.fromHeight(60.0),
             child: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
               automaticallyImplyLeading: false,
@@ -409,7 +409,7 @@ class _QuizPage2NoServiceDateWidgetState
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 0.0, 18.0, 20.0),
+                                    18.0, 0.0, 18.0, 12.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     if (FFAppState().currentQuizDeadline !=

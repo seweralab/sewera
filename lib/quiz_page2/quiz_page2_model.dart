@@ -33,9 +33,9 @@ class QuizPage2Model extends FlutterFlowModel {
   late QuizRadioModel quizRadioModel;
   // Model for quizCheckbox component.
   late QuizCheckboxModel quizCheckboxModel;
-  // State field(s) for quizInput widget.
-  TextEditingController? quizInputController;
-  String? Function(BuildContext, String?)? quizInputControllerValidator;
+  // State field(s) for TextField widget.
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
 
@@ -50,7 +50,7 @@ class QuizPage2Model extends FlutterFlowModel {
   void dispose() {
     quizRadioModel.dispose();
     quizCheckboxModel.dispose();
-    quizInputController?.dispose();
+    textController?.dispose();
     topNotificationModel.dispose();
   }
 

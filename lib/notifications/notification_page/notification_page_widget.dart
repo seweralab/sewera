@@ -77,7 +77,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(56.0),
+              preferredSize: Size.fromHeight(60.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,

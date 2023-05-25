@@ -121,6 +121,7 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                       fontFamily: 'Fira Sans',
                       color: FlutterFlowTheme.of(context).primaryBtnText,
                     ),
+                elevation: 0.0,
                 borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
@@ -156,6 +157,7 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                         fontFamily: 'Fira Sans',
                         color: FlutterFlowTheme.of(context).primaryBtnText,
                       ),
+                  elevation: 0.0,
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,

@@ -72,7 +72,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(56.0),
+              preferredSize: Size.fromHeight(60.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -113,7 +113,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 32.0, 18.0, 32.0),
+                              18.0, 16.0, 18.0, 14.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -1185,7 +1185,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 34.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         final ordersUpdateData = createOrdersRecordData(
