@@ -252,7 +252,7 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
-            top: _suggestions.isNotEmpty ? 0 : 338,
+            top: _isFocused ? 0 : 338,
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: SizedBox(
