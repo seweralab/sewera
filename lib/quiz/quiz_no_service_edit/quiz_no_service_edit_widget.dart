@@ -76,7 +76,7 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(60.0),
+              preferredSize: Size.fromHeight(54.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -84,7 +84,7 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       wrapWithModel(

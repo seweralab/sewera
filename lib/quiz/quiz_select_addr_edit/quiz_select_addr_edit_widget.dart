@@ -100,7 +100,7 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(60.0),
+              preferredSize: Size.fromHeight(54.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -108,7 +108,7 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Column(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       wrapWithModel(

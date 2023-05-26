@@ -55,5 +55,4 @@ class QuizPage2Model extends FlutterFlowModel {
   }
 
   /// Additional helper methods are added here.
-
 }

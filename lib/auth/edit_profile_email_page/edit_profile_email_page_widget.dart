@@ -53,7 +53,7 @@ class _EditProfileEmailPageWidgetState
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60.0),
+          preferredSize: Size.fromHeight(54.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
@@ -61,7 +61,7 @@ class _EditProfileEmailPageWidgetState
             flexibleSpace: FlexibleSpaceBar(
               title: Column(
                 mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   wrapWithModel(

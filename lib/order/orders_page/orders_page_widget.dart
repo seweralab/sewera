@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'orders_page_model.dart';
 export 'orders_page_model.dart';
 
@@ -54,8 +55,8 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 40.0,
-              height: 40.0,
+              width: 40,
+              height: 40,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -69,7 +70,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(60.0),
+              preferredSize: Size.fromHeight(54),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
                 automaticallyImplyLeading: false,
@@ -77,7 +78,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Column(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       wrapWithModel(
@@ -93,14 +94,14 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                   centerTitle: true,
                   expandedTitleScale: 1.0,
                 ),
-                toolbarHeight: 0.0,
-                elevation: 0.0,
+                toolbarHeight: 0,
+                elevation: 0,
               ),
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0, 0),
                 child: Stack(
                   children: [
                     Column(
@@ -140,7 +141,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
-                                                          fontSize: 20.0,
+                                                          fontSize: 20,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -153,8 +154,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 240.0, 0.0, 0.0),
+                                                  .fromSTEB(0, 240, 0, 0),
                                               child: Text(
                                                 'Хотите создать первый заказ?',
                                                 style:
@@ -163,7 +163,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
-                                                          fontSize: 24.0,
+                                                          fontSize: 24,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -179,7 +179,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primary,
-                                                    fontSize: 20.0,
+                                                    fontSize: 20,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                             ),
@@ -190,12 +190,11 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 50.0),
+                                                  .fromSTEB(0, 0, 0, 50),
                                               child: Image.asset(
                                                 'assets/images/orderarr.png',
-                                                width: 150.0,
-                                                height: 220.0,
+                                                width: 150,
+                                                height: 220,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -210,7 +209,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 30.0),
+                                                  0, 0, 0, 30),
                                           child: Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(
@@ -228,7 +227,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Fira Sans',
-                                                        fontSize: 20.0,
+                                                        fontSize: 20,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -242,11 +241,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 48.0, 0.0, 0.0),
+                                                    .fromSTEB(0, 48, 0, 0),
                                                 child: Container(
                                                   width: double.infinity,
-                                                  height: 1.0,
+                                                  height: 1,
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFE8EAEC),
                                                   ),
@@ -259,7 +257,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          Alignment(0.0, 0),
+                                                          Alignment(0, 0),
                                                       child: TabBar(
                                                         labelColor:
                                                             Color(0xFF102938),
@@ -270,8 +268,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Fira Sans',
-                                                                  fontSize:
-                                                                      14.0,
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -280,7 +277,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondary,
-                                                        indicatorWeight: 3.0,
+                                                        indicatorWeight: 3,
                                                         tabs: [
                                                           Tab(
                                                             text: 'Активные',
@@ -298,10 +295,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        18.0,
-                                                                        0.0,
-                                                                        18.0,
-                                                                        0.0),
+                                                                        18,
+                                                                        0,
+                                                                        18,
+                                                                        0),
                                                             child: StreamBuilder<
                                                                 List<
                                                                     OrdersRecord>>(
@@ -329,10 +326,9 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                   return Center(
                                                                     child:
                                                                         SizedBox(
-                                                                      width:
-                                                                          40.0,
+                                                                      width: 40,
                                                                       height:
-                                                                          40.0,
+                                                                          40,
                                                                       child:
                                                                           CircularProgressIndicator(
                                                                         color: FlutterFlowTheme.of(context)
@@ -359,10 +355,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                               columnIndex];
                                                                       return Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            20.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                                            0,
+                                                                            20,
+                                                                            0,
+                                                                            0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
@@ -391,14 +387,14 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Align(
-                                                                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                                alignment: AlignmentDirectional(-1, 0),
                                                                                 child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                                                                                   child: Text(
                                                                                     columnOrdersRecord.servicename,
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Fira Sans',
-                                                                                          fontSize: 14.0,
+                                                                                          fontSize: 14,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -410,28 +406,28 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                 children: [
                                                                                   Container(
                                                                                     width: MediaQuery.of(context).size.width * 0.45,
-                                                                                    height: 22.0,
+                                                                                    height: 22,
                                                                                     decoration: BoxDecoration(
                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                                     child: Align(
-                                                                                      alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                                      alignment: AlignmentDirectional(-1, 0),
                                                                                       child: Column(
                                                                                         mainAxisSize: MainAxisSize.max,
                                                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                                                         children: [
                                                                                           if (columnOrdersRecord.status == 'В обработке')
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                               child: Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                     child: SvgPicture.asset(
                                                                                                       'assets/images/process.svg',
-                                                                                                      width: 16.0,
-                                                                                                      height: 16.0,
+                                                                                                      width: 16,
+                                                                                                      height: 16,
                                                                                                       fit: BoxFit.cover,
                                                                                                     ),
                                                                                                   ),
@@ -440,7 +436,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Fira Sans',
                                                                                                           color: Color(0xFF88959C),
-                                                                                                          fontSize: 14.0,
+                                                                                                          fontSize: 14,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
                                                                                                   ),
@@ -449,16 +445,16 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                             ),
                                                                                           if (columnOrdersRecord.status == 'Подтвердите')
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                               child: Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                     child: SvgPicture.asset(
                                                                                                       'assets/images/confirm.svg',
-                                                                                                      width: 16.0,
-                                                                                                      height: 16.0,
+                                                                                                      width: 16,
+                                                                                                      height: 16,
                                                                                                       fit: BoxFit.cover,
                                                                                                     ),
                                                                                                   ),
@@ -467,7 +463,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Fira Sans',
                                                                                                           color: Color(0xFFFFB306),
-                                                                                                          fontSize: 14.0,
+                                                                                                          fontSize: 14,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
                                                                                                   ),
@@ -476,16 +472,16 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                             ),
                                                                                           if (columnOrdersRecord.status == 'Подтверждён')
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                               child: Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                     child: SvgPicture.asset(
                                                                                                       'assets/images/confirmed.svg',
-                                                                                                      width: 16.0,
-                                                                                                      height: 16.0,
+                                                                                                      width: 16,
+                                                                                                      height: 16,
                                                                                                       fit: BoxFit.cover,
                                                                                                     ),
                                                                                                   ),
@@ -494,7 +490,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Fira Sans',
                                                                                                           color: Color(0xFF04AB51),
-                                                                                                          fontSize: 14.0,
+                                                                                                          fontSize: 14,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
                                                                                                   ),
@@ -503,16 +499,16 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                             ),
                                                                                           if (columnOrdersRecord.status == 'Выполнен')
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                               child: Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                     child: SvgPicture.asset(
                                                                                                       'assets/images/complete.svg',
-                                                                                                      width: 16.0,
-                                                                                                      height: 16.0,
+                                                                                                      width: 16,
+                                                                                                      height: 16,
                                                                                                       fit: BoxFit.cover,
                                                                                                     ),
                                                                                                   ),
@@ -521,7 +517,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Fira Sans',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                          fontSize: 14.0,
+                                                                                                          fontSize: 14,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
                                                                                                   ),
@@ -530,16 +526,16 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                             ),
                                                                                           if (columnOrdersRecord.status == 'Не оформлен')
                                                                                             Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                               child: Row(
                                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                                 children: [
                                                                                                   Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                     child: SvgPicture.asset(
                                                                                                       'assets/images/process.svg',
-                                                                                                      width: 16.0,
-                                                                                                      height: 16.0,
+                                                                                                      width: 16,
+                                                                                                      height: 16,
                                                                                                       fit: BoxFit.cover,
                                                                                                     ),
                                                                                                   ),
@@ -548,7 +544,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           fontFamily: 'Fira Sans',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                          fontSize: 14.0,
+                                                                                                          fontSize: 14,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
                                                                                                   ),
@@ -565,7 +561,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                                     child: Align(
-                                                                                      alignment: AlignmentDirectional(1.0, 0.0),
+                                                                                      alignment: AlignmentDirectional(1, 0),
                                                                                       child: Text(
                                                                                         columnOrdersRecord.deadline,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium,
@@ -575,10 +571,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                 ],
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                                                                 child: Container(
                                                                                   width: double.infinity,
-                                                                                  height: 1.0,
+                                                                                  height: 1,
                                                                                   decoration: BoxDecoration(
                                                                                     color: Color(0xFFE8EAEC),
                                                                                   ),
@@ -603,10 +599,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          18.0,
-                                                                          0.0,
-                                                                          18.0,
-                                                                          0.0),
+                                                                          18,
+                                                                          0,
+                                                                          18,
+                                                                          0),
                                                                   child: StreamBuilder<
                                                                       List<
                                                                           OrdersRecord>>(
@@ -631,9 +627,9 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                           child:
                                                                               SizedBox(
                                                                             width:
-                                                                                40.0,
+                                                                                40,
                                                                             height:
-                                                                                40.0,
+                                                                                40,
                                                                             child:
                                                                                 CircularProgressIndicator(
                                                                               color: FlutterFlowTheme.of(context).primary,
@@ -662,10 +658,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                               listViewOrdersRecordList[listViewIndex];
                                                                           return Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                20.0,
-                                                                                0.0,
-                                                                                0.0),
+                                                                                0,
+                                                                                20,
+                                                                                0,
+                                                                                0),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -687,14 +683,14 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Align(
-                                                                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                                    alignment: AlignmentDirectional(-1, 0),
                                                                                     child: Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                                                                                       child: Text(
                                                                                         listViewOrdersRecord.servicename,
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Fira Sans',
-                                                                                              fontSize: 14.0,
+                                                                                              fontSize: 14,
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
                                                                                       ),
@@ -706,28 +702,28 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                     children: [
                                                                                       Container(
                                                                                         width: MediaQuery.of(context).size.width * 0.4,
-                                                                                        height: 22.0,
+                                                                                        height: 22,
                                                                                         decoration: BoxDecoration(
                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         ),
                                                                                         child: Align(
-                                                                                          alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                                          alignment: AlignmentDirectional(-1, 0),
                                                                                           child: Column(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
                                                                                             children: [
                                                                                               if (listViewOrdersRecord.status == 'Выполнен')
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                                   child: Row(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                         child: SvgPicture.asset(
                                                                                                           'assets/images/complete.svg',
-                                                                                                          width: 16.0,
-                                                                                                          height: 16.0,
+                                                                                                          width: 16,
+                                                                                                          height: 16,
                                                                                                           fit: BoxFit.cover,
                                                                                                         ),
                                                                                                       ),
@@ -736,7 +732,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: 'Fira Sans',
                                                                                                               color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                              fontSize: 14.0,
+                                                                                                              fontSize: 14,
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                             ),
                                                                                                       ),
@@ -745,16 +741,16 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                 ),
                                                                                               if (listViewOrdersRecord.status == 'Отменен')
                                                                                                 Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                                                                                                   child: Row(
                                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                                     children: [
                                                                                                       Padding(
-                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                                         child: SvgPicture.asset(
                                                                                                           'assets/images/canceled.svg',
-                                                                                                          width: 16.0,
-                                                                                                          height: 16.0,
+                                                                                                          width: 16,
+                                                                                                          height: 16,
                                                                                                           fit: BoxFit.cover,
                                                                                                         ),
                                                                                                       ),
@@ -763,7 +759,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: 'Fira Sans',
                                                                                                               color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                              fontSize: 14.0,
+                                                                                                              fontSize: 14,
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                             ),
                                                                                                       ),
@@ -780,7 +776,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         ),
                                                                                         child: Align(
-                                                                                          alignment: AlignmentDirectional(1.0, 0.0),
+                                                                                          alignment: AlignmentDirectional(1, 0),
                                                                                           child: AutoSizeText(
                                                                                             listViewOrdersRecord.deadline,
                                                                                             maxLines: 2,
@@ -791,10 +787,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                     ],
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                                                                     child: Container(
                                                                                       width: double.infinity,
-                                                                                      height: 1.0,
+                                                                                      height: 1,
                                                                                       decoration: BoxDecoration(
                                                                                         color: Color(0xFFE8EAEC),
                                                                                       ),
@@ -831,13 +827,12 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                       ],
                     ),
                     Align(
-                      alignment: AlignmentDirectional(1.0, 1.0),
+                      alignment: AlignmentDirectional(1, 1),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 0.0, 30.0, 30.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 30),
                         child: Container(
-                          width: 52.0,
-                          height: 52.0,
+                          width: 52,
+                          height: 52,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).primary,
                             shape: BoxShape.circle,
@@ -854,7 +849,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                               Icons.add,
                               color:
                                   FlutterFlowTheme.of(context).primaryBtnText,
-                              size: 28.0,
+                              size: 28,
                             ),
                           ),
                         ),

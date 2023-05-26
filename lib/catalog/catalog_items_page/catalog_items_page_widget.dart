@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'catalog_items_page_model.dart';
 export 'catalog_items_page_model.dart';
 
@@ -55,7 +56,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(48.0),
+          preferredSize: Size.fromHeight(54),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             automaticallyImplyLeading: false,
@@ -63,7 +64,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
             flexibleSpace: FlexibleSpaceBar(
               title: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   wrapWithModel(
@@ -79,14 +80,14 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
               centerTitle: true,
               expandedTitleScale: 1.0,
             ),
-            toolbarHeight: 0.0,
-            elevation: 0.0,
+            toolbarHeight: 0,
+            elevation: 0,
           ),
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: AlignmentDirectional(0, 1),
             child: Stack(
               children: [
                 Column(
@@ -97,14 +98,13 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 6.0, 18.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(18, 6, 18, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 51.0,
+                            height: 51,
                             decoration: BoxDecoration(
                               color: Color(0xFFF3F4F5),
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -121,7 +121,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
+                                        12, 0, 0, 0),
                                     child: Text(
                                       'Найти услугу в каталоге',
                                       style: FlutterFlowTheme.of(context)
@@ -129,17 +129,17 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                           .override(
                                             fontFamily: 'Fira Sans',
                                             color: Color(0xB3102938),
-                                            fontSize: 14.0,
+                                            fontSize: 14,
                                           ),
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 12.0, 0.0),
+                                        0, 0, 12, 0),
                                     child: Icon(
                                       Icons.search,
                                       color: Color(0xFF526970),
-                                      size: 20.0,
+                                      size: 20,
                                     ),
                                   ),
                                 ],
@@ -148,8 +148,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -161,7 +160,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 32.0, 0.0, 32.0),
+                                      0, 32, 0, 32),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -176,11 +175,11 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 18.0, 0.0),
+                                                  0, 0, 18, 0),
                                           child: Icon(
                                             Icons.arrow_back_sharp,
                                             color: Colors.black,
-                                            size: 24.0,
+                                            size: 24,
                                           ),
                                         ),
                                         Text(
@@ -189,7 +188,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Fira Sans',
-                                                fontSize: 20.0,
+                                                fontSize: 20,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -218,8 +217,8 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                       if (!snapshot.hasData) {
                                         return Center(
                                           child: SizedBox(
-                                            width: 40.0,
-                                            height: 40.0,
+                                            width: 40,
+                                            height: 40,
                                             child: CircularProgressIndicator(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -321,16 +320,13 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                       children: [
                                                         if (listViewIndex > 0)
                                                           Divider(
-                                                            thickness: 1.0,
+                                                            thickness: 1,
                                                           ),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      3.0,
-                                                                      0.0,
-                                                                      3.0),
+                                                                  .fromSTEB(0,
+                                                                      3, 0, 3),
                                                           child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -375,47 +371,47 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                             Color(0xFFFEC121)
                                                                           ],
                                                                           stops: [
-                                                                            0.0,
+                                                                            0,
                                                                             0.3,
-                                                                            1.0
+                                                                            1
                                                                           ],
                                                                           begin: AlignmentDirectional(
                                                                               -0.03,
-                                                                              -1.0),
+                                                                              -1),
                                                                           end: AlignmentDirectional(
                                                                               0.03,
-                                                                              1.0),
+                                                                              1),
                                                                         ),
                                                                         borderRadius:
                                                                             BorderRadius.only(
                                                                           bottomLeft:
-                                                                              Radius.circular(8.0),
+                                                                              Radius.circular(8),
                                                                           bottomRight:
-                                                                              Radius.circular(0.0),
+                                                                              Radius.circular(0),
                                                                           topLeft:
-                                                                              Radius.circular(0.0),
+                                                                              Radius.circular(0),
                                                                           topRight:
-                                                                              Radius.circular(8.0),
+                                                                              Radius.circular(8),
                                                                         ),
                                                                       ),
                                                                       child:
                                                                           Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            8.0,
-                                                                            5.0,
-                                                                            8.0,
-                                                                            5.0),
+                                                                            8,
+                                                                            5,
+                                                                            8,
+                                                                            5),
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
                                                                               MainAxisSize.max,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 2, 0),
                                                                               child: SvgPicture.asset(
                                                                                 'assets/images/Union.svg',
-                                                                                width: 12.0,
-                                                                                height: 12.0,
+                                                                                width: 12,
+                                                                                height: 12,
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                             ),
@@ -449,7 +445,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                         .chevron_right,
                                                                     color: Colors
                                                                         .black,
-                                                                    size: 24.0,
+                                                                    size: 24,
                                                                   ),
                                                                 ],
                                                               ),
@@ -466,8 +462,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                       .defineAllServicesText())
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 15.0, 0.0, 0.0),
+                                                      .fromSTEB(0, 15, 0, 0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -494,22 +489,19 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                     },
                                                     child: Container(
                                                       width: double.infinity,
-                                                      height: 48.0,
+                                                      height: 48,
                                                       decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFFF3F4F5),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(40.0),
+                                                                .circular(40),
                                                       ),
                                                       child: Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    14.0,
-                                                                    14.0,
-                                                                    14.0,
-                                                                    14.0),
+                                                                .fromSTEB(14,
+                                                                    14, 14, 14),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -518,15 +510,15 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          14.0,
-                                                                          0.0),
+                                                                          0,
+                                                                          0,
+                                                                          14,
+                                                                          0),
                                                               child: SvgPicture
                                                                   .asset(
                                                                 'assets/images/noservice.svg',
-                                                                width: 20.0,
-                                                                height: 20.0,
+                                                                width: 20,
+                                                                height: 20,
                                                                 fit: BoxFit
                                                                     .cover,
                                                               ),
@@ -540,7 +532,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                     fontFamily:
                                                                         'Fira Sans',
                                                                     fontSize:
-                                                                        14.0,
+                                                                        14,
                                                                   ),
                                                             ),
                                                           ],
