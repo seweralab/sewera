@@ -69,6 +69,19 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                           PageView(
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
+                            onPageChanged: (_) async {
+                              if (pageViewCurrentIndex == 3) {
+                                if (loggedIn == true) {
+                                  context.pushNamed('HomePage2');
+
+                                  return;
+                                } else {
+                                  context.pushNamed('StartPage');
+
+                                  return;
+                                }
+                              }
+                            },
                             scrollDirection: Axis.horizontal,
                             children: [
                               Stack(
@@ -370,7 +383,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                     );
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.25,
+                    width: MediaQuery.of(context).size.width * 0.12,
                     height: double.infinity,
                     decoration: BoxDecoration(),
                   ),
@@ -399,7 +412,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                     }
                   },
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.25,
+                    width: MediaQuery.of(context).size.width * 0.12,
                     height: double.infinity,
                     decoration: BoxDecoration(),
                   ),

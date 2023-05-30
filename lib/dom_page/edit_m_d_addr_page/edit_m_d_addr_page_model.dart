@@ -19,6 +19,8 @@ class EditMDAddrPageModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
@@ -26,20 +28,18 @@ class EditMDAddrPageModel extends FlutterFlowModel {
   ApiCallResponse? apiResultx2g;
   // Model for customnavbar component.
   late CustomnavbarModel customnavbarModel;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    customnavbarModel = createModel(context, () => CustomnavbarModel());
     topNotificationModel = createModel(context, () => TopNotificationModel());
+    customnavbarModel = createModel(context, () => CustomnavbarModel());
   }
 
   void dispose() {
+    topNotificationModel.dispose();
     textController?.dispose();
     customnavbarModel.dispose();
-    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

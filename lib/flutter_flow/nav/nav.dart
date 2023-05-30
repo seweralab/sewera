@@ -109,22 +109,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'QuizSelectDate',
-          path: '/quizSelectDate',
-          builder: (context, params) => QuizSelectDateWidget(
-            customServiceName:
-                params.getParam('customServiceName', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'QuizSelectDateCalendar',
-          path: '/quizSelectDateCalendar',
-          builder: (context, params) => QuizSelectDateCalendarWidget(
-            customServiceName:
-                params.getParam('customServiceName', ParamType.String),
-          ),
-        ),
-        FFRoute(
           name: 'QuizSelectAddr',
           path: '/quizSelectAddr',
           builder: (context, params) => QuizSelectAddrWidget(
@@ -137,14 +121,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SearchPage',
           path: '/searchPage',
           builder: (context, params) => SearchPageWidget(),
-        ),
-        FFRoute(
-          name: 'QuizPage',
-          path: '/quizPage',
-          builder: (context, params) => QuizPageWidget(
-            serviceRef: params.getParam(
-                'serviceRef', ParamType.DocumentReference, false, ['services']),
-          ),
         ),
         FFRoute(
           name: 'QuizPage2',
@@ -322,17 +298,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'orderSubmittedPage',
           path: '/orderSubmittedPage',
           builder: (context, params) => OrderSubmittedPageWidget(),
-        ),
-        FFRoute(
-          name: 'QuizPage2Edit',
-          path: '/quizPage2Edit',
-          builder: (context, params) => QuizPage2EditWidget(
-            quizref: params.getParam('quizref', ParamType.DocumentReference,
-                false, ['services', 'quiz']),
-            quiztitle: params.getParam('quiztitle', ParamType.String),
-            serviceref: params.getParam(
-                'serviceref', ParamType.DocumentReference, false, ['services']),
-          ),
         ),
         FFRoute(
           name: 'QuizPage2EditDate',

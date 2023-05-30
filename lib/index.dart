@@ -4,14 +4,9 @@ export '/auth/s_m_s_page/s_m_s_page_widget.dart' show SMSPageWidget;
 export '/auth/profile_page/profile_page_widget.dart' show ProfilePageWidget;
 export '/catalog/catalog_items_page/catalog_items_page_widget.dart'
     show CatalogItemsPageWidget;
-export '/quiz/quiz_select_date/quiz_select_date_widget.dart'
-    show QuizSelectDateWidget;
-export '/quiz/quiz_select_date_calendar/quiz_select_date_calendar_widget.dart'
-    show QuizSelectDateCalendarWidget;
 export '/quiz/quiz_select_addr/quiz_select_addr_widget.dart'
     show QuizSelectAddrWidget;
-export '/search/search_page/search_page_widget.dart' show SearchPageWidget;
-export '/quiz/quiz_page/quiz_page_widget.dart' show QuizPageWidget;
+export '/catalog/search_page/search_page_widget.dart' show SearchPageWidget;
 export '/quiz_page2/quiz_page2_widget.dart' show QuizPage2Widget;
 export '/auth/edit_profile_page/edit_profile_page_widget.dart'
     show EditProfilePageWidget;
@@ -53,8 +48,6 @@ export '/order/cancel_order_page/cancel_order_page_widget.dart'
     show CancelOrderPageWidget;
 export '/order/order_submitted_page/order_submitted_page_widget.dart'
     show OrderSubmittedPageWidget;
-export '/quiz/quiz_page2_edit/quiz_page2_edit_widget.dart'
-    show QuizPage2EditWidget;
 export '/quiz/quiz_page2_edit_date/quiz_page2_edit_date_widget.dart'
     show QuizPage2EditDateWidget;
 export '/quiz/quiz_select_addr_edit/quiz_select_addr_edit_widget.dart'

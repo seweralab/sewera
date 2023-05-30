@@ -115,17 +115,17 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
               ),
             ] else if (allowPhoto)
               createUploadMediaListTile(
-                'Галерея',
+                'Галлерея',
                 MediaSource.photoGallery,
               )
             else
               createUploadMediaListTile(
-                'Галерея',
+                'Галлерея',
                 MediaSource.videoGallery,
               ),
             if (!kIsWeb) ...[
               const Divider(),
-              createUploadMediaListTile('Сделать фото', MediaSource.camera),
+              createUploadMediaListTile('Камера', MediaSource.camera),
               const Divider(),
             ],
             const SizedBox(height: 10),

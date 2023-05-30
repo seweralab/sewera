@@ -14,10 +14,10 @@ import 'package:provider/provider.dart';
 class CatalogItemsPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - Create Document] action in Column widget.
-  OrdersRecord? newOrderFull;
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
+  // Stores action output result for [Backend Call - Create Document] action in Column widget.
+  OrdersRecord? newOrderFull;
 
   /// Initialization and disposal methods.
 

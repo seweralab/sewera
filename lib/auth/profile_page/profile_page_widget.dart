@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -67,7 +68,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 46, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                             child: wrapWithModel(
                               model: _model.topNotificationModel,
                               updateCallback: () => setState(() {}),
@@ -214,12 +215,44 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   ),
                                                   child: AuthUserStreamWidget(
                                                     builder: (context) => Text(
-                                                      currentUserDisplayName ==
-                                                                  null ||
-                                                              currentUserDisplayName ==
-                                                                  ''
-                                                          ? 'Гость'
-                                                          : currentUserDisplayName,
+                                                      () {
+                                                        if (currentUserDisplayName !=
+                                                                null &&
+                                                            currentUserDisplayName !=
+                                                                '') {
+                                                          return currentUserDisplayName;
+                                                        } else if (valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.surname,
+                                                                    '') !=
+                                                                null &&
+                                                            valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.surname,
+                                                                    '') !=
+                                                                '') {
+                                                          return valueOrDefault(
+                                                              currentUserDocument
+                                                                  ?.surname,
+                                                              '');
+                                                        } else if (valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.patronymic,
+                                                                    '') !=
+                                                                null &&
+                                                            valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.patronymic,
+                                                                    '') !=
+                                                                '') {
+                                                          return valueOrDefault(
+                                                              currentUserDocument
+                                                                  ?.patronymic,
+                                                              '');
+                                                        } else {
+                                                          return 'Гость';
+                                                        }
+                                                      }(),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -262,10 +295,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         },
                                       );
                                     },
-                                    child: Icon(
-                                      Icons.chevron_right,
-                                      color: Color(0xFF6F7F87),
-                                      size: 24,
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      alignment: AlignmentDirectional(1, 0),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: SvgPicture.asset(
+                                          'assets/images/arr_right.svg',
+                                          width: 10,
+                                          height: 11,
+                                          fit: BoxFit.none,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -275,36 +321,124 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(18, 50, 18, 0),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/cashbackbg.png',
-                                  ).image,
-                                ),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Stack(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        28, 18, 28, 18),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Баланс кэшбэка',
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: Image.asset(
+                                      'assets/images/cashbackbg.png',
+                                    ).image,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 24,
+                                      color: Color(0x8CA061FA),
+                                      offset: Offset(0, 12),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                    width: 0,
+                                  ),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          28, 18, 28, 18),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Баланс кэшбэка',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Fira Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBtnText,
+                                                      fontSize: 12,
+                                                    ),
+                                              ),
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  setState(() {
+                                                    _model.showTooltip =
+                                                        functions.inverseBool(
+                                                            _model
+                                                                .showTooltip!);
+                                                  });
+                                                },
+                                                child: Icon(
+                                                  Icons.info_outline,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                  size: 24,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 11, 0, 11),
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Text(
+                                                valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.cashback,
+                                                        0)
+                                                    .toString(),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Fira Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBtnText,
+                                                      fontSize: 48,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      lineHeight: 1.1,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 204.5,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x00FFFFFF),
+                                            ),
+                                            child: Text(
+                                              'Можно потратить на оплату услуг и оборудования ',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -314,113 +448,50 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryBtnText,
-                                                        fontSize: 14,
+                                                        fontSize: 12,
                                                       ),
                                             ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  _model.showTooltip =
-                                                      functions.inverseBool(
-                                                          _model.showTooltip!);
-                                                });
-                                              },
-                                              child: Icon(
-                                                Icons.info_outline,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                                size: 20,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 11, 0, 11),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              valueOrDefault(
-                                                      currentUserDocument
-                                                          ?.cashback,
-                                                      0)
-                                                  .toString(),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Fira Sans',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBtnText,
-                                                    fontSize: 48,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          width: 204.5,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x00FFFFFF),
-                                          ),
-                                          child: Text(
-                                            'Можно потратить на оплату услуг и оборудования ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBtnText,
-                                                  fontSize: 12,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  if (_model.showTooltip == true)
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 54, 8, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10, 10, 10, 10),
-                                          child: Text(
-                                            'Стандартная скидка – 3%, а если видите значок с молнией, то, значит, там повышенный кешбек',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  fontSize: 12,
-                                                ),
+                                    if (_model.showTooltip == true)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 54, 8, 0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 10, 10, 10),
+                                            child: Text(
+                                              'Стандартная скидка – 3%, а если видите значок с молнией, то, значит, там повышенный кешбек',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        fontSize: 12,
+                                                      ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 48, 0, 27),
+                                EdgeInsetsDirectional.fromSTEB(0, 48, 0, 25),
                             child: Container(
                               width: double.infinity,
                               height: 8,
@@ -530,7 +601,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ''),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans',
+                                                          fontSize: 14,
+                                                        ),
                                               ),
                                             ),
                                           ),
@@ -549,7 +625,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ''),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans',
+                                                          fontSize: 14,
+                                                        ),
                                               ),
                                             ),
                                           ),
@@ -568,7 +649,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ''),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans',
+                                                          fontSize: 14,
+                                                        ),
                                               ),
                                             ),
                                           ),
@@ -579,7 +665,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 18),
+                                                    0, 0, 0, 24),
                                             child: AuthUserStreamWidget(
                                               builder: (context) => Text(
                                                 valueOrDefault(
@@ -588,7 +674,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ''),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Fira Sans',
+                                                          fontSize: 14,
+                                                        ),
                                               ),
                                             ),
                                           ),
@@ -628,7 +719,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                               ''))
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 24),
+                                          0, 0, 0, 28),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Container(
                                           width: double.infinity,
@@ -678,7 +769,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 18),
+                                                  .fromSTEB(0, 0, 0, 28),
                                               child: Builder(
                                                 builder: (context) {
                                                   final mdPhotosItems = functions
@@ -700,6 +791,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ),
                                                     primary: false,
                                                     shrinkWrap: true,
+                                                    physics:
+                                                        NeverScrollableScrollPhysics(),
                                                     scrollDirection:
                                                         Axis.vertical,
                                                     itemCount:
@@ -798,7 +891,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       0)
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 24),
+                                          0, 0, 0, 20),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Container(
                                           width: double.infinity,
@@ -863,7 +956,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 48, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(0, 31, 0, 0),
                             child: Container(
                               width: double.infinity,
                               height: 8,

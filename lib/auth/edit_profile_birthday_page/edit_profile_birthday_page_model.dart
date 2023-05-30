@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 class EditProfileBirthdayPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for bdField widget.
   TextEditingController? bdFieldController;
   final bdFieldMask = MaskTextInputFormatter(mask: '##.##.####');
   String? Function(BuildContext, String?)? bdFieldControllerValidator;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -27,8 +27,8 @@ class EditProfileBirthdayPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    bdFieldController?.dispose();
     topNotificationModel.dispose();
+    bdFieldController?.dispose();
   }
 
   /// Additional helper methods are added here.

@@ -24,6 +24,8 @@ class QuizPage2EditOrderModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // Model for quizRadio component.
   late QuizRadioModel quizRadioModel;
   // Model for quizCheckbox component.
@@ -31,22 +33,20 @@ class QuizPage2EditOrderModel extends FlutterFlowModel {
   // State field(s) for quizInput widget.
   TextEditingController? quizInputController;
   String? Function(BuildContext, String?)? quizInputControllerValidator;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    topNotificationModel = createModel(context, () => TopNotificationModel());
     quizRadioModel = createModel(context, () => QuizRadioModel());
     quizCheckboxModel = createModel(context, () => QuizCheckboxModel());
-    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
+    topNotificationModel.dispose();
     quizRadioModel.dispose();
     quizCheckboxModel.dispose();
     quizInputController?.dispose();
-    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

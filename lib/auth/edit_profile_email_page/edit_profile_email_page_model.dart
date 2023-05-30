@@ -12,11 +12,11 @@ import 'package:provider/provider.dart';
 class EditProfileEmailPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for emailField widget.
   TextEditingController? emailFieldController;
   String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -25,8 +25,8 @@ class EditProfileEmailPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    emailFieldController?.dispose();
     topNotificationModel.dispose();
+    emailFieldController?.dispose();
   }
 
   /// Additional helper methods are added here.

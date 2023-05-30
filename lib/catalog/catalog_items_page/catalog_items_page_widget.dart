@@ -55,50 +55,32 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Column(
+        body: Align(
+          alignment: AlignmentDirectional(0, 1),
+          child: Stack(
+            children: [
+              Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  wrapWithModel(
-                    model: _model.topNotificationModel,
-                    updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(
-                      isDisbaledHome: false,
-                      isDisabledNotification: false,
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                    child: wrapWithModel(
+                      model: _model.topNotificationModel,
+                      updateCallback: () => setState(() {}),
+                      child: TopNotificationWidget(
+                        isDisbaledHome: false,
+                        isDisabledNotification: false,
+                      ),
                     ),
                   ),
-                ],
-              ),
-              centerTitle: true,
-              expandedTitleScale: 1.0,
-            ),
-            toolbarHeight: 0,
-            elevation: 0,
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Align(
-            alignment: AlignmentDirectional(0, 1),
-            child: Stack(
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
+                  Expanded(
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(18, 6, 18, 0),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(18, 10, 18, 0),
                           child: Container(
                             width: double.infinity,
                             height: 51,
@@ -135,11 +117,15 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 12, 0),
-                                    child: Icon(
-                                      Icons.search,
-                                      color: Color(0xFF526970),
-                                      size: 20,
+                                        0, 0, 13, 0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0),
+                                      child: SvgPicture.asset(
+                                        'assets/images/Vector_(1).svg',
+                                        width: 16,
+                                        height: 16,
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -363,24 +349,16 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                     Container(
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        gradient:
-                                                                            LinearGradient(
-                                                                          colors: [
-                                                                            Color(0xFF7556FE),
-                                                                            Color(0xFFFC56C9),
-                                                                            Color(0xFFFEC121)
-                                                                          ],
-                                                                          stops: [
-                                                                            0,
-                                                                            0.3,
-                                                                            1
-                                                                          ],
-                                                                          begin: AlignmentDirectional(
-                                                                              -0.03,
-                                                                              -1),
-                                                                          end: AlignmentDirectional(
-                                                                              0.03,
-                                                                              1),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          image:
+                                                                              Image.asset(
+                                                                            'assets/images/cb.png',
+                                                                          ).image,
                                                                         ),
                                                                         borderRadius:
                                                                             BorderRadius.only(
@@ -554,10 +532,10 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

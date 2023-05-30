@@ -67,42 +67,23 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  wrapWithModel(
-                    model: _model.topNotificationModel,
-                    updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(
-                      isDisbaledHome: false,
-                      isDisabledNotification: false,
-                    ),
-                  ),
-                ],
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              child: wrapWithModel(
+                model: _model.topNotificationModel,
+                updateCallback: () => setState(() {}),
+                child: TopNotificationWidget(
+                  isDisbaledHome: false,
+                  isDisabledNotification: false,
+                ),
               ),
-              centerTitle: true,
-              expandedTitleScale: 1.0,
             ),
-            toolbarHeight: 0.0,
-            elevation: 0.0,
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
+            Expanded(
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
@@ -478,59 +459,59 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 24.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    if (_model.selected.length > 0) {
-                      if (functions
-                          .isCheckboxHaveInput(_model.selected.toList())) {
-                        if (_model.textController.text == '') {
-                          setState(() {
-                            _model.showInputError = true;
-                          });
-                          return;
-                        }
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 24.0),
+              child: FFButtonWidget(
+                onPressed: () async {
+                  if (_model.selected.length > 0) {
+                    if (functions
+                        .isCheckboxHaveInput(_model.selected.toList())) {
+                      if (_model.textController.text == '') {
+                        setState(() {
+                          _model.showInputError = true;
+                        });
+                        return;
                       }
-                    } else {
-                      setState(() {
-                        _model.showTopError = true;
-                      });
-                      return;
                     }
+                  } else {
+                    setState(() {
+                      _model.showTopError = true;
+                    });
+                    return;
+                  }
 
-                    final ordersUpdateData = createOrdersRecordData(
-                      status: 'Отменен',
-                      whyCancel: functions.combineCancelCheckboxes(
-                          _model.selected.toList(), _model.textController.text),
-                    );
-                    await widget.order!.reference.update(ordersUpdateData);
+                  final ordersUpdateData = createOrdersRecordData(
+                    status: 'Отменен',
+                    whyCancel: functions.combineCancelCheckboxes(
+                        _model.selected.toList(), _model.textController.text),
+                  );
+                  await widget.order!.reference.update(ordersUpdateData);
 
-                    context.pushNamed('ordersPage');
-                  },
-                  text: 'Отменить заказ',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 48.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0xFF405460),
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Fira Sans',
-                          color: Colors.white,
-                        ),
-                    elevation: 0.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
+                  context.pushNamed('ordersPage');
+                },
+                text: 'Отменить заказ',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 48.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: Color(0xFF405460),
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Fira Sans',
+                        color: Colors.white,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
                   ),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

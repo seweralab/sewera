@@ -71,42 +71,23 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(54.0),
-              child: AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-                automaticallyImplyLeading: false,
-                actions: [],
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      wrapWithModel(
-                        model: _model.topNotificationModel,
-                        updateCallback: () => setState(() {}),
-                        child: TopNotificationWidget(
-                          isDisbaledHome: false,
-                          isDisabledNotification: false,
-                        ),
-                      ),
-                    ],
+            body: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.topNotificationModel,
+                    updateCallback: () => setState(() {}),
+                    child: TopNotificationWidget(
+                      isDisbaledHome: true,
+                      isDisabledNotification: true,
+                    ),
                   ),
-                  centerTitle: true,
-                  expandedTitleScale: 1.0,
                 ),
-                toolbarHeight: 0.0,
-                elevation: 0.0,
-              ),
-            ),
-            body: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SingleChildScrollView(
-                    primary: false,
+                Expanded(
+                  child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -1180,49 +1161,50 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 34.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              final ordersUpdateData = createOrdersRecordData(
+                                status: 'В обработке',
+                              );
+                              await quizSendOrderOrdersRecord.reference
+                                  .update(ordersUpdateData);
+                              FFAppState().currentQuizIndex = 0;
+                              FFAppState().currentOrder = null;
+
+                              context.pushNamed('orderSubmittedPage');
+                            },
+                            text: 'Отправить заказ',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Fira Sans',
+                                    color: Colors.white,
+                                  ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 34.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        final ordersUpdateData = createOrdersRecordData(
-                          status: 'В обработке',
-                        );
-                        await quizSendOrderOrdersRecord.reference
-                            .update(ordersUpdateData);
-                        FFAppState().currentQuizIndex = 0;
-                        FFAppState().currentOrder = null;
-
-                        context.pushNamed('orderSubmittedPage');
-                      },
-                      text: 'Отправить заказ',
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 48.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Fira Sans',
-                                  color: Colors.white,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

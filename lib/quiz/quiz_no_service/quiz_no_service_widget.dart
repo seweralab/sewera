@@ -59,51 +59,29 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    wrapWithModel(
-                      model: _model.topNotificationModel,
-                      updateCallback: () => setState(() {}),
-                      child: TopNotificationWidget(
-                        isDisbaledHome: false,
-                        isDisabledNotification: false,
-                      ),
-                    ),
-                  ],
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              child: wrapWithModel(
+                model: _model.topNotificationModel,
+                updateCallback: () => setState(() {}),
+                child: TopNotificationWidget(
+                  isDisbaledHome: false,
+                  isDisabledNotification: false,
                 ),
               ),
-              centerTitle: false,
-              expandedTitleScale: 1.0,
             ),
-            toolbarHeight: 0.0,
-            elevation: 0.0,
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
+            Expanded(
+              child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -373,59 +351,59 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    if (_model.searchFieldController.text != '') {
-                      final ordersCreateData = createOrdersRecordData(
-                        status: 'Не оформлен',
-                        cost: 0,
-                        client: currentUserReference,
-                        servicename: _model.searchFieldController.text,
-                        orderDate: getCurrentTimestamp,
-                        description: _model.textController2.text,
-                      );
-                      var ordersRecordReference = OrdersRecord.collection.doc();
-                      await ordersRecordReference.set(ordersCreateData);
-                      _model.orderFromNoService =
-                          OrdersRecord.getDocumentFromData(
-                              ordersCreateData, ordersRecordReference);
-                      FFAppState().currentOrder =
-                          _model.orderFromNoService!.reference;
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+              child: FFButtonWidget(
+                onPressed: () async {
+                  if (_model.searchFieldController.text != '') {
+                    final ordersCreateData = createOrdersRecordData(
+                      status: 'Не оформлен',
+                      cost: 0,
+                      client: currentUserReference,
+                      servicename: _model.searchFieldController.text,
+                      orderDate: getCurrentTimestamp,
+                      description: _model.textController2.text,
+                    );
+                    var ordersRecordReference = OrdersRecord.collection.doc();
+                    await ordersRecordReference.set(ordersCreateData);
+                    _model.orderFromNoService =
+                        OrdersRecord.getDocumentFromData(
+                            ordersCreateData, ordersRecordReference);
+                    FFAppState().currentOrder =
+                        _model.orderFromNoService!.reference;
 
-                      context.pushNamed('QuizPage2NoServiceDate');
-                    } else {
-                      setState(() {
-                        _model.showInputError = true;
-                      });
-                    }
+                    context.pushNamed('QuizPage2NoServiceDate');
+                  } else {
+                    setState(() {
+                      _model.showInputError = true;
+                    });
+                  }
 
-                    setState(() {});
-                  },
-                  text: 'Продолжить',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 48.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Fira Sans',
-                          color: Colors.white,
-                        ),
-                    elevation: 0.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
+                  setState(() {});
+                },
+                text: 'Продолжить',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 48.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).primary,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Fira Sans',
+                        color: Colors.white,
+                      ),
+                  elevation: 0.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
                   ),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

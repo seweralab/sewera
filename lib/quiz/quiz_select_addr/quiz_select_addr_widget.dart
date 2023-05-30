@@ -102,42 +102,23 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(54.0),
-              child: AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-                automaticallyImplyLeading: false,
-                actions: [],
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      wrapWithModel(
-                        model: _model.topNotificationModel,
-                        updateCallback: () => setState(() {}),
-                        child: TopNotificationWidget(
-                          isDisbaledHome: false,
-                          isDisabledNotification: false,
-                        ),
-                      ),
-                    ],
+            body: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.topNotificationModel,
+                    updateCallback: () => setState(() {}),
+                    child: TopNotificationWidget(
+                      isDisbaledHome: true,
+                      isDisabledNotification: true,
+                    ),
                   ),
-                  centerTitle: true,
-                  expandedTitleScale: 1.0,
                 ),
-                toolbarHeight: 0.0,
-                elevation: 0.0,
-              ),
-            ),
-            body: SafeArea(
-              top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
+                Expanded(
+                  child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -292,66 +273,66 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        if (FFAppState().currentQuizAddr != '') {
-                          setState(() {
-                            FFAppState().currentQuizTopErr = false;
-                          });
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      if (FFAppState().currentQuizAddr != '') {
+                        setState(() {
+                          FFAppState().currentQuizTopErr = false;
+                        });
 
-                          final ordersUpdateData = createOrdersRecordData(
-                            addr: FFAppState().currentQuizAddr,
-                          );
-                          await FFAppState()
-                              .currentOrder!
-                              .update(ordersUpdateData);
+                        final ordersUpdateData = createOrdersRecordData(
+                          addr: FFAppState().currentQuizAddr,
+                        );
+                        await FFAppState()
+                            .currentOrder!
+                            .update(ordersUpdateData);
 
-                          context.pushNamed(
-                            'QuizComment',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
+                        context.pushNamed(
+                          'QuizComment',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.rightToLeft,
+                            ),
+                          },
+                        );
+                      } else {
+                        setState(() {
+                          _model.showInputErr = true;
+                        });
+                        setState(() {
+                          FFAppState().currentQuizTopErr = true;
+                        });
+                      }
+                    },
+                    text: 'Продолжить',
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 48.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Fira Sans',
+                                color: Colors.white,
                               ),
-                            },
-                          );
-                        } else {
-                          setState(() {
-                            _model.showInputErr = true;
-                          });
-                          setState(() {
-                            FFAppState().currentQuizTopErr = true;
-                          });
-                        }
-                      },
-                      text: 'Продолжить',
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 48.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Fira Sans',
-                                  color: Colors.white,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
+                      elevation: 0.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

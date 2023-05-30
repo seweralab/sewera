@@ -131,7 +131,7 @@ class NavBarPage extends StatefulWidget {
 class _NavBarPageState extends State<NavBarPage> {
   String _currentPageName = 'HomePage2';
   late Widget? _currentPage;
-
+  bool _isOverlayVisible = false;
   @override
   void initState() {
     super.initState();
@@ -171,29 +171,24 @@ class _NavBarPageState extends State<NavBarPage> {
     if (currentIndex >= 15) {
       currentIndex = 0;
     }
+    if (_isOverlayVisible) {
+      currentIndex = 3;
+    }
     return Scaffold(
-      body: _currentPage ?? tabs[_currentPageName],
+      body: Stack(
+        children: [
+          if (_currentPageName != null) tabs[_currentPageName]!,
+          if (_isOverlayVisible) _buildOverlay(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
           if (i == 3) {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Color(0xD900BB67),
-              enableDrag: false,
-              context: context,
-              builder: (bottomSheetContext) {
-                return Padding(
-                  padding: MediaQuery.of(bottomSheetContext).viewInsets,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 1.0,
-                    child: SupportWidget(),
-                  ),
-                );
-              },
-            );
+            _toggleOverlay();
           } else {
             _currentPage = null;
+            _hideOverlay();
             _currentPageName = tabs.keys.toList()[i];
           }
         }),
@@ -203,11 +198,9 @@ class _NavBarPageState extends State<NavBarPage> {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         unselectedFontSize: 14.0,
-        // fixedColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            // icon: Image.asset('assets/images/attach.png'),
             icon: SvgPicture.asset(
               'assets/images/home.svg',
               height: 20.0,
@@ -266,5 +259,115 @@ class _NavBarPageState extends State<NavBarPage> {
         ],
       ),
     );
+  }
+
+  void _toggleOverlay() {
+    setState(() {
+      _isOverlayVisible = !_isOverlayVisible;
+    });
+  }
+
+  void _hideOverlay() {
+    setState(() {
+      _isOverlayVisible = false;
+    });
+  }
+
+  Widget _buildOverlay() {
+    return GestureDetector(
+        onTap: _hideOverlay,
+        child: Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height * 1,
+          decoration: BoxDecoration(
+            color: Color(0xD800BB67),
+          ),
+          child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 29, 36),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                        child: Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0),
+                            child: SvgPicture.asset(
+                              'assets/images/s_tg.svg',
+                              width: 20,
+                              height: 20,
+                              fit: BoxFit.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                        child: Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0),
+                            child: SvgPicture.asset(
+                              'assets/images/s_wa.svg',
+                              width: 20,
+                              height: 20,
+                              fit: BoxFit.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                        child: Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0),
+                            child: SvgPicture.asset(
+                              'assets/images/s_phone.svg',
+                              width: 32,
+                              height: 32,
+                              fit: BoxFit.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }

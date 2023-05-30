@@ -127,16 +127,6 @@ final parametersBuilderMap =
           'catalog': getParameter<String>(data, 'catalog'),
         },
       ),
-  'QuizSelectDate': (data) async => ParameterData(
-        allParams: {
-          'customServiceName': getParameter<String>(data, 'customServiceName'),
-        },
-      ),
-  'QuizSelectDateCalendar': (data) async => ParameterData(
-        allParams: {
-          'customServiceName': getParameter<String>(data, 'customServiceName'),
-        },
-      ),
   'QuizSelectAddr': (data) async => ParameterData(
         allParams: {
           'customServiceName': getParameter<String>(data, 'customServiceName'),
@@ -144,11 +134,6 @@ final parametersBuilderMap =
         },
       ),
   'SearchPage': ParameterData.none(),
-  'QuizPage': (data) async => ParameterData(
-        allParams: {
-          'serviceRef': getParameter<DocumentReference>(data, 'serviceRef'),
-        },
-      ),
   'QuizPage2': (data) async => ParameterData(
         allParams: {
           'quizCurrentIndex': getParameter<int>(data, 'quizCurrentIndex'),
@@ -197,13 +182,6 @@ final parametersBuilderMap =
         },
       ),
   'orderSubmittedPage': ParameterData.none(),
-  'QuizPage2Edit': (data) async => ParameterData(
-        allParams: {
-          'quizref': getParameter<DocumentReference>(data, 'quizref'),
-          'quiztitle': getParameter<String>(data, 'quiztitle'),
-          'serviceref': getParameter<DocumentReference>(data, 'serviceref'),
-        },
-      ),
   'QuizPage2EditDate': ParameterData.none(),
   'QuizSelectAddrEdit': (data) async => ParameterData(
         allParams: {

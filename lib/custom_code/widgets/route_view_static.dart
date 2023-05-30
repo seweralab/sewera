@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' show cos, sqrt, asin;
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' hide LatLng;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as latlng;
@@ -98,8 +101,6 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
   }
 
   void _onSuggestionTap(String latitude, String longitude) {
-    print(latitude);
-    print(longitude);
     final location = latlng.LatLng(
       double.parse(latitude),
       double.parse(longitude),
@@ -224,6 +225,44 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
     super.dispose();
   }
 
+  Future<Position?> _getCurrentPosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return null;
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        return null;
+      }
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
+  void _requestLocationAndAddMarker() async {
+    Position? position = await _getCurrentPosition();
+    // final latitude = position.latitude;
+    // final longitude = position.longitude;
+
+    // final latLng = latlng.LatLng(position.latitude, position.longitude);
+    if (position!.latitude != null && position!.longitude != null) {
+      _onMapTap(latlng.LatLng(position.latitude, position.longitude));
+      final cameraPosition = CameraPosition(
+        target: latlng.LatLng(position.latitude, position.longitude),
+        zoom: 15.0,
+      );
+      final cameraUpdate = CameraUpdate.newCameraPosition(cameraPosition);
+      _mapController?.animateCamera(cameraUpdate);
+    }
+  }
+
   void _onFocusChange() {
     setState(() {
       _isFocused = _addressFocusNode.hasFocus;
@@ -242,11 +281,41 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
             height: 350,
             width: double.infinity,
             padding: EdgeInsets.all(8.0),
-            child: GoogleMap(
-              onMapCreated: _onMapCreated,
-              onTap: _onMapTap,
-              markers: markers,
-              initialCameraPosition: _initialLocation,
+            child: Stack(
+              children: [
+                GoogleMap(
+                  onMapCreated: _onMapCreated,
+                  onTap: _onMapTap,
+                  markers: markers,
+                  myLocationButtonEnabled: false,
+                  zoomControlsEnabled: false,
+                  initialCameraPosition: _initialLocation,
+                ),
+                Positioned(
+                  bottom: 16,
+                  right: 16,
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.white,
+                    child: Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          'assets/images/nav.svg',
+                          width: 24,
+                          height: 24,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    onPressed: _requestLocationAndAddMarker,
+                  ),
+                ),
+              ],
             ),
           ),
           AnimatedPositioned(
@@ -346,6 +415,13 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                         FFAppState().currentQuizAddr =
                             _suggestions[index].value;
                         _addressFocusNode.requestFocus();
+
+                        _addressTextController.selection =
+                            TextSelection.fromPosition(
+                          TextPosition(
+                              offset: _addressTextController.text.length),
+                        );
+
                         _onSuggestionTap(_suggestions[index].latitude,
                             _suggestions[index].longitude);
                         _suggestions.clear();

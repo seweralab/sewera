@@ -24,23 +24,23 @@ class OrderItemPageModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // Model for radioCashback component.
   late RadioCashbackModel radioCashbackModel;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? reorder;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    radioCashbackModel = createModel(context, () => RadioCashbackModel());
     topNotificationModel = createModel(context, () => TopNotificationModel());
+    radioCashbackModel = createModel(context, () => RadioCashbackModel());
   }
 
   void dispose() {
-    radioCashbackModel.dispose();
     topNotificationModel.dispose();
+    radioCashbackModel.dispose();
   }
 
   /// Additional helper methods are added here.

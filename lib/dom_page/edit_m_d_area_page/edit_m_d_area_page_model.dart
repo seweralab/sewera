@@ -13,25 +13,25 @@ import 'package:provider/provider.dart';
 class EditMDAreaPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for areaField widget.
   TextEditingController? areaFieldController;
   String? Function(BuildContext, String?)? areaFieldControllerValidator;
   // Model for customnavbar component.
   late CustomnavbarModel customnavbarModel;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    customnavbarModel = createModel(context, () => CustomnavbarModel());
     topNotificationModel = createModel(context, () => TopNotificationModel());
+    customnavbarModel = createModel(context, () => CustomnavbarModel());
   }
 
   void dispose() {
+    topNotificationModel.dispose();
     areaFieldController?.dispose();
     customnavbarModel.dispose();
-    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

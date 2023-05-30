@@ -49,35 +49,6 @@ class _NotificationConfigPageWidgetState
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  wrapWithModel(
-                    model: _model.topNotificationModel,
-                    updateCallback: () => setState(() {}),
-                    child: TopNotificationWidget(
-                      isDisbaledHome: false,
-                      isDisabledNotification: false,
-                    ),
-                  ),
-                ],
-              ),
-              centerTitle: true,
-              expandedTitleScale: 1.0,
-            ),
-            toolbarHeight: 0.0,
-            elevation: 0.0,
-          ),
-        ),
         body: SafeArea(
           top: true,
           child: Container(
@@ -92,164 +63,183 @@ class _NotificationConfigPageWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                      child: wrapWithModel(
+                        model: _model.topNotificationModel,
+                        updateCallback: () => setState(() {}),
+                        child: TopNotificationWidget(
+                          isDisbaledHome: false,
+                          isDisabledNotification: false,
+                        ),
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 32.0, 18.0, 32.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.safePop();
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 18.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.safePop();
-                                          },
-                                          child: Icon(
-                                            Icons.arrow_back_sharp,
-                                            color: Colors.black,
-                                            size: 24.0,
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  18.0, 14.0, 18.0, 16.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.safePop();
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 18.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.safePop();
+                                            },
+                                            child: Icon(
+                                              Icons.arrow_back_sharp,
+                                              color: Colors.black,
+                                              size: 24.0,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Text(
-                                        'Настройка уведомлений',
+                                        Text(
+                                          'Настройка уведомлений',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Fira Sans',
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  AuthUserStreamWidget(
+                                    builder: (context) =>
+                                        SwitchListTile.adaptive(
+                                      value: _model.switchListTileValue1 ??=
+                                          valueOrDefault<bool>(
+                                              currentUserDocument?.push, false),
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .switchListTileValue1 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Push уведомления',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .headlineSmall
                                             .override(
                                               fontFamily: 'Fira Sans',
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14.0,
                                             ),
                                       ),
-                                    ],
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                    ),
+                                  ),
+                                  AuthUserStreamWidget(
+                                    builder: (context) =>
+                                        SwitchListTile.adaptive(
+                                      value: _model.switchListTileValue2 ??=
+                                          valueOrDefault<bool>(
+                                              currentUserDocument?.sms, false),
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .switchListTileValue2 = newValue!);
+                                      },
+                                      title: Text(
+                                        'SMS уведомления',
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Fira Sans',
+                                              fontSize: 14.0,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                    ),
+                                  ),
+                                  AuthUserStreamWidget(
+                                    builder: (context) =>
+                                        SwitchListTile.adaptive(
+                                      value: _model.switchListTileValue3 ??=
+                                          valueOrDefault<bool>(
+                                              currentUserDocument
+                                                  ?.emailNotifications,
+                                              false),
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .switchListTileValue3 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Email уведомления',
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Fira Sans',
+                                              fontSize: 14.0,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                AuthUserStreamWidget(
-                                  builder: (context) => SwitchListTile.adaptive(
-                                    value: _model.switchListTileValue1 ??=
-                                        valueOrDefault<bool>(
-                                            currentUserDocument?.push, false),
-                                    onChanged: (newValue) async {
-                                      setState(() => _model
-                                          .switchListTileValue1 = newValue!);
-                                    },
-                                    title: Text(
-                                      'Push уведомления',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineSmall
-                                          .override(
-                                            fontFamily: 'Fira Sans',
-                                            fontSize: 14.0,
-                                          ),
-                                    ),
-                                    tileColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    dense: false,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading,
-                                  ),
-                                ),
-                                AuthUserStreamWidget(
-                                  builder: (context) => SwitchListTile.adaptive(
-                                    value: _model.switchListTileValue2 ??=
-                                        valueOrDefault<bool>(
-                                            currentUserDocument?.sms, false),
-                                    onChanged: (newValue) async {
-                                      setState(() => _model
-                                          .switchListTileValue2 = newValue!);
-                                    },
-                                    title: Text(
-                                      'SMS уведомления',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineSmall
-                                          .override(
-                                            fontFamily: 'Fira Sans',
-                                            fontSize: 14.0,
-                                          ),
-                                    ),
-                                    tileColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    dense: false,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading,
-                                  ),
-                                ),
-                                AuthUserStreamWidget(
-                                  builder: (context) => SwitchListTile.adaptive(
-                                    value: _model.switchListTileValue3 ??=
-                                        valueOrDefault<bool>(
-                                            currentUserDocument
-                                                ?.emailNotifications,
-                                            false),
-                                    onChanged: (newValue) async {
-                                      setState(() => _model
-                                          .switchListTileValue3 = newValue!);
-                                    },
-                                    title: Text(
-                                      'Email уведомления',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineSmall
-                                          .override(
-                                            fontFamily: 'Fira Sans',
-                                            fontSize: 14.0,
-                                          ),
-                                    ),
-                                    tileColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    dense: false,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     Padding(

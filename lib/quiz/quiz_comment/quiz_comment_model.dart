@@ -19,6 +19,8 @@ import 'package:provider/provider.dart';
 class QuizCommentModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
@@ -28,9 +30,6 @@ class QuizCommentModel extends FlutterFlowModel {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
@@ -38,8 +37,8 @@ class QuizCommentModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    textController?.dispose();
     topNotificationModel.dispose();
+    textController?.dispose();
   }
 
   /// Additional helper methods are added here.

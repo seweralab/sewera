@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 class EditProfileNamePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for surnameField widget.
   TextEditingController? surnameFieldController;
   String? Function(BuildContext, String?)? surnameFieldControllerValidator;
@@ -21,8 +23,6 @@ class EditProfileNamePageModel extends FlutterFlowModel {
   // State field(s) for patronymicField widget.
   TextEditingController? patronymicFieldController;
   String? Function(BuildContext, String?)? patronymicFieldControllerValidator;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -31,10 +31,10 @@ class EditProfileNamePageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    topNotificationModel.dispose();
     surnameFieldController?.dispose();
     nameFieldController?.dispose();
     patronymicFieldController?.dispose();
-    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

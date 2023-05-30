@@ -19,6 +19,8 @@ class QuizNoServiceModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for SearchField widget.
   TextEditingController? searchFieldController;
   String? Function(BuildContext, String?)? searchFieldControllerValidator;
@@ -27,8 +29,6 @@ class QuizNoServiceModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textController2Validator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? orderFromNoService;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -37,9 +37,9 @@ class QuizNoServiceModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    topNotificationModel.dispose();
     searchFieldController?.dispose();
     textController2?.dispose();
-    topNotificationModel.dispose();
   }
 
   /// Additional helper methods are added here.

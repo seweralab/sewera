@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 class EditProfilePhonePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for emailField widget.
   TextEditingController? emailFieldController;
   final emailFieldMask = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
   String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 
@@ -27,8 +27,8 @@ class EditProfilePhonePageModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    emailFieldController?.dispose();
     topNotificationModel.dispose();
+    emailFieldController?.dispose();
   }
 
   /// Additional helper methods are added here.

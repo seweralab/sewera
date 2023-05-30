@@ -63,7 +63,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 46, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                         child: wrapWithModel(
                           model: _model.topNotificationModel,
                           updateCallback: () => setState(() {}),
@@ -110,11 +110,15 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 12, 0),
-                                  child: Icon(
-                                    Icons.search,
-                                    color: Color(0xFF526970),
-                                    size: 20,
+                                      0, 0, 13, 0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/Vector_(1).svg',
+                                      width: 16,
+                                      height: 16,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -478,7 +482,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                         extentRatio: 0.25,
                                                         children: [
                                                           SlidableAction(
-                                                            label: 'null',
+                                                            // label: 'null',
                                                             backgroundColor:
                                                                 Color(
                                                                     0xFFF3F4F5),
@@ -632,83 +636,175 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 190,
-                                      constraints: BoxConstraints(
-                                        minHeight: 190,
-                                        maxHeight: 210,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child:
-                                          StreamBuilder<List<ServicesRecord>>(
-                                        stream: queryServicesRecord(
-                                          queryBuilder: (servicesRecord) =>
-                                              servicesRecord
-                                                  .where('popular',
-                                                      isEqualTo: true)
-                                                  .where('category',
-                                                      arrayContains:
-                                                          columnCatalogRecord
-                                                              .title)
-                                                  .orderBy('order'),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 6),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 190,
+                                        constraints: BoxConstraints(
+                                          maxHeight: 300,
                                         ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 40,
-                                                height: 40,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          List<ServicesRecord>
-                                              listViewInnerServicesRecordList =
-                                              snapshot.data!;
-                                          return ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            primary: false,
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount:
-                                                listViewInnerServicesRecordList
-                                                    .length,
-                                            itemBuilder:
-                                                (context, listViewInnerIndex) {
-                                              final listViewInnerServicesRecord =
-                                                  listViewInnerServicesRecordList[
-                                                      listViewInnerIndex];
-                                              return Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(4, 0, 0, 0),
-                                                child: Container(
-                                                  width: 146,
-                                                  decoration: BoxDecoration(
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child:
+                                            StreamBuilder<List<ServicesRecord>>(
+                                          stream: queryServicesRecord(
+                                            queryBuilder: (servicesRecord) =>
+                                                servicesRecord
+                                                    .where('popular',
+                                                        isEqualTo: true)
+                                                    .where('category',
+                                                        arrayContains:
+                                                            columnCatalogRecord
+                                                                .title)
+                                                    .orderBy('order'),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40,
+                                                  height: 40,
+                                                  child:
+                                                      CircularProgressIndicator(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryBackground,
+                                                        .primary,
                                                   ),
-                                                  child: Stack(
-                                                    children: [
-                                                      if (listViewInnerServicesRecord
-                                                              .title ==
-                                                          functions
-                                                              .defineAllServicesText())
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0, -1),
-                                                          child: InkWell(
+                                                ),
+                                              );
+                                            }
+                                            List<ServicesRecord>
+                                                listViewInnerServicesRecordList =
+                                                snapshot.data!;
+                                            return ListView.builder(
+                                              padding: EdgeInsets.zero,
+                                              primary: false,
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount:
+                                                  listViewInnerServicesRecordList
+                                                      .length,
+                                              itemBuilder: (context,
+                                                  listViewInnerIndex) {
+                                                final listViewInnerServicesRecord =
+                                                    listViewInnerServicesRecordList[
+                                                        listViewInnerIndex];
+                                                return Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(4, 0, 0, 0),
+                                                  child: Container(
+                                                    width: 146,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    child: Stack(
+                                                      children: [
+                                                        if (listViewInnerServicesRecord
+                                                                .title ==
+                                                            functions
+                                                                .defineAllServicesText())
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0, -1),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                context
+                                                                    .pushNamed(
+                                                                  'CatalogItemsPage',
+                                                                  queryParams: {
+                                                                    'catalog':
+                                                                        serializeParam(
+                                                                      columnCatalogRecord
+                                                                          .title,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
+                                                              },
+                                                              child: Container(
+                                                                width: 130,
+                                                                height: 130,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              16),
+                                                                ),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0,
+                                                                              0.2),
+                                                                      child:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .arrow_forward_rounded,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryBtnText,
+                                                                        size:
+                                                                            51,
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0,
+                                                                              10,
+                                                                              0,
+                                                                              18),
+                                                                      child:
+                                                                          Text(
+                                                                        'Все услуги',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Fira Sans',
+                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight.w500,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (listViewInnerServicesRecord
+                                                                .title !=
+                                                            functions
+                                                                .defineAllServicesText())
+                                                          InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
                                                             focusColor: Colors
@@ -719,401 +815,317 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              context.pushNamed(
-                                                                'CatalogItemsPage',
-                                                                queryParams: {
-                                                                  'catalog':
-                                                                      serializeParam(
-                                                                    columnCatalogRecord
-                                                                        .title,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: 130,
-                                                              height: 130,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            16),
-                                                              ),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .end,
-                                                                children: [
-                                                                  Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            0,
-                                                                            0.2),
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .arrow_forward_rounded,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryBtnText,
-                                                                      size: 51,
+                                                              var _shouldSetState =
+                                                                  false;
+                                                              if (FFAppState()
+                                                                      .currentOrder ==
+                                                                  null) {
+                                                                FFAppState()
+                                                                    .currentQuizIndex = 0;
+
+                                                                final ordersCreateData =
+                                                                    createOrdersRecordData(
+                                                                  status:
+                                                                      'Создан',
+                                                                  cost: 0,
+                                                                  client:
+                                                                      currentUserReference,
+                                                                  service:
+                                                                      listViewInnerServicesRecord
+                                                                          .reference,
+                                                                  servicename:
+                                                                      listViewInnerServicesRecord
+                                                                          .title,
+                                                                  orderDate:
+                                                                      getCurrentTimestamp,
+                                                                  cashback:
+                                                                      listViewInnerServicesRecord
+                                                                          .cashback,
+                                                                );
+                                                                var ordersRecordReference =
+                                                                    OrdersRecord
+                                                                        .collection
+                                                                        .doc();
+                                                                await ordersRecordReference
+                                                                    .set(
+                                                                        ordersCreateData);
+                                                                _model.newOrder =
+                                                                    OrdersRecord.getDocumentFromData(
+                                                                        ordersCreateData,
+                                                                        ordersRecordReference);
+                                                                _shouldSetState =
+                                                                    true;
+                                                                FFAppState()
+                                                                        .currentOrder =
+                                                                    _model
+                                                                        .newOrder!
+                                                                        .reference;
+
+                                                                context
+                                                                    .pushNamed(
+                                                                  'QuizPage2',
+                                                                  queryParams: {
+                                                                    'serviceRef':
+                                                                        serializeParam(
+                                                                      listViewInnerServicesRecord
+                                                                          .reference,
+                                                                      ParamType
+                                                                          .DocumentReference,
                                                                     ),
-                                                                  ),
-                                                                  Padding(
+                                                                  }.withoutNulls,
+                                                                );
+
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              } else {
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              }
+
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                            },
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Stack(
+                                                                  children: [
+                                                                    if (listViewInnerServicesRecord.img.first.downloadURL !=
+                                                                            null &&
+                                                                        listViewInnerServicesRecord.img.first.downloadURL !=
+                                                                            '')
+                                                                      ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8),
+                                                                        child: Image
+                                                                            .network(
+                                                                          listViewInnerServicesRecord
+                                                                              .img
+                                                                              .first
+                                                                              .downloadURL,
+                                                                          width:
+                                                                              130,
+                                                                          height:
+                                                                              130,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    if (listViewInnerServicesRecord.img.first.downloadURL ==
+                                                                            null ||
+                                                                        listViewInnerServicesRecord.img.first.downloadURL ==
+                                                                            '')
+                                                                      ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8),
+                                                                        child: Image
+                                                                            .asset(
+                                                                          'assets/images/no_service.png',
+                                                                          width:
+                                                                              130,
+                                                                          height:
+                                                                              130,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          -1,
+                                                                          0),
+                                                                  child:
+                                                                      Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
+                                                                            8,
+                                                                            8,
                                                                             0,
-                                                                            10,
-                                                                            0,
-                                                                            18),
+                                                                            0),
                                                                     child: Text(
-                                                                      'Все услуги',
+                                                                      listViewInnerServicesRecord
+                                                                          .title,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Fira Sans',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBtnText,
                                                                             fontSize:
-                                                                                12,
-                                                                            fontWeight:
-                                                                                FontWeight.w500,
+                                                                                14,
                                                                           ),
                                                                     ),
                                                                   ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
-                                                        ),
-                                                      if (listViewInnerServicesRecord
-                                                              .title !=
-                                                          functions
-                                                              .defineAllServicesText())
-                                                        InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            var _shouldSetState =
-                                                                false;
-                                                            if (FFAppState()
-                                                                    .currentOrder ==
-                                                                null) {
-                                                              FFAppState()
-                                                                  .currentQuizIndex = 0;
-
-                                                              final ordersCreateData =
-                                                                  createOrdersRecordData(
-                                                                status:
-                                                                    'Создан',
-                                                                cost: 0,
-                                                                client:
-                                                                    currentUserReference,
-                                                                service:
-                                                                    listViewInnerServicesRecord
-                                                                        .reference,
-                                                                servicename:
-                                                                    listViewInnerServicesRecord
-                                                                        .title,
-                                                                orderDate:
-                                                                    getCurrentTimestamp,
-                                                                cashback:
-                                                                    listViewInnerServicesRecord
-                                                                        .cashback,
-                                                              );
-                                                              var ordersRecordReference =
-                                                                  OrdersRecord
-                                                                      .collection
-                                                                      .doc();
-                                                              await ordersRecordReference
-                                                                  .set(
-                                                                      ordersCreateData);
-                                                              _model.newOrder =
-                                                                  OrdersRecord.getDocumentFromData(
-                                                                      ordersCreateData,
-                                                                      ordersRecordReference);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              FFAppState()
-                                                                      .currentOrder =
-                                                                  _model
-                                                                      .newOrder!
-                                                                      .reference;
-
-                                                              context.pushNamed(
-                                                                'QuizPage2',
-                                                                queryParams: {
-                                                                  'serviceRef':
-                                                                      serializeParam(
-                                                                    listViewInnerServicesRecord
-                                                                        .reference,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-
-                                                              if (_shouldSetState)
-                                                                setState(() {});
-                                                              return;
-                                                            } else {
-                                                              if (_shouldSetState)
-                                                                setState(() {});
-                                                              return;
-                                                            }
-
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                          },
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Stack(
-                                                                children: [
-                                                                  if (listViewInnerServicesRecord
-                                                                              .img
-                                                                              .first
-                                                                              .downloadURL !=
-                                                                          null &&
-                                                                      listViewInnerServicesRecord
-                                                                              .img
-                                                                              .first
-                                                                              .downloadURL !=
-                                                                          '')
-                                                                    ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8),
-                                                                      child: Image
-                                                                          .network(
-                                                                        listViewInnerServicesRecord
-                                                                            .img
-                                                                            .first
-                                                                            .downloadURL,
-                                                                        width:
-                                                                            130,
-                                                                        height:
-                                                                            130,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  if (listViewInnerServicesRecord
-                                                                              .img
-                                                                              .first
-                                                                              .downloadURL ==
-                                                                          null ||
-                                                                      listViewInnerServicesRecord
-                                                                              .img
-                                                                              .first
-                                                                              .downloadURL ==
-                                                                          '')
-                                                                    ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8),
-                                                                      child: Image
-                                                                          .asset(
-                                                                        'assets/images/no_service.png',
-                                                                        width:
-                                                                            130,
-                                                                        height:
-                                                                            130,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                ],
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1, 0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                        if (listViewInnerServicesRecord
+                                                                .cashback >
+                                                            0)
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    1, -1),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          8,
-                                                                          8,
                                                                           0,
+                                                                          0,
+                                                                          8,
                                                                           0),
-                                                                  child: Text(
-                                                                    listViewInnerServicesRecord
-                                                                        .title,
-                                                                    maxLines: 3,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Fira Sans',
-                                                                          fontSize:
-                                                                              14,
-                                                                        ),
+                                                              child: Material(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                elevation: 0,
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            8),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            8),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      if (listViewInnerServicesRecord
-                                                              .cashback >
-                                                          0)
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  1, -1),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        8,
-                                                                        0),
-                                                            child: Container(
-                                                              width: 64,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                gradient:
-                                                                    LinearGradient(
-                                                                  colors: [
-                                                                    Color(
-                                                                        0xFF7556FE),
-                                                                    Color(
-                                                                        0xFFFC56C9),
-                                                                    Color(
-                                                                        0xFFFEC121)
-                                                                  ],
-                                                                  stops: [
-                                                                    0,
-                                                                    0.3,
-                                                                    1
-                                                                  ],
-                                                                  begin:
-                                                                      AlignmentDirectional(
-                                                                          -0.03,
-                                                                          -1),
-                                                                  end:
-                                                                      AlignmentDirectional(
-                                                                          0.03,
-                                                                          1),
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          8),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          0),
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          0),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          8),
-                                                                ),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            5,
-                                                                            8,
-                                                                            5),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            8),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            8),
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 64,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      image:
+                                                                          DecorationImage(
+                                                                        fit: BoxFit
+                                                                            .fill,
+                                                                        image: Image
+                                                                            .asset(
+                                                                          'assets/images/cb.png',
+                                                                        ).image,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(8),
+                                                                        bottomRight:
+                                                                            Radius.circular(0),
+                                                                        topLeft:
+                                                                            Radius.circular(0),
+                                                                        topRight:
+                                                                            Radius.circular(8),
+                                                                      ),
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        width:
+                                                                            0,
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
                                                                       padding: EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              2,
-                                                                              0),
-                                                                      child: SvgPicture
-                                                                          .asset(
-                                                                        'assets/images/Union.svg',
-                                                                        width:
-                                                                            12,
-                                                                        height:
-                                                                            12,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                              8,
+                                                                              5,
+                                                                              8,
+                                                                              5),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                0,
+                                                                                2,
+                                                                                0),
+                                                                            child:
+                                                                                SvgPicture.asset(
+                                                                              'assets/images/Union.svg',
+                                                                              width: 12,
+                                                                              height: 12,
+                                                                              fit: BoxFit.cover,
+                                                                            ),
+                                                                          ),
+                                                                          Text(
+                                                                            listViewInnerServicesRecord.cashback.toString(),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Fira Sans',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontWeight: FontWeight.w800,
+                                                                                  fontStyle: FontStyle.italic,
+                                                                                ),
+                                                                          ),
+                                                                          Text(
+                                                                            '%',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Fira Sans',
+                                                                                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                  fontWeight: FontWeight.w800,
+                                                                                  fontStyle: FontStyle.italic,
+                                                                                ),
+                                                                          ),
+                                                                        ],
                                                                       ),
                                                                     ),
-                                                                    Text(
-                                                                      listViewInnerServicesRecord
-                                                                          .cashback
-                                                                          .toString(),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Fira Sans',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBtnText,
-                                                                            fontWeight:
-                                                                                FontWeight.w800,
-                                                                            fontStyle:
-                                                                                FontStyle.italic,
-                                                                          ),
-                                                                    ),
-                                                                    Text(
-                                                                      '%',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Fira Sans',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBtnText,
-                                                                            fontWeight:
-                                                                                FontWeight.w800,
-                                                                            fontStyle:
-                                                                                FontStyle.italic,
-                                                                          ),
-                                                                    ),
-                                                                  ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        },
+                                                );
+                                              },
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ],

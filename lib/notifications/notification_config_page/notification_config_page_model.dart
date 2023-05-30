@@ -12,14 +12,14 @@ import 'package:provider/provider.dart';
 class NotificationConfigPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // State field(s) for SwitchListTile widget.
   bool? switchListTileValue1;
   // State field(s) for SwitchListTile widget.
   bool? switchListTileValue2;
   // State field(s) for SwitchListTile widget.
   bool? switchListTileValue3;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
 
   /// Initialization and disposal methods.
 

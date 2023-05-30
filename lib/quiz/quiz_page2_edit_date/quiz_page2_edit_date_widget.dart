@@ -53,19 +53,29 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  wrapWithModel(
+        body: StreamBuilder<OrdersRecord>(
+          stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 40.0,
+                  height: 40.0,
+                  child: CircularProgressIndicator(
+                    color: FlutterFlowTheme.of(context).primary,
+                  ),
+                ),
+              );
+            }
+            final columnOrdersRecord = snapshot.data!;
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  child: wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
                     child: TopNotificationWidget(
@@ -73,38 +83,9 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                       isDisabledNotification: false,
                     ),
                   ),
-                ],
-              ),
-              centerTitle: true,
-              expandedTitleScale: 1.0,
-            ),
-            toolbarHeight: 0.0,
-            elevation: 0.0,
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: StreamBuilder<OrdersRecord>(
-            stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 40.0,
-                    height: 40.0,
-                    child: CircularProgressIndicator(
-                      color: FlutterFlowTheme.of(context).primary,
-                    ),
-                  ),
-                );
-              }
-              final columnOrdersRecord = snapshot.data!;
-              return Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+                ),
+                Expanded(
+                  child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
@@ -304,91 +285,90 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 20.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        if (_model.selected != null && _model.selected != '') {
-                          if (_model.selected == 'Выберу день в календаре') {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).primaryBtnText,
-                              enableDrag: false,
-                              context: context,
-                              builder: (bottomSheetContext) {
-                                return GestureDetector(
-                                  onTap: () => FocusScope.of(context)
-                                      .requestFocus(_unfocusNode),
-                                  child: Padding(
-                                    padding: MediaQuery.of(bottomSheetContext)
-                                        .viewInsets,
-                                    child: Container(
-                                      height: 460.0,
-                                      child: CalendarWidget(),
-                                    ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      if (_model.selected != null && _model.selected != '') {
+                        if (_model.selected == 'Выберу день в календаре') {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primaryBtnText,
+                            enableDrag: false,
+                            context: context,
+                            builder: (bottomSheetContext) {
+                              return GestureDetector(
+                                onTap: () => FocusScope.of(context)
+                                    .requestFocus(_unfocusNode),
+                                child: Padding(
+                                  padding: MediaQuery.of(bottomSheetContext)
+                                      .viewInsets,
+                                  child: Container(
+                                    height: 460.0,
+                                    child: CalendarWidget(),
                                   ),
-                                );
-                              },
-                            ).then((value) => setState(() {}));
-
-                            return;
-                          } else {
-                            final ordersUpdateData = createOrdersRecordData(
-                              deadline: _model.selected,
-                            );
-                            await FFAppState()
-                                .currentOrder!
-                                .update(ordersUpdateData);
-
-                            context.pushNamed(
-                              'QuizSendOrder',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType:
-                                      PageTransitionType.rightToLeft,
                                 ),
-                              },
-                            );
+                              );
+                            },
+                          ).then((value) => setState(() {}));
 
-                            return;
-                          }
+                          return;
                         } else {
-                          setState(() {
-                            _model.showTopError = true;
-                          });
+                          final ordersUpdateData = createOrdersRecordData(
+                            deadline: _model.selected,
+                          );
+                          await FFAppState()
+                              .currentOrder!
+                              .update(ordersUpdateData);
+
+                          context.pushNamed(
+                            'QuizSendOrder',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                              ),
+                            },
+                          );
+
                           return;
                         }
-                      },
-                      text: 'Сохранить',
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 48.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Fira Sans',
-                                  color: Colors.white,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8.0),
+                      } else {
+                        setState(() {
+                          _model.showTopError = true;
+                        });
+                        return;
+                      }
+                    },
+                    text: 'Сохранить',
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 48.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Fira Sans',
+                                color: Colors.white,
+                              ),
+                      elevation: 0.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
                       ),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                ],
-              );
-            },
-          ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

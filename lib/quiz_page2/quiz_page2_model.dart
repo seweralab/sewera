@@ -10,6 +10,8 @@ import '/widgets/quiz_checkbox/quiz_checkbox_widget.dart';
 import '/widgets/quiz_radio/quiz_radio_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/request_manager.dart';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -29,6 +31,8 @@ class QuizPage2Model extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for top_notification component.
+  late TopNotificationModel topNotificationModel;
   // Model for quizRadio component.
   late QuizRadioModel quizRadioModel;
   // Model for quizCheckbox component.
@@ -36,23 +40,43 @@ class QuizPage2Model extends FlutterFlowModel {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Model for top_notification component.
-  late TopNotificationModel topNotificationModel;
+
+  /// Query cache managers for this widget.
+
+  final _quizManager = FutureRequestManager<List<QuizRecord>>();
+  Future<List<QuizRecord>> quiz({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<List<QuizRecord>> Function() requestFn,
+  }) =>
+      _quizManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearQuizCache() => _quizManager.clear();
+  void clearQuizCacheKey(String? uniqueKey) =>
+      _quizManager.clearRequest(uniqueKey);
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    topNotificationModel = createModel(context, () => TopNotificationModel());
     quizRadioModel = createModel(context, () => QuizRadioModel());
     quizCheckboxModel = createModel(context, () => QuizCheckboxModel());
-    topNotificationModel = createModel(context, () => TopNotificationModel());
   }
 
   void dispose() {
+    topNotificationModel.dispose();
     quizRadioModel.dispose();
     quizCheckboxModel.dispose();
     textController?.dispose();
-    topNotificationModel.dispose();
+
+    /// Dispose query cache managers for this widget.
+
+    clearQuizCache();
   }
 
   /// Additional helper methods are added here.
+
 }
