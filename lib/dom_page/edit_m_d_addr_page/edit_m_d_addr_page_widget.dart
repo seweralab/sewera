@@ -4,7 +4,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/widgets/customnavbar/customnavbar_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -68,7 +67,7 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.topNotificationModel,
                           updateCallback: () => setState(() {}),
@@ -336,19 +335,6 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                   ),
                 ),
               ],
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
-              child: wrapWithModel(
-                model: _model.customnavbarModel,
-                updateCallback: () => setState(() {}),
-                child: CustomnavbarWidget(
-                  supportactive: false,
-                  homeactive: false,
-                  orderactive: false,
-                  profileactive: true,
-                ),
-              ),
             ),
           ],
         ),

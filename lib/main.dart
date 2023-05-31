@@ -128,15 +128,26 @@ class NavBarPage extends StatefulWidget {
 }
 
 /// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
+class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
   String _currentPageName = 'HomePage2';
   late Widget? _currentPage;
   bool _isOverlayVisible = false;
+  AnimationController? _overlayAnimationController;
+  late Animation<double> _overlayAnimation;
   @override
   void initState() {
     super.initState();
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
+    _overlayAnimationController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+
+    _overlayAnimation = CurvedAnimation(
+      parent: _overlayAnimationController!,
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
@@ -185,7 +196,12 @@ class _NavBarPageState extends State<NavBarPage> {
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
           if (i == 3) {
-            _toggleOverlay();
+            // _toggleOverlay();
+            if (_isOverlayVisible) {
+              _hideOverlay();
+            } else {
+              _showOverlay();
+            }
           } else {
             _currentPage = null;
             _hideOverlay();
@@ -267,107 +283,128 @@ class _NavBarPageState extends State<NavBarPage> {
     });
   }
 
-  void _hideOverlay() {
+  @override
+  void dispose() {
+    _overlayAnimationController?.dispose();
+    super.dispose();
+  }
+
+  void _showOverlay() {
     setState(() {
-      _isOverlayVisible = false;
+      _isOverlayVisible = true;
+    });
+    _overlayAnimationController?.forward();
+  }
+
+  void _hideOverlay() {
+    _overlayAnimationController?.reverse().then((_) {
+      setState(() {
+        _isOverlayVisible = false;
+      });
     });
   }
 
   Widget _buildOverlay() {
-    return GestureDetector(
-        onTap: _hideOverlay,
-        child: Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            color: Color(0xD800BB67),
-          ),
-          child: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 29, 36),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                        child: Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0),
-                            child: SvgPicture.asset(
-                              'assets/images/s_tg.svg',
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                        child: Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0),
-                            child: SvgPicture.asset(
-                              'assets/images/s_wa.svg',
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                        child: Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0),
-                            child: SvgPicture.asset(
-                              'assets/images/s_phone.svg',
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+    return FadeTransition(
+        opacity: _overlayAnimation,
+        child: // Ваш контент для оверлея
+            GestureDetector(
+                onTap: _hideOverlay,
+                child: Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 1,
+                  decoration: BoxDecoration(
+                    color: Color(0xD800BB67),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ));
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 29, 36),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                                child: Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/s_tg.svg',
+                                      width: 20,
+                                      height: 20,
+                                      fit: BoxFit.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                                child: Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/s_wa.svg',
+                                      width: 20,
+                                      height: 20,
+                                      fit: BoxFit.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                                child: Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/s_phone.svg',
+                                      width: 32,
+                                      height: 32,
+                                      fit: BoxFit.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )));
   }
 }

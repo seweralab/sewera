@@ -258,7 +258,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 24.0, 0.0, 0.0),
+                              0.0, 44.0, 0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.topNotificationModel2,
                             updateCallback: () => setState(() {}),

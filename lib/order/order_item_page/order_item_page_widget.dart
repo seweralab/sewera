@@ -14,7 +14,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
 import 'order_item_page_model.dart';
 export 'order_item_page_model.dart';
 
@@ -61,8 +60,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 40,
-              height: 40,
+              width: 40.0,
+              height: 40.0,
               child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primary,
               ),
@@ -81,7 +80,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                     child: wrapWithModel(
                       model: _model.topNotificationModel,
                       updateCallback: () => setState(() {}),
@@ -97,8 +97,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 12, 18, 14),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 12.0, 18.0, 14.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -116,11 +116,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 18, 0),
+                                          0.0, 0.0, 18.0, 0.0),
                                       child: Icon(
                                         Icons.arrow_back_sharp,
                                         color: Colors.black,
-                                        size: 24,
+                                        size: 24.0,
                                       ),
                                     ),
                                     Container(
@@ -136,7 +136,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Fira Sans',
-                                              fontSize: 20,
+                                              fontSize: 20.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -144,11 +144,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   ],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Icon(
                                     Icons.close,
                                     color: Colors.black,
-                                    size: 24,
+                                    size: 24.0,
                                   ),
                                 ),
                               ],
@@ -156,7 +156,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -171,21 +172,21 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         0) &&
                                     (_model.showInfoChanged == true))
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 26),
+                                          0.0, 0.0, 0.0, 26.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFFFEE83),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                         ),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  16, 12, 16, 12),
+                                                  16.0, 12.0, 16.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -199,7 +200,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
-                                                          fontSize: 14,
+                                                          fontSize: 14.0,
                                                         ),
                                               ),
                                               InkWell(
@@ -217,7 +218,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 child: Icon(
                                                   Icons.close,
                                                   color: Colors.black,
-                                                  size: 12,
+                                                  size: 12.0,
                                                 ),
                                               ),
                                             ],
@@ -227,7 +228,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     ),
                                   ),
                                 Align(
-                                  alignment: AlignmentDirectional(-1, 0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
@@ -238,17 +239,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 24),
+                                                  0.0, 0.0, 0.0, 24.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 8.0, 0.0),
                                                 child: SvgPicture.asset(
                                                   'assets/images/process.svg',
-                                                  width: 16,
-                                                  height: 16,
+                                                  width: 16.0,
+                                                  height: 16.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -260,7 +262,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     .override(
                                                       fontFamily: 'Fira Sans',
                                                       color: Color(0xFF88959C),
-                                                      fontSize: 14,
+                                                      fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -273,17 +275,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 24),
+                                                  0.0, 0.0, 0.0, 24.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 8.0, 0.0),
                                                 child: SvgPicture.asset(
                                                   'assets/images/confirm.svg',
-                                                  width: 16,
-                                                  height: 16,
+                                                  width: 16.0,
+                                                  height: 16.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -295,7 +298,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     .override(
                                                       fontFamily: 'Fira Sans',
                                                       color: Color(0xFFFFB306),
-                                                      fontSize: 14,
+                                                      fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -308,17 +311,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 24),
+                                                  0.0, 0.0, 0.0, 24.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 8.0, 0.0),
                                                 child: SvgPicture.asset(
                                                   'assets/images/confirmed.svg',
-                                                  width: 16,
-                                                  height: 16,
+                                                  width: 16.0,
+                                                  height: 16.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -330,7 +334,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     .override(
                                                       fontFamily: 'Fira Sans',
                                                       color: Color(0xFF04AB51),
-                                                      fontSize: 14,
+                                                      fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -343,17 +347,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 24),
+                                                  0.0, 0.0, 0.0, 24.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 8.0, 0.0),
                                                 child: SvgPicture.asset(
                                                   'assets/images/complete.svg',
-                                                  width: 16,
-                                                  height: 16,
+                                                  width: 16.0,
+                                                  height: 16.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -368,7 +373,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
-                                                      fontSize: 14,
+                                                      fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -381,17 +386,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 24),
+                                                  0.0, 0.0, 0.0, 24.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 8.0, 0.0),
                                                 child: SvgPicture.asset(
                                                   'assets/images/canceled.svg',
-                                                  width: 16,
-                                                  height: 16,
+                                                  width: 16.0,
+                                                  height: 16.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -406,7 +412,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
-                                                      fontSize: 14,
+                                                      fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -422,7 +428,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     orderItemPageOrdersRecord.deadline != '')
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 24),
+                                        0.0, 0.0, 0.0, 24.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -430,12 +436,12 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                           Icons.calendar_today,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          size: 18,
+                                          size: 18.0,
                                         ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  14, 0, 0, 0),
+                                                  14.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             orderItemPageOrdersRecord.deadline,
                                             maxLines: 3,
@@ -443,7 +449,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 14,
+                                                  fontSize: 14.0,
                                                 ),
                                           ),
                                         ),
@@ -454,7 +460,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     orderItemPageOrdersRecord.addr != '')
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 24),
+                                        0.0, 0.0, 0.0, 24.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -462,12 +468,12 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                           Icons.place_sharp,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          size: 18,
+                                          size: 18.0,
                                         ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  14, 0, 0, 0),
+                                                  14.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             orderItemPageOrdersRecord.addr,
                                             maxLines: 3,
@@ -475,7 +481,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 14,
+                                                  fontSize: 14.0,
                                                 ),
                                           ),
                                         ),
@@ -487,19 +493,19 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 24),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 24.0),
                           child: Container(
                             width: double.infinity,
-                            height: 1,
+                            height: 1.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFE8EAEC),
                             ),
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 12),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 12.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -525,32 +531,32 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Fira Sans',
-                                        fontSize: 14,
+                                        fontSize: 14.0,
                                       ),
                                 ),
                                 Transform.rotate(
-                                  angle: 0,
+                                  angle: 0.0,
                                   child: Stack(
                                     children: [
                                       if (!_model.showDetails)
                                         ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                           child: SvgPicture.asset(
                                             'assets/images/arr_down.svg',
-                                            width: 18,
-                                            height: 10,
+                                            width: 18.0,
+                                            height: 10.0,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                       if (_model.showDetails)
                                         ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                           child: SvgPicture.asset(
                                             'assets/images/arr_up.svg',
-                                            width: 18,
-                                            height: 10,
+                                            width: 18.0,
+                                            height: 10.0,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -592,7 +598,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                           return Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 8, 0, 8),
+                                                    0.0, 8.0, 0.0, 8.0),
                                             child: Container(
                                               width: double.infinity,
                                               decoration: BoxDecoration(
@@ -607,7 +613,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                               ),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(18, 8, 18, 8),
+                                                    .fromSTEB(
+                                                        18.0, 8.0, 18.0, 8.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -666,15 +673,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                1, 0),
+                                                                1.0, 0.0),
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 2, 0),
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      2.0,
+                                                                      0.0),
                                                           child: Container(
-                                                            width: 6,
-                                                            height: 6,
+                                                            width: 6.0,
+                                                            height: 6.0,
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: Color(
@@ -696,7 +706,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 8, 0, 8),
+                                      0.0, 8.0, 0.0, 8.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -708,7 +718,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 8, 18, 8),
+                                          18.0, 8.0, 18.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -753,14 +763,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   'deadline') ==
                                               true)
                                             Align(
-                                              alignment:
-                                                  AlignmentDirectional(1, 0),
+                                              alignment: AlignmentDirectional(
+                                                  1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 2, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 2.0, 0.0),
                                                 child: Container(
-                                                  width: 6,
-                                                  height: 6,
+                                                  width: 6.0,
+                                                  height: 6.0,
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFFFB306),
                                                     shape: BoxShape.circle,
@@ -775,7 +786,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 8, 0, 8),
+                                      0.0, 8.0, 0.0, 8.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -787,7 +798,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 8, 18, 8),
+                                          18.0, 8.0, 18.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -832,14 +843,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   'addr') ==
                                               true)
                                             Align(
-                                              alignment:
-                                                  AlignmentDirectional(1, 0),
+                                              alignment: AlignmentDirectional(
+                                                  1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 2, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 2.0, 0.0),
                                                 child: Container(
-                                                  width: 6,
-                                                  height: 6,
+                                                  width: 6.0,
+                                                  height: 6.0,
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFFFB306),
                                                     shape: BoxShape.circle,
@@ -857,7 +869,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     orderItemPageOrdersRecord.description != '')
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 8, 0, 8),
+                                        0.0, 8.0, 0.0, 8.0),
                                     child: Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
@@ -869,7 +881,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18, 8, 18, 8),
+                                            18.0, 8.0, 18.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -916,14 +928,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         'description') ==
                                                 true)
                                               Align(
-                                                alignment:
-                                                    AlignmentDirectional(1, 0),
+                                                alignment: AlignmentDirectional(
+                                                    1.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 2, 0),
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 2.0, 0.0),
                                                   child: Container(
-                                                    width: 6,
-                                                    height: 6,
+                                                    width: 6.0,
+                                                    height: 6.0,
                                                     decoration: BoxDecoration(
                                                       color: Color(0xFFFFB306),
                                                       shape: BoxShape.circle,
@@ -949,7 +962,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 8, 18, 8),
+                                          18.0, 8.0, 18.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -994,14 +1007,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   'comment') ==
                                               true)
                                             Align(
-                                              alignment:
-                                                  AlignmentDirectional(1, 0),
+                                              alignment: AlignmentDirectional(
+                                                  1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 2, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 2.0, 0.0),
                                                 child: Container(
-                                                  width: 6,
-                                                  height: 6,
+                                                  width: 6.0,
+                                                  height: 6.0,
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFFFB306),
                                                     shape: BoxShape.circle,
@@ -1027,7 +1041,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 12, 18, 24),
+                                          18.0, 12.0, 18.0, 24.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -1069,11 +1083,13 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     gridDelegate:
                                                         SliverGridDelegateWithFixedCrossAxisCount(
                                                       crossAxisCount: 3,
-                                                      crossAxisSpacing: 10,
-                                                      mainAxisSpacing: 10,
-                                                      childAspectRatio: 1,
+                                                      crossAxisSpacing: 10.0,
+                                                      mainAxisSpacing: 10.0,
+                                                      childAspectRatio: 1.0,
                                                     ),
                                                     shrinkWrap: true,
+                                                    physics:
+                                                        NeverScrollableScrollPhysics(),
                                                     scrollDirection:
                                                         Axis.vertical,
                                                     itemCount:
@@ -1087,7 +1103,10 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    0, 4, 4, 0),
+                                                                    0.0,
+                                                                    4.0,
+                                                                    4.0,
+                                                                    0.0),
                                                         child: InkWell(
                                                           splashColor: Colors
                                                               .transparent,
@@ -1132,12 +1151,12 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          8),
+                                                                          8.0),
                                                               child:
                                                                   Image.network(
                                                                 mdPhotosEditItem,
-                                                                width: 100,
-                                                                height: 100,
+                                                                width: 100.0,
+                                                                height: 100.0,
                                                                 fit: BoxFit
                                                                     .cover,
                                                               ),
@@ -1159,11 +1178,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             ),
                           ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 12, 18, 24),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 12.0, 18.0, 24.0),
                           child: Container(
                             width: double.infinity,
-                            height: 1,
+                            height: 1.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFE8EAEC),
                             ),
@@ -1171,8 +1190,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                         ),
                         if (orderItemPageOrdersRecord.status == 'В обработке')
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 24),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 0.0, 18.0, 24.0),
                             child: Text(
                               'Сейчас заказ обрабатывает менеджер.\n\nКогда заказ обработают, вам придет уведомление. А еще менеджер может связаться с вами для уточнения деталей. ',
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1180,21 +1199,21 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                           ),
                         if (orderItemPageOrdersRecord.status == 'Подтверждён')
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 18),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 0.0, 18.0, 18.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 8, 0),
+                                      0.0, 0.0, 8.0, 0.0),
                                   child: Text(
                                     'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed).toString()} ₽',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Fira Sans',
-                                          fontSize: 24,
+                                          fontSize: 24.0,
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -1205,8 +1224,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                         if ((orderItemPageOrdersRecord.cost > 0) &&
                             (orderItemPageOrdersRecord.status == 'Подтвердите'))
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 0.0, 18.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
@@ -1218,21 +1237,21 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 6),
+                                        0.0, 0.0, 0.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 8, 0),
+                                                  0.0, 0.0, 8.0, 0.0),
                                           child: Text(
                                             'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString() : orderItemPageOrdersRecord.cost.toString()} ₽',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 24,
+                                                  fontSize: 24.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -1246,7 +1265,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 2, 10, 2),
+                                                  .fromSTEB(
+                                                      10.0, 2.0, 10.0, 2.0),
                                               child: Text(
                                                 '${orderItemPageOrdersRecord.cost.toString()} ₽',
                                                 style: FlutterFlowTheme.of(
@@ -1266,10 +1286,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   if (valueOrDefault<bool>(
                                       currentUserDocument?.noOrders, false))
                                     Align(
-                                      alignment: AlignmentDirectional(-1, 0),
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 12),
+                                            0.0, 0.0, 0.0, 12.0),
                                         child: AuthUserStreamWidget(
                                           builder: (context) => Text(
                                             'Минус 10% за первый заказ',
@@ -1278,7 +1299,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 .override(
                                                   fontFamily: 'Fira Sans',
                                                   color: Color(0xFF82959C),
-                                                  fontSize: 14,
+                                                  fontSize: 14.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -1287,10 +1308,10 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 12, 0, 12),
+                                        0.0, 12.0, 0.0, 12.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 1,
+                                      height: 1.0,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFE8EAEC),
                                       ),
@@ -1299,12 +1320,12 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   if (orderItemPageOrdersRecord.status ==
                                       'Подтвердите')
                                     Align(
-                                      alignment: AlignmentDirectional(0, 0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         child: Stack(
                                           alignment:
-                                              AlignmentDirectional(0, -1),
+                                              AlignmentDirectional(0.0, -1.0),
                                           children: [
                                             AuthUserStreamWidget(
                                               builder: (context) =>
@@ -1340,12 +1361,13 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 0)
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.95, -1),
+                                                    0.95, -1.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 5, 0, 24),
+                                                      .fromSTEB(
+                                                          0.0, 5.0, 0.0, 24.0),
                                                   child: Container(
-                                                    width: 64,
+                                                    width: 64.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -1359,20 +1381,27 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                       borderRadius:
                                                           BorderRadius.only(
                                                         bottomLeft:
-                                                            Radius.circular(8),
+                                                            Radius.circular(
+                                                                8.0),
                                                         bottomRight:
-                                                            Radius.circular(0),
+                                                            Radius.circular(
+                                                                0.0),
                                                         topLeft:
-                                                            Radius.circular(0),
+                                                            Radius.circular(
+                                                                0.0),
                                                         topRight:
-                                                            Radius.circular(8),
+                                                            Radius.circular(
+                                                                8.0),
                                                       ),
                                                     ),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  8, 5, 8, 5),
+                                                                  8.0,
+                                                                  5.0,
+                                                                  8.0,
+                                                                  5.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -1381,15 +1410,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        2,
-                                                                        0),
+                                                                        0.0,
+                                                                        0.0,
+                                                                        2.0,
+                                                                        0.0),
                                                             child: SvgPicture
                                                                 .asset(
                                                               'assets/images/Union.svg',
-                                                              width: 12,
-                                                              height: 12,
+                                                              width: 12.0,
+                                                              height: 12.0,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
@@ -1456,7 +1485,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 0, 18, 0),
+                                    18.0, 0.0, 18.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -1468,18 +1497,18 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-0.95, 0),
+                                            AlignmentDirectional(-0.95, 0.0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 8),
+                                                  0.0, 0.0, 0.0, 8.0),
                                           child: Text(
                                             'Способ оплаты',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 14,
+                                                  fontSize: 14.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -1487,17 +1516,17 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 30),
+                                            0.0, 0.0, 0.0, 30.0),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 90,
+                                          height: 90.0,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFF2FBF6),
                                             borderRadius:
-                                                BorderRadius.circular(8),
+                                                BorderRadius.circular(8.0),
                                             border: Border.all(
                                               color: Color(0xFF00BB67),
-                                              width: 1,
+                                              width: 1.0,
                                             ),
                                           ),
                                           child: Column(
@@ -1507,11 +1536,12 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 0, 13),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 13.0),
                                                 child: SvgPicture.asset(
                                                   'assets/images/fiat.svg',
-                                                  width: 23,
-                                                  height: 17,
+                                                  width: 23.0,
+                                                  height: 17.0,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -1523,7 +1553,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
-                                                          fontSize: 12,
+                                                          fontSize: 12.0,
                                                         ),
                                               ),
                                             ],
@@ -1544,8 +1574,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                     children: [
                       if (orderItemPageOrdersRecord.status == 'Подтвердите')
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 25),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 25.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               final ordersUpdateData = {
@@ -1582,11 +1612,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             text: 'Подтвердите заказ',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 48,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
@@ -1594,27 +1624,27 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Colors.white,
                                   ),
-                              elevation: 0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),
                       if (orderItemPageOrdersRecord.status == 'Подтвердите')
                         Container(
                           width: double.infinity,
-                          height: 8,
+                          height: 8.0,
                           decoration: BoxDecoration(
                             color: Color(0xFFF3F4F5),
                           ),
                         ),
                       if (orderItemPageOrdersRecord.status == 'Подтвердите')
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 20, 18, 20),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 20.0, 18.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               context.pushNamed(
@@ -1637,11 +1667,11 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             ),
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 48,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
                               color:
                                   FlutterFlowTheme.of(context).primaryBtnText,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1650,20 +1680,20 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Color(0xFF586A74),
                                   ),
-                              elevation: 0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),
                       if ((orderItemPageOrdersRecord.status == 'Выполнен') ||
                           (orderItemPageOrdersRecord.status == 'Отменен'))
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 32),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               final ordersCreateData = createOrdersRecordData(
@@ -1704,15 +1734,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             text: 'Повторить заказ',
                             icon: Icon(
                               Icons.refresh,
-                              size: 16,
+                              size: 16.0,
                             ),
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 48,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
@@ -1720,12 +1750,12 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Colors.white,
                                   ),
-                              elevation: 0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                             showLoadingIndicator: false,
                           ),

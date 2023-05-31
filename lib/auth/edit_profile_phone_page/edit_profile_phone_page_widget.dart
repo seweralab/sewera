@@ -68,7 +68,7 @@ class _EditProfilePhonePageWidgetState
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.topNotificationModel,
                           updateCallback: () => setState(() {}),

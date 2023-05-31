@@ -64,7 +64,7 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
               child: wrapWithModel(
                 model: _model.topNotificationModel,
                 updateCallback: () => setState(() {}),
@@ -353,7 +353,7 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   if (_model.searchFieldController.text != '') {

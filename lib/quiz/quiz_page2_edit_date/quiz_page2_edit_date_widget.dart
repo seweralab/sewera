@@ -74,7 +74,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
@@ -288,7 +288,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (_model.selected != null && _model.selected != '') {

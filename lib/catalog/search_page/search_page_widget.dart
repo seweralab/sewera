@@ -57,7 +57,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
               child: wrapWithModel(
                 model: _model.topNotificationModel,
                 updateCallback: () => setState(() {}),
@@ -182,261 +182,269 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
               ),
             ),
             Flexible(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
-                      child: Builder(
-                        builder: (context) {
-                          if (_model.algoliaSearchResults == null) {
-                            return Center(
-                              child: SizedBox(
-                                width: 40,
-                                height: 40,
-                                child: CircularProgressIndicator(
-                                  color: FlutterFlowTheme.of(context).primary,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onPanDown: (_) {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                        child: Builder(
+                          builder: (context) {
+                            if (_model.algoliaSearchResults == null) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: CircularProgressIndicator(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                          final searchResults =
-                              _model.algoliaSearchResults?.toList() ?? [];
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: List.generate(searchResults.length,
-                                (searchResultsIndex) {
-                              final searchResultsItem =
-                                  searchResults[searchResultsIndex];
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 16),
-                                      child: Material(
-                                        borderRadius: BorderRadius.circular(
-                                            40), // Установите радиус закругления
-                                        color: Color(0xFFF3F4F5),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            FFAppState().currentQuizIndex = 0;
-
-                                            final ordersCreateData =
-                                                createOrdersRecordData(
-                                              status: 'Создан',
-                                              cost: 0,
-                                              client: currentUserReference,
-                                              service:
-                                                  searchResultsItem.reference,
-                                              servicename:
-                                                  searchResultsItem.title,
-                                              orderDate: getCurrentTimestamp,
-                                              cashback:
-                                                  searchResultsItem.cashback,
-                                            );
-                                            var ordersRecordReference =
-                                                OrdersRecord.collection.doc();
-                                            await ordersRecordReference
-                                                .set(ordersCreateData);
-                                            _model.newOrder = OrdersRecord
-                                                .getDocumentFromData(
-                                                    ordersCreateData,
-                                                    ordersRecordReference);
-                                            FFAppState().currentOrder =
-                                                _model.newOrder!.reference;
-
-                                            context.pushNamed(
-                                              'QuizPage2',
-                                              queryParams: {
-                                                'serviceRef': serializeParam(
-                                                  searchResultsItem.reference,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-
-                                            setState(() {});
-                                          },
+                              );
+                            }
+                            final searchResults =
+                                _model.algoliaSearchResults?.toList() ?? [];
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: List.generate(searchResults.length,
+                                  (searchResultsIndex) {
+                                final searchResultsItem =
+                                    searchResults[searchResultsIndex];
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 16),
+                                        child: Material(
                                           borderRadius: BorderRadius.circular(
                                               40), // Установите радиус закругления
-                                          splashColor: Colors
-                                              .grey, // Установите цвет волны
-                                          child: Container(
-                                            height: 48,
-                                            child: Row(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 16),
+                                          color: Color(0xFFF3F4F5),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              FFAppState().currentQuizIndex = 0;
+
+                                              final ordersCreateData =
+                                                  createOrdersRecordData(
+                                                status: 'Создан',
+                                                cost: 0,
+                                                client: currentUserReference,
+                                                service:
+                                                    searchResultsItem.reference,
+                                                servicename:
+                                                    searchResultsItem.title,
+                                                orderDate: getCurrentTimestamp,
+                                                cashback:
+                                                    searchResultsItem.cashback,
+                                              );
+                                              var ordersRecordReference =
+                                                  OrdersRecord.collection.doc();
+                                              await ordersRecordReference
+                                                  .set(ordersCreateData);
+                                              _model.newOrder = OrdersRecord
+                                                  .getDocumentFromData(
+                                                      ordersCreateData,
+                                                      ordersRecordReference);
+                                              FFAppState().currentOrder =
+                                                  _model.newOrder!.reference;
+
+                                              context.pushNamed(
+                                                'QuizPage2',
+                                                queryParams: {
+                                                  'serviceRef': serializeParam(
+                                                    searchResultsItem.reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+
+                                              setState(() {});
+                                            },
+                                            borderRadius: BorderRadius.circular(
+                                                40), // Установите радиус закругления
+                                            splashColor: Colors
+                                                .grey, // Установите цвет волны
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 58,
+                                              child: Align(
+                                                alignment:
+                                                    AlignmentDirectional(-1, 0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(23, 0, 0, 0),
                                                   child: AutoSizeText(
                                                     searchResultsItem.title,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
-                                                    maxLines: 1,
-                                                    minFontSize: 12,
-                                                    maxFontSize: 16,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.start,
                                                   ),
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      )),
-                                  if (searchResultsIndex ==
-                                      functions.totaldecr(
-                                          _model.algoliaSearchResults!.length))
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 16),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'QuizNoService',
-                                            queryParams: {
-                                              'customServiceName':
-                                                  serializeParam(
-                                                _model
-                                                    .searchFieldController.text,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType
-                                                        .rightToLeft,
-                                              ),
-                                            },
-                                          );
-                                        },
-                                        child: AnimatedContainer(
-                                          duration: Duration(milliseconds: 100),
-                                          curve: Curves.easeOut,
-                                          width: double.infinity,
-                                          height: 51,
-                                          decoration: BoxDecoration(
+                                        )),
+                                    if (searchResultsIndex ==
+                                        functions.totaldecr(_model
+                                            .algoliaSearchResults!.length))
+                                      Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 16),
+                                          child: Material(
+                                            borderRadius: BorderRadius.circular(
+                                                40), // Установите радиус закругления
                                             color: Color(0xFFF3F4F5),
-                                            borderRadius:
-                                                BorderRadius.circular(40),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(23, 0, 0, 0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/noservice.svg',
-                                                  width: 24,
-                                                  height: 24,
-                                                  fit: BoxFit.cover,
+                                            child: InkWell(
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'QuizNoService',
+                                                  queryParams: {
+                                                    'customServiceName':
+                                                        serializeParam(
+                                                      _model
+                                                          .searchFieldController
+                                                          .text,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .rightToLeft,
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              borderRadius: BorderRadius.circular(
+                                                  40), // Установите радиус закругления
+                                              splashColor: Colors
+                                                  .grey, // Установите цвет волны
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 58,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  23, 0, 0, 0),
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/noservice.svg',
+                                                        width: 24,
+                                                        height: 24,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              -1, 0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(12, 0,
+                                                                    0, 0),
+                                                        child: Text(
+                                                          'Тут нет моей услуги',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                              Align(
-                                                alignment:
-                                                    AlignmentDirectional(-1, 0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 0, 0, 0),
-                                                  child: Text(
-                                                    'Тут нет моей услуги',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                            ),
+                                          )),
+                                  ],
+                                );
+                              }),
+                            );
+                          },
+                        ),
+                      ),
+                      if ((_model.searchFieldController.text != '') &&
+                          (_model.algoliaSearchResults?.length == 0))
+                        Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 16),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(
+                                  40), // Установите радиус закругления
+                              color: Color(0xFFF3F4F5),
+                              child: InkWell(
+                                onTap: () async {
+                                  context.pushNamed(
+                                    'QuizNoService',
+                                    queryParams: {
+                                      'customServiceName': serializeParam(
+                                        _model.searchFieldController.text,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.rightToLeft,
+                                      ),
+                                    },
+                                  );
+                                },
+                                borderRadius: BorderRadius.circular(
+                                    40), // Установите радиус закругления
+                                splashColor:
+                                    Colors.grey, // Установите цвет волны
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 58,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            23, 0, 0, 0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/noservice.svg',
+                                          width: 24,
+                                          height: 24,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: AlignmentDirectional(-1, 0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12, 0, 0, 0),
+                                          child: Text(
+                                            'Тут нет моей услуги',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
                                           ),
                                         ),
                                       ),
-                                    ),
-                                ],
-                              );
-                            }),
-                          );
-                        },
-                      ),
-                    ),
-                    if ((_model.searchFieldController.text != '') &&
-                        (_model.algoliaSearchResults?.length == 0))
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 16),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'QuizNoService',
-                              queryParams: {
-                                'customServiceName': serializeParam(
-                                  _model.searchFieldController.text,
-                                  ParamType.String,
-                                ),
-                              }.withoutNulls,
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType:
-                                      PageTransitionType.rightToLeft,
-                                ),
-                              },
-                            );
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 48,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF3F4F5),
-                              borderRadius: BorderRadius.circular(40),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      23, 0, 0, 0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/noservice.svg',
-                                    width: 24,
-                                    height: 24,
-                                    fit: BoxFit.cover,
+                                    ],
                                   ),
                                 ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1, 0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 0, 0, 0),
-                                    child: Text(
-                                      'Тут нет моей услуги',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
+                              ),
+                            )),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -11,7 +11,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'home_page2_model.dart';
 export 'home_page2_model.dart';
 
@@ -63,7 +62,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.topNotificationModel,
                           updateCallback: () => setState(() {}),
@@ -74,13 +74,14 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(18, 10, 18, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            18.0, 10.0, 18.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 51,
+                          height: 59.0,
                           decoration: BoxDecoration(
                             color: Color(0xFFF3F4F5),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -96,7 +97,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 0, 0, 0),
+                                      12.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Найти услугу в каталоге',
                                     style: FlutterFlowTheme.of(context)
@@ -104,19 +105,19 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         .override(
                                           fontFamily: 'Fira Sans',
                                           color: Color(0xB3102938),
-                                          fontSize: 14,
+                                          fontSize: 14.0,
                                         ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 13, 0),
+                                      0.0, 0.0, 13.0, 0.0),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(0),
+                                    borderRadius: BorderRadius.circular(0.0),
                                     child: SvgPicture.asset(
                                       'assets/images/Vector_(1).svg',
-                                      width: 16,
-                                      height: 16,
+                                      width: 16.0,
+                                      height: 16.0,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -127,7 +128,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(18, 16, 18, 16),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            18.0, 16.0, 18.0, 16.0),
                         child: StreamBuilder<List<NotificationsRecord>>(
                           stream: queryNotificationsRecord(
                             queryBuilder: (notificationsRecord) =>
@@ -141,8 +143,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                             if (!snapshot.hasData) {
                               return Center(
                                 child: SizedBox(
-                                  width: 40,
-                                  height: 40,
+                                  width: 40.0,
+                                  height: 40.0,
                                   child: CircularProgressIndicator(
                                     color: FlutterFlowTheme.of(context).primary,
                                   ),
@@ -168,19 +170,19 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                       notificationsNotificationsRecord!.type),
                                   Color(0xFFD0FFA1),
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    8, 16, 8, 16),
+                                    8.0, 16.0, 8.0, 16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Align(
-                                      alignment: AlignmentDirectional(1, 0),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 16, 0),
+                                            0.0, 0.0, 16.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -199,16 +201,17 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                           child: Icon(
                                             Icons.close,
                                             color: Colors.black,
-                                            size: 16,
+                                            size: 16.0,
                                           ),
                                         ),
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(-1, 0),
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            16, 0, 16, 0),
+                                            16.0, 0.0, 16.0, 0.0),
                                         child: Text(
                                           notificationsNotificationsRecord!
                                               .text,
@@ -222,7 +225,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         null)
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            16, 13, 16, 0),
+                                            16.0, 13.0, 16.0, 0.0),
                                         child: FutureBuilder<ServicesRecord>(
                                           future: ServicesRecord.getDocumentOnce(
                                               notificationsNotificationsRecord!
@@ -232,8 +235,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                             if (!snapshot.hasData) {
                                               return Center(
                                                 child: SizedBox(
-                                                  width: 40,
-                                                  height: 40,
+                                                  width: 40.0,
+                                                  height: 40.0,
                                                   child:
                                                       CircularProgressIndicator(
                                                     color: FlutterFlowTheme.of(
@@ -285,12 +288,14 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                               text: 'Оставить заявку',
                                               options: FFButtonOptions(
                                                 width: double.infinity,
-                                                height: 40,
+                                                height: 40.0,
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 0, 0),
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
                                                 iconPadding:
                                                     EdgeInsetsDirectional
-                                                        .fromSTEB(0, 0, 0, 0),
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
@@ -306,10 +311,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                     ),
                                                 borderSide: BorderSide(
                                                   color: Colors.transparent,
-                                                  width: 1,
+                                                  width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                    BorderRadius.circular(8.0),
                                               ),
                                             );
                                           },
@@ -335,8 +340,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 40,
-                                height: 40,
+                                width: 40.0,
+                                height: 40.0,
                                 child: CircularProgressIndicator(
                                   color: FlutterFlowTheme.of(context).primary,
                                 ),
@@ -357,10 +362,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 0, 18, 12),
+                                          18.0, 0.0, 18.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -373,13 +378,13 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                 .override(
                                                   fontFamily: 'Fira Sans',
                                                   color: Color(0xFF586A74),
-                                                  fontSize: 12,
+                                                  fontSize: 12.0,
                                                 ),
                                           ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    6, 0, 0, 2),
+                                                    6.0, 0.0, 0.0, 2.0),
                                             child: Text(
                                               '●',
                                               style:
@@ -397,10 +402,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 1,
+                                      height: 1.0,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFE8EAEC),
                                       ),
@@ -408,7 +413,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 24),
+                                        0.0, 0.0, 0.0, 24.0),
                                     child: Builder(
                                       builder: (context) {
                                         final unformed =
@@ -421,13 +426,13 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                             final unformedItem =
                                                 unformed[unformedIndex];
                                             return Stack(
-                                              alignment:
-                                                  AlignmentDirectional(0, 1),
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 1.0),
                                               children: [
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0, 0),
+                                                          0.0, 0.0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -508,7 +513,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Fira Sans',
-                                                                fontSize: 14,
+                                                                fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -520,7 +525,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .accent2,
-                                                          size: 20,
+                                                          size: 20.0,
                                                         ),
                                                         tileColor: FlutterFlowTheme
                                                                 .of(context)
@@ -533,10 +538,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0, 0),
+                                                          0.0, 0.0),
                                                   child: Container(
                                                     width: double.infinity,
-                                                    height: 1,
+                                                    height: 1.0,
                                                     decoration: BoxDecoration(
                                                       color: Color(0xFFE8EAEC),
                                                     ),
@@ -562,8 +567,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 40,
-                                height: 40,
+                                width: 40.0,
+                                height: 40.0,
                                 child: CircularProgressIndicator(
                                   color: FlutterFlowTheme.of(context).primary,
                                 ),
@@ -589,7 +594,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18, 0, 0, 15),
+                                          18.0, 0.0, 0.0, 15.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -611,12 +616,13 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 16, 0),
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 16.0, 0.0),
                                               child: Image.network(
                                                 columnCatalogRecord
                                                     .icon.first.downloadURL,
-                                                width: 20,
-                                                height: 20,
+                                                width: 20.0,
+                                                height: 20.0,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -627,7 +633,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Fira Sans',
-                                                        fontSize: 17,
+                                                        fontSize: 17.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -638,12 +644,12 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 6),
+                                          0.0, 0.0, 0.0, 6.0),
                                       child: Container(
                                         width: double.infinity,
-                                        height: 190,
+                                        height: 190.0,
                                         constraints: BoxConstraints(
-                                          maxHeight: 300,
+                                          maxHeight: 300.0,
                                         ),
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
@@ -667,8 +673,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                             if (!snapshot.hasData) {
                                               return Center(
                                                 child: SizedBox(
-                                                  width: 40,
-                                                  height: 40,
+                                                  width: 40.0,
+                                                  height: 40.0,
                                                   child:
                                                       CircularProgressIndicator(
                                                     color: FlutterFlowTheme.of(
@@ -696,9 +702,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                         listViewInnerIndex];
                                                 return Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(4, 0, 0, 0),
+                                                      .fromSTEB(
+                                                          4.0, 0.0, 0.0, 0.0),
                                                   child: Container(
-                                                    width: 146,
+                                                    width: 146.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -713,7 +720,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0, -1),
+                                                                    0.0, -1.0),
                                                             child: InkWell(
                                                               splashColor: Colors
                                                                   .transparent,
@@ -740,8 +747,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                 );
                                                               },
                                                               child: Container(
-                                                                width: 130,
-                                                                height: 130,
+                                                                width: 130.0,
+                                                                height: 130.0,
                                                                 decoration:
                                                                     BoxDecoration(
                                                                   color: FlutterFlowTheme.of(
@@ -750,7 +757,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              16),
+                                                                              16.0),
                                                                 ),
                                                                 child: Column(
                                                                   mainAxisSize:
@@ -763,7 +770,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                     Align(
                                                                       alignment:
                                                                           AlignmentDirectional(
-                                                                              0,
+                                                                              0.0,
                                                                               0.2),
                                                                       child:
                                                                           Icon(
@@ -772,16 +779,15 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryBtnText,
                                                                         size:
-                                                                            51,
+                                                                            51.0,
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              10,
-                                                                              0,
-                                                                              18),
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          18.0),
                                                                       child:
                                                                           Text(
                                                                         'Все услуги',
@@ -790,7 +796,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                             .override(
                                                                               fontFamily: 'Fira Sans',
                                                                               color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                              fontSize: 12,
+                                                                              fontSize: 12.0,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -905,7 +911,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                             '')
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(8),
+                                                                            BorderRadius.circular(8.0),
                                                                         child: Image
                                                                             .network(
                                                                           listViewInnerServicesRecord
@@ -913,9 +919,9 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                               .first
                                                                               .downloadURL,
                                                                           width:
-                                                                              130,
+                                                                              130.0,
                                                                           height:
-                                                                              130,
+                                                                              130.0,
                                                                           fit: BoxFit
                                                                               .cover,
                                                                         ),
@@ -926,14 +932,14 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                             '')
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(8),
+                                                                            BorderRadius.circular(8.0),
                                                                         child: Image
                                                                             .asset(
                                                                           'assets/images/no_service.png',
                                                                           width:
-                                                                              130,
+                                                                              130.0,
                                                                           height:
-                                                                              130,
+                                                                              130.0,
                                                                           fit: BoxFit
                                                                               .cover,
                                                                         ),
@@ -943,16 +949,16 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          -1,
-                                                                          0),
+                                                                          -1.0,
+                                                                          0.0),
                                                                   child:
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            8,
-                                                                            8,
-                                                                            0,
-                                                                            0),
+                                                                            8.0,
+                                                                            8.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       listViewInnerServicesRecord
                                                                           .title,
@@ -963,7 +969,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                             fontFamily:
                                                                                 'Fira Sans',
                                                                             fontSize:
-                                                                                14,
+                                                                                14.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -977,19 +983,19 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                           Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    1, -1),
+                                                                    1.0, -1.0),
                                                             child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0,
-                                                                          0,
-                                                                          8,
-                                                                          0),
+                                                                          0.0,
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0),
                                                               child: Material(
                                                                 color: Colors
                                                                     .transparent,
-                                                                elevation: 0,
+                                                                elevation: 0.0,
                                                                 shape:
                                                                     RoundedRectangleBorder(
                                                                   borderRadius:
@@ -997,16 +1003,16 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                           .only(
                                                                     bottomLeft:
                                                                         Radius.circular(
-                                                                            8),
+                                                                            8.0),
                                                                     bottomRight:
                                                                         Radius.circular(
-                                                                            0),
+                                                                            0.0),
                                                                     topLeft: Radius
                                                                         .circular(
-                                                                            0),
+                                                                            0.0),
                                                                     topRight: Radius
                                                                         .circular(
-                                                                            8),
+                                                                            8.0),
                                                                   ),
                                                                 ),
                                                                 child:
@@ -1016,20 +1022,20 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                           .only(
                                                                     bottomLeft:
                                                                         Radius.circular(
-                                                                            8),
+                                                                            8.0),
                                                                     bottomRight:
                                                                         Radius.circular(
-                                                                            0),
+                                                                            0.0),
                                                                     topLeft: Radius
                                                                         .circular(
-                                                                            0),
+                                                                            0.0),
                                                                     topRight: Radius
                                                                         .circular(
-                                                                            8),
+                                                                            8.0),
                                                                   ),
                                                                   child:
                                                                       Container(
-                                                                    width: 64,
+                                                                    width: 64.0,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
@@ -1048,13 +1054,13 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                           BorderRadius
                                                                               .only(
                                                                         bottomLeft:
-                                                                            Radius.circular(8),
+                                                                            Radius.circular(8.0),
                                                                         bottomRight:
-                                                                            Radius.circular(0),
+                                                                            Radius.circular(0.0),
                                                                         topLeft:
-                                                                            Radius.circular(0),
+                                                                            Radius.circular(0.0),
                                                                         topRight:
-                                                                            Radius.circular(8),
+                                                                            Radius.circular(8.0),
                                                                       ),
                                                                       border:
                                                                           Border
@@ -1062,17 +1068,16 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         color: Colors
                                                                             .transparent,
                                                                         width:
-                                                                            0,
+                                                                            0.0,
                                                                       ),
                                                                     ),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              8,
-                                                                              5,
-                                                                              8,
-                                                                              5),
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          8.0,
+                                                                          5.0,
+                                                                          8.0,
+                                                                          5.0),
                                                                       child:
                                                                           Row(
                                                                         mainAxisSize:
@@ -1080,15 +1085,15 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                         children: [
                                                                           Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0,
-                                                                                0,
-                                                                                2,
-                                                                                0),
+                                                                                0.0,
+                                                                                0.0,
+                                                                                2.0,
+                                                                                0.0),
                                                                             child:
                                                                                 SvgPicture.asset(
                                                                               'assets/images/Union.svg',
-                                                                              width: 12,
-                                                                              height: 12,
+                                                                              width: 12.0,
+                                                                              height: 12.0,
                                                                               fit: BoxFit.cover,
                                                                             ),
                                                                           ),

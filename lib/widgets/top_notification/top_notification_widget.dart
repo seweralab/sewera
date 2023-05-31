@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'top_notification_model.dart';
 export 'top_notification_model.dart';
 
@@ -50,88 +51,94 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                if (widget.isDisbaledHome) {
-                  return;
-                }
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: FlutterFlowTheme.of(context).primaryBtnText,
+      ),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  if (widget.isDisbaledHome) {
+                    return;
+                  }
 
-                context.pushNamed('HomePage2');
-              },
-              child: SvgPicture.asset(
-                'assets/images/logo.svg',
-                width: 26.0,
-                height: 26.0,
-                fit: BoxFit.cover,
+                  context.pushNamed('HomePage2');
+                },
+                child: SvgPicture.asset(
+                  'assets/images/logo.svg',
+                  width: 26,
+                  height: 26,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Stack(
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 2.0, 5.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (widget.isDisabledNotification) {
-                        return;
-                      }
+              Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 2, 5),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        if (widget.isDisabledNotification) {
+                          return;
+                        }
 
-                      context.pushNamed('NotificationsPage');
-                    },
-                    child: Icon(
-                      Icons.notifications,
-                      color: Color(0xFFB8BFC4),
-                      size: 26.0,
+                        context.pushNamed('NotificationsPage');
+                      },
+                      child: Icon(
+                        Icons.notifications,
+                        color: Color(0xFFB8BFC4),
+                        size: 26,
+                      ),
                     ),
                   ),
-                ),
-                if (valueOrDefault<bool>(
-                        currentUserDocument?.newNotification, false) ==
-                    true)
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 4.0, 0.0, 0.0),
-                    child: AuthUserStreamWidget(
-                      builder: (context) => Material(
-                        color: Colors.transparent,
-                        elevation: 0.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6.0),
-                        ),
-                        child: Container(
-                          width: 10.0,
-                          height: 10.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEB5757),
-                            borderRadius: BorderRadius.circular(6.0),
-                            border: Border.all(
-                              color:
-                                  FlutterFlowTheme.of(context).primaryBtnText,
-                              width: 0.0,
+                  if (valueOrDefault<bool>(
+                          currentUserDocument?.newNotification, false) ==
+                      true)
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(5, 4, 0, 0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => Material(
+                          color: Colors.transparent,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Container(
+                            width: 10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFEB5757),
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryBtnText,
+                                width: 0,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

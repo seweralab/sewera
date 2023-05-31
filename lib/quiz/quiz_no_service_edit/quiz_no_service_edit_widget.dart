@@ -390,7 +390,7 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (_model.searchFieldController.text != '') {

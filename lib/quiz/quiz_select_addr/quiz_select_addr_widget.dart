@@ -107,7 +107,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
@@ -276,7 +276,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 12.0),
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (FFAppState().currentQuizAddr != '') {

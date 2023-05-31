@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
