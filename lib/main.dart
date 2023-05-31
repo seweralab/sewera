@@ -26,7 +26,7 @@ void main() async {
   final appState = FFAppState(); // Initialize FFAppState
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-    statusBarBrightness: Brightness.dark,
+    statusBarBrightness: Brightness.light,
     statusBarIconBrightness: Brightness.dark,
   ));
   await appState.initializePersistedState();
