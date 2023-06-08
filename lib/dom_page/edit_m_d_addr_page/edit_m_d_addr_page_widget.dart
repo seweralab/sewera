@@ -175,8 +175,6 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                 setState(() {
                                   _model.showSuggestions = true;
                                 });
-
-                                setState(() {});
                               },
                             ),
                             autofocus: true,
