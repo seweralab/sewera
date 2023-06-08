@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'edit_profile_page_model.dart';
 export 'edit_profile_page_model.dart';
 
@@ -57,7 +58,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                   child: wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
@@ -68,15 +69,14 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 25.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 25),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -89,8 +89,8 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 18.0, 0.0),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 18, 0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -102,7 +102,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                 child: Icon(
                                   Icons.arrow_back_sharp,
                                   color: Colors.black,
-                                  size: 24.0,
+                                  size: 24,
                                 ),
                               ),
                             ),
@@ -112,7 +112,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Fira Sans',
-                                    fontSize: 20.0,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -123,10 +123,10 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 18),
                   child: Container(
                     width: double.infinity,
-                    height: 8.0,
+                    height: 8,
                     decoration: BoxDecoration(
                       color: Color(0xFFF3F4F5),
                     ),
@@ -141,8 +141,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            18.0, 18.0, 18.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(18, 18, 18, 0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -164,11 +163,11 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                         AuthUserStreamWidget(
                                           builder: (context) => ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                             child: Image.asset(
                                               'assets/images/no-photo.jpg',
-                                              width: 48.0,
-                                              height: 48.0,
+                                              width: 48,
+                                              height: 48,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -179,13 +178,13 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                         AuthUserStreamWidget(
                                           builder: (context) => ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                             child: Image.network(
                                               valueOrDefault(
                                                   currentUserDocument?.photo,
                                                   ''),
-                                              width: 48.0,
-                                              height: 48.0,
+                                              width: 48,
+                                              height: 48,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -270,18 +269,18 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               .update(usersUpdateData);
                                         },
                                         child: Container(
-                                          width: 48.0,
-                                          height: 48.0,
+                                          width: 48,
+                                          height: 48,
                                           decoration: BoxDecoration(
                                             color: Color(0xA7000000),
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                           ),
                                           child: Icon(
                                             Icons.photo_camera_outlined,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBtnText,
-                                            size: 24.0,
+                                            size: 24,
                                           ),
                                         ),
                                       ),
@@ -289,7 +288,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
+                                        10, 0, 0, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -302,7 +301,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               .override(
                                                 fontFamily: 'Fira Sans',
                                                 color: Color(0x81102938),
-                                                fontSize: 12.0,
+                                                fontSize: 12,
                                               ),
                                         ),
                                         AuthUserStreamWidget(
@@ -336,7 +335,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                       .displaySmall
                                                       .override(
                                                         fontFamily: 'Fira Sans',
-                                                        fontSize: 16.0,
+                                                        fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -359,7 +358,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                 child: Icon(
                                   Icons.chevron_right,
                                   color: Color(0xFF6F7F87),
-                                  size: 24.0,
+                                  size: 24,
                                 ),
                               ),
                             ],
@@ -367,8 +366,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            18.0, 18.0, 18.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(18, 18, 18, 0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -397,7 +395,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                                  10, 0, 0, 0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -405,8 +403,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 2.0),
+                                                    .fromSTEB(0, 0, 0, 2),
                                                 child: Text(
                                                   'Телефон',
                                                   style: FlutterFlowTheme.of(
@@ -416,7 +413,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         color:
                                                             Color(0x81102938),
-                                                        fontSize: 12.0,
+                                                        fontSize: 12,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -424,8 +421,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 10.0),
+                                                    .fromSTEB(0, 0, 0, 10),
                                                 child: AuthUserStreamWidget(
                                                   builder: (context) => Text(
                                                     currentPhoneNumber != ''
@@ -437,7 +433,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
-                                                          fontSize: 16.0,
+                                                          fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -452,17 +448,17 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                     Icon(
                                       Icons.chevron_right,
                                       color: Color(0xFF6F7F87),
-                                      size: 24.0,
+                                      size: 24,
                                     ),
                                   ],
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 1.0,
+                                  height: 1,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFE8EAEC),
                                   ),
@@ -473,8 +469,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            18.0, 18.0, 18.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(18, 18, 18, 0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -503,7 +498,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                                  10, 0, 0, 0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -511,8 +506,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 2.0),
+                                                    .fromSTEB(0, 0, 0, 2),
                                                 child: Text(
                                                   'E-mail',
                                                   style: FlutterFlowTheme.of(
@@ -522,7 +516,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         color:
                                                             Color(0x81102938),
-                                                        fontSize: 12.0,
+                                                        fontSize: 12,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -530,8 +524,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 10.0),
+                                                    .fromSTEB(0, 0, 0, 10),
                                                 child: Text(
                                                   currentUserEmail != ''
                                                       ? currentUserEmail
@@ -541,7 +534,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                       .displaySmall
                                                       .override(
                                                         fontFamily: 'Fira Sans',
-                                                        fontSize: 16.0,
+                                                        fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -555,17 +548,17 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                     Icon(
                                       Icons.chevron_right,
                                       color: Color(0xFF6F7F87),
-                                      size: 24.0,
+                                      size: 24,
                                     ),
                                   ],
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 1.0,
+                                  height: 1,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFE8EAEC),
                                   ),
@@ -576,8 +569,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            18.0, 18.0, 18.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(18, 18, 18, 0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -606,7 +598,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                                  10, 0, 0, 0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -614,8 +606,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 2.0),
+                                                    .fromSTEB(0, 0, 0, 2),
                                                 child: Text(
                                                   'День рождения',
                                                   style: FlutterFlowTheme.of(
@@ -625,7 +616,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         color:
                                                             Color(0x81102938),
-                                                        fontSize: 12.0,
+                                                        fontSize: 12,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -633,8 +624,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 10.0),
+                                                    .fromSTEB(0, 0, 0, 10),
                                                 child: AuthUserStreamWidget(
                                                   builder: (context) => Text(
                                                     valueOrDefault(
@@ -653,7 +643,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Fira Sans',
-                                                          fontSize: 16.0,
+                                                          fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -668,17 +658,17 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                     Icon(
                                       Icons.chevron_right,
                                       color: Color(0xFF6F7F87),
-                                      size: 24.0,
+                                      size: 24,
                                     ),
                                   ],
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                                 child: Container(
                                   width: double.infinity,
-                                  height: 1.0,
+                                  height: 1,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFE8EAEC),
                                   ),
@@ -695,85 +685,109 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 10.0, 0.0, 10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Delete.svg',
-                                width: 22.0,
-                                height: 22.0,
-                                fit: BoxFit.contain,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await authManager.deleteUser(context);
+
+                        context.goNamedAuth('HomePage2', context.mounted);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: SvgPicture.asset(
+                                  'assets/images/Delete.svg',
+                                  width: 22,
+                                  height: 22,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'Удалить аккаунт',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Fira Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                                child: Text(
+                                  'Удалить аккаунт',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Fira Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 10.0, 0.0, 10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: SvgPicture.asset(
-                                'assets/images/logout.svg',
-                                width: 25.0,
-                                height: 25.0,
-                                fit: BoxFit.contain,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+                        await authManager.signOut();
+                        GoRouter.of(context).clearRedirectLocation();
+
+                        context.goNamedAuth('StartPage', context.mounted);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: SvgPicture.asset(
+                                  'assets/images/logout.svg',
+                                  width: 25,
+                                  height: 25,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'Выйти из аккаунта',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Fira Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                                child: Text(
+                                  'Выйти из аккаунта',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Fira Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
