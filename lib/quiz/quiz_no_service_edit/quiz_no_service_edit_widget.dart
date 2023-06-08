@@ -54,17 +54,20 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<OrdersRecord>(
-      stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
+    return FutureBuilder<OrdersRecord>(
+      future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -402,7 +405,7 @@ class _QuizNoServiceEditWidgetState extends State<QuizNoServiceEditWidget> {
                             .currentOrder!
                             .update(ordersUpdateData);
 
-                        context.pushNamed('QuizSendOrder');
+                        context.goNamed('QuizSendOrder');
                       } else {
                         setState(() {
                           _model.showInputError = true;

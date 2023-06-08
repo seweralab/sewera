@@ -2,8 +2,10 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -148,26 +150,18 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     ),
                                                   );
                                                 },
-                                                child: Hero(
-                                                  tag: valueOrDefault(
-                                                      currentUserDocument
-                                                          ?.photo,
-                                                      ''),
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.network(
-                                                      valueOrDefault(
-                                                          currentUserDocument
-                                                              ?.photo,
-                                                          ''),
-                                                      width: 48.0,
-                                                      height: 48.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.photo,
+                                                        ''),
+                                                    width: 48.0,
+                                                    height: 48.0,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
@@ -496,7 +490,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               width: double.infinity,
                               height: 8.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).lineColor,
+                                color: Color(0xFFF3F4F5),
                               ),
                             ),
                           ),
@@ -564,128 +558,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 24.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 1.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFE8EAEC),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        if (valueOrDefault(
-                                                currentUserDocument?.mdType,
-                                                '') !=
-                                            '')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 18.0),
-                                            child: AuthUserStreamWidget(
-                                              builder: (context) => Text(
-                                                valueOrDefault(
-                                                    currentUserDocument?.mdType,
-                                                    ''),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 14.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        if (valueOrDefault(
-                                                currentUserDocument?.addr,
-                                                '') !=
-                                            '')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 18.0),
-                                            child: AuthUserStreamWidget(
-                                              builder: (context) => Text(
-                                                valueOrDefault(
-                                                    currentUserDocument?.addr,
-                                                    ''),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 14.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        if (valueOrDefault(
-                                                currentUserDocument?.mdArea,
-                                                '') !=
-                                            '')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 18.0),
-                                            child: AuthUserStreamWidget(
-                                              builder: (context) => Text(
-                                                valueOrDefault(
-                                                    currentUserDocument?.mdArea,
-                                                    ''),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 14.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        if (valueOrDefault(
-                                                currentUserDocument?.mdSeptic,
-                                                '') !=
-                                            '')
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 24.0),
-                                            child: AuthUserStreamWidget(
-                                              builder: (context) => Text(
-                                                valueOrDefault(
-                                                    currentUserDocument
-                                                        ?.mdSeptic,
-                                                    ''),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 14.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
                                   if ((valueOrDefault(
                                                   currentUserDocument?.mdType,
                                                   '') !=
@@ -693,14 +565,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           valueOrDefault(
                                                   currentUserDocument?.mdType,
                                                   '') !=
-                                              '') &&
+                                              '') ||
                                       (valueOrDefault(currentUserDocument?.addr,
                                                   '') !=
                                               null &&
                                           valueOrDefault(
                                                   currentUserDocument?.addr,
                                                   '') !=
-                                              '') &&
+                                              '') ||
                                       (valueOrDefault(
                                                   currentUserDocument?.mdArea,
                                                   '') !=
@@ -708,7 +580,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           valueOrDefault(
                                                   currentUserDocument?.mdArea,
                                                   '') !=
-                                              '') &&
+                                              '') ||
                                       (valueOrDefault(
                                                   currentUserDocument?.mdSeptic,
                                                   '') !=
@@ -717,240 +589,496 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                   currentUserDocument?.mdSeptic,
                                                   '') !=
                                               ''))
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 28.0),
-                                      child: AuthUserStreamWidget(
-                                        builder: (context) => Container(
-                                          width: double.infinity,
-                                          height: 1.0,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFFE8EAEC),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  if (functions.clearListImgCount(
-                                      (currentUserDocument?.mdPhotos
-                                                  ?.toList() ??
-                                              [])
-                                          .toList()))
                                     AuthUserStreamWidget(
-                                      builder: (context) => Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 16.0),
-                                                child: Text(
-                                                  'Фотографии и документы',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Fira Sans',
-                                                        color:
-                                                            Color(0xFF88959C),
-                                                        fontSize: 12.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
+                                      builder: (context) => Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 24.0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 1.0,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFE8EAEC),
                                               ),
                                             ),
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                if (valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.mdType,
+                                                        '') !=
+                                                    '')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 18.0),
+                                                    child: Text(
+                                                      valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdType,
+                                                          ''),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                fontSize: 14.0,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                if (valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.addr,
+                                                        '') !=
+                                                    '')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 18.0),
+                                                    child: Text(
+                                                      valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.addr,
+                                                          ''),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                fontSize: 14.0,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                if (valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.mdArea,
+                                                        '') !=
+                                                    '')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 18.0),
+                                                    child: Text(
+                                                      valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdArea,
+                                                          ''),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                fontSize: 14.0,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                if (valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.mdSeptic,
+                                                        '') !=
+                                                    '')
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 24.0),
+                                                    child: Text(
+                                                      valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdSeptic,
+                                                          ''),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                fontSize: 14.0,
+                                                              ),
+                                                    ),
+                                                  ),
+                                              ],
+                                            ),
+                                          ),
+                                          if ((valueOrDefault(currentUserDocument?.mdType, '') != null && valueOrDefault(currentUserDocument?.mdType, '') != '') &&
+                                              (valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.addr,
+                                                          '') !=
+                                                      null &&
+                                                  valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.addr,
+                                                          '') !=
+                                                      '') &&
+                                              (valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdArea,
+                                                          '') !=
+                                                      null &&
+                                                  valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdArea,
+                                                          '') !=
+                                                      '') &&
+                                              (valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdSeptic,
+                                                          '') !=
+                                                      null &&
+                                                  valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.mdSeptic,
+                                                          '') !=
+                                                      ''))
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 28.0),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final mdPhotosItems = functions
-                                                      .propImagesListClear(
-                                                          (currentUserDocument
-                                                                      ?.mdPhotos
-                                                                      ?.toList() ??
-                                                                  [])
-                                                              .toList())
-                                                      .toList();
-                                                  return GridView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    gridDelegate:
-                                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 3,
-                                                      crossAxisSpacing: 10.0,
-                                                      mainAxisSpacing: 10.0,
-                                                      childAspectRatio: 1.0,
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 1.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFFE8EAEC),
+                                                ),
+                                              ),
+                                            ),
+                                          if (functions.clearListImgCount(
+                                              (currentUserDocument?.mdPhotos
+                                                          ?.toList() ??
+                                                      [])
+                                                  .toList()))
+                                            Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  16.0),
+                                                      child: Text(
+                                                        'Фотографии и документы',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0xFF88959C),
+                                                              fontSize: 12.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                      ),
                                                     ),
-                                                    primary: false,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        mdPhotosItems.length,
-                                                    itemBuilder: (context,
-                                                        mdPhotosItemsIndex) {
-                                                      final mdPhotosItemsItem =
-                                                          mdPhotosItems[
-                                                              mdPhotosItemsIndex];
-                                                      return Container(
-                                                        width: 90.0,
-                                                        height: 90.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          border: Border.all(
-                                                            color: Colors.black,
-                                                            width: 0.5,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 28.0),
+                                                    child: Builder(
+                                                      builder: (context) {
+                                                        final mdPhotosItems = functions
+                                                            .propImagesListClear(
+                                                                (currentUserDocument
+                                                                            ?.mdPhotos
+                                                                            ?.toList() ??
+                                                                        [])
+                                                                    .toList())
+                                                            .toList();
+                                                        return GridView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          gridDelegate:
+                                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                            crossAxisCount: 3,
+                                                            crossAxisSpacing:
+                                                                10.0,
+                                                            mainAxisSpacing:
+                                                                10.0,
+                                                            childAspectRatio:
+                                                                1.0,
                                                           ),
-                                                        ),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    mdPhotosItemsItem,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                      false,
+                                                          primary: false,
+                                                          shrinkWrap: true,
+                                                          scrollDirection:
+                                                              Axis.vertical,
+                                                          itemCount:
+                                                              mdPhotosItems
+                                                                  .length,
+                                                          itemBuilder: (context,
+                                                              mdPhotosItemsIndex) {
+                                                            final mdPhotosItemsItem =
+                                                                mdPhotosItems[
+                                                                    mdPhotosItemsIndex];
+                                                            return Container(
+                                                              width: 90.0,
+                                                              height: 90.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                border:
+                                                                    Border.all(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  width: 0.5,
+                                                                ),
+                                                              ),
+                                                              child: InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  await Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    PageTransition(
+                                                                      type: PageTransitionType
+                                                                          .fade,
+                                                                      child:
+                                                                          FlutterFlowExpandedImageView(
+                                                                        image:
+                                                                            CachedNetworkImage(
+                                                                          imageUrl:
+                                                                              mdPhotosItemsItem,
+                                                                          fit: BoxFit
+                                                                              .contain,
+                                                                        ),
+                                                                        allowRotation:
+                                                                            false,
+                                                                        tag:
+                                                                            mdPhotosItemsItem,
+                                                                        useHeroAnimation:
+                                                                            true,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                                child: Hero(
                                                                   tag:
                                                                       mdPhotosItemsItem,
-                                                                  useHeroAnimation:
+                                                                  transitionOnUserGestures:
                                                                       true,
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    child:
+                                                                        CachedNetworkImage(
+                                                                      imageUrl:
+                                                                          mdPhotosItemsItem,
+                                                                      width:
+                                                                          90.0,
+                                                                      height:
+                                                                          90.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
                                                             );
                                                           },
-                                                          child: Hero(
-                                                            tag:
-                                                                mdPhotosItemsItem,
-                                                            transitionOnUserGestures:
-                                                                true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              child:
-                                                                  Image.network(
-                                                                mdPhotosItemsItem,
-                                                                width: 90.0,
-                                                                height: 90.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  if ((currentUserDocument?.mdPhotos
-                                                  ?.toList() ??
-                                              [])
-                                          .length >
-                                      0)
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 20.0),
-                                      child: AuthUserStreamWidget(
-                                        builder: (context) => Container(
-                                          width: double.infinity,
-                                          height: 1.0,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFFE8EAEC),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 30.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed('EditMDPage');
-                                      },
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
-                                            child: Icon(
-                                              Icons.mode_edit,
-                                              color: Color(0xFF586A74),
-                                              size: 18.0,
+                                          if ((currentUserDocument?.mdPhotos
+                                                          ?.toList() ??
+                                                      [])
+                                                  .length >
+                                              0)
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 20.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 1.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFFE8EAEC),
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Редактировать',
-                                              style:
+                                          Container(
+                                            width: double.infinity,
+                                            height: 30.0,
+                                            decoration: BoxDecoration(
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Fira Sans',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
+                                                      .secondaryBackground,
+                                            ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.goNamed('EditMDPage');
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Icon(
+                                                      Icons.mode_edit,
+                                                      color: Color(0xFF586A74),
+                                                      size: 18.0,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Редактировать',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Fira Sans',
+                                                            fontSize: 14.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ),
+                                  if (!((valueOrDefault(
+                                                  currentUserDocument?.mdType,
+                                                  '') !=
+                                              null &&
+                                          valueOrDefault(
+                                                  currentUserDocument?.mdType,
+                                                  '') !=
+                                              '') ||
+                                      (valueOrDefault(currentUserDocument?.addr,
+                                                  '') !=
+                                              null &&
+                                          valueOrDefault(
+                                                  currentUserDocument?.addr,
+                                                  '') !=
+                                              '') ||
+                                      (valueOrDefault(
+                                                  currentUserDocument?.mdArea,
+                                                  '') !=
+                                              null &&
+                                          valueOrDefault(
+                                                  currentUserDocument?.mdArea,
+                                                  '') !=
+                                              '') ||
+                                      (valueOrDefault(
+                                                  currentUserDocument?.mdSeptic,
+                                                  '') !=
+                                              null &&
+                                          valueOrDefault(
+                                                  currentUserDocument?.mdSeptic,
+                                                  '') !=
+                                              '')))
+                                    AuthUserStreamWidget(
+                                      builder: (context) => FFButtonWidget(
+                                        onPressed: () async {
+                                          context.goNamed('EditMDPage');
+                                        },
+                                        text: 'Заполнить данные',
+                                        options: FFButtonOptions(
+                                          width: double.infinity,
+                                          height: 48.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Fira Sans',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ),
                                 ],
                               ),
                             ),
@@ -962,7 +1090,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               width: double.infinity,
                               height: 8.0,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).lineColor,
+                                color: Color(0xFFF3F4F5),
                               ),
                             ),
                           ),

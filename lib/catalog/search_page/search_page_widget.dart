@@ -256,7 +256,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
 
                                               context.pushNamed(
                                                 'QuizPage2',
-                                                queryParams: {
+                                                queryParameters: {
                                                   'serviceRef': serializeParam(
                                                     searchResultsItem.reference,
                                                     ParamType.DocumentReference,
@@ -305,7 +305,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'QuizNoService',
-                                                  queryParams: {
+                                                  queryParameters: {
                                                     'customServiceName':
                                                         serializeParam(
                                                       _model
@@ -390,7 +390,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                 onTap: () async {
                                   context.pushNamed(
                                     'QuizNoService',
-                                    queryParams: {
+                                    queryParameters: {
                                       'customServiceName': serializeParam(
                                         _model.searchFieldController.text,
                                         ParamType.String,

@@ -293,10 +293,9 @@ class _CustomnavbarWidgetState extends State<CustomnavbarWidget> {
                         backgroundColor: Color(0xD900BB67),
                         enableDrag: false,
                         context: context,
-                        builder: (bottomSheetContext) {
+                        builder: (context) {
                           return Padding(
-                            padding:
-                                MediaQuery.of(bottomSheetContext).viewInsets,
+                            padding: MediaQuery.of(context).viewInsets,
                             child: Container(
                               height: MediaQuery.of(context).size.height * 1.0,
                               child: SupportWidget(),

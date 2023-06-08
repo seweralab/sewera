@@ -488,7 +488,7 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
                   );
                   await widget.order!.reference.update(ordersUpdateData);
 
-                  context.pushNamed('ordersPage');
+                  context.goNamed('ordersPage');
                 },
                 text: 'Отменить заказ',
                 options: FFButtonOptions(

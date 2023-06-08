@@ -83,7 +83,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                               18.0, 10.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
-                            height: 59.0,
+                            height: 51.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFF3F4F5),
                               borderRadius: BorderRadius.circular(8.0),
@@ -122,8 +122,8 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: SvgPicture.asset(
                                         'assets/images/Vector_(1).svg',
-                                        width: 16.0,
-                                        height: 16.0,
+                                        width: 18.0,
+                                        height: 18.0,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
@@ -191,8 +191,8 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),
-                                  child: StreamBuilder<List<ServicesRecord>>(
-                                    stream: queryServicesRecord(
+                                  child: FutureBuilder<List<ServicesRecord>>(
+                                    future: queryServicesRecordOnce(
                                       queryBuilder: (servicesRecord) =>
                                           servicesRecord
                                               .where('category',
@@ -288,7 +288,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
 
                                                       context.pushNamed(
                                                         'QuizPage2',
-                                                        queryParams: {
+                                                        queryParameters: {
                                                           'serviceRef':
                                                               serializeParam(
                                                             listViewServicesRecord

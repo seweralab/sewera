@@ -43,8 +43,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<NotificationsRecord>>(
-      stream: queryNotificationsRecord(
+    return FutureBuilder<List<NotificationsRecord>>(
+      future: queryNotificationsRecordOnce(
         queryBuilder: (notificationsRecord) => notificationsRecord
             .where('user', isEqualTo: currentUserReference)
             .orderBy('date', descending: true),
@@ -52,12 +52,15 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -78,179 +81,179 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
               child: Stack(
                 children: [
                   if (notificationsPageNotificationsRecordList.length == 0)
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 24.0, 0.0, 0.0),
-                                  child: wrapWithModel(
-                                    model: _model.topNotificationModel1,
-                                    updateCallback: () => setState(() {}),
-                                    child: TopNotificationWidget(
-                                      isDisbaledHome: false,
-                                      isDisabledNotification: true,
-                                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 44.0, 0.0, 0.0),
+                                child: wrapWithModel(
+                                  model: _model.topNotificationModel1,
+                                  updateCallback: () => setState(() {}),
+                                  child: TopNotificationWidget(
+                                    isDisbaledHome: false,
+                                    isDisabledNotification: true,
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      18.0, 14.0, 18.0, 16.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.safePop();
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 18.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  context.safePop();
-                                                },
-                                                child: Icon(
-                                                  Icons.arrow_back_sharp,
-                                                  color: Colors.black,
-                                                  size: 24.0,
-                                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    18.0, 14.0, 18.0, 16.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.safePop();
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 18.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.safePop();
+                                              },
+                                              child: Icon(
+                                                Icons.arrow_back_sharp,
+                                                color: Colors.black,
+                                                size: 24.0,
                                               ),
                                             ),
-                                            Text(
-                                              'Уведомления',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Fira Sans',
-                                                        fontSize: 20.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                        InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                                'NotificationConfigPage');
-                                          },
-                                          child: Icon(
-                                            Icons.settings_outlined,
-                                            color: Colors.black,
-                                            size: 24.0,
+                                          ),
+                                          Text(
+                                            'Уведомления',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Fira Sans',
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                              'NotificationConfigPage');
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/gear.svg',
+                                            width: 24.0,
+                                            height: 24.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 190.0,
-                            height: 300.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 18.0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/empty_not.svg',
-                                    width: 78.0,
-                                    height: 141.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Text(
-                                    'Тут пока нет уведомлений, но потом они появятся',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Fira Sans',
-                                          fontSize: 14.0,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 0.0, 18.0, 24.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.safePop();
-                              },
-                              text: 'Ясно!',
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Fira Sans',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
                               ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 190.0,
+                          height: 300.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 18.0),
+                                child: SvgPicture.asset(
+                                  'assets/images/empty_not.svg',
+                                  width: 78.0,
+                                  height: 141.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  'Тут пока нет уведомлений, но потом они появятся',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Fira Sans',
+                                        fontSize: 14.0,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 30.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                            text: 'Ясно!',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Fira Sans',
+                                    color: Colors.white,
+                                  ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   if (notificationsPageNotificationsRecordList.length > 0)
                     Column(
@@ -307,21 +310,21 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                     ),
                                   ],
                                 ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context
-                                          .pushNamed('NotificationConfigPage');
-                                    },
-                                    child: Icon(
-                                      Icons.settings_outlined,
-                                      color: Colors.black,
-                                      size: 24.0,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('NotificationConfigPage');
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/gear.svg',
+                                      width: 24.0,
+                                      height: 24.0,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
@@ -365,7 +368,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                       onTap: () async {
                                         context.pushNamed(
                                           'NotificationPage',
-                                          queryParams: {
+                                          queryParameters: {
                                             'notication': serializeParam(
                                               notificationItem.reference,
                                               ParamType.DocumentReference,
@@ -387,7 +390,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 16.0, 0.0, 0.0),
+                                                    0.0, 10.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
@@ -426,7 +429,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 4.0, 0.0, 16.0),
+                                                          0.0, 4.0, 0.0, 10.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -457,7 +460,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                         ),
                                                       Text(
                                                         dateTimeFormat(
-                                                          'd/M/y',
+                                                          'd.M.y',
                                                           notificationItem
                                                               .date!,
                                                           locale:

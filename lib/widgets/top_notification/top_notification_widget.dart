@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'top_notification_model.dart';
 export 'top_notification_model.dart';
 
@@ -57,7 +56,7 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
         color: FlutterFlowTheme.of(context).primaryBtnText,
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 0.0),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(),
@@ -79,63 +78,73 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
                 },
                 child: SvgPicture.asset(
                   'assets/images/logo.svg',
-                  width: 26,
-                  height: 26,
+                  width: 26.0,
+                  height: 26.0,
                   fit: BoxFit.cover,
                 ),
               ),
-              Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 2, 5),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        if (widget.isDisabledNotification) {
-                          return;
-                        }
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  if (widget.isDisabledNotification) {
+                    return;
+                  }
 
-                        context.pushNamed('NotificationsPage');
-                      },
-                      child: Icon(
-                        Icons.notifications,
-                        color: Color(0xFFB8BFC4),
-                        size: 26,
+                  context.pushNamed('NotificationsPage');
+                },
+                child: Stack(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 2.0, 5.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: SvgPicture.asset(
+                            'assets/images/bell.svg',
+                            width: 26.0,
+                            height: 32.0,
+                            fit: BoxFit.none,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  if (valueOrDefault<bool>(
-                          currentUserDocument?.newNotification, false) ==
-                      true)
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(5, 4, 0, 0),
-                      child: AuthUserStreamWidget(
-                        builder: (context) => Material(
-                          color: Colors.transparent,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Container(
-                            width: 10,
-                            height: 10,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFEB5757),
-                              borderRadius: BorderRadius.circular(6),
-                              border: Border.all(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                width: 0,
+                    if (valueOrDefault<bool>(
+                            currentUserDocument?.newNotification, false) ==
+                        true)
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 10.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) => Material(
+                            color: Colors.transparent,
+                            elevation: 0.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            child: Container(
+                              width: 10.0,
+                              height: 10.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEB5757),
+                                borderRadius: BorderRadius.circular(6.0),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBtnText,
+                                  width: 0.0,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -53,17 +54,20 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<OrdersRecord>(
-      stream: OrdersRecord.getDocument(widget.order!),
+    return FutureBuilder<OrdersRecord>(
+      future: OrdersRecord.getDocumentOnce(widget.order!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -297,7 +301,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Fira Sans',
-                                                      color: Color(0xFFFFB306),
+                                                      color: Color(0xFFF1A100),
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -333,7 +337,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Fira Sans',
-                                                      color: Color(0xFF04AB51),
+                                                      color: Color(0xFF00BB67),
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -432,11 +436,15 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Icon(
-                                          Icons.calendar_today,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 18.0,
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/calendar.svg',
+                                            width: 16.0,
+                                            height: 16.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                         Padding(
                                           padding:
@@ -463,26 +471,44 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         0.0, 0.0, 0.0, 24.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Icon(
-                                          Icons.place_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 18.0,
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/place.svg',
+                                            width: 16.0,
+                                            height: 16.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  14.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            orderItemPageOrdersRecord.addr,
-                                            maxLines: 3,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  fontSize: 14.0,
-                                                ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.85,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    14.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              orderItemPageOrdersRecord.addr,
+                                              maxLines: 3,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        fontSize: 14.0,
+                                                        lineHeight: 1.35,
+                                                      ),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -649,6 +675,8 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                                       'Fira Sans',
                                                                   color: Color(
                                                                       0xFF88959C),
+                                                                  fontSize:
+                                                                      14.0,
                                                                 ),
                                                           ),
                                                           Text(
@@ -744,6 +772,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         color:
                                                             Color(0xFF88959C),
+                                                        fontSize: 14.0,
                                                       ),
                                                 ),
                                                 Text(
@@ -824,6 +853,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         color:
                                                             Color(0xFF88959C),
+                                                        fontSize: 14.0,
                                                       ),
                                                 ),
                                                 Text(
@@ -908,6 +938,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                               'Fira Sans',
                                                           color:
                                                               Color(0xFF88959C),
+                                                          fontSize: 14.0,
                                                         ),
                                                   ),
                                                   Text(
@@ -988,6 +1019,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         color:
                                                             Color(0xFF88959C),
+                                                        fontSize: 14.0,
                                                       ),
                                                 ),
                                                 Text(
@@ -1054,6 +1086,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 .override(
                                                   fontFamily: 'Fira Sans',
                                                   color: Color(0xFF88959C),
+                                                  fontSize: 14.0,
                                                 ),
                                           ),
                                           Container(
@@ -1126,9 +1159,10 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                                         .fade,
                                                                 child:
                                                                     FlutterFlowExpandedImageView(
-                                                                  image: Image
-                                                                      .network(
-                                                                    mdPhotosEditItem,
+                                                                  image:
+                                                                      CachedNetworkImage(
+                                                                    imageUrl:
+                                                                        mdPhotosEditItem,
                                                                     fit: BoxFit
                                                                         .contain,
                                                                   ),
@@ -1153,8 +1187,9 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                                       .circular(
                                                                           8.0),
                                                               child:
-                                                                  Image.network(
-                                                                mdPhotosEditItem,
+                                                                  CachedNetworkImage(
+                                                                imageUrl:
+                                                                    mdPhotosEditItem,
                                                                 width: 100.0,
                                                                 height: 100.0,
                                                                 fit: BoxFit
@@ -1197,6 +1232,31 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
                           ),
+                        if ((orderItemPageOrdersRecord.status == 'Выполнен') ||
+                            (orderItemPageOrdersRecord.status == 'Отменен'))
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 0.0, 18.0, 18.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 8.0, 0.0),
+                                  child: Text(
+                                    'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed)} ₽',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Fira Sans',
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         if (orderItemPageOrdersRecord.status == 'Подтверждён')
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -1208,7 +1268,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 8.0, 0.0),
                                   child: Text(
-                                    'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed).toString()} ₽',
+                                    'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed)} ₽',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -1246,7 +1306,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 8.0, 0.0),
                                           child: Text(
-                                            'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString() : orderItemPageOrdersRecord.cost.toString()} ₽',
+                                            'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ') : orderItemPageOrdersRecord.cost.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')} ₽',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -1268,7 +1328,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   .fromSTEB(
                                                       10.0, 2.0, 10.0, 2.0),
                                               child: Text(
-                                                '${orderItemPageOrdersRecord.cost.toString()} ₽',
+                                                '${orderItemPageOrdersRecord.cost.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')} ₽',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -1607,7 +1667,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                               await currentUserReference!
                                   .update(usersUpdateData);
 
-                              context.pushNamed('ordersPage');
+                              context.goNamed('ordersPage');
                             },
                             text: 'Подтвердите заказ',
                             options: FFButtonOptions(
@@ -1649,7 +1709,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             onPressed: () async {
                               context.pushNamed(
                                 'cancelOrderPage',
-                                queryParams: {
+                                queryParameters: {
                                   'order': serializeParam(
                                     orderItemPageOrdersRecord,
                                     ParamType.Document,
@@ -1719,9 +1779,9 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                 FFAppState().currentQuizIndex = 0;
                               });
 
-                              context.pushNamed(
+                              context.goNamed(
                                 'QuizPage2',
-                                queryParams: {
+                                queryParameters: {
                                   'serviceRef': serializeParam(
                                     orderItemPageOrdersRecord.service,
                                     ParamType.DocumentReference,

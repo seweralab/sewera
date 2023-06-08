@@ -3,11 +3,11 @@ import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'edit_profile_page_model.dart';
@@ -123,12 +123,12 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 27.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
                   child: Container(
                     width: double.infinity,
                     height: 8.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).lineColor,
+                      color: Color(0xFFF3F4F5),
                     ),
                   ),
                 ),
@@ -281,7 +281,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             Icons.photo_camera_outlined,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBtnText,
-                                            size: 16.0,
+                                            size: 24.0,
                                           ),
                                         ),
                                       ),
@@ -403,18 +403,24 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'Телефон',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      color: Color(0x81102938),
-                                                      fontSize: 12.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 2.0),
+                                                child: Text(
+                                                  'Телефон',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        color:
+                                                            Color(0x81102938),
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -433,7 +439,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                               'Fira Sans',
                                                           fontSize: 16.0,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.normal,
                                                         ),
                                                   ),
                                                 ),
@@ -503,18 +509,24 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'E-mail',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      color: Color(0x81102938),
-                                                      fontSize: 12.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 2.0),
+                                                child: Text(
+                                                  'E-mail',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        color:
+                                                            Color(0x81102938),
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -531,7 +543,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         fontFamily: 'Fira Sans',
                                                         fontSize: 16.0,
                                                         fontWeight:
-                                                            FontWeight.w500,
+                                                            FontWeight.normal,
                                                       ),
                                                 ),
                                               ),
@@ -600,18 +612,24 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'День рождения',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      color: Color(0x81102938),
-                                                      fontSize: 12.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 2.0),
+                                                child: Text(
+                                                  'День рождения',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        color:
+                                                            Color(0x81102938),
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -637,7 +655,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                               'Fira Sans',
                                                           fontSize: 16.0,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.normal,
                                                         ),
                                                   ),
                                                 ),
@@ -673,87 +691,93 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await authManager.deleteUser(context);
-
-                            context.pushNamed('StartPage');
-                          },
-                          text: 'Удалить аккаунт',
-                          icon: Icon(
-                            Icons.delete,
-                            size: 15.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 170.0,
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0x0000BB67),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Fira Sans',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  fontSize: 15.0,
-                                ),
-                            elevation: 0.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 0.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-                          await authManager.signOut();
-                          GoRouter.of(context).clearRedirectLocation();
-
-                          context.pushNamedAuth('StartPage', context.mounted);
-                        },
-                        text: 'Выйти из аккаунта',
-                        icon: Icon(
-                          Icons.logout,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: 170.0,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primaryBtnText,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: 'Fira Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 15.0,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Delete.svg',
+                                width: 22.0,
+                                height: 22.0,
+                                fit: BoxFit.contain,
                               ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 0.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Удалить аккаунт',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Fira Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: SvgPicture.asset(
+                                'assets/images/logout.svg',
+                                width: 25.0,
+                                height: 25.0,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Выйти из аккаунта',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Fira Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

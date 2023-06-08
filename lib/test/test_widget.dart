@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_model.dart';
@@ -142,6 +143,47 @@ class _TestWidgetState extends State<TestWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: SvgPicture.asset(
+                      'assets/images/nav.svg',
+                      width: 25.0,
+                      height: 25.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: SvgPicture.asset(
+                      'assets/images/s_wa.svg',
+                      width: 25.0,
+                      height: 25.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: SvgPicture.asset(
+                      'assets/images/s_tg.svg',
+                      width: 25.0,
+                      height: 25.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: SvgPicture.asset(
+                      'assets/images/s_phone.svg',
+                      width: 25.0,
+                      height: 25.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

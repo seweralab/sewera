@@ -52,12 +52,15 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -169,7 +172,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 50.0),
+                                                    0.0, 50.0, 0.0, 0.0),
                                             child: Image.asset(
                                               'assets/images/orderarr.png',
                                               width: 150.0,
@@ -239,7 +242,13 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                         Alignment(0.0, 0),
                                                     child: TabBar(
                                                       labelColor:
-                                                          Color(0xFF102938),
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      unselectedLabelColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -278,11 +287,11 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                       0.0,
                                                                       18.0,
                                                                       0.0),
-                                                          child: StreamBuilder<
+                                                          child: FutureBuilder<
                                                               List<
                                                                   OrdersRecord>>(
-                                                            stream:
-                                                                queryOrdersRecord(
+                                                            future:
+                                                                queryOrdersRecordOnce(
                                                               queryBuilder: (ordersRecord) => ordersRecord
                                                                   .whereIn(
                                                                       'status',
@@ -354,7 +363,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                           context
                                                                               .pushNamed(
                                                                             'orderItemPage',
-                                                                            queryParams:
+                                                                            queryParameters:
                                                                                 {
                                                                               'order': serializeParam(
                                                                                 columnOrdersRecord.reference,
@@ -444,7 +453,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                   'Подтвердите',
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Fira Sans',
-                                                                                                        color: Color(0xFFFFB306),
+                                                                                                        color: Color(0xFFF1A100),
                                                                                                         fontSize: 14.0,
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -471,61 +480,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                   'Подтверждён',
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Fira Sans',
-                                                                                                        color: Color(0xFF04AB51),
-                                                                                                        fontSize: 14.0,
-                                                                                                        fontWeight: FontWeight.w500,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        if (columnOrdersRecord.status == 'Выполнен')
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                                                                  child: SvgPicture.asset(
-                                                                                                    'assets/images/complete.svg',
-                                                                                                    width: 16.0,
-                                                                                                    height: 16.0,
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  'Выполнен',
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: 'Fira Sans',
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                        fontSize: 14.0,
-                                                                                                        fontWeight: FontWeight.w500,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        if (columnOrdersRecord.status == 'Не оформлен')
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                                                                  child: SvgPicture.asset(
-                                                                                                    'assets/images/process.svg',
-                                                                                                    width: 16.0,
-                                                                                                    height: 16.0,
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  'Не оформлен',
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: 'Fira Sans',
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                        color: Color(0xFF00BB67),
                                                                                                         fontSize: 14.0,
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -546,7 +501,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                     alignment: AlignmentDirectional(1.0, 0.0),
                                                                                     child: Text(
                                                                                       columnOrdersRecord.deadline,
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Fira Sans',
+                                                                                            fontSize: 12.0,
+                                                                                          ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -585,11 +543,11 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                         0.0,
                                                                         18.0,
                                                                         0.0),
-                                                                child: StreamBuilder<
+                                                                child: FutureBuilder<
                                                                     List<
                                                                         OrdersRecord>>(
-                                                                  stream:
-                                                                      queryOrdersRecord(
+                                                                  future:
+                                                                      queryOrdersRecordOnce(
                                                                     queryBuilder: (ordersRecord) => ordersRecord
                                                                         .whereIn(
                                                                             'status',
@@ -661,7 +619,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                 () async {
                                                                               context.pushNamed(
                                                                                 'orderItemPage',
-                                                                                queryParams: {
+                                                                                queryParameters: {
                                                                                   'order': serializeParam(
                                                                                     listViewOrdersRecord.reference,
                                                                                     ParamType.DocumentReference,
@@ -771,7 +729,10 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                         child: AutoSizeText(
                                                                                           listViewOrdersRecord.deadline,
                                                                                           maxLines: 2,
-                                                                                          style: FlutterFlowTheme.of(context).bodyMedium,
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Fira Sans',
+                                                                                                fontSize: 12.0,
+                                                                                              ),
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -821,26 +782,22 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                     alignment: AlignmentDirectional(1.0, 1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 30.0),
-                      child: Container(
-                        width: 52.0,
-                        height: 52.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
-                          shape: BoxShape.circle,
-                        ),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed('SearchPage');
-                          },
-                          child: Icon(
-                            Icons.add,
-                            color: FlutterFlowTheme.of(context).primaryBtnText,
-                            size: 28.0,
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 17.0, 37.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.goNamed('SearchPage');
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: SvgPicture.asset(
+                            'assets/images/plusorder.svg',
+                            width: 80.0,
+                            height: 80.0,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),

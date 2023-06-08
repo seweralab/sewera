@@ -10,6 +10,7 @@ import '/widgets/close_quiz/close_quiz_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,12 +63,15 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -156,14 +160,13 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                           backgroundColor: Colors.transparent,
                                           enableDrag: false,
                                           context: context,
-                                          builder: (bottomSheetContext) {
+                                          builder: (context) {
                                             return GestureDetector(
                                               onTap: () => FocusScope.of(
                                                       context)
                                                   .requestFocus(_unfocusNode),
                                               child: Padding(
-                                                padding: MediaQuery.of(
-                                                        bottomSheetContext)
+                                                padding: MediaQuery.of(context)
                                                     .viewInsets,
                                                 child: CloseQuizWidget(),
                                               ),
@@ -385,8 +388,9 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                         child:
                                                                             FlutterFlowExpandedImageView(
                                                                           image:
-                                                                              Image.network(
-                                                                            mdPhotosEditItem,
+                                                                              CachedNetworkImage(
+                                                                            imageUrl:
+                                                                                mdPhotosEditItem,
                                                                             fit:
                                                                                 BoxFit.contain,
                                                                           ),
@@ -410,9 +414,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        mdPhotosEditItem,
+                                                                      child:
+                                                                          CachedNetworkImage(
+                                                                        imageUrl:
+                                                                            mdPhotosEditItem,
                                                                         width:
                                                                             100.0,
                                                                         height:
@@ -685,7 +690,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                       await quizCommentOrdersRecord.reference
                           .update(ordersUpdateData);
 
-                      context.pushNamed('QuizSendOrder');
+                      context.goNamed('QuizSendOrder');
                     },
                     text: 'Продолжить',
                     options: FFButtonOptions(

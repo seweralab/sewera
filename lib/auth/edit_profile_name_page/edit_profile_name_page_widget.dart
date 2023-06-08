@@ -174,8 +174,12 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: 'Введите вашу фамилию',
-                                hintStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Fira Sans',
+                                      fontSize: 16.0,
+                                    ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),

@@ -109,7 +109,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               } else {
                 final ordersUpdateData2 = createOrdersRecordData(
                   deadline: dateTimeFormat(
-                    'd/M/y',
+                    'd.M.y',
                     getCurrentTimestamp,
                     locale: FFLocalizations.of(context).languageCode,
                   ),

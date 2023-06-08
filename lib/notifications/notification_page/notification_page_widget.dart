@@ -6,6 +6,7 @@ import '/widgets/top_notification/top_notification_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'notification_page_model.dart';
@@ -55,17 +56,20 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<NotificationsRecord>(
-      stream: NotificationsRecord.getDocument(widget.notication!),
+    return FutureBuilder<NotificationsRecord>(
+      future: NotificationsRecord.getDocumentOnce(widget.notication!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -138,20 +142,21 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                   ),
                                 ],
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('NotificationConfigPage');
-                                  },
-                                  child: Icon(
-                                    Icons.settings_outlined,
-                                    color: Colors.black,
-                                    size: 24.0,
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('NotificationConfigPage');
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: SvgPicture.asset(
+                                    'assets/images/gear.svg',
+                                    width: 24.0,
+                                    height: 24.0,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
@@ -177,7 +182,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                     0.0, 0.0, 0.0, 8.0),
                                 child: Text(
                                   dateTimeFormat(
-                                    'd/M/y',
+                                    'd.M.y',
                                     notificationPageNotificationsRecord.date!,
                                     locale: FFLocalizations.of(context)
                                         .languageCode,
@@ -201,6 +206,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                         fontFamily: 'Fira Sans',
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.w500,
+                                        lineHeight: 1.5,
                                       ),
                                 ),
                               ),
@@ -211,6 +217,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                     .override(
                                       fontFamily: 'Fira Sans',
                                       fontSize: 14.0,
+                                      lineHeight: 1.5,
                                     ),
                               ),
                             ],

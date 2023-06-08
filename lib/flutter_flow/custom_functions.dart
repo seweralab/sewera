@@ -18,19 +18,19 @@ String defineAllServicesText() {
 
 List<String> quizGetRadioDates() {
   final monthes = [
-    'Вечное лето',
-    'Января',
-    'Февраля',
-    'Марта',
-    'Апреля',
-    'Мая',
-    'Июня',
-    'Июля',
-    'Августа',
-    'Сентября',
-    'Октября',
-    'Ноября',
-    'Декабря'
+    '',
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
   ];
   final today = DateTime.now();
   final today_day = today.day;
@@ -678,11 +678,13 @@ int cashbackUserUser(
   }
 }
 
-int calcOrderPrice(
+String calcOrderPrice(
   int cost,
   int cashback,
 ) {
-  return cost - cashback;
+  int orderprice = cost - cashback;
+  return orderprice.toString().replaceAllMapped(
+      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ');
 }
 
 Color? orderChangedColor(

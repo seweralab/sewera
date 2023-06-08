@@ -195,17 +195,17 @@ class _QuizPage2NoServiceDateWidgetState
                                                           Colors.transparent,
                                                       enableDrag: false,
                                                       context: context,
-                                                      builder:
-                                                          (bottomSheetContext) {
+                                                      builder: (context) {
                                                         return GestureDetector(
                                                           onTap: () => FocusScope
                                                                   .of(context)
                                                               .requestFocus(
                                                                   _unfocusNode),
                                                           child: Padding(
-                                                            padding: MediaQuery.of(
-                                                                    bottomSheetContext)
-                                                                .viewInsets,
+                                                            padding:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .viewInsets,
                                                             child:
                                                                 CloseQuizWidget(),
                                                           ),
@@ -389,13 +389,12 @@ class _QuizPage2NoServiceDateWidgetState
                                         isDismissible: false,
                                         enableDrag: false,
                                         context: context,
-                                        builder: (bottomSheetContext) {
+                                        builder: (context) {
                                           return GestureDetector(
                                             onTap: () => FocusScope.of(context)
                                                 .requestFocus(_unfocusNode),
                                             child: Padding(
-                                              padding: MediaQuery.of(
-                                                      bottomSheetContext)
+                                              padding: MediaQuery.of(context)
                                                   .viewInsets,
                                               child: Container(
                                                 height: 460.0,
@@ -417,7 +416,7 @@ class _QuizPage2NoServiceDateWidgetState
                                           .currentOrder!
                                           .update(ordersUpdateData);
 
-                                      context.pushNamed(
+                                      context.goNamed(
                                         'QuizSelectAddr',
                                         extra: <String, dynamic>{
                                           kTransitionInfoKey: TransitionInfo(

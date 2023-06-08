@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' show cos, sqrt, asin;
 import 'package:http/http.dart' as http;
@@ -308,7 +309,6 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                           'assets/images/nav.svg',
                           width: 24,
                           height: 24,
-                          color: Colors.black,
                         ),
                       ),
                     ),
@@ -319,8 +319,7 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
             ),
           ),
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
+            duration: Duration(milliseconds: 0),
             top: _isFocused ? 0 : 338,
             child: Padding(
               padding: EdgeInsets.all(8.0),
@@ -365,10 +364,6 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                         ? InkWell(
                             onTap: () async {
                               _addressTextController.clear();
-                              // setState(() {
-                              //   _model.showInputError = false;
-                              // });
-                              // setState(() {});
                             },
                             child: Icon(
                               Icons.clear,
@@ -388,7 +383,6 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                   autofocus: false,
                   onTap: () {
                     setState(() {
-                      print('iSFOCEUS');
                       _isFocused = true;
                     });
                   },
@@ -396,7 +390,7 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
               ),
             ),
           ),
-          if (_suggestions.isNotEmpty)
+          if (_isFocused)
             Positioned(
               left: 8.0,
               top: 58.0,
@@ -404,14 +398,16 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
               bottom: 8.0,
               child: Container(
                 color: Colors.white,
+                height: 200,
                 child: ListView.builder(
+                  padding: EdgeInsets.zero, // Убираем внутренние отступы
                   itemCount: _suggestions.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text(_suggestions[index].value),
                       onTap: () {
                         _addressTextController.text = _suggestions[index].value;
-                        // print(_suggestions[index]);
+                        print(123);
                         FFAppState().currentQuizAddr =
                             _suggestions[index].value;
                         _addressFocusNode.requestFocus();
@@ -421,7 +417,6 @@ class _RouteViewStaticState extends State<RouteViewStatic> {
                           TextPosition(
                               offset: _addressTextController.text.length),
                         );
-
                         _onSuggestionTap(_suggestions[index].latitude,
                             _suggestions[index].longitude);
                         _suggestions.clear();

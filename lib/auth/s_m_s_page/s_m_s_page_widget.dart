@@ -143,7 +143,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                 onPressed: () async {
                                   context.pushNamed(
                                     'StartPage',
-                                    queryParams: {
+                                    queryParameters: {
                                       'phone': serializeParam(
                                         widget.phone,
                                         ParamType.String,

@@ -63,8 +63,8 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-          body: StreamBuilder<OrdersRecord>(
-            stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
+          body: FutureBuilder<OrdersRecord>(
+            future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -96,8 +96,8 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                     ),
                   ),
                   Expanded(
-                    child: StreamBuilder<List<QuizRecord>>(
-                      stream: queryQuizRecord(
+                    child: FutureBuilder<List<QuizRecord>>(
+                      future: queryQuizRecordOnce(
                         parent: widget.serviceRef,
                         queryBuilder: (quizRecord) => quizRecord.where('title',
                             isEqualTo: widget.quiztitle),
@@ -240,16 +240,15 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                             Colors.transparent,
                                                         enableDrag: false,
                                                         context: context,
-                                                        builder:
-                                                            (bottomSheetContext) {
+                                                        builder: (context) {
                                                           return GestureDetector(
                                                             onTap: () => FocusScope
                                                                     .of(context)
                                                                 .requestFocus(
                                                                     _unfocusNode),
                                                             child: Padding(
-                                                              padding: MediaQuery.of(
-                                                                      bottomSheetContext)
+                                                              padding: MediaQuery
+                                                                      .of(context)
                                                                   .viewInsets,
                                                               child:
                                                                   CloseQuizWidget(),
@@ -501,14 +500,14 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                     context:
                                                                         context,
                                                                     builder:
-                                                                        (bottomSheetContext) {
+                                                                        (context) {
                                                                       return GestureDetector(
                                                                         onTap: () =>
                                                                             FocusScope.of(context).requestFocus(_unfocusNode),
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              MediaQuery.of(bottomSheetContext).viewInsets,
+                                                                              MediaQuery.of(context).viewInsets,
                                                                           child:
                                                                               CloseQuizWidget(),
                                                                         ),
@@ -1032,7 +1031,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                   false;
                                             });
 
-                                            context.pushNamed('QuizSendOrder');
+                                            context.goNamed('QuizSendOrder');
                                           },
                                           text: 'Сохранить',
                                           options: FFButtonOptions(

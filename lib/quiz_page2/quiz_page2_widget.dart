@@ -215,8 +215,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                   .transparent,
                                                           enableDrag: false,
                                                           context: context,
-                                                          builder:
-                                                              (bottomSheetContext) {
+                                                          builder: (context) {
                                                             return GestureDetector(
                                                               onTap: () => FocusScope
                                                                       .of(
@@ -225,7 +224,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                       _unfocusNode),
                                                               child: Padding(
                                                                 padding: MediaQuery.of(
-                                                                        bottomSheetContext)
+                                                                        context)
                                                                     .viewInsets,
                                                                 child:
                                                                     CloseQuizWidget(),
@@ -306,7 +305,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (bottomSheetContext) {
+                                                                    (context) {
                                                                   return GestureDetector(
                                                                     onTap: () => FocusScope.of(
                                                                             context)
@@ -315,7 +314,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                     child:
                                                                         Padding(
                                                                       padding: MediaQuery.of(
-                                                                              bottomSheetContext)
+                                                                              context)
                                                                           .viewInsets,
                                                                       child:
                                                                           CloseQuizWidget(),
@@ -513,7 +512,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 12.0),
+                                            18.0, 0.0, 18.0, 30.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
                                             if (FFAppState()
@@ -533,8 +532,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                           .primaryBtnText,
                                                   enableDrag: false,
                                                   context: context,
-                                                  builder:
-                                                      (bottomSheetContext) {
+                                                  builder: (context) {
                                                     return GestureDetector(
                                                       onTap: () =>
                                                           FocusScope.of(context)
@@ -542,7 +540,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                   _unfocusNode),
                                                       child: Padding(
                                                         padding: MediaQuery.of(
-                                                                bottomSheetContext)
+                                                                context)
                                                             .viewInsets,
                                                         child: Container(
                                                           height: 500.0,
@@ -566,7 +564,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                     .currentOrder!
                                                     .update(ordersUpdateData);
 
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   'QuizSelectAddr',
                                                   extra: <String, dynamic>{
                                                     kTransitionInfoKey:
@@ -685,7 +683,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
 
                                                             context.goNamed(
                                                               'QuizPage2',
-                                                              queryParams: {
+                                                              queryParameters: {
                                                                 'serviceRef':
                                                                     serializeParam(
                                                                   widget
@@ -764,16 +762,15 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                             Colors.transparent,
                                                         enableDrag: false,
                                                         context: context,
-                                                        builder:
-                                                            (bottomSheetContext) {
+                                                        builder: (context) {
                                                           return GestureDetector(
                                                             onTap: () => FocusScope
                                                                     .of(context)
                                                                 .requestFocus(
                                                                     _unfocusNode),
                                                             child: Padding(
-                                                              padding: MediaQuery.of(
-                                                                      bottomSheetContext)
+                                                              padding: MediaQuery
+                                                                      .of(context)
                                                                   .viewInsets,
                                                               child:
                                                                   CloseQuizWidget(),
@@ -836,7 +833,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                     Expanded(
                                       child: SingleChildScrollView(
                                         child: Column(
-                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisSize: MainAxisSize.max,
                                           children: [
                                             if (quizQuizRecord!.type ==
                                                 'select')
@@ -1331,7 +1328,7 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
 
                                             context.pushNamed(
                                               'QuizPage2',
-                                              queryParams: {
+                                              queryParameters: {
                                                 'serviceRef': serializeParam(
                                                   widget.serviceRef,
                                                   ParamType.DocumentReference,

@@ -373,7 +373,7 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
                     FFAppState().currentOrder =
                         _model.orderFromNoService!.reference;
 
-                    context.pushNamed('QuizPage2NoServiceDate');
+                    context.goNamed('QuizPage2NoServiceDate');
                   } else {
                     setState(() {
                       _model.showInputError = true;

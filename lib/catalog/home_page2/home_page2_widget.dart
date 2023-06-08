@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -78,7 +79,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                             18.0, 10.0, 18.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 59.0,
+                          height: 51.0,
                           decoration: BoxDecoration(
                             color: Color(0xFFF3F4F5),
                             borderRadius: BorderRadius.circular(8.0),
@@ -89,7 +90,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('SearchPage');
+                              context.goNamed('SearchPage');
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -116,8 +117,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     borderRadius: BorderRadius.circular(0.0),
                                     child: SvgPicture.asset(
                                       'assets/images/Vector_(1).svg',
-                                      width: 16.0,
-                                      height: 16.0,
+                                      width: 18.0,
+                                      height: 18.0,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -130,8 +131,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             18.0, 16.0, 18.0, 16.0),
-                        child: StreamBuilder<List<NotificationsRecord>>(
-                          stream: queryNotificationsRecord(
+                        child: FutureBuilder<List<NotificationsRecord>>(
+                          future: queryNotificationsRecordOnce(
                             queryBuilder: (notificationsRecord) =>
                                 notificationsRecord
                                     .where('viewed', isEqualTo: false)
@@ -327,8 +328,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                           },
                         ),
                       ),
-                      StreamBuilder<List<OrdersRecord>>(
-                        stream: queryOrdersRecord(
+                      FutureBuilder<List<OrdersRecord>>(
+                        future: queryOrdersRecordOnce(
                           queryBuilder: (ordersRecord) => ordersRecord
                               .where('client', isEqualTo: currentUserReference)
                               .where('status', isEqualTo: 'Не оформлен')
@@ -433,104 +434,124 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                   alignment:
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .currentQuizIndex = 0;
-                                                        FFAppState()
-                                                                .currentOrder =
-                                                            unformedItem
-                                                                .reference;
-                                                      });
-                                                      if (unformedItem
-                                                              .service !=
-                                                          null) {
-                                                        context.pushNamed(
-                                                          'QuizPage2',
-                                                          queryParams: {
-                                                            'serviceRef':
-                                                                serializeParam(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(2.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .currentQuizIndex = 0;
+                                                          FFAppState()
+                                                                  .currentOrder =
                                                               unformedItem
-                                                                  .service,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      } else {
-                                                        context.pushNamed(
-                                                          'QuizNoService',
-                                                          queryParams: {
-                                                            'customServiceName':
-                                                                serializeParam(
-                                                              unformedItem
-                                                                  .servicename,
-                                                              ParamType.String,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      }
-                                                    },
-                                                    child: Slidable(
-                                                      endActionPane: ActionPane(
-                                                        motion:
-                                                            const ScrollMotion(),
-                                                        extentRatio: 0.25,
-                                                        children: [
-                                                          SlidableAction(
-                                                            // label: 'null',
-                                                            backgroundColor:
-                                                                Color(
-                                                                    0xFFF3F4F5),
-                                                            icon: Icons.delete,
-                                                            onPressed:
-                                                                (_) async {
-                                                              await unformedItem
-                                                                  .reference
-                                                                  .delete();
-                                                            },
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      child: ListTile(
-                                                        title: Text(
-                                                          unformedItem
-                                                              .servicename,
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .headlineSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Fira Sans',
-                                                                fontSize: 14.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
+                                                                  .reference;
+                                                        });
+                                                        if (unformedItem
+                                                                .service !=
+                                                            null) {
+                                                          if (Navigator.of(
+                                                                  context)
+                                                              .canPop()) {
+                                                            context.pop();
+                                                          }
+                                                          context.pushNamed(
+                                                            'QuizPage2',
+                                                            queryParameters: {
+                                                              'serviceRef':
+                                                                  serializeParam(
+                                                                unformedItem
+                                                                    .service,
+                                                                ParamType
+                                                                    .DocumentReference,
                                                               ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        } else {
+                                                          if (Navigator.of(
+                                                                  context)
+                                                              .canPop()) {
+                                                            context.pop();
+                                                          }
+                                                          context.pushNamed(
+                                                            'QuizNoService',
+                                                            queryParameters: {
+                                                              'customServiceName':
+                                                                  serializeParam(
+                                                                unformedItem
+                                                                    .servicename,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        }
+                                                      },
+                                                      child: Slidable(
+                                                        endActionPane:
+                                                            ActionPane(
+                                                          motion:
+                                                              const ScrollMotion(),
+                                                          extentRatio: 0.25,
+                                                          children: [
+                                                            SlidableAction(
+                                                              // label: 'null',
+                                                              backgroundColor:
+                                                                  Color(
+                                                                      0xFFF3F4F5),
+                                                              icon:
+                                                                  Icons.delete,
+                                                              onPressed:
+                                                                  (_) async {
+                                                                await unformedItem
+                                                                    .reference
+                                                                    .delete();
+                                                              },
+                                                            ),
+                                                          ],
                                                         ),
-                                                        trailing: Icon(
-                                                          Icons
-                                                              .arrow_forward_ios,
-                                                          color: FlutterFlowTheme
+                                                        child: ListTile(
+                                                          title: Text(
+                                                            unformedItem
+                                                                .servicename,
+                                                            textAlign:
+                                                                TextAlign.start,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Fira Sans',
+                                                                  fontSize:
+                                                                      14.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                          trailing: Icon(
+                                                            Icons
+                                                                .arrow_forward_ios,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent2,
+                                                            size: 20.0,
+                                                          ),
+                                                          tileColor: FlutterFlowTheme
                                                                   .of(context)
-                                                              .accent2,
-                                                          size: 20.0,
+                                                              .secondaryBackground,
+                                                          dense: false,
                                                         ),
-                                                        tileColor: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        dense: false,
                                                       ),
                                                     ),
                                                   ),
@@ -560,8 +581,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                           );
                         },
                       ),
-                      StreamBuilder<List<CatalogRecord>>(
-                        stream: queryCatalogRecord(),
+                      FutureBuilder<List<CatalogRecord>>(
+                        future: queryCatalogRecordOnce(),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -603,7 +624,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         onTap: () async {
                                           context.pushNamed(
                                             'CatalogItemsPage',
-                                            queryParams: {
+                                            queryParameters: {
                                               'catalog': serializeParam(
                                                 columnCatalogRecord.title,
                                                 ParamType.String,
@@ -656,8 +677,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                               .secondaryBackground,
                                         ),
                                         child:
-                                            StreamBuilder<List<ServicesRecord>>(
-                                          stream: queryServicesRecord(
+                                            FutureBuilder<List<ServicesRecord>>(
+                                          future: queryServicesRecordOnce(
                                             queryBuilder: (servicesRecord) =>
                                                 servicesRecord
                                                     .where('popular',
@@ -735,7 +756,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                 context
                                                                     .pushNamed(
                                                                   'CatalogItemsPage',
-                                                                  queryParams: {
+                                                                  queryParameters:
+                                                                      {
                                                                     'catalog':
                                                                         serializeParam(
                                                                       columnCatalogRecord
@@ -826,9 +848,6 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                               if (FFAppState()
                                                                       .currentOrder ==
                                                                   null) {
-                                                                FFAppState()
-                                                                    .currentQuizIndex = 0;
-
                                                                 final ordersCreateData =
                                                                     createOrdersRecordData(
                                                                   status:
@@ -866,11 +885,18 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                     _model
                                                                         .newOrder!
                                                                         .reference;
-
+                                                                FFAppState()
+                                                                    .currentQuizIndex = 0;
+                                                                if (Navigator.of(
+                                                                        context)
+                                                                    .canPop()) {
+                                                                  context.pop();
+                                                                }
                                                                 context
                                                                     .pushNamed(
                                                                   'QuizPage2',
-                                                                  queryParams: {
+                                                                  queryParameters:
+                                                                      {
                                                                     'serviceRef':
                                                                         serializeParam(
                                                                       listViewInnerServicesRecord
@@ -912,9 +938,9 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                       ClipRRect(
                                                                         borderRadius:
                                                                             BorderRadius.circular(8.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          listViewInnerServicesRecord
+                                                                        child:
+                                                                            CachedNetworkImage(
+                                                                          imageUrl: listViewInnerServicesRecord
                                                                               .img
                                                                               .first
                                                                               .downloadURL,

@@ -186,7 +186,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                 context.goNamedAuth(
                                   'SMSPage',
                                   context.mounted,
-                                  queryParams: {
+                                  queryParameters: {
                                     'phone': serializeParam(
                                       _model.phonefieldController.text,
                                       ParamType.String,

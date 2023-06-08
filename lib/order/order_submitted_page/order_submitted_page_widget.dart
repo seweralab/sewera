@@ -98,7 +98,7 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('ordersPage');
+                          context.goNamed('ordersPage');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,

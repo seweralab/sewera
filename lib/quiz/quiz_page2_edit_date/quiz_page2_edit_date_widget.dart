@@ -53,8 +53,8 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
-        body: StreamBuilder<OrdersRecord>(
-          stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
+        body: FutureBuilder<OrdersRecord>(
+          future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -147,15 +147,15 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                             backgroundColor: Colors.transparent,
                                             enableDrag: false,
                                             context: context,
-                                            builder: (bottomSheetContext) {
+                                            builder: (context) {
                                               return GestureDetector(
                                                 onTap: () => FocusScope.of(
                                                         context)
                                                     .requestFocus(_unfocusNode),
                                                 child: Padding(
-                                                  padding: MediaQuery.of(
-                                                          bottomSheetContext)
-                                                      .viewInsets,
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
                                                   child: CloseQuizWidget(),
                                                 ),
                                               );
@@ -299,13 +299,12 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                 FlutterFlowTheme.of(context).primaryBtnText,
                             enableDrag: false,
                             context: context,
-                            builder: (bottomSheetContext) {
+                            builder: (context) {
                               return GestureDetector(
                                 onTap: () => FocusScope.of(context)
                                     .requestFocus(_unfocusNode),
                                 child: Padding(
-                                  padding: MediaQuery.of(bottomSheetContext)
-                                      .viewInsets,
+                                  padding: MediaQuery.of(context).viewInsets,
                                   child: Container(
                                     height: 460.0,
                                     child: CalendarWidget(),
@@ -324,7 +323,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                               .currentOrder!
                               .update(ordersUpdateData);
 
-                          context.pushNamed(
+                          context.goNamed(
                             'QuizSendOrder',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(

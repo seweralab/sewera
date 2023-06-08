@@ -78,17 +78,20 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
       );
     }
 
-    return StreamBuilder<OrdersRecord>(
-      stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
+    return FutureBuilder<OrdersRecord>(
+      future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -176,13 +179,12 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                                         backgroundColor: Colors.transparent,
                                         enableDrag: false,
                                         context: context,
-                                        builder: (bottomSheetContext) {
+                                        builder: (context) {
                                           return GestureDetector(
                                             onTap: () => FocusScope.of(context)
                                                 .requestFocus(_unfocusNode),
                                             child: Padding(
-                                              padding: MediaQuery.of(
-                                                      bottomSheetContext)
+                                              padding: MediaQuery.of(context)
                                                   .viewInsets,
                                               child: CloseQuizWidget(),
                                             ),
@@ -241,7 +243,7 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                             .currentOrder!
                             .update(ordersUpdateData);
 
-                        context.pushNamed(
+                        context.goNamed(
                           'QuizSendOrder',
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(

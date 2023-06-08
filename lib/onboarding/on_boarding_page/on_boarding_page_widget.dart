@@ -1,7 +1,6 @@
 import '/auth/base_auth_user_provider.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -70,7 +69,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
                             onPageChanged: (_) async {
-                              if (pageViewCurrentIndex == 3) {
+                              if (pageViewCurrentIndex == 4) {
                                 if (loggedIn == true) {
                                   context.pushNamed('HomePage2');
 
@@ -112,7 +111,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: Text(
-                                            'Добро пожаловать  в приложение Sewera!',
+                                            'Добро пожаловать в приложение Sewera!',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -240,41 +239,6 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                               ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: 'Включить',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            height: 48.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      color: Colors.white,
-                                                    ),
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ],
@@ -327,6 +291,9 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                     ],
                                   ),
                                 ],
+                              ),
+                              Stack(
+                                children: [],
                               ),
                             ],
                           ),
@@ -433,11 +400,11 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     if (loggedIn == true) {
-                      context.pushNamed('HomePage2');
+                      context.goNamed('HomePage2');
 
                       return;
                     } else {
-                      context.pushNamed('StartPage');
+                      context.goNamed('StartPage');
 
                       return;
                     }

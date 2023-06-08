@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,17 +51,20 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<OrdersRecord>(
-      stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
+    return FutureBuilder<OrdersRecord>(
+      future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primary,
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -144,13 +148,12 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                         backgroundColor: Colors.transparent,
                                         enableDrag: false,
                                         context: context,
-                                        builder: (bottomSheetContext) {
+                                        builder: (context) {
                                           return GestureDetector(
                                             onTap: () => FocusScope.of(context)
                                                 .requestFocus(_unfocusNode),
                                             child: Padding(
-                                              padding: MediaQuery.of(
-                                                      bottomSheetContext)
+                                              padding: MediaQuery.of(context)
                                                   .viewInsets,
                                               child: CloseQuizWidget(),
                                             ),
@@ -216,11 +219,15 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Icon(
-                                        Icons.calendar_today,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 18.0,
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/calendar.svg',
+                                          width: 16.0,
+                                          height: 16.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -245,11 +252,15 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Icon(
-                                        Icons.place_sharp,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 18.0,
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/place.svg',
+                                          width: 16.0,
+                                          height: 16.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -401,7 +412,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                   onTap: () async {
                                                     context.pushNamed(
                                                       'QuizPage2EditOrder',
-                                                      queryParams: {
+                                                      queryParameters: {
                                                         'serviceRef':
                                                             serializeParam(
                                                           quizSendOrderOrdersRecord
@@ -458,6 +469,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                         'Fira Sans',
                                                                     color: Color(
                                                                         0xFF88959C),
+                                                                    fontSize:
+                                                                        14.0,
                                                                   ),
                                                             ),
                                                             Text(
@@ -532,6 +545,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                     'Fira Sans',
                                                                 color: Color(
                                                                     0xFF88959C),
+                                                                fontSize: 14.0,
                                                               ),
                                                     ),
                                                     Text(
@@ -601,16 +615,16 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                     children: [
                                                       Text(
                                                         'Адрес',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0xFF88959C),
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0xFF88959C),
+                                                              fontSize: 14.0,
+                                                            ),
                                                       ),
                                                       Text(
                                                         quizSendOrderOrdersRecord
@@ -655,7 +669,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                             onTap: () async {
                                               context.pushNamed(
                                                 'QuizNoServiceEdit',
-                                                queryParams: {
+                                                queryParameters: {
                                                   'customServiceName':
                                                       serializeParam(
                                                     quizSendOrderOrdersRecord
@@ -690,16 +704,16 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                     children: [
                                                       Text(
                                                         'Описание',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0xFF88959C),
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0xFF88959C),
+                                                              fontSize: 14.0,
+                                                            ),
                                                       ),
                                                       Text(
                                                         quizSendOrderOrdersRecord
@@ -768,16 +782,16 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                     children: [
                                                       Text(
                                                         'Пожелания',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0xFF88959C),
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              color: Color(
+                                                                  0xFF88959C),
+                                                              fontSize: 14.0,
+                                                            ),
                                                       ),
                                                       Text(
                                                         quizSendOrderOrdersRecord
@@ -918,8 +932,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                 PageTransition(
                                                                                   type: PageTransitionType.fade,
                                                                                   child: FlutterFlowExpandedImageView(
-                                                                                    image: Image.network(
-                                                                                      mdPhotosEditItem,
+                                                                                    image: CachedNetworkImage(
+                                                                                      imageUrl: mdPhotosEditItem,
                                                                                       fit: BoxFit.contain,
                                                                                     ),
                                                                                     allowRotation: false,
@@ -935,8 +949,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                               transitionOnUserGestures: true,
                                                                               child: ClipRRect(
                                                                                 borderRadius: BorderRadius.circular(8.0),
-                                                                                child: Image.network(
-                                                                                  mdPhotosEditItem,
+                                                                                child: CachedNetworkImage(
+                                                                                  imageUrl: mdPhotosEditItem,
                                                                                   width: 100.0,
                                                                                   height: 100.0,
                                                                                   fit: BoxFit.cover,
@@ -1174,7 +1188,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                               FFAppState().currentQuizIndex = 0;
                               FFAppState().currentOrder = null;
 
-                              context.pushNamed('orderSubmittedPage');
+                              context.goNamed('orderSubmittedPage');
                             },
                             text: 'Отправить заказ',
                             options: FFButtonOptions(
