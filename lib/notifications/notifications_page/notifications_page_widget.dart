@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -23,7 +22,6 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
   late NotificationsPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -35,7 +33,6 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -45,9 +42,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
 
     return FutureBuilder<List<NotificationsRecord>>(
       future: queryNotificationsRecordOnce(
-        queryBuilder: (notificationsRecord) => notificationsRecord
-            .where('user', isEqualTo: currentUserReference)
-            .orderBy('date', descending: true),
+        queryBuilder: (notificationsRecord) =>
+            notificationsRecord.orderBy('date', descending: true),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -68,7 +64,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
         List<NotificationsRecord> notificationsPageNotificationsRecordList =
             snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -397,21 +393,6 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 if (notificationItem.viewed ==
-                                                    false)
-                                                  Text(
-                                                    notificationItem.title,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                if (notificationItem.viewed ==
                                                     true)
                                                   Text(
                                                     notificationItem.title,
@@ -434,33 +415,9 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      if (notificationItem
-                                                              .viewed ==
-                                                          false)
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      6.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            '●',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0xFFEB5757),
-                                                                ),
-                                                          ),
-                                                        ),
                                                       Text(
                                                         dateTimeFormat(
-                                                          'd.M.y',
+                                                          'd/M/y',
                                                           notificationItem
                                                               .date!,
                                                           locale:

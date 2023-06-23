@@ -54,10 +54,13 @@ class AppStateNotifier extends ChangeNotifier {
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
   void update(BaseAuthUser newUser) {
+    final shouldUpdate =
+        user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
     initialUser ??= newUser;
     user = newUser;
     // Refresh the app on auth change unless explicitly marked otherwise.
-    if (notifyOnAuthChange) {
+    // No need to update unless the user has changed.
+    if (notifyOnAuthChange && shouldUpdate) {
       notifyListeners();
     }
     // Once again mark the notifier as needing to update on auth change
@@ -75,14 +78,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? NavBarPage() : OnBoardingPageWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : OnBoardingPageWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
         ),
         FFRoute(
           name: 'StartPage',
@@ -129,6 +132,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'QuizPage2',
           path: '/quizPage2',
+          requireAuth: true,
           builder: (context, params) => QuizPage2Widget(
             quizCurrentIndex:
                 params.getParam('quizCurrentIndex', ParamType.int),
@@ -171,7 +175,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditProfilePhonePage',
           path: '/editProfilePhonePage',
-          // builder: (context, params) => EditProfilePhonePageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditProfilePhonePage')
               : EditProfilePhonePageWidget(),
@@ -179,7 +182,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditMDPage',
           path: '/editMDPage',
-          // builder: (context, params) => EditMDPageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditMDPage')
               : EditMDPageWidget(),
@@ -187,7 +189,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditMDNamePage',
           path: '/editMDNamePage',
-          // builder: (context, params) => EditMDNamePageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditMDNamePage')
               : EditMDNamePageWidget(),
@@ -195,7 +196,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditMDAreaPage',
           path: '/editMDAreaPage',
-          // builder: (context, params) => EditMDAreaPageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditMDAreaPage')
               : EditMDAreaPageWidget(),
@@ -203,7 +203,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditMDTypePage',
           path: '/editMDTypePage',
-          // builder: (context, params) => EditMDTypePageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditMDTypePage')
               : EditMDTypePageWidget(),
@@ -211,7 +210,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditMDSepticPage',
           path: '/editMDSepticPage',
-          // builder: (context, params) => EditMDSepticPageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditMDSepticPage')
               : EditMDSepticPageWidget(),
@@ -219,7 +217,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditMDAddrPage',
           path: '/editMDAddrPage',
-          // builder: (context, params) => EditMDAddrPageWidget(),
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'EditMDAddrPage')
               : EditMDAddrPageWidget(),
@@ -227,9 +224,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ordersPage',
           path: '/ordersPage',
-          // builder: (context, params) => OrdersPageWidget(),
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'OrdersPage')
+              ? NavBarPage(initialPage: 'ordersPage')
               : OrdersPageWidget(),
         ),
         FFRoute(
@@ -244,9 +240,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'QuizSendOrder',
           path: '/quizSendOrder',
           builder: (context, params) => QuizSendOrderWidget(),
-          // builder: (context, params) => params.isEmpty
-          //     ? NavBarPage(initialPage: 'QuizSendOrder')
-          //     : QuizSendOrderWidget(),
         ),
         FFRoute(
           name: 'orderItemPage',
@@ -259,18 +252,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'NotificationConfigPage',
           path: '/notificationConfigPage',
-          // builder: (context, params) => NotificationConfigPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'NotificationConfigPage')
-              : NotificationConfigPageWidget(),
+          builder: (context, params) => NotificationConfigPageWidget(),
         ),
         FFRoute(
           name: 'NotificationsPage',
           path: '/notificationsPage',
-          // builder: (context, params) => NotificationsPageWidget(),
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'NotificationsPage')
-              : NotificationsPageWidget(),
+          builder: (context, params) => NotificationsPageWidget(),
         ),
         FFRoute(
           name: 'NotificationPage',
@@ -338,6 +325,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomePage2',
           path: '/homePage2',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'HomePage2')
               : HomePage2Widget(),

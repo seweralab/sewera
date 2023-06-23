@@ -28,7 +28,6 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
   late QuizPage2EditDateModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -40,7 +39,6 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -49,7 +47,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -149,14 +147,27 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                             context: context,
                                             builder: (context) {
                                               return GestureDetector(
-                                                onTap: () => FocusScope.of(
-                                                        context)
-                                                    .requestFocus(_unfocusNode),
+                                                onTap: () =>
+                                                    FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode),
                                                 child: Padding(
                                                   padding:
                                                       MediaQuery.of(context)
                                                           .viewInsets,
-                                                  child: CloseQuizWidget(),
+                                                  child: Scaffold(
+                                                    body: GestureDetector(
+                                                      onTap: () =>
+                                                          Navigator.pop(
+                                                              context),
+                                                    ),
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    bottomSheet: Container(
+                                                      color: Colors.transparent,
+                                                      child: CloseQuizWidget(),
+                                                    ),
+                                                  ),
                                                 ),
                                               );
                                             },
@@ -295,19 +306,28 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                         if (_model.selected == 'Выберу день в календаре') {
                           await showModalBottomSheet(
                             isScrollControlled: true,
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).primaryBtnText,
+                            backgroundColor: Colors.transparent,
                             enableDrag: false,
                             context: context,
                             builder: (context) {
                               return GestureDetector(
                                 onTap: () => FocusScope.of(context)
-                                    .requestFocus(_unfocusNode),
+                                    .requestFocus(_model.unfocusNode),
                                 child: Padding(
                                   padding: MediaQuery.of(context).viewInsets,
                                   child: Container(
                                     height: 460.0,
-                                    child: CalendarWidget(),
+                                    child: Scaffold(
+                                      body: GestureDetector(
+                                        onTap: () => Navigator.pop(context),
+                                      ),
+                                      backgroundColor: Colors.transparent,
+                                      bottomSheet: Container(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        child: CalendarWidget(),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );
@@ -316,12 +336,11 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
 
                           return;
                         } else {
-                          final ordersUpdateData = createOrdersRecordData(
-                            deadline: _model.selected,
-                          );
                           await FFAppState()
                               .currentOrder!
-                              .update(ordersUpdateData);
+                              .update(createOrdersRecordData(
+                                deadline: _model.selected,
+                              ));
 
                           context.goNamed(
                             'QuizSendOrder',

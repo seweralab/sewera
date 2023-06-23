@@ -20,6 +20,7 @@ import 'package:provider/provider.dart';
 class QuizCommentModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
   // State field(s) for TextField widget.
@@ -38,9 +39,12 @@ class QuizCommentModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     topNotificationModel.dispose();
     textController?.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

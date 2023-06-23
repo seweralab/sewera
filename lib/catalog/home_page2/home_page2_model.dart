@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
@@ -19,11 +18,9 @@ class HomePage2Model extends FlutterFlowModel {
 
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  OrdersRecord? newOrderfromNotificationMainPage;
   Completer<List<OrdersRecord>>? firestoreRequestCompleter;
   // Stores action output result for [Backend Call - Create Document] action in Services widget.
-  OrdersRecord? newOrder;
+  OrdersRecord? newOrder2;
 
   /// Initialization and disposal methods.
 
@@ -34,6 +31,8 @@ class HomePage2Model extends FlutterFlowModel {
   void dispose() {
     topNotificationModel.dispose();
   }
+
+  /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 

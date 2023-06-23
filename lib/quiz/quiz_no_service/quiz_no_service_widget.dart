@@ -30,7 +30,6 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
   late QuizNoServiceModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -46,7 +45,6 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -55,7 +53,7 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -357,19 +355,26 @@ class _QuizNoServiceWidgetState extends State<QuizNoServiceWidget> {
               child: FFButtonWidget(
                 onPressed: () async {
                   if (_model.searchFieldController.text != '') {
-                    final ordersCreateData = createOrdersRecordData(
+                    var ordersRecordReference = OrdersRecord.collection.doc();
+                    await ordersRecordReference.set(createOrdersRecordData(
                       status: 'Не оформлен',
                       cost: 0,
                       client: currentUserReference,
                       servicename: _model.searchFieldController.text,
                       orderDate: getCurrentTimestamp,
                       description: _model.textController2.text,
-                    );
-                    var ordersRecordReference = OrdersRecord.collection.doc();
-                    await ordersRecordReference.set(ordersCreateData);
+                    ));
                     _model.orderFromNoService =
                         OrdersRecord.getDocumentFromData(
-                            ordersCreateData, ordersRecordReference);
+                            createOrdersRecordData(
+                              status: 'Не оформлен',
+                              cost: 0,
+                              client: currentUserReference,
+                              servicename: _model.searchFieldController.text,
+                              orderDate: getCurrentTimestamp,
+                              description: _model.textController2.text,
+                            ),
+                            ordersRecordReference);
                     FFAppState().currentOrder =
                         _model.orderFromNoService!.reference;
 

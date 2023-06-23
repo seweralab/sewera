@@ -32,7 +32,6 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
   late CancelOrderPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -54,7 +53,6 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -63,7 +61,7 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -481,12 +479,11 @@ class _CancelOrderPageWidgetState extends State<CancelOrderPageWidget> {
                     return;
                   }
 
-                  final ordersUpdateData = createOrdersRecordData(
+                  await widget.order!.reference.update(createOrdersRecordData(
                     status: 'Отменен',
                     whyCancel: functions.combineCancelCheckboxes(
                         _model.selected.toList(), _model.textController.text),
-                  );
-                  await widget.order!.reference.update(ordersUpdateData);
+                  ));
 
                   context.goNamed('ordersPage');
                 },

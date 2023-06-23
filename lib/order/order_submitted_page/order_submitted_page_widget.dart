@@ -20,7 +20,6 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
   late OrderSubmittedPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -32,7 +31,6 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -41,7 +39,7 @@ class _OrderSubmittedPageWidgetState extends State<OrderSubmittedPageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,

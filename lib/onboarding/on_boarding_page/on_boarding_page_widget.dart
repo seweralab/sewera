@@ -20,11 +20,6 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
   late OnBoardingPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
   @override
   void initState() {
@@ -69,7 +64,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
                             onPageChanged: (_) async {
-                              if (pageViewCurrentIndex == 4) {
+                              if (_model.pageViewCurrentIndex == 3) {
                                 if (loggedIn == true) {
                                   context.pushNamed('HomePage2');
 
@@ -111,7 +106,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: Text(
-                                            'Добро пожаловать в приложение Sewera!',
+                                            'Добро пожаловать  в приложение Sewera!',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -292,9 +287,6 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                   ),
                                 ],
                               ),
-                              Stack(
-                                children: [],
-                              ),
                             ],
                           ),
                           Align(
@@ -361,7 +353,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    if (pageViewCurrentIndex < 3) {
+                    if (_model.pageViewCurrentIndex < 3) {
                       await _model.pageViewController?.nextPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.ease,

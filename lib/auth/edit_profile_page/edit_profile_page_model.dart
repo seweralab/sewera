@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 class EditProfilePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
   bool isDataUploading = false;
@@ -28,9 +29,11 @@ class EditProfilePageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     topNotificationModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

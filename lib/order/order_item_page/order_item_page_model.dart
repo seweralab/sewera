@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/radio_cashback_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -25,10 +24,9 @@ class OrderItemPageModel extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
-  // Model for radioCashback component.
-  late RadioCashbackModel radioCashbackModel;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   OrdersRecord? reorder;
 
@@ -36,14 +34,14 @@ class OrderItemPageModel extends FlutterFlowModel {
 
   void initState(BuildContext context) {
     topNotificationModel = createModel(context, () => TopNotificationModel());
-    radioCashbackModel = createModel(context, () => RadioCashbackModel());
   }
 
   void dispose() {
+    unfocusNode.dispose();
     topNotificationModel.dispose();
-    radioCashbackModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

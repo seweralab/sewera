@@ -55,7 +55,7 @@ class RowyImgStruct extends FFFirebaseStruct {
   bool hasType() => _type != null;
 
   static RowyImgStruct fromMap(Map<String, dynamic> data) => RowyImgStruct(
-        lastModifiedTS: data['lastModifiedTS'] as int?,
+        lastModifiedTS: castToType<int>(data['lastModifiedTS']),
         downloadURL: data['downloadURL'] as String?,
         name: data['name'] as String?,
         ref: data['ref'] as String?,
@@ -128,6 +128,20 @@ class RowyImgStruct extends FFFirebaseStruct {
 
   @override
   String toString() => 'RowyImgStruct(${toMap()})';
+
+  @override
+  bool operator ==(Object other) {
+    return other is RowyImgStruct &&
+        lastModifiedTS == other.lastModifiedTS &&
+        downloadURL == other.downloadURL &&
+        name == other.name &&
+        ref == other.ref &&
+        type == other.type;
+  }
+
+  @override
+  int get hashCode =>
+      const ListEquality().hash([lastModifiedTS, downloadURL, name, ref, type]);
 }
 
 RowyImgStruct createRowyImgStruct({
@@ -158,10 +172,13 @@ RowyImgStruct createRowyImgStruct({
 RowyImgStruct? updateRowyImgStruct(
   RowyImgStruct? rowyImg, {
   bool clearUnsetFields = true,
+  bool create = false,
 }) =>
     rowyImg
-      ?..firestoreUtilData =
-          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
 
 void addRowyImgStructData(
   Map<String, dynamic> firestoreData,

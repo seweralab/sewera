@@ -55,9 +55,9 @@ class ServicesRecord extends FirestoreRecord {
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _category = getDataList(snapshotData['category']);
-    _order = snapshotData['order'] as int?;
+    _order = castToType<int>(snapshotData['order']);
     _popular = snapshotData['popular'] as bool?;
-    _cashback = snapshotData['cashback'] as int?;
+    _cashback = castToType<int>(snapshotData['cashback']);
     _img = getStructList(
       snapshotData['img'],
       RowyImgStruct.fromMap,
@@ -141,6 +141,14 @@ class ServicesRecord extends FirestoreRecord {
   @override
   String toString() =>
       'ServicesRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is ServicesRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createServicesRecordData({

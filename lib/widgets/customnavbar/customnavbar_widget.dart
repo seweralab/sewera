@@ -290,7 +290,7 @@ class _CustomnavbarWidgetState extends State<CustomnavbarWidget> {
                     } else {
                       await showModalBottomSheet(
                         isScrollControlled: true,
-                        backgroundColor: Color(0xD900BB67),
+                        backgroundColor: Colors.transparent,
                         enableDrag: false,
                         context: context,
                         builder: (context) {
@@ -298,7 +298,16 @@ class _CustomnavbarWidgetState extends State<CustomnavbarWidget> {
                             padding: MediaQuery.of(context).viewInsets,
                             child: Container(
                               height: MediaQuery.of(context).size.height * 1.0,
-                              child: SupportWidget(),
+                              child: Scaffold(
+                                body: GestureDetector(
+                                  onTap: () => Navigator.pop(context),
+                                ),
+                                backgroundColor: Colors.transparent,
+                                bottomSheet: Container(
+                                  color: Color(0xD900BB67),
+                                  child: SupportWidget(),
+                                ),
+                              ),
                             ),
                           );
                         },

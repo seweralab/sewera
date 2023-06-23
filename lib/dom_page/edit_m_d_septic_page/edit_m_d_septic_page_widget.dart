@@ -22,7 +22,6 @@ class _EditMDSepticPageWidgetState extends State<EditMDSepticPageWidget> {
   late EditMDSepticPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,7 +36,6 @@ class _EditMDSepticPageWidgetState extends State<EditMDSepticPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -46,7 +44,7 @@ class _EditMDSepticPageWidgetState extends State<EditMDSepticPageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
@@ -214,10 +212,10 @@ class _EditMDSepticPageWidgetState extends State<EditMDSepticPageWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            final usersUpdateData = createUsersRecordData(
+                            await currentUserReference!
+                                .update(createUsersRecordData(
                               mdSeptic: _model.septicFieldController.text,
-                            );
-                            await currentUserReference!.update(usersUpdateData);
+                            ));
                             context.safePop();
                           },
                           text: 'Сохранить',

@@ -83,26 +83,26 @@ Future<List<SelectedMedia>?> selectMediaWithSourceBottomSheet({
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // if (!kIsWeb) ...[
-            //   Padding(
-            //     padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-            //     child: ListTile(
-            //       title: Text(
-            //         'Выберите источник',
-            //         textAlign: TextAlign.center,
-            //         style: GoogleFonts.getFont(
-            //           pickerFontFamily,
-            //           color: textColor.withOpacity(0.65),
-            //           fontWeight: FontWeight.w500,
-            //           fontSize: 20,
-            //         ),
-            //       ),
-            //       tileColor: backgroundColor,
-            //       dense: false,
-            //     ),
-            //   ),
-            //   const Divider(),
-            // ],
+            if (!kIsWeb) ...[
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                child: ListTile(
+                  title: Text(
+                    'Выберите источник',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.getFont(
+                      pickerFontFamily,
+                      color: textColor.withOpacity(0.65),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                  ),
+                  tileColor: backgroundColor,
+                  dense: false,
+                ),
+              ),
+              const Divider(),
+            ],
             if (allowPhoto && allowVideo) ...[
               createUploadMediaListTile(
                 'Выбрать фото',
@@ -236,29 +236,45 @@ bool validateFileFormat(String filePath, BuildContext context) {
   return false;
 }
 
-Future<SelectedMedia?> selectFile({
+Future<List<SelectedMedia>?> selectFile({
   String? storageFolderPath,
   List<String>? allowedExtensions,
+  bool multiFile = false,
 }) async {
   final pickedFiles = await FilePicker.platform.pickFiles(
     type: allowedExtensions != null ? FileType.custom : FileType.any,
     allowedExtensions: allowedExtensions,
     withData: true,
+    allowMultiple: multiFile,
   );
   if (pickedFiles == null || pickedFiles.files.isEmpty) {
     return null;
   }
-
+  if (multiFile) {
+    return Future.wait(pickedFiles.files.asMap().entries.map((e) async {
+      final index = e.key;
+      final file = e.value;
+      final storagePath =
+          _getStoragePath(storageFolderPath, file.name, false, index);
+      return SelectedMedia(
+        storagePath: storagePath,
+        filePath: isWeb ? null : file.path,
+        bytes: file.bytes!,
+      );
+    }));
+  }
   final file = pickedFiles.files.first;
   if (file.bytes == null) {
     return null;
   }
   final storagePath = _getStoragePath(storageFolderPath, file.name, false);
-  return SelectedMedia(
-    storagePath: storagePath,
-    filePath: isWeb ? null : file.path,
-    bytes: file.bytes!,
-  );
+  return [
+    SelectedMedia(
+      storagePath: storagePath,
+      filePath: isWeb ? null : file.path,
+      bytes: file.bytes!,
+    )
+  ];
 }
 
 Future<MediaDimensions> _getImageDimensions(Uint8List mediaBytes) async {

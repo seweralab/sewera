@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/radio_cashback_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -34,7 +33,6 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
   late OrderItemPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -46,7 +44,6 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -74,7 +71,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
         }
         final orderItemPageOrdersRecord = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -171,66 +168,6 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                if ((orderItemPageOrdersRecord
-                                            .changedFields.length >
-                                        0) &&
-                                    (_model.showInfoChanged == true))
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 26.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFEE83),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 12.0, 16.0, 12.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                'Мы изменили детали заказа.',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          fontSize: 14.0,
-                                                        ),
-                                              ),
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  setState(() {
-                                                    _model.showInfoChanged =
-                                                        false;
-                                                  });
-                                                },
-                                                child: Icon(
-                                                  Icons.close,
-                                                  color: Colors.black,
-                                                  size: 12.0,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                 Align(
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Column(
@@ -239,79 +176,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       if (orderItemPageOrdersRecord.status ==
-                                          'В обработке')
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 24.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 8.0, 0.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/process.svg',
-                                                  width: 16.0,
-                                                  height: 16.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Text(
-                                                'В обработке',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      color: Color(0xFF88959C),
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      if (orderItemPageOrdersRecord.status ==
-                                          'Подтвердите')
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 24.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 8.0, 0.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/confirm.svg',
-                                                  width: 16.0,
-                                                  height: 16.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Подтвердите заказ',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      color: Color(0xFFF1A100),
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      if (orderItemPageOrdersRecord.status ==
-                                          'Подтверждён')
+                                          'Активный')
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -331,7 +196,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                'Заказ подтверждён',
+                                                'Активный',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -520,7 +385,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 24.0),
+                              18.0, 0.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             height: 1.0,
@@ -529,464 +394,230 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 12.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              setState(() {
-                                _model.showDetails = valueOrDefault<bool>(
-                                  functions.inverseBool(_model.showDetails),
-                                  true,
-                                );
-                              });
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  _model.showDetails
-                                      ? 'Свернуть детали заказа'
-                                      : 'Детали заказа',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Fira Sans',
-                                        fontSize: 14.0,
-                                      ),
-                                ),
-                                Transform.rotate(
-                                  angle: 0.0,
-                                  child: Stack(
-                                    children: [
-                                      if (!_model.showDetails)
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: SvgPicture.asset(
-                                            'assets/images/arr_down.svg',
-                                            width: 18.0,
-                                            height: 10.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      if (_model.showDetails)
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: SvgPicture.asset(
-                                            'assets/images/arr_up.svg',
-                                            width: 18.0,
-                                            height: 10.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                        AnimatedContainer(
+                          duration: Duration(milliseconds: 100),
+                          curve: Curves.easeOut,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                           ),
-                        ),
-                        if (_model.showDetails == true)
-                          AnimatedContainer(
-                            duration: Duration(milliseconds: 100),
-                            curve: Curves.easeOut,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                if (orderItemPageOrdersRecord.quiz != null &&
-                                    orderItemPageOrdersRecord.quiz != '')
-                                  Builder(
-                                    builder: (context) {
-                                      final listDetails = functions
-                                          .listQuizItems(
-                                              orderItemPageOrdersRecord.quiz)
-                                          .map((e) => e)
-                                          .toList();
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children:
-                                            List.generate(listDetails.length,
-                                                (listDetailsIndex) {
-                                          final listDetailsItem =
-                                              listDetails[listDetailsIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 8.0, 0.0, 8.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    functions.orderChangedColor(
-                                                        functions.jsonMDecode(
-                                                            listDetailsItem,
-                                                            'name'),
-                                                        orderItemPageOrdersRecord
-                                                            .changedFields
-                                                            .toList()),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        18.0, 8.0, 18.0, 8.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.8,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            functions.jsonMDecode(
-                                                                listDetailsItem,
-                                                                'name'),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: Color(
-                                                                      0xFF88959C),
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            functions.jsonMDecode(
-                                                                listDetailsItem,
-                                                                'title'),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    if (functions.isOrderQuizFieldChanged(
-                                                            orderItemPageOrdersRecord
-                                                                .changedFields
-                                                                .toList(),
-                                                            functions.jsonMDecode(
-                                                                listDetailsItem,
-                                                                'name')) ==
-                                                        true)
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                1.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      2.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            width: 6.0,
-                                                            height: 6.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xFFFFB306),
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                  ],
-                                                ),
-                                              ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              if (orderItemPageOrdersRecord.quiz != null &&
+                                  orderItemPageOrdersRecord.quiz != '')
+                                Builder(
+                                  builder: (context) {
+                                    final listDetails = functions
+                                        .listQuizItems(
+                                            orderItemPageOrdersRecord.quiz)
+                                        .map((e) => e)
+                                        .toList();
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children:
+                                          List.generate(listDetails.length,
+                                              (listDetailsIndex) {
+                                        final listDetailsItem =
+                                            listDetails[listDetailsIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 8.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  functions.orderChangedColor(
+                                                      functions.jsonMDecode(
+                                                          listDetailsItem,
+                                                          'name'),
+                                                      orderItemPageOrdersRecord
+                                                          .changedFields
+                                                          .toList()),
                                             ),
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 8.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: functions.orderChangedColor(
-                                          'deadline',
-                                          orderItemPageOrdersRecord
-                                              .changedFields
-                                              .toList()),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          18.0, 8.0, 18.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
-                                            decoration: BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Когда нужно оказать услугу',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Fira Sans',
-                                                        color:
-                                                            Color(0xFF88959C),
-                                                        fontSize: 14.0,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  orderItemPageOrdersRecord
-                                                      .deadline,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          if (functions.isOrderQuizFieldChanged(
-                                                  orderItemPageOrdersRecord
-                                                      .changedFields
-                                                      .toList(),
-                                                  'deadline') ==
-                                              true)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 2.0, 0.0),
-                                                child: Container(
-                                                  width: 6.0,
-                                                  height: 6.0,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFFFB306),
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 8.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: functions.orderChangedColor(
-                                          'addr',
-                                          orderItemPageOrdersRecord
-                                              .changedFields
-                                              .toList()),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          18.0, 8.0, 18.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
-                                            decoration: BoxDecoration(),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Адрес',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Fira Sans',
-                                                        color:
-                                                            Color(0xFF88959C),
-                                                        fontSize: 14.0,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  orderItemPageOrdersRecord
-                                                      .addr,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          if (functions.isOrderQuizFieldChanged(
-                                                  orderItemPageOrdersRecord
-                                                      .changedFields
-                                                      .toList(),
-                                                  'addr') ==
-                                              true)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 2.0, 0.0),
-                                                child: Container(
-                                                  width: 6.0,
-                                                  height: 6.0,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFFFB306),
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                if (orderItemPageOrdersRecord.description !=
-                                        null &&
-                                    orderItemPageOrdersRecord.description != '')
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 8.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: functions.orderChangedColor(
-                                            'description',
-                                            orderItemPageOrdersRecord
-                                                .changedFields
-                                                .toList()),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 8.0, 18.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.8,
-                                              decoration: BoxDecoration(),
-                                              child: Column(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      18.0, 8.0, 18.0, 8.0),
+                                              child: Row(
                                                 mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  Text(
-                                                    'Описание',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Fira Sans',
-                                                          color:
-                                                              Color(0xFF88959C),
-                                                          fontSize: 14.0,
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.8,
+                                                    decoration: BoxDecoration(),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          functions.jsonMDecode(
+                                                              listDetailsItem,
+                                                              'name'),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Fira Sans',
+                                                                color: Color(
+                                                                    0xFF88959C),
+                                                                fontSize: 14.0,
+                                                              ),
                                                         ),
-                                                  ),
-                                                  Text(
-                                                    orderItemPageOrdersRecord
-                                                        .description,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
+                                                        Text(
+                                                          functions.jsonMDecode(
+                                                              listDetailsItem,
+                                                              'title'),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ],
                                               ),
                                             ),
-                                            if (functions
-                                                    .isOrderQuizFieldChanged(
-                                                        orderItemPageOrdersRecord
-                                                            .changedFields
-                                                            .toList(),
-                                                        'description') ==
-                                                true)
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    1.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 2.0, 0.0),
-                                                  child: Container(
-                                                    width: 6.0,
-                                                    height: 6.0,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xFFFFB306),
-                                                      shape: BoxShape.circle,
+                                          ),
+                                        );
+                                      }),
+                                    );
+                                  },
+                                ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 8.0, 0.0, 8.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: functions.orderChangedColor(
+                                        'deadline',
+                                        orderItemPageOrdersRecord.changedFields
+                                            .toList()),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 8.0, 18.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Когда нужно оказать услугу',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Fira Sans',
+                                                      color: Color(0xFF88959C),
+                                                      fontSize: 14.0,
                                                     ),
-                                                  ),
-                                                ),
                                               ),
-                                          ],
+                                              Text(
+                                                orderItemPageOrdersRecord
+                                                    .deadline,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                   ),
-                                if (orderItemPageOrdersRecord.comment != null &&
-                                    orderItemPageOrdersRecord.comment != '')
-                                  Container(
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 8.0, 0.0, 8.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: functions.orderChangedColor(
+                                        'addr',
+                                        orderItemPageOrdersRecord.changedFields
+                                            .toList()),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 8.0, 18.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Адрес',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Fira Sans',
+                                                      color: Color(0xFF88959C),
+                                                      fontSize: 14.0,
+                                                    ),
+                                              ),
+                                              Text(
+                                                orderItemPageOrdersRecord.addr,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if (orderItemPageOrdersRecord.description !=
+                                      null &&
+                                  orderItemPageOrdersRecord.description != '')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 8.0),
+                                  child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: functions.orderChangedColor(
-                                          'comment',
+                                          'description',
                                           orderItemPageOrdersRecord
                                               .changedFields
                                               .toList()),
@@ -1011,7 +642,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Пожелания',
+                                                  'Описание',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1024,7 +655,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                                 ),
                                                 Text(
                                                   orderItemPageOrdersRecord
-                                                      .comment,
+                                                      .description,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
@@ -1032,517 +663,229 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                               ],
                                             ),
                                           ),
-                                          if (functions.isOrderQuizFieldChanged(
-                                                  orderItemPageOrdersRecord
-                                                      .changedFields
-                                                      .toList(),
-                                                  'comment') ==
-                                              true)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 2.0, 0.0),
-                                                child: Container(
-                                                  width: 6.0,
-                                                  height: 6.0,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFFFB306),
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                if (functions
-                                        .propImagesListClear(
-                                            orderItemPageOrdersRecord.photos
-                                                .toList())
-                                        .length >
-                                    0)
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          18.0, 12.0, 18.0, 24.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Фотографии и документы',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  color: Color(0xFF88959C),
-                                                  fontSize: 14.0,
-                                                ),
+                                ),
+                              if (orderItemPageOrdersRecord.comment != null &&
+                                  orderItemPageOrdersRecord.comment != '')
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: functions.orderChangedColor(
+                                        'comment',
+                                        orderItemPageOrdersRecord.changedFields
+                                            .toList()),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 8.0, 18.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Пожелания',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Fira Sans',
+                                                      color: Color(0xFF88959C),
+                                                      fontSize: 14.0,
+                                                    ),
+                                              ),
+                                              Text(
+                                                orderItemPageOrdersRecord
+                                                    .comment,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ],
                                           ),
-                                          Container(
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              if (functions
+                                      .propImagesListClear(
+                                          orderItemPageOrdersRecord.photos
+                                              .toList())
+                                      .length >
+                                  0)
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 12.0, 18.0, 24.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Фотографии и документы',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Fira Sans',
+                                                color: Color(0xFF88959C),
+                                                fontSize: 14.0,
+                                              ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                             ),
-                                            child: Container(
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                              ),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final mdPhotosEdit = functions
-                                                      .propImagesList(
-                                                          orderItemPageOrdersRecord
-                                                              .photos
-                                                              .toList())
-                                                      .toList();
-                                                  return GridView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    gridDelegate:
-                                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 3,
-                                                      crossAxisSpacing: 10.0,
-                                                      mainAxisSpacing: 10.0,
-                                                      childAspectRatio: 1.0,
-                                                    ),
-                                                    shrinkWrap: true,
-                                                    physics:
-                                                        NeverScrollableScrollPhysics(),
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        mdPhotosEdit.length,
-                                                    itemBuilder: (context,
-                                                        mdPhotosEditIndex) {
-                                                      final mdPhotosEditItem =
-                                                          mdPhotosEdit[
-                                                              mdPhotosEditIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    4.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                child:
-                                                                    FlutterFlowExpandedImageView(
-                                                                  image:
-                                                                      CachedNetworkImage(
-                                                                    imageUrl:
-                                                                        mdPhotosEditItem,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                  allowRotation:
-                                                                      false,
-                                                                  tag:
-                                                                      mdPhotosEditItem,
-                                                                  useHeroAnimation:
-                                                                      true,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          child: Hero(
-                                                            tag:
-                                                                mdPhotosEditItem,
-                                                            transitionOnUserGestures:
-                                                                true,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                              child:
-                                                                  CachedNetworkImage(
-                                                                imageUrl:
-                                                                    mdPhotosEditItem,
-                                                                width: 100.0,
-                                                                height: 100.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 12.0, 18.0, 24.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 1.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFE8EAEC),
-                            ),
-                          ),
-                        ),
-                        if (orderItemPageOrdersRecord.status == 'В обработке')
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 0.0, 18.0, 24.0),
-                            child: Text(
-                              'Сейчас заказ обрабатывает менеджер.\n\nКогда заказ обработают, вам придет уведомление. А еще менеджер может связаться с вами для уточнения деталей. ',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                          ),
-                        if ((orderItemPageOrdersRecord.status == 'Выполнен') ||
-                            (orderItemPageOrdersRecord.status == 'Отменен'))
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 0.0, 18.0, 18.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 8.0, 0.0),
-                                  child: Text(
-                                    'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed)} ₽',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Fira Sans',
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        if (orderItemPageOrdersRecord.status == 'Подтверждён')
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 0.0, 18.0, 18.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 8.0, 0.0),
-                                  child: Text(
-                                    'Сумма: ${functions.calcOrderPrice(orderItemPageOrdersRecord.cost, orderItemPageOrdersRecord.cachbackUsed)} ₽',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Fira Sans',
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        if ((orderItemPageOrdersRecord.cost > 0) &&
-                            (orderItemPageOrdersRecord.status == 'Подтвердите'))
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 0.0, 18.0, 0.0),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 6.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 8.0, 0.0),
-                                          child: Text(
-                                            'Сумма: ${_model.radioCashbackModel.localOldPrice > 0 ? _model.radioCashbackModel.localOldPrice.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ') : orderItemPageOrdersRecord.cost.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')} ₽',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  fontSize: 24.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                        ),
-                                        if (_model.radioCashbackModel
-                                                .localOldPrice >
-                                            0)
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFFF2FBF6),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 2.0, 10.0, 2.0),
-                                              child: Text(
-                                                '${orderItemPageOrdersRecord.cost.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')} ₽',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Fira Sans',
-                                                      decoration: TextDecoration
-                                                          .lineThrough,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                                  if (valueOrDefault<bool>(
-                                      currentUserDocument?.noOrders, false))
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 12.0),
-                                        child: AuthUserStreamWidget(
-                                          builder: (context) => Text(
-                                            'Минус 10% за первый заказ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  color: Color(0xFF82959C),
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 1.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFE8EAEC),
-                                      ),
-                                    ),
-                                  ),
-                                  if (orderItemPageOrdersRecord.status ==
-                                      'Подтвердите')
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: Stack(
-                                          alignment:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          children: [
-                                            AuthUserStreamWidget(
-                                              builder: (context) =>
-                                                  wrapWithModel(
-                                                model:
-                                                    _model.radioCashbackModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                updateOnChange: true,
-                                                child: RadioCashbackWidget(
-                                                  cost:
-                                                      orderItemPageOrdersRecord
-                                                          .cost,
-                                                  cashback:
-                                                      orderItemPageOrdersRecord
-                                                          .cashback,
-                                                  radioCashback: functions
-                                                      .orderCachbackOptions(
-                                                          orderItemPageOrdersRecord
-                                                              .cost,
-                                                          orderItemPageOrdersRecord
-                                                              .cashback,
-                                                          valueOrDefault(
-                                                              currentUserDocument
-                                                                  ?.cashback,
-                                                              0))
-                                                      .first,
-                                                ),
-                                              ),
-                                            ),
-                                            if (orderItemPageOrdersRecord
-                                                    .cashback >
-                                                0)
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.95, -1.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 5.0, 0.0, 24.0),
-                                                  child: Container(
-                                                    width: 64.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.fill,
-                                                        image: Image.asset(
-                                                          'assets/images/cb.png',
-                                                        ).image,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                8.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                0.0),
-                                                        topLeft:
-                                                            Radius.circular(
-                                                                0.0),
-                                                        topRight:
-                                                            Radius.circular(
-                                                                8.0),
-                                                      ),
-                                                    ),
-                                                    child: Padding(
+                                            child: Builder(
+                                              builder: (context) {
+                                                final mdPhotosEdit = functions
+                                                    .propImagesList(
+                                                        orderItemPageOrdersRecord
+                                                            .photos
+                                                            .toList())
+                                                    .toList();
+                                                return GridView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  gridDelegate:
+                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 3,
+                                                    crossAxisSpacing: 10.0,
+                                                    mainAxisSpacing: 10.0,
+                                                    childAspectRatio: 1.0,
+                                                  ),
+                                                  shrinkWrap: true,
+                                                  physics:
+                                                      NeverScrollableScrollPhysics(),
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  itemCount:
+                                                      mdPhotosEdit.length,
+                                                  itemBuilder: (context,
+                                                      mdPhotosEditIndex) {
+                                                    final mdPhotosEditItem =
+                                                        mdPhotosEdit[
+                                                            mdPhotosEditIndex];
+                                                    return Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  8.0,
-                                                                  5.0,
-                                                                  8.0,
-                                                                  5.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        2.0,
-                                                                        0.0),
-                                                            child: SvgPicture
-                                                                .asset(
-                                                              'assets/images/Union.svg',
-                                                              width: 12.0,
-                                                              height: 12.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          await Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                              type:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                              child:
+                                                                  FlutterFlowExpandedImageView(
+                                                                image:
+                                                                    CachedNetworkImage(
+                                                                  imageUrl:
+                                                                      mdPhotosEditItem,
+                                                                  fit: BoxFit
+                                                                      .contain,
+                                                                ),
+                                                                allowRotation:
+                                                                    false,
+                                                                tag:
+                                                                    mdPhotosEditItem,
+                                                                useHeroAnimation:
+                                                                    true,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                        child: Hero(
+                                                          tag: mdPhotosEditItem,
+                                                          transitionOnUserGestures:
+                                                              true,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            child:
+                                                                CachedNetworkImage(
+                                                              imageUrl:
+                                                                  mdPhotosEditItem,
+                                                              width: 100.0,
+                                                              height: 100.0,
                                                               fit: BoxFit.cover,
                                                             ),
                                                           ),
-                                                          Text(
-                                                            orderItemPageOrdersRecord
-                                                                .cashback
-                                                                .toString()
-                                                                .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        2),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBtnText,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w800,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            '%',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBtnText,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w800,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
-                                                          ),
-                                                        ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                          ],
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                ],
-                              ),
-                            ),
+                                  ),
+                                ),
+                            ],
                           ),
-                        if (orderItemPageOrdersRecord.status == 'Подтвердите')
+                        ),
+                        if (orderItemPageOrdersRecord.status == 'Активный')
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    18.0, 12.0, 18.0, 24.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 1.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFE8EAEC),
+                                  ),
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 18.0, 0.0),
@@ -1555,25 +898,6 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.95, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 8.0),
-                                          child: Text(
-                                            'Способ оплаты',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 30.0),
@@ -1633,67 +957,6 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       if (orderItemPageOrdersRecord.status == 'Подтвердите')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 25.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              final ordersUpdateData = {
-                                ...createOrdersRecordData(
-                                  status: 'Подтверждён',
-                                  cachbackSelect: _model
-                                      .radioCashbackModel.localRadioCashback,
-                                  cachbackUsed: functions.cashBackUsed(
-                                      _model.radioCashbackModel
-                                          .localRadioCashback!,
-                                      valueOrDefault(
-                                          currentUserDocument?.cashback, 0)),
-                                ),
-                                'changed_fields': FieldValue.delete(),
-                              };
-                              await orderItemPageOrdersRecord.reference
-                                  .update(ordersUpdateData);
-
-                              final usersUpdateData = createUsersRecordData(
-                                cashback: functions.cashbackUserUser(
-                                    _model
-                                        .radioCashbackModel.localRadioCashback!,
-                                    valueOrDefault(
-                                        currentUserDocument?.cashback, 0),
-                                    functions.addcashback(
-                                        orderItemPageOrdersRecord.cost,
-                                        orderItemPageOrdersRecord.cashback)),
-                              );
-                              await currentUserReference!
-                                  .update(usersUpdateData);
-
-                              context.goNamed('ordersPage');
-                            },
-                            text: 'Подтвердите заказ',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 48.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Fira Sans',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                      if (orderItemPageOrdersRecord.status == 'Подтвердите')
                         Container(
                           width: double.infinity,
                           height: 8.0,
@@ -1701,7 +964,7 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                             color: Color(0xFFF3F4F5),
                           ),
                         ),
-                      if (orderItemPageOrdersRecord.status == 'Подтвердите')
+                      if (orderItemPageOrdersRecord.status == 'Активный')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               18.0, 20.0, 18.0, 30.0),
@@ -1756,7 +1019,10 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                               18.0, 0.0, 18.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              final ordersCreateData = createOrdersRecordData(
+                              var ordersRecordReference =
+                                  OrdersRecord.collection.doc();
+                              await ordersRecordReference
+                                  .set(createOrdersRecordData(
                                 status: 'Не оформлен',
                                 cost: 0,
                                 servicename:
@@ -1767,12 +1033,21 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     orderItemPageOrdersRecord.description,
                                 orderDate: getCurrentTimestamp,
                                 service: orderItemPageOrdersRecord.service,
-                              );
-                              var ordersRecordReference =
-                                  OrdersRecord.collection.doc();
-                              await ordersRecordReference.set(ordersCreateData);
+                              ));
                               _model.reorder = OrdersRecord.getDocumentFromData(
-                                  ordersCreateData, ordersRecordReference);
+                                  createOrdersRecordData(
+                                    status: 'Не оформлен',
+                                    cost: 0,
+                                    servicename:
+                                        orderItemPageOrdersRecord.servicename,
+                                    client: currentUserReference,
+                                    quiz: orderItemPageOrdersRecord.quiz,
+                                    description:
+                                        orderItemPageOrdersRecord.description,
+                                    orderDate: getCurrentTimestamp,
+                                    service: orderItemPageOrdersRecord.service,
+                                  ),
+                                  ordersRecordReference);
                               setState(() {
                                 FFAppState().currentOrder =
                                     _model.reorder!.reference;

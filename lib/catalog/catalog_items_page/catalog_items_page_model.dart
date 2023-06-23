@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 class CatalogItemsPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
   // Stores action output result for [Backend Call - Create Document] action in Column widget.
@@ -26,9 +27,11 @@ class CatalogItemsPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     topNotificationModel.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

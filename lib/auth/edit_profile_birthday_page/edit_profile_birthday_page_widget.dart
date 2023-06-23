@@ -25,7 +25,6 @@ class _EditProfileBirthdayPageWidgetState
   late EditProfileBirthdayPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -40,7 +39,6 @@ class _EditProfileBirthdayPageWidgetState
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -49,7 +47,7 @@ class _EditProfileBirthdayPageWidgetState
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
@@ -218,10 +216,10 @@ class _EditProfileBirthdayPageWidgetState
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            final usersUpdateData = createUsersRecordData(
+                            await currentUserReference!
+                                .update(createUsersRecordData(
                               birthday: _model.bdFieldController.text,
-                            );
-                            await currentUserReference!.update(usersUpdateData);
+                            ));
                             context.safePop();
                           },
                           text: 'Сохранить',

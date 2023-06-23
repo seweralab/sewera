@@ -22,7 +22,6 @@ class _EditMDAreaPageWidgetState extends State<EditMDAreaPageWidget> {
   late EditMDAreaPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,7 +36,6 @@ class _EditMDAreaPageWidgetState extends State<EditMDAreaPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -46,7 +44,7 @@ class _EditMDAreaPageWidgetState extends State<EditMDAreaPageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
@@ -214,10 +212,10 @@ class _EditMDAreaPageWidgetState extends State<EditMDAreaPageWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            final usersUpdateData = createUsersRecordData(
+                            await currentUserReference!
+                                .update(createUsersRecordData(
                               mdArea: _model.areaFieldController.text,
-                            );
-                            await currentUserReference!.update(usersUpdateData);
+                            ));
                             context.safePop();
                           },
                           text: 'Сохранить',

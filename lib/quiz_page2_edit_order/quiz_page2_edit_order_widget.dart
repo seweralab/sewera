@@ -36,7 +36,6 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
   late QuizPage2EditOrderModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -48,7 +47,6 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -57,7 +55,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -244,14 +242,30 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                           return GestureDetector(
                                                             onTap: () => FocusScope
                                                                     .of(context)
-                                                                .requestFocus(
-                                                                    _unfocusNode),
+                                                                .requestFocus(_model
+                                                                    .unfocusNode),
                                                             child: Padding(
                                                               padding: MediaQuery
                                                                       .of(context)
                                                                   .viewInsets,
-                                                              child:
-                                                                  CloseQuizWidget(),
+                                                              child: Scaffold(
+                                                                body:
+                                                                    GestureDetector(
+                                                                  onTap: () =>
+                                                                      Navigator.pop(
+                                                                          context),
+                                                                ),
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                bottomSheet:
+                                                                    Container(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  child:
+                                                                      CloseQuizWidget(),
+                                                                ),
+                                                              ),
                                                             ),
                                                           );
                                                         },
@@ -503,13 +517,25 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                         (context) {
                                                                       return GestureDetector(
                                                                         onTap: () =>
-                                                                            FocusScope.of(context).requestFocus(_unfocusNode),
+                                                                            FocusScope.of(context).requestFocus(_model.unfocusNode),
                                                                         child:
                                                                             Padding(
                                                                           padding:
                                                                               MediaQuery.of(context).viewInsets,
                                                                           child:
-                                                                              CloseQuizWidget(),
+                                                                              Scaffold(
+                                                                            body:
+                                                                                GestureDetector(
+                                                                              onTap: () => Navigator.pop(context),
+                                                                            ),
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            bottomSheet:
+                                                                                Container(
+                                                                              color: Colors.transparent,
+                                                                              child: CloseQuizWidget(),
+                                                                            ),
+                                                                          ),
                                                                         ),
                                                                       );
                                                                     },
@@ -837,10 +863,11 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                       FFAppState()
                                                               .currentQuizRadioInput !=
                                                           '') {
-                                                    final ordersUpdateData1 =
-                                                        createOrdersRecordData(
-                                                      quiz: functions
-                                                          .quizPage2updateLocalValRadio(
+                                                    await FFAppState()
+                                                        .currentOrder!
+                                                        .update(
+                                                            createOrdersRecordData(
+                                                          quiz: functions.quizPage2updateLocalValRadio(
                                                               FFAppState()
                                                                   .currentRadioQuiz,
                                                               quizQuizRecord!
@@ -851,12 +878,8 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                   .quiz,
                                                               FFAppState()
                                                                   .currentQuizRadioInput),
-                                                      status: 'Не оформлен',
-                                                    );
-                                                    await FFAppState()
-                                                        .currentOrder!
-                                                        .update(
-                                                            ordersUpdateData1);
+                                                          status: 'Не оформлен',
+                                                        ));
                                                   } else {
                                                     setState(() {
                                                       FFAppState()
@@ -866,26 +889,24 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                     return;
                                                   }
                                                 } else {
-                                                  final ordersUpdateData2 =
-                                                      createOrdersRecordData(
-                                                    quiz: functions
-                                                        .quizPage2updateLocalValRadio(
-                                                            FFAppState()
-                                                                .currentRadioQuiz,
-                                                            quizQuizRecord!
-                                                                .title,
-                                                            quizQuizRecord!
-                                                                .reference,
-                                                            columnOrdersRecord
-                                                                .quiz,
-                                                            FFAppState()
-                                                                .currentQuizRadioInput),
-                                                    status: 'Не оформлен',
-                                                  );
                                                   await FFAppState()
                                                       .currentOrder!
                                                       .update(
-                                                          ordersUpdateData2);
+                                                          createOrdersRecordData(
+                                                        quiz: functions
+                                                            .quizPage2updateLocalValRadio(
+                                                                FFAppState()
+                                                                    .currentRadioQuiz,
+                                                                quizQuizRecord!
+                                                                    .title,
+                                                                quizQuizRecord!
+                                                                    .reference,
+                                                                columnOrdersRecord
+                                                                    .quiz,
+                                                                FFAppState()
+                                                                    .currentQuizRadioInput),
+                                                        status: 'Не оформлен',
+                                                      ));
                                                 }
                                               } else {
                                                 setState(() {
@@ -912,8 +933,10 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                         FFAppState()
                                                                 .currentCheckInputQuiz !=
                                                             '') {
-                                                      final ordersUpdateData3 =
-                                                          createOrdersRecordData(
+                                                      await columnOrdersRecord
+                                                          .reference
+                                                          .update(
+                                                              createOrdersRecordData(
                                                         quiz: functions
                                                             .quizPage2updateLocalValCheckbox(
                                                                 columnOrdersRecord
@@ -928,11 +951,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                                 quizQuizRecord!
                                                                     .title),
                                                         status: 'Не оформлен',
-                                                      );
-                                                      await columnOrdersRecord
-                                                          .reference
-                                                          .update(
-                                                              ordersUpdateData3);
+                                                      ));
                                                     } else {
                                                       setState(() {
                                                         FFAppState()
@@ -942,8 +961,10 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                       return;
                                                     }
                                                   } else {
-                                                    final ordersUpdateData4 =
-                                                        createOrdersRecordData(
+                                                    await columnOrdersRecord
+                                                        .reference
+                                                        .update(
+                                                            createOrdersRecordData(
                                                       quiz: functions
                                                           .quizPage2updateLocalValCheckbox(
                                                               columnOrdersRecord
@@ -958,11 +979,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                               quizQuizRecord!
                                                                   .title),
                                                       status: 'Не оформлен',
-                                                    );
-                                                    await columnOrdersRecord
-                                                        .reference
-                                                        .update(
-                                                            ordersUpdateData4);
+                                                    ));
                                                   }
                                                 } else {
                                                   setState(() {
@@ -979,8 +996,10 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                     _model.quizInputController
                                                             .text !=
                                                         '') {
-                                                  final ordersUpdateData5 =
-                                                      createOrdersRecordData(
+                                                  await columnOrdersRecord
+                                                      .reference
+                                                      .update(
+                                                          createOrdersRecordData(
                                                     quiz: functions
                                                         .quizPage2updateLocalValInput(
                                                             columnOrdersRecord
@@ -993,11 +1012,7 @@ class _QuizPage2EditOrderWidgetState extends State<QuizPage2EditOrderWidget> {
                                                             quizQuizRecord!
                                                                 .reference),
                                                     status: 'Не оформлен',
-                                                  );
-                                                  await columnOrdersRecord
-                                                      .reference
-                                                      .update(
-                                                          ordersUpdateData5);
+                                                  ));
                                                 } else {
                                                   setState(() {
                                                     _model.showInputError =

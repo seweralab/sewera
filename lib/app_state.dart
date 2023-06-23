@@ -60,9 +60,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateCurrentServiceQuizArrAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_currentServiceQuizArr[_index]);
+    _currentServiceQuizArr[_index] = updateFn(_currentServiceQuizArr[_index]);
   }
 
   List<LatLng> _coords = [];
@@ -85,9 +85,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateCoordsAtIndex(
     int _index,
-    Function(LatLng) updateFn,
+    LatLng Function(LatLng) updateFn,
   ) {
-    updateFn(_coords[_index]);
+    _coords[_index] = updateFn(_coords[_index]);
   }
 
   DocumentReference? _currentOrder;
@@ -134,9 +134,9 @@ class FFAppState extends ChangeNotifier {
 
   void updateCurrentCheckQuizAtIndex(
     int _index,
-    Function(String) updateFn,
+    String Function(String) updateFn,
   ) {
-    updateFn(_currentCheckQuiz[_index]);
+    _currentCheckQuiz[_index] = updateFn(_currentCheckQuiz[_index]);
   }
 
   String _currentCheckInputQuiz = '';

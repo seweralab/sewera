@@ -24,7 +24,6 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
   late EditMDAddrPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -39,7 +38,6 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -48,7 +46,7 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
@@ -175,6 +173,8 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                 setState(() {
                                   _model.showSuggestions = true;
                                 });
+
+                                setState(() {});
                               },
                             ),
                             autofocus: true,
@@ -231,12 +231,10 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                     0.0, 24.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    final usersUpdateData =
-                                        createUsersRecordData(
-                                      addr: _model.textController.text,
-                                    );
                                     await currentUserReference!
-                                        .update(usersUpdateData);
+                                        .update(createUsersRecordData(
+                                      addr: _model.textController.text,
+                                    ));
                                     context.safePop();
                                   },
                                   text: 'Сохранить',

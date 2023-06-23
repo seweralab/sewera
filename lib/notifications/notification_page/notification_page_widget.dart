@@ -28,7 +28,6 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
   late NotificationPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,10 +36,9 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      final notificationsUpdateData = createNotificationsRecordData(
+      await widget.notication!.update(createNotificationsRecordData(
         viewed: true,
-      );
-      await widget.notication!.update(notificationsUpdateData);
+      ));
     });
   }
 
@@ -48,7 +46,6 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -76,7 +73,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
         }
         final notificationPageNotificationsRecord = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -182,7 +179,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                     0.0, 0.0, 0.0, 8.0),
                                 child: Text(
                                   dateTimeFormat(
-                                    'd.M.y',
+                                    'd/M/y',
                                     notificationPageNotificationsRecord.date!,
                                     locale: FFLocalizations.of(context)
                                         .languageCode,

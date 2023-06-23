@@ -69,6 +69,16 @@ class QuizItemStruct extends FFFirebaseStruct {
 
   @override
   String toString() => 'QuizItemStruct(${toMap()})';
+
+  @override
+  bool operator ==(Object other) {
+    return other is QuizItemStruct &&
+        name == other.name &&
+        value == other.value;
+  }
+
+  @override
+  int get hashCode => const ListEquality().hash([name, value]);
 }
 
 QuizItemStruct createQuizItemStruct({
@@ -93,10 +103,13 @@ QuizItemStruct createQuizItemStruct({
 QuizItemStruct? updateQuizItemStruct(
   QuizItemStruct? quizItem, {
   bool clearUnsetFields = true,
+  bool create = false,
 }) =>
     quizItem
-      ?..firestoreUtilData =
-          FirestoreUtilData(clearUnsetFields: clearUnsetFields);
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
 
 void addQuizItemStructData(
   Map<String, dynamic> firestoreData,

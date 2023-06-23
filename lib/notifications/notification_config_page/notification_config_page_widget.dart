@@ -24,7 +24,6 @@ class _NotificationConfigPageWidgetState
   late NotificationConfigPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -36,7 +35,6 @@ class _NotificationConfigPageWidgetState
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -45,7 +43,7 @@ class _NotificationConfigPageWidgetState
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -176,39 +174,12 @@ class _NotificationConfigPageWidgetState
                                   builder: (context) => SwitchListTile.adaptive(
                                     value: _model.switchListTileValue2 ??=
                                         valueOrDefault<bool>(
-                                            currentUserDocument?.sms, false),
-                                    onChanged: (newValue) async {
-                                      setState(() => _model
-                                          .switchListTileValue2 = newValue!);
-                                    },
-                                    title: Text(
-                                      'SMS уведомления',
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineSmall
-                                          .override(
-                                            fontFamily: 'Fira Sans',
-                                            fontSize: 14.0,
-                                          ),
-                                    ),
-                                    tileColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    dense: false,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading,
-                                  ),
-                                ),
-                                AuthUserStreamWidget(
-                                  builder: (context) => SwitchListTile.adaptive(
-                                    value: _model.switchListTileValue3 ??=
-                                        valueOrDefault<bool>(
                                             currentUserDocument
                                                 ?.emailNotifications,
                                             false),
                                     onChanged: (newValue) async {
                                       setState(() => _model
-                                          .switchListTileValue3 = newValue!);
+                                          .switchListTileValue2 = newValue!);
                                     },
                                     title: Text(
                                       'Email уведомления',
@@ -240,12 +211,11 @@ class _NotificationConfigPageWidgetState
                         EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final usersUpdateData = createUsersRecordData(
+                        await currentUserReference!
+                            .update(createUsersRecordData(
                           push: _model.switchListTileValue1,
-                          sms: _model.switchListTileValue2,
-                          emailNotifications: _model.switchListTileValue3,
-                        );
-                        await currentUserReference!.update(usersUpdateData);
+                          emailNotifications: _model.switchListTileValue2,
+                        ));
                         context.safePop();
                       },
                       text: 'Готово!',

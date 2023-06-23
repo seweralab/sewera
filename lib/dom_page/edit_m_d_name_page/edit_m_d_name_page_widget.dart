@@ -22,7 +22,6 @@ class _EditMDNamePageWidgetState extends State<EditMDNamePageWidget> {
   late EditMDNamePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -37,7 +36,6 @@ class _EditMDNamePageWidgetState extends State<EditMDNamePageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -46,7 +44,7 @@ class _EditMDNamePageWidgetState extends State<EditMDNamePageWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF3F4F5),
@@ -214,10 +212,10 @@ class _EditMDNamePageWidgetState extends State<EditMDNamePageWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            final usersUpdateData = createUsersRecordData(
+                            await currentUserReference!
+                                .update(createUsersRecordData(
                               mdName: _model.nameFieldController.text,
-                            );
-                            await currentUserReference!.update(usersUpdateData);
+                            ));
                             context.safePop();
                           },
                           text: 'Сохранить',

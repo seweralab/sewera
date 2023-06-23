@@ -22,6 +22,7 @@ class RadioCashbackModel extends FlutterFlowModel {
 
   void dispose() {}
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

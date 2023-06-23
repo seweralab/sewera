@@ -31,6 +31,7 @@ class QuizPage2Model extends FlutterFlowModel {
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
   // Model for quizRadio component.
@@ -67,6 +68,7 @@ class QuizPage2Model extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     topNotificationModel.dispose();
     quizRadioModel.dispose();
     quizCheckboxModel.dispose();
@@ -77,6 +79,7 @@ class QuizPage2Model extends FlutterFlowModel {
     clearQuizCache();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

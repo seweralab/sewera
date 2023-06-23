@@ -24,7 +24,6 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
   late OrdersPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -36,7 +35,6 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -67,7 +65,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
         }
         int ordersPageCount = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -137,32 +135,19 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 240.0, 0.0, 0.0),
+                                                    0.0, 260.0, 0.0, 0.0),
                                             child: Text(
-                                              'Хотите создать первый заказ?',
+                                              'Создайте ваш первый заказ',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Fira Sans',
-                                                        fontSize: 24.0,
+                                                        fontSize: 20.0,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
                                             ),
-                                          ),
-                                          Text(
-                                            'На первый заказ - скидка 10%',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Fira Sans',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
                                           ),
                                         ],
                                       ),
@@ -407,61 +392,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                                                       children: [
-                                                                                        if (columnOrdersRecord.status == 'В обработке')
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                                                                  child: SvgPicture.asset(
-                                                                                                    'assets/images/process.svg',
-                                                                                                    width: 16.0,
-                                                                                                    height: 16.0,
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  'В обработке',
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: 'Fira Sans',
-                                                                                                        color: Color(0xFF88959C),
-                                                                                                        fontSize: 14.0,
-                                                                                                        fontWeight: FontWeight.w500,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        if (columnOrdersRecord.status == 'Подтвердите')
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                                                                                            child: Row(
-                                                                                              mainAxisSize: MainAxisSize.max,
-                                                                                              children: [
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                                                                                                  child: SvgPicture.asset(
-                                                                                                    'assets/images/confirm.svg',
-                                                                                                    width: 16.0,
-                                                                                                    height: 16.0,
-                                                                                                    fit: BoxFit.cover,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                Text(
-                                                                                                  'Подтвердите',
-                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                        fontFamily: 'Fira Sans',
-                                                                                                        color: Color(0xFFF1A100),
-                                                                                                        fontSize: 14.0,
-                                                                                                        fontWeight: FontWeight.w500,
-                                                                                                      ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        if (columnOrdersRecord.status == 'Подтверждён')
+                                                                                        if (columnOrdersRecord.status == 'Активный')
                                                                                           Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                                                                                             child: Row(
@@ -477,7 +408,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                                                                                                   ),
                                                                                                 ),
                                                                                                 Text(
-                                                                                                  'Подтверждён',
+                                                                                                  'Активный',
                                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Fira Sans',
                                                                                                         color: Color(0xFF00BB67),
@@ -782,7 +713,7 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                     alignment: AlignmentDirectional(1.0, 1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 17.0, 37.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 17.0, 47.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,

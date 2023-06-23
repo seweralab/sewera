@@ -126,7 +126,7 @@ class OrdersRecord extends FirestoreRecord {
 
   void _initializeFields() {
     _status = snapshotData['status'] as String?;
-    _cost = snapshotData['cost'] as int?;
+    _cost = castToType<int>(snapshotData['cost']);
     _comment = snapshotData['comment'] as String?;
     _details = getDataList(snapshotData['details']);
     _client = snapshotData['client'] as DocumentReference?;
@@ -137,15 +137,15 @@ class OrdersRecord extends FirestoreRecord {
     _quiz = snapshotData['quiz'] as String?;
     _date = snapshotData['date'] as String?;
     _servicename = snapshotData['servicename'] as String?;
-    _cashback = snapshotData['cashback'] as int?;
-    _discount = snapshotData['discount'] as int?;
+    _cashback = castToType<int>(snapshotData['cashback']);
+    _discount = castToType<int>(snapshotData['discount']);
     _orderDate = snapshotData['order_date'] as DateTime?;
     _description = snapshotData['description'] as String?;
     _deadline = snapshotData['deadline'] as String?;
     _whyCancel = snapshotData['why_cancel'] as String?;
     _service = snapshotData['service'] as DocumentReference?;
     _cachbackSelect = snapshotData['cachback_select'] as String?;
-    _cachbackUsed = snapshotData['cachback_used'] as int?;
+    _cachbackUsed = castToType<int>(snapshotData['cachback_used']);
     _changedFields = getDataList(snapshotData['changed_fields']);
   }
 
@@ -172,6 +172,14 @@ class OrdersRecord extends FirestoreRecord {
   @override
   String toString() =>
       'OrdersRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is OrdersRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createOrdersRecordData({

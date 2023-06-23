@@ -39,7 +39,6 @@ class _QuizPage2NoServiceDateWidgetState
   late QuizPage2NoServiceDateModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -67,7 +66,6 @@ class _QuizPage2NoServiceDateWidgetState
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -76,7 +74,7 @@ class _QuizPage2NoServiceDateWidgetState
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -199,15 +197,31 @@ class _QuizPage2NoServiceDateWidgetState
                                                         return GestureDetector(
                                                           onTap: () => FocusScope
                                                                   .of(context)
-                                                              .requestFocus(
-                                                                  _unfocusNode),
+                                                              .requestFocus(_model
+                                                                  .unfocusNode),
                                                           child: Padding(
                                                             padding:
                                                                 MediaQuery.of(
                                                                         context)
                                                                     .viewInsets,
-                                                            child:
-                                                                CloseQuizWidget(),
+                                                            child: Scaffold(
+                                                              body:
+                                                                  GestureDetector(
+                                                                onTap: () =>
+                                                                    Navigator.pop(
+                                                                        context),
+                                                              ),
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              bottomSheet:
+                                                                  Container(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                child:
+                                                                    CloseQuizWidget(),
+                                                              ),
+                                                            ),
                                                           ),
                                                         );
                                                       },
@@ -383,22 +397,30 @@ class _QuizPage2NoServiceDateWidgetState
                                         'Выберу день в календаре') {
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryBtnText,
+                                        backgroundColor: Colors.transparent,
                                         isDismissible: false,
                                         enableDrag: false,
                                         context: context,
                                         builder: (context) {
                                           return GestureDetector(
                                             onTap: () => FocusScope.of(context)
-                                                .requestFocus(_unfocusNode),
+                                                .requestFocus(
+                                                    _model.unfocusNode),
                                             child: Padding(
                                               padding: MediaQuery.of(context)
                                                   .viewInsets,
                                               child: Container(
                                                 height: 460.0,
-                                                child: CalendarWidget(),
+                                                child: Scaffold(
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  bottomSheet: Container(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBtnText,
+                                                    child: CalendarWidget(),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           );
@@ -407,14 +429,12 @@ class _QuizPage2NoServiceDateWidgetState
 
                                       return;
                                     } else {
-                                      final ordersUpdateData =
-                                          createOrdersRecordData(
-                                        deadline:
-                                            FFAppState().currentQuizDeadline,
-                                      );
                                       await FFAppState()
                                           .currentOrder!
-                                          .update(ordersUpdateData);
+                                          .update(createOrdersRecordData(
+                                            deadline: FFAppState()
+                                                .currentQuizDeadline,
+                                          ));
 
                                       context.goNamed(
                                         'QuizSelectAddr',
@@ -436,7 +456,7 @@ class _QuizPage2NoServiceDateWidgetState
                                     return;
                                   }
                                 },
-                                text: 'Продолжить',
+                                text: 'Продолжить1',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,

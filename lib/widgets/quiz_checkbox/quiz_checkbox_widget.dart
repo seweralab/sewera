@@ -49,7 +49,8 @@ class _QuizCheckboxWidgetState extends State<QuizCheckboxWidget> {
         setState(() {
           FFAppState().currentCheckQuiz = functions
               .setInitialCheckbox(widget.quizJSON!, widget.quizName!)!
-              .toList();
+              .toList()
+              .cast<String>();
           FFAppState().currentCheckInputQuiz = functions
               .setInitialCheckboxInput(widget.quizJSON!, widget.quizName!)!;
         });

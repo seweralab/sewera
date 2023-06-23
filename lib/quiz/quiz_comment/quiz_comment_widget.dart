@@ -35,7 +35,6 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
   late QuizCommentModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -47,7 +46,6 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -78,7 +76,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
         }
         final quizCommentOrdersRecord = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -116,7 +114,16 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.safePop();
+                                context.goNamed(
+                                  'QuizSelectAddr',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.leftToRight,
+                                    ),
+                                  },
+                                );
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -162,13 +169,25 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                           context: context,
                                           builder: (context) {
                                             return GestureDetector(
-                                              onTap: () => FocusScope.of(
-                                                      context)
-                                                  .requestFocus(_unfocusNode),
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode),
                                               child: Padding(
                                                 padding: MediaQuery.of(context)
                                                     .viewInsets,
-                                                child: CloseQuizWidget(),
+                                                child: Scaffold(
+                                                  body: GestureDetector(
+                                                    onTap: () =>
+                                                        Navigator.pop(context),
+                                                  ),
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  bottomSheet: Container(
+                                                    color: Colors.transparent,
+                                                    child: CloseQuizWidget(),
+                                                  ),
+                                                ),
                                               ),
                                             );
                                           },
@@ -326,9 +345,9 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                               childAspectRatio: 1.0,
                                             ),
                                             primary: false,
-                                            shrinkWrap: true,
                                             physics:
                                                 NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount: mdPhotosEdit.length,
                                             itemBuilder:
@@ -475,16 +494,14 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                                               .transparent,
                                                                       onTap:
                                                                           () async {
-                                                                        final ordersUpdateData =
-                                                                            {
+                                                                        await quizCommentOrdersRecord
+                                                                            .reference
+                                                                            .update({
                                                                           'photos':
                                                                               FieldValue.arrayRemove([
                                                                             mdPhotosEditItem
                                                                           ]),
-                                                                        };
-                                                                        await quizCommentOrdersRecord
-                                                                            .reference
-                                                                            .update(ordersUpdateData);
+                                                                        });
                                                                         setState(() =>
                                                                             _model.documentRequestCompleter =
                                                                                 null);
@@ -604,18 +621,15 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                               }
                                                             }
 
-                                                            final ordersUpdateData =
-                                                                {
+                                                            await quizCommentOrdersRecord
+                                                                .reference
+                                                                .update({
                                                               'photos': FieldValue
                                                                   .arrayUnion([
                                                                 _model
                                                                     .uploadedFileUrl
                                                               ]),
-                                                            };
-                                                            await quizCommentOrdersRecord
-                                                                .reference
-                                                                .update(
-                                                                    ordersUpdateData);
+                                                            });
                                                             setState(() => _model
                                                                     .documentRequestCompleter =
                                                                 null);
@@ -684,11 +698,10 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                       EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      final ordersUpdateData = createOrdersRecordData(
-                        comment: _model.textController.text,
-                      );
                       await quizCommentOrdersRecord.reference
-                          .update(ordersUpdateData);
+                          .update(createOrdersRecordData(
+                        comment: _model.textController.text,
+                      ));
 
                       context.goNamed('QuizSendOrder');
                     },

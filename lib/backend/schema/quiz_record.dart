@@ -50,7 +50,7 @@ class QuizRecord extends FirestoreRecord {
     _title = snapshotData['title'] as String?;
     _type = snapshotData['type'] as String?;
     _alternative = snapshotData['alternative'] as bool?;
-    _order = snapshotData['order'] as int?;
+    _order = castToType<int>(snapshotData['order']);
     _input = snapshotData['input'] as String?;
     _options = snapshotData['options'] as String?;
   }
@@ -83,6 +83,14 @@ class QuizRecord extends FirestoreRecord {
   @override
   String toString() =>
       'QuizRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is QuizRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createQuizRecordData({

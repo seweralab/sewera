@@ -25,9 +25,12 @@ class CancelOrderPageModel extends FlutterFlowModel {
   void addToSelected(String item) => selected.add(item);
   void removeFromSelected(String item) => selected.remove(item);
   void removeAtIndexFromSelected(int index) => selected.removeAt(index);
+  void updateSelectedAtIndex(int index, Function(String) updateFn) =>
+      selected[index] = updateFn(selected[index]);
 
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // Model for top_notification component.
   late TopNotificationModel topNotificationModel;
   // State field(s) for TextField widget.
@@ -41,10 +44,12 @@ class CancelOrderPageModel extends FlutterFlowModel {
   }
 
   void dispose() {
+    unfocusNode.dispose();
     topNotificationModel.dispose();
     textController?.dispose();
   }
 
-  /// Additional helper methods are added here.
+  /// Action blocks are added here.
 
+  /// Additional helper methods are added here.
 }

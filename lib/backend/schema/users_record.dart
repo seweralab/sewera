@@ -142,7 +142,7 @@ class UsersRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _orders = snapshotData['orders'] as DocumentReference?;
-    _cashback = snapshotData['cashback'] as int?;
+    _cashback = castToType<int>(snapshotData['cashback']);
     _surname = snapshotData['surname'] as String?;
     _patronymic = snapshotData['patronymic'] as String?;
     _birthday = snapshotData['birthday'] as String?;
@@ -184,6 +184,14 @@ class UsersRecord extends FirestoreRecord {
   @override
   String toString() =>
       'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
+
+  @override
+  int get hashCode => reference.path.hashCode;
+
+  @override
+  bool operator ==(other) =>
+      other is UsersRecord &&
+      reference.path.hashCode == other.reference.path.hashCode;
 }
 
 Map<String, dynamic> createUsersRecordData({

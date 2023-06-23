@@ -95,10 +95,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             onPressed: () async {
               if (FFAppState().currentQuizDeadline !=
                   'Выберу день в календаре') {
-                final ordersUpdateData1 = createOrdersRecordData(
-                  deadline: FFAppState().currentQuizDeadline,
-                );
-                await FFAppState().currentOrder!.update(ordersUpdateData1);
+                await FFAppState().currentOrder!.update(createOrdersRecordData(
+                      deadline: FFAppState().currentQuizDeadline,
+                    ));
                 setState(() {
                   FFAppState().currentQuizDeadline = '';
                 });
@@ -107,14 +106,13 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
                 return;
               } else {
-                final ordersUpdateData2 = createOrdersRecordData(
-                  deadline: dateTimeFormat(
-                    'd.M.y',
-                    getCurrentTimestamp,
-                    locale: FFLocalizations.of(context).languageCode,
-                  ),
-                );
-                await FFAppState().currentOrder!.update(ordersUpdateData2);
+                await FFAppState().currentOrder!.update(createOrdersRecordData(
+                      deadline: dateTimeFormat(
+                        'd/M/y',
+                        getCurrentTimestamp,
+                        locale: FFLocalizations.of(context).languageCode,
+                      ),
+                    ));
                 setState(() {
                   FFAppState().currentQuizDeadline = '';
                 });
