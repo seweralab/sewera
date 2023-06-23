@@ -158,7 +158,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage2': HomePage2Widget(),
-      'OrdersPage': OrdersPageWidget(),
+      'ordersPage': OrdersPageWidget(),
       'ProfilePage': ProfilePageWidget(),
       'EditProfilePage': EditProfilePageWidget(),
       'EditProfileBirthdayPage': EditProfileBirthdayPageWidget(),
@@ -192,6 +192,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: [
+          // ignore: unnecessary_null_comparison
           if (_currentPageName != null) tabs[_currentPageName]!,
           if (_isOverlayVisible) _buildOverlay(),
         ],

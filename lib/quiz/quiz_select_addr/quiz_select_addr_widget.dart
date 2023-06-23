@@ -14,6 +14,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'quiz_select_addr_model.dart';
 export 'quiz_select_addr_model.dart';
 
@@ -79,8 +80,8 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: Center(
               child: SizedBox(
-                width: 40.0,
-                height: 40.0,
+                width: 40,
+                height: 40,
                 child: CircularProgressIndicator(
                   color: FlutterFlowTheme.of(context).primary,
                 ),
@@ -99,7 +100,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                   child: wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
@@ -123,7 +124,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 16.0, 18.0, 14.0),
+                                    18, 16, 18, 14),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -172,11 +173,11 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 18.0, 0.0),
+                                                    0, 0, 18, 0),
                                             child: Icon(
                                               Icons.arrow_back_sharp,
                                               color: Colors.black,
-                                              size: 24.0,
+                                              size: 24,
                                             ),
                                           ),
                                           Text(
@@ -185,15 +186,14 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 20.0,
+                                                  fontSize: 20,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
                                         ],
                                       ),
                                       Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                        alignment: AlignmentDirectional(0, 0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -216,21 +216,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                                     padding:
                                                         MediaQuery.of(context)
                                                             .viewInsets,
-                                                    child: Scaffold(
-                                                      body: GestureDetector(
-                                                        onTap: () =>
-                                                            Navigator.pop(
-                                                                context),
-                                                      ),
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      bottomSheet: Container(
-                                                        color:
-                                                            Colors.transparent,
-                                                        child:
-                                                            CloseQuizWidget(),
-                                                      ),
-                                                    ),
+                                                    child: CloseQuizWidget(),
                                                   ),
                                                 );
                                               },
@@ -239,7 +225,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                           child: Icon(
                                             Icons.close,
                                             color: Colors.black,
-                                            size: 24.0,
+                                            size: 24,
                                           ),
                                         ),
                                       ),
@@ -249,27 +235,26 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                               ),
                               if (FFAppState().currentQuizTopErr)
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  alignment: AlignmentDirectional(0, -1),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
+                                        0, 10, 0, 0),
                                     child: Container(
-                                      width: 277.0,
+                                      width: 277,
                                       decoration: BoxDecoration(
                                         color: Color(0xFFFFEE83),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 10.0, 8.0, 10.0),
+                                            8, 10, 8, 10),
                                         child: Text(
                                           'Нужно выбрать хотя бы один вариант',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Fira Sans',
-                                                fontSize: 14.0,
+                                                fontSize: 14,
                                               ),
                                         ),
                                       ),
@@ -279,8 +264,8 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 0.0, 18.0, 0.0),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -303,7 +288,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                         );
                                         setState(() {
                                           _model.showSuggestion = true;
-                                          _model.showInputErr = true;
+                                          _model.showInputErr = false;
                                         });
 
                                         setState(() {});
@@ -318,34 +303,30 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                         borderSide: BorderSide(
                                           color: functions.borderErrorColor(
                                               _model.showInputErr),
-                                          width: 1.0,
+                                          width: 1,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
-                                          width: 1.0,
+                                          width: 1,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       errorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
-                                          width: 1.0,
+                                          width: 1,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
-                                          width: 1.0,
+                                          width: 1,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       filled: true,
                                       fillColor: Color(0xFFF3F4F5),
@@ -358,28 +339,28 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                 ),
                                 if (_model.showInputErr == true)
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0, 0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 15.0, 0.0, 0.0),
+                                          0, 15, 0, 0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 1.0, 0.0, 0.0),
+                                                    0, 1, 0, 0),
                                             child: SvgPicture.asset(
                                               'assets/images/confirm.svg',
-                                              width: 14.0,
-                                              height: 14.0,
+                                              width: 14,
+                                              height: 14,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
+                                                    12, 0, 0, 0),
                                             child: Text(
                                               'Это поле нужно заполнить',
                                               style:
@@ -387,7 +368,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Fira Sans',
-                                                        fontSize: 12.0,
+                                                        fontSize: 12,
                                                       ),
                                             ),
                                           ),
@@ -429,6 +410,11 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                               setState(() {
                                                 FFAppState().currentQuizTopErr =
                                                     false;
+                                                FFAppState().currentQuizAddr =
+                                                    getJsonField(
+                                                  addrItem,
+                                                  r'''$''',
+                                                ).toString();
                                               });
                                               setState(() {
                                                 _model.showSuggestion = false;
@@ -436,21 +422,20 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                             },
                                             child: Material(
                                               color: Colors.transparent,
-                                              elevation: 1.0,
+                                              elevation: 1,
                                               child: Container(
                                                 width: double.infinity,
-                                                height: 40.0,
+                                                height: 40,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
                                                 ),
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
+                                                alignment:
+                                                    AlignmentDirectional(-1, 0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          3.0, 0.0, 0.0, 0.0),
+                                                      .fromSTEB(3, 0, 0, 0),
                                                   child: Text(
                                                     addrItem.toString(),
                                                     style: FlutterFlowTheme.of(
@@ -474,8 +459,7 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 30.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 30),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (FFAppState().currentQuizAddr != '') {
@@ -483,11 +467,12 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                           FFAppState().currentQuizTopErr = false;
                         });
 
+                        final ordersUpdateData = createOrdersRecordData(
+                          addr: FFAppState().currentQuizAddr,
+                        );
                         await FFAppState()
                             .currentOrder!
-                            .update(createOrdersRecordData(
-                              addr: FFAppState().currentQuizAddr,
-                            ));
+                            .update(ordersUpdateData);
 
                         context.goNamed('QuizComment');
                       } else {
@@ -502,23 +487,21 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                     text: 'Продолжить',
                     options: FFButtonOptions(
                       width: double.infinity,
-                      height: 48.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      height: 48,
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                      iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Fira Sans',
                                 color: Colors.white,
                               ),
-                      elevation: 0.0,
+                      elevation: 0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
-                        width: 1.0,
+                        width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ),
