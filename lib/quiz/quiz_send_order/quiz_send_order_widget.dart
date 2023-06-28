@@ -971,7 +971,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                         context:
                                                                             context,
                                                                         imageQuality:
-                                                                            60,
+                                                                            20,
                                                                         allowPhoto:
                                                                             true,
                                                                       );
