@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+
 import 'quiz_send_order_model.dart';
 export 'quiz_send_order_model.dart';
 
@@ -49,7 +51,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
     context.watch<FFAppState>();
 
     return FutureBuilder<OrdersRecord>(
-      future: OrdersRecord.getDocumentOnce(FFAppState().currentOrder!),
+      future: (_model.documentRequestCompleter ??= Completer<OrdersRecord>()
+            ..complete(
+                OrdersRecord.getDocumentOnce(FFAppState().currentOrder!)))
+          .future,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -57,8 +62,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: Center(
               child: SizedBox(
-                width: 40.0,
-                height: 40.0,
+                width: 40,
+                height: 40,
                 child: CircularProgressIndicator(
                   color: FlutterFlowTheme.of(context).primary,
                 ),
@@ -77,7 +82,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                   child: wrapWithModel(
                     model: _model.topNotificationModel,
                     updateCallback: () => setState(() {}),
@@ -94,8 +99,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 16.0, 18.0, 14.0),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(18, 16, 18, 14),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -122,11 +127,11 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 18.0, 0.0),
+                                          0, 0, 18, 0),
                                       child: Icon(
                                         Icons.arrow_back_sharp,
                                         color: Colors.black,
-                                        size: 24.0,
+                                        size: 24,
                                       ),
                                     ),
                                     Text(
@@ -135,14 +140,14 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Fira Sans',
-                                            fontSize: 20.0,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.w500,
                                           ),
                                     ),
                                   ],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0, 0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -162,18 +167,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                             child: Padding(
                                               padding: MediaQuery.of(context)
                                                   .viewInsets,
-                                              child: Scaffold(
-                                                body: GestureDetector(
-                                                  onTap: () =>
-                                                      Navigator.pop(context),
-                                                ),
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                bottomSheet: Container(
-                                                  color: Colors.transparent,
-                                                  child: CloseQuizWidget(),
-                                                ),
-                                              ),
+                                              child: CloseQuizWidget(),
                                             ),
                                           );
                                         },
@@ -182,7 +176,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                     child: Icon(
                                       Icons.close,
                                       color: Colors.black,
-                                      size: 24.0,
+                                      size: 24,
                                     ),
                                   ),
                                 ),
@@ -191,8 +185,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -204,23 +197,22 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 24.0),
+                                      0, 0, 0, 24),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                                        borderRadius: BorderRadius.circular(0),
                                         child: SvgPicture.asset(
                                           'assets/images/sendorder.svg',
-                                          width: 16.0,
-                                          height: 16.0,
+                                          width: 16,
+                                          height: 16,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            14.0, 0.0, 0.0, 0.0),
+                                            14, 0, 0, 0),
                                         child: Text(
                                           quizSendOrderOrdersRecord.servicename,
                                           maxLines: 3,
@@ -228,7 +220,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Fira Sans',
-                                                fontSize: 14.0,
+                                                fontSize: 14,
                                               ),
                                         ),
                                       ),
@@ -237,23 +229,22 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 24.0),
+                                      0, 0, 0, 24),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                                        borderRadius: BorderRadius.circular(0),
                                         child: SvgPicture.asset(
                                           'assets/images/calendar.svg',
-                                          width: 16.0,
-                                          height: 16.0,
+                                          width: 16,
+                                          height: 16,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            14.0, 0.0, 0.0, 0.0),
+                                            14, 0, 0, 0),
                                         child: Text(
                                           quizSendOrderOrdersRecord.deadline,
                                           maxLines: 3,
@@ -261,7 +252,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Fira Sans',
-                                                fontSize: 14.0,
+                                                fontSize: 14,
                                               ),
                                         ),
                                       ),
@@ -270,23 +261,22 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 24.0),
+                                      0, 0, 0, 24),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                                        borderRadius: BorderRadius.circular(0),
                                         child: SvgPicture.asset(
                                           'assets/images/place.svg',
-                                          width: 16.0,
-                                          height: 16.0,
+                                          width: 16,
+                                          height: 16,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            14.0, 0.0, 0.0, 0.0),
+                                            14, 0, 0, 0),
                                         child: Text(
                                           quizSendOrderOrdersRecord.addr,
                                           maxLines: 3,
@@ -294,7 +284,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Fira Sans',
-                                                fontSize: 14.0,
+                                                fontSize: 14,
                                               ),
                                         ),
                                       ),
@@ -306,19 +296,17 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                           child: Container(
                             width: double.infinity,
-                            height: 1.0,
+                            height: 1,
                             decoration: BoxDecoration(
                               color: Color(0xFFE8EAEC),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                           child: AnimatedContainer(
                             duration: Duration(milliseconds: 100),
                             curve: Curves.easeOut,
@@ -328,8 +316,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 0.0),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -349,8 +337,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                 quizitem[quizitemIndex];
                                             return Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 24.0),
+                                                  .fromSTEB(0, 0, 0, 24),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -416,8 +403,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                       'Fira Sans',
                                                                   color: Color(
                                                                       0xFF88959C),
-                                                                  fontSize:
-                                                                      14.0,
+                                                                  fontSize: 14,
                                                                 ),
                                                           ),
                                                           Text(
@@ -435,7 +421,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                     Icon(
                                                       Icons.chevron_right,
                                                       color: Color(0xFF586A74),
-                                                      size: 24.0,
+                                                      size: 24,
                                                     ),
                                                   ],
                                                 ),
@@ -456,7 +442,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 24.0),
+                                            0, 0, 0, 24),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -486,7 +472,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                               'Fira Sans',
                                                           color:
                                                               Color(0xFF88959C),
-                                                          fontSize: 14.0,
+                                                          fontSize: 14,
                                                         ),
                                                   ),
                                                   Text(
@@ -501,7 +487,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               Icon(
                                                 Icons.chevron_right,
                                                 color: Color(0xFF586A74),
-                                                size: 24.0,
+                                                size: 24,
                                               ),
                                             ],
                                           ),
@@ -518,7 +504,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 24.0),
+                                            0, 0, 0, 24),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -560,7 +546,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                     'Fira Sans',
                                                                 color: Color(
                                                                     0xFF88959C),
-                                                                fontSize: 14.0,
+                                                                fontSize: 14,
                                                               ),
                                                     ),
                                                     Text(
@@ -577,7 +563,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               Icon(
                                                 Icons.chevron_right,
                                                 color: Color(0xFF586A74),
-                                                size: 24.0,
+                                                size: 24,
                                               ),
                                             ],
                                           ),
@@ -596,7 +582,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 24.0),
+                                            0, 0, 0, 24),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -647,7 +633,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                     'Fira Sans',
                                                                 color: Color(
                                                                     0xFF88959C),
-                                                                fontSize: 14.0,
+                                                                fontSize: 14,
                                                               ),
                                                     ),
                                                     Text(
@@ -664,7 +650,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               Icon(
                                                 Icons.chevron_right,
                                                 color: Color(0xFF586A74),
-                                                size: 24.0,
+                                                size: 24,
                                               ),
                                             ],
                                           ),
@@ -682,7 +668,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 24.0),
+                                            0, 0, 0, 24),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -723,7 +709,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                     'Fira Sans',
                                                                 color: Color(
                                                                     0xFF88959C),
-                                                                fontSize: 14.0,
+                                                                fontSize: 14,
                                                               ),
                                                     ),
                                                     Text(
@@ -740,7 +726,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                               Icon(
                                                 Icons.chevron_right,
                                                 color: Color(0xFF586A74),
-                                                size: 24.0,
+                                                size: 24,
                                               ),
                                             ],
                                           ),
@@ -755,7 +741,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 24.0),
+                                          0, 0, 0, 24),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -779,7 +765,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                             ),
                                             child: Material(
                                               color: Colors.transparent,
-                                              elevation: 0.0,
+                                              elevation: 0,
                                               child: Container(
                                                 width: double.infinity,
                                                 decoration: BoxDecoration(
@@ -800,13 +786,11 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                       gridDelegate:
                                                           SliverGridDelegateWithFixedCrossAxisCount(
                                                         crossAxisCount: 3,
-                                                        crossAxisSpacing: 10.0,
-                                                        mainAxisSpacing: 10.0,
-                                                        childAspectRatio: 1.0,
+                                                        crossAxisSpacing: 10,
+                                                        mainAxisSpacing: 10,
+                                                        childAspectRatio: 1,
                                                       ),
                                                       shrinkWrap: true,
-                                                      physics:
-                                                          NeverScrollableScrollPhysics(),
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount:
@@ -817,7 +801,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                             mdPhotosEdit[
                                                                 mdPhotosEditIndex];
                                                         return Container(
-                                                          width: 90.0,
+                                                          width: 90,
                                                           child: Stack(
                                                             children: [
                                                               if (mdPhotosEditItem !=
@@ -825,8 +809,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                   mdPhotosEditItem !=
                                                                       '')
                                                                 Container(
-                                                                  width: 100.0,
-                                                                  height: 100.0,
+                                                                  width: 100,
+                                                                  height: 100,
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
@@ -837,10 +821,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                     children: [
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            0.0),
+                                                                            0,
+                                                                            4,
+                                                                            4,
+                                                                            0),
                                                                         child:
                                                                             InkWell(
                                                                           splashColor:
@@ -877,11 +861,11 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                 true,
                                                                             child:
                                                                                 ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
+                                                                              borderRadius: BorderRadius.circular(8),
                                                                               child: CachedNetworkImage(
                                                                                 imageUrl: mdPhotosEditItem,
-                                                                                width: 100.0,
-                                                                                height: 100.0,
+                                                                                width: 100,
+                                                                                height: 100,
                                                                                 fit: BoxFit.cover,
                                                                               ),
                                                                             ),
@@ -890,29 +874,29 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                       ),
                                                                       Align(
                                                                         alignment: AlignmentDirectional(
-                                                                            1.0,
-                                                                            -1.0),
+                                                                            1,
+                                                                            -1),
                                                                         child:
                                                                             Material(
                                                                           color:
                                                                               Colors.transparent,
                                                                           elevation:
-                                                                              0.0,
+                                                                              0,
                                                                           shape:
                                                                               RoundedRectangleBorder(
                                                                             borderRadius:
-                                                                                BorderRadius.circular(9.0),
+                                                                                BorderRadius.circular(9),
                                                                           ),
                                                                           child:
                                                                               Container(
                                                                             width:
-                                                                                18.0,
+                                                                                18,
                                                                             height:
-                                                                                18.0,
+                                                                                18,
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                              borderRadius: BorderRadius.circular(9.0),
+                                                                              borderRadius: BorderRadius.circular(9),
                                                                             ),
                                                                             child:
                                                                                 InkWell(
@@ -926,11 +910,13 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                     mdPhotosEditItem
                                                                                   ]),
                                                                                 });
+                                                                                setState(() => _model.documentRequestCompleter = null);
+                                                                                await _model.waitForDocumentRequestCompleted();
                                                                               },
                                                                               child: Icon(
                                                                                 Icons.close_sharp,
                                                                                 color: Colors.black,
-                                                                                size: 10.0,
+                                                                                size: 10,
                                                                               ),
                                                                             ),
                                                                           ),
@@ -946,10 +932,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                 Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          4.0,
-                                                                          0.0),
+                                                                          0,
+                                                                          4,
+                                                                          4,
+                                                                          0),
                                                                   child:
                                                                       InkWell(
                                                                     splashColor:
@@ -971,7 +957,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                         context:
                                                                             context,
                                                                         imageQuality:
-                                                                            20,
+                                                                            40,
                                                                         allowPhoto:
                                                                             true,
                                                                       );
@@ -1036,24 +1022,29 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                               .uploadedFileUrl
                                                                         ]),
                                                                       });
+                                                                      setState(() =>
+                                                                          _model.documentRequestCompleter =
+                                                                              null);
+                                                                      await _model
+                                                                          .waitForDocumentRequestCompleted();
                                                                     },
                                                                     child:
                                                                         Material(
                                                                       color: Colors
                                                                           .transparent,
                                                                       elevation:
-                                                                          0.0,
+                                                                          0,
                                                                       shape:
                                                                           RoundedRectangleBorder(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(8.0),
+                                                                            BorderRadius.circular(8),
                                                                       ),
                                                                       child:
                                                                           Container(
                                                                         width:
-                                                                            100.0,
+                                                                            100,
                                                                         height:
-                                                                            100.0,
+                                                                            100,
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
@@ -1068,7 +1059,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                             ).image,
                                                                           ),
                                                                           borderRadius:
-                                                                              BorderRadius.circular(8.0),
+                                                                              BorderRadius.circular(8),
                                                                           shape:
                                                                               BoxShape.rectangle,
                                                                         ),
@@ -1096,27 +1087,27 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 12.0, 18.0, 24.0),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(18, 12, 18, 24),
                           child: Container(
                             width: double.infinity,
-                            height: 1.0,
+                            height: 1,
                             decoration: BoxDecoration(
                               color: Color(0xFFE8EAEC),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 24.0),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 24),
                           child: Text(
                             'Теперь нужно отправить заказ менеджеру, чтобы он посчитал стоимость.\n\nМенеджер может связаться с вами для уточнения деталей.',
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 0.0, 18.0, 30.0),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 30),
                           child: FFButtonWidget(
                             onPressed: () async {
                               await quizSendOrderOrdersRecord.reference
@@ -1131,11 +1122,11 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                             text: 'Отправить заказ',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 48.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
+                              height: 48,
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              iconPadding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
@@ -1143,12 +1134,12 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Colors.white,
                                   ),
-                              elevation: 0.0,
+                              elevation: 0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1.0,
+                                width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                         ),

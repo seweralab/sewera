@@ -105,19 +105,15 @@ String combineCheckboxes(
 }
 
 List<String> propImagesList(List<String> listimg) {
-  // List<String> list = [];
-  // // print(listimg![0].downloadURL);
-  // for (var img in listimg) {
-  //   // print(img);
-  //   list.add(img);
-  // }
   List<String> clearList = [];
   for (var img in listimg) {
     if (img.isNotEmpty) {
       clearList.add(img);
     }
   }
-  clearList.add('');
+  if (clearList.length < 6) {
+    clearList.add('');
+  }
   return clearList;
 }
 
