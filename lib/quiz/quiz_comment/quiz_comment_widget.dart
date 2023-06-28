@@ -549,8 +549,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                                             final selectedMedia =
                                                                 await selectMediaWithSourceBottomSheet(
                                                               context: context,
-                                                              maxWidth: 600.00,
-                                                              maxHeight: 600.00,
+                                                              imageQuality: 60,
                                                               allowPhoto: true,
                                                             );
                                                             if (selectedMedia !=

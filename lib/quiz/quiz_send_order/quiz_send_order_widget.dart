@@ -970,10 +970,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                           await selectMediaWithSourceBottomSheet(
                                                                         context:
                                                                             context,
-                                                                        maxWidth:
-                                                                            600.00,
-                                                                        maxHeight:
-                                                                            600.00,
+                                                                        imageQuality:
+                                                                            60,
                                                                         allowPhoto:
                                                                             true,
                                                                       );
