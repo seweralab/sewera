@@ -9,6 +9,7 @@ import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
-
+  String _appBadgeSupported = 'Unknown';
   late Stream<BaseAuthUser> userStream;
 
   late AppStateNotifier _appStateNotifier;
@@ -66,6 +67,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    initPlatformState();
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = seweraFirebaseUserStream()
@@ -75,6 +77,29 @@ class _MyAppState extends State<MyApp> {
       Duration(seconds: 1),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
+  }
+
+  initPlatformState() async {
+    String appBadgeSupported;
+    try {
+      bool res = await FlutterAppBadger.isAppBadgeSupported();
+      if (res) {
+        appBadgeSupported = 'Supported';
+      } else {
+        appBadgeSupported = 'Not supported';
+      }
+    } on PlatformException {
+      appBadgeSupported = 'Failed to get badge support.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _appBadgeSupported = appBadgeSupported;
+    });
   }
 
   @override
@@ -94,6 +119,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    print(_appBadgeSupported);
+    FlutterAppBadger.updateBadgeCount(1);
     return MaterialApp.router(
       builder: (context, child) {
         return MediaQuery(
@@ -289,6 +316,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
   }
 
   void _toggleOverlay() {
+    print(FlutterAppBadger.isAppBadgeSupported());
     setState(() {
       _isOverlayVisible = !_isOverlayVisible;
     });
