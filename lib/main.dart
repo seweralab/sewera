@@ -19,6 +19,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,9 +56,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
-  String _appBadgeSupported = 'Unknown';
   late Stream<BaseAuthUser> userStream;
-
+  String _appBadgeSupported = 'Unknown';
+  String userid = '';
+  // int _badges = 0;
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
@@ -67,11 +69,16 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = seweraFirebaseUserStream()
-      ..listen((user) => _appStateNotifier.update(user));
+      ..listen((user) {
+        print(user);
+        userid = user.uid!;
+        getBadgeCount(userid);
+        _appStateNotifier.update(user);
+      });
     jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
@@ -79,27 +86,15 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  initPlatformState() async {
-    String appBadgeSupported;
-    try {
-      bool res = await FlutterAppBadger.isAppBadgeSupported();
-      if (res) {
-        appBadgeSupported = 'Supported';
-      } else {
-        appBadgeSupported = 'Not supported';
-      }
-    } on PlatformException {
-      appBadgeSupported = 'Failed to get badge support.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _appBadgeSupported = appBadgeSupported;
-    });
+  Future<int> getBadgeCount(userid) async {
+    String userId = userid;
+    int badgeCount = 0;
+    DocumentSnapshot userSnapshot =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+    Map<String, dynamic> userdata = userSnapshot.data() as Map<String, dynamic>;
+    badgeCount = userdata['new_notifications'].length ?? 0;
+    FlutterAppBadger.updateBadgeCount(badgeCount);
+    return badgeCount;
   }
 
   @override
@@ -119,8 +114,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print(_appBadgeSupported);
-    FlutterAppBadger.updateBadgeCount(1);
     return MaterialApp.router(
       builder: (context, child) {
         return MediaQuery(
@@ -316,7 +309,6 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
   }
 
   void _toggleOverlay() {
-    print(FlutterAppBadger.isAppBadgeSupported());
     setState(() {
       _isOverlayVisible = !_isOverlayVisible;
     });

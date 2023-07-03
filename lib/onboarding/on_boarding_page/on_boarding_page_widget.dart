@@ -64,7 +64,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
                             onPageChanged: (_) async {
-                              if (_model.pageViewCurrentIndex == 3) {
+                              if (_model.pageViewCurrentIndex == 4) {
                                 if (loggedIn == true) {
                                   context.pushNamed('HomePage2');
 
@@ -106,7 +106,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: Text(
-                                            'Добро пожаловать  в приложение Sewera!',
+                                            'Добро пожаловать в приложение Sewera!',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -175,7 +175,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 18.0, 0.0),
                                         child: Text(
-                                          'Здесь вы можете поручить специалистам Sewera разные бытовые задачи. \nНапример, постричь газон  или обслужить бойлер',
+                                          'Здесь вы можете поручить специалистам Sewera разные бытовые задачи. \nНапример, постричь газон или обслужить бойлер',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -273,7 +273,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 18.0, 0.0),
                                         child: Text(
-                                          'Получите скидку 1000₽  на первый заказ!',
+                                          'Получите скидку 1000₽ на первый заказ!',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
