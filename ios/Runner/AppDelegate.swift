@@ -14,6 +14,8 @@ import GoogleMaps
   ) -> Bool {
     GMSServices.provideAPIKey("AIzaSyD0cpSLE6lmONizRX2TSeiYEQxbnjHjC-w")
     GeneratedPluginRegistrant.register(with: self)
+    UIApplication.shared.applicationIconBadgeNumber = 0
+    UIApplication.shared.applicationIconBadgeNumber = -1
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
