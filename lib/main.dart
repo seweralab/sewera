@@ -9,7 +9,6 @@ import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -19,7 +18,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,10 +54,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
+
   late Stream<BaseAuthUser> userStream;
-  String _appBadgeSupported = 'Unknown';
-  String userid = '';
-  // int _badges = 0;
+
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
@@ -69,32 +66,15 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = seweraFirebaseUserStream()
-      ..listen((user) {
-        print(user);
-        userid = user.uid!;
-        getBadgeCount(userid);
-        _appStateNotifier.update(user);
-      });
+      ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
-  }
-
-  Future<int> getBadgeCount(userid) async {
-    String userId = userid;
-    int badgeCount = 0;
-    DocumentSnapshot userSnapshot =
-        await FirebaseFirestore.instance.collection('users').doc(userId).get();
-    Map<String, dynamic> userdata = userSnapshot.data() as Map<String, dynamic>;
-    badgeCount = userdata['new_notifications'].length ?? 0;
-    FlutterAppBadger.updateBadgeCount(badgeCount);
-    return badgeCount;
   }
 
   @override
