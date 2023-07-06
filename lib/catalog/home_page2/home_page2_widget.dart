@@ -483,12 +483,12 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     if (!snapshot.hasData) {
                                       return Center(
                                         child: SizedBox(
-                                          width: 40.0,
-                                          height: 40.0,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
+                                          width: 130.0,
+                                          height: 160.0,
+                                          // child: CircularProgressIndicator(
+                                          //   color: FlutterFlowTheme.of(context)
+                                          //       .primary,
+                                          // ),
                                         ),
                                       );
                                     }

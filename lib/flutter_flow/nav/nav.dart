@@ -6,7 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-
+import '/flutter_flow/flutter_flow_util.dart';
 import '../../auth/base_auth_user_provider.dart';
 import '../../backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
@@ -78,14 +78,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+      errorBuilder: (context, state) {
+        if (isOnboardingCompleted(state)) {
+          return appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget();
+        } else {
+          return OnBoardingPageWidget();
+        }
+      },
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+          builder: (context, _) {
+            if (isOnboardingCompleted(_)) {
+              return appStateNotifier.loggedIn
+                  ? NavBarPage()
+                  : StartPageWidget();
+            } else {
+              return OnBoardingPageWidget();
+            }
+          },
         ),
         FFRoute(
           name: 'StartPage',
@@ -264,7 +276,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/notificationPage',
           builder: (context, params) => NotificationPageWidget(
             notication: params.getParam('notication',
-                ParamType.DocumentReference, false, ['notifications']),
+                ParamType.DocumentReference, false, ['users', 'notification']),
           ),
         ),
         FFRoute(
@@ -577,4 +589,8 @@ class TransitionInfo {
         transitionType: PageTransitionType.rightToLeft,
         duration: Duration(milliseconds: 220),
       );
+}
+
+bool isOnboardingCompleted(state) {
+  return FFAppState().onboardingcomplete;
 }

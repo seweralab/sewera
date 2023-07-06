@@ -66,10 +66,12 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                             onPageChanged: (_) async {
                               if (_model.pageViewCurrentIndex == 4) {
                                 if (loggedIn == true) {
+                                  FFAppState().onboardingcomplete = true;
                                   context.pushNamed('HomePage2');
 
                                   return;
                                 } else {
+                                  FFAppState().onboardingcomplete = true;
                                   context.pushNamed('StartPage');
 
                                   return;
@@ -287,6 +289,7 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                                   ),
                                 ],
                               ),
+                              Container(),
                             ],
                           ),
                           Align(
@@ -360,10 +363,12 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                       );
                     } else {
                       if (loggedIn == true) {
+                        FFAppState().onboardingcomplete = true;
                         context.pushNamed('HomePage2');
 
                         return;
                       } else {
+                        FFAppState().onboardingcomplete = true;
                         context.pushNamed('StartPage');
 
                         return;
@@ -392,10 +397,12 @@ class _OnBoardingPageWidgetState extends State<OnBoardingPageWidget> {
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     if (loggedIn == true) {
+                      FFAppState().onboardingcomplete = true;
                       context.goNamed('HomePage2');
 
                       return;
                     } else {
+                      FFAppState().onboardingcomplete = true;
                       context.goNamed('StartPage');
 
                       return;

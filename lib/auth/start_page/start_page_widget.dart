@@ -177,9 +177,16 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                               );
                               return;
                             }
+                            var digits =
+                                phoneNumberVal.replaceAll(RegExp(r'\D+'), '');
+                            if (!digits.startsWith('+')) {
+                              digits = '+$digits';
+                            }
+                            print('номер телефона отправлен как');
+                            print(digits);
                             await authManager.beginPhoneAuth(
                               context: context,
-                              phoneNumber: phoneNumberVal,
+                              phoneNumber: digits,
                               onCodeSent: (context) async {
                                 context.goNamedAuth(
                                   'SMSPage',

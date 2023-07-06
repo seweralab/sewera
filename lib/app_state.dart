@@ -15,12 +15,20 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _onboardingcomplete =
+          prefs.getBool('ff_onboardingcomplete') ?? _onboardingcomplete;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   bool _showFullList = true;
   bool get showFullList => _showFullList;
@@ -173,6 +181,13 @@ class FFAppState extends ChangeNotifier {
   String get currentQuizAddr => _currentQuizAddr;
   set currentQuizAddr(String _value) {
     _currentQuizAddr = _value;
+  }
+
+  bool _onboardingcomplete = false;
+  bool get onboardingcomplete => _onboardingcomplete;
+  set onboardingcomplete(bool _value) {
+    _onboardingcomplete = _value;
+    prefs.setBool('ff_onboardingcomplete', _value);
   }
 }
 

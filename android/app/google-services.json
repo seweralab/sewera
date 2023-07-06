@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1055728123366-9iutv2ovq4dn7netohdlmgl2vp2t2d0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.sewera",
+            "certificate_hash": "e9fc2cb14cd95dd54ce9af9ac8c337e5f54d9238"
+          }
+        },
+        {
           "client_id": "1055728123366-9m8n0onpomud196c9p66u6gq6dvbvldq.apps.googleusercontent.com",
           "client_type": 3
         }

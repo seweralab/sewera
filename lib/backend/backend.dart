@@ -12,6 +12,7 @@ import 'schema/services_record.dart';
 import 'schema/quiz_record.dart';
 import 'schema/pages_record.dart';
 import 'schema/notifications_record.dart';
+import 'schema/notification_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,6 +27,7 @@ export 'schema/services_record.dart';
 export 'schema/quiz_record.dart';
 export 'schema/pages_record.dart';
 export 'schema/notifications_record.dart';
+export 'schema/notification_record.dart';
 
 /// Functions to query CatalogRecords (as a Stream and as a Future).
 Future<int> queryCatalogRecordCount({
@@ -389,6 +391,62 @@ Future<FFFirestorePage<NotificationsRecord>> queryNotificationsRecordPage({
     queryCollectionPage(
       NotificationsRecord.collection,
       NotificationsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query NotificationRecords (as a Stream and as a Future).
+Future<int> queryNotificationRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      NotificationRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<NotificationRecord>> queryNotificationRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      NotificationRecord.collection(parent),
+      NotificationRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<NotificationRecord>> queryNotificationRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      NotificationRecord.collection(parent),
+      NotificationRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<NotificationRecord>> queryNotificationRecordPage({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      NotificationRecord.collection(parent),
+      NotificationRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

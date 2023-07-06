@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'notifications_page_model.dart';
 export 'notifications_page_model.dart';
 
@@ -42,10 +41,11 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FutureBuilder<List<NotificationsRecord>>(
-      future: queryNotificationsRecordOnce(
-        queryBuilder: (notificationsRecord) =>
-            notificationsRecord.orderBy('date', descending: true),
+    return StreamBuilder<List<NotificationRecord>>(
+      stream: queryNotificationRecord(
+        parent: currentUserReference,
+        queryBuilder: (notificationRecord) =>
+            notificationRecord.orderBy('date', descending: true),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -54,8 +54,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: Center(
               child: SizedBox(
-                width: 40,
-                height: 40,
+                width: 40.0,
+                height: 40.0,
                 child: CircularProgressIndicator(
                   color: FlutterFlowTheme.of(context).primary,
                 ),
@@ -63,7 +63,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
             ),
           );
         }
-        List<NotificationsRecord> notificationsPageNotificationsRecordList =
+        List<NotificationRecord> notificationsPageNotificationRecordList =
             snapshot.data!;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
@@ -72,13 +72,13 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
             body: Container(
               width: double.infinity,
-              height: MediaQuery.sizeOf(context).height * 1,
+              height: MediaQuery.sizeOf(context).height * 1.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Stack(
                 children: [
-                  if (notificationsPageNotificationsRecordList.length == 0)
+                  if (notificationsPageNotificationRecordList.length == 0)
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,8 +94,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 44.0, 0.0, 0.0),
                                 child: wrapWithModel(
                                   model: _model.topNotificationModel1,
                                   updateCallback: () => setState(() {}),
@@ -107,7 +107,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    18, 14, 18, 16),
+                                    18.0, 14.0, 18.0, 16.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -127,7 +127,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 18, 0),
+                                                    0.0, 0.0, 18.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -140,7 +140,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                               child: Icon(
                                                 Icons.arrow_back_sharp,
                                                 color: Colors.black,
-                                                size: 24,
+                                                size: 24.0,
                                               ),
                                             ),
                                           ),
@@ -150,7 +150,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Fira Sans',
-                                                  fontSize: 20,
+                                                  fontSize: 20.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -167,11 +167,11 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                         },
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                           child: SvgPicture.asset(
                                             'assets/images/gear.svg',
-                                            width: 24,
-                                            height: 24,
+                                            width: 24.0,
+                                            height: 24.0,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -184,8 +184,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                           ),
                         ),
                         Container(
-                          width: 190,
-                          height: 300,
+                          width: 190.0,
+                          height: 300.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -195,17 +195,17 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 18),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 18.0),
                                 child: SvgPicture.asset(
                                   'assets/images/empty_not.svg',
-                                  width: 78,
-                                  height: 141,
+                                  width: 78.0,
+                                  height: 141.0,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0, 0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Тут пока нет уведомлений, но потом они появятся',
                                   textAlign: TextAlign.center,
@@ -213,7 +213,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Fira Sans',
-                                        fontSize: 14,
+                                        fontSize: 14.0,
                                       ),
                                 ),
                               ),
@@ -221,8 +221,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 0, 18, 30),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               context.safePop();
@@ -230,11 +230,11 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                             text: 'Ясно!',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 48,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
@@ -242,23 +242,24 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                     fontFamily: 'Fira Sans',
                                     color: Colors.white,
                                   ),
-                              elevation: 0,
+                              elevation: 0.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
-                                width: 1,
+                                width: 1.0,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),
                       ],
                     ),
-                  if (notificationsPageNotificationsRecordList.length > 0)
+                  if (notificationsPageNotificationRecordList.length > 0)
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 44.0, 0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.topNotificationModel2,
                             updateCallback: () => setState(() {}),
@@ -269,8 +270,8 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(18, 14, 18, 16),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 14.0, 18.0, 16.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -288,11 +289,11 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 18, 0),
+                                          0.0, 0.0, 18.0, 0.0),
                                       child: Icon(
                                         Icons.arrow_back_sharp,
                                         color: Colors.black,
-                                        size: 24,
+                                        size: 24.0,
                                       ),
                                     ),
                                     Text(
@@ -301,7 +302,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Fira Sans',
-                                            fontSize: 20,
+                                            fontSize: 20.0,
                                             fontWeight: FontWeight.w500,
                                           ),
                                     ),
@@ -316,11 +317,11 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                     context.pushNamed('NotificationConfigPage');
                                   },
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(8.0),
                                     child: SvgPicture.asset(
                                       'assets/images/gear.svg',
-                                      width: 24,
-                                      height: 24,
+                                      width: 24.0,
+                                      height: 24.0,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -330,10 +331,11 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 0.0, 18.0, 0.0),
                           child: Container(
                             width: double.infinity,
-                            height: 1,
+                            height: 1.0,
                             decoration: BoxDecoration(
                               color: Color(0xFFE8EAEC),
                             ),
@@ -341,12 +343,12 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(18, 0, 18, 20),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                18.0, 0.0, 18.0, 20.0),
                             child: Builder(
                               builder: (context) {
                                 final notification =
-                                    notificationsPageNotificationsRecordList
+                                    notificationsPageNotificationRecordList
                                         .toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
@@ -380,49 +382,41 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                         );
                                       },
                                       child: Stack(
-                                        alignment: AlignmentDirectional(0, 0),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 10, 0, 0),
+                                                    0.0, 10.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                AuthUserStreamWidget(
-                                                  builder: (context) => Text(
-                                                    notificationItem.title,
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Fira Sans',
-                                                              fontSize: 14,
-                                                              fontWeight: (currentUserDocument?.newNotifications.toList() ?? []).contains(notificationItem
-                                                                          .reference
-                                                                          .id) ==
-                                                                      true
-                                                                  ? FontWeight
-                                                                      .bold
-                                                                  : FontWeight
-                                                                      .normal,
-                                                            ),
-                                                  ),
+                                                Text(
+                                                  notificationItem.title,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Fira Sans',
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 4, 0, 10),
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 10.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
                                                       Text(
                                                         dateTimeFormat(
-                                                          'd.MM.y',
+                                                          'D.MM.y',
                                                           notificationItem
                                                               .date!,
                                                           locale:
@@ -430,22 +424,21 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                                       context)
                                                                   .languageCode,
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Fira Sans',
-                                                                  fontSize: 12,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Fira Sans',
+                                                              fontSize: 12.0,
+                                                            ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                                 Container(
                                                   width: double.infinity,
-                                                  height: 1,
+                                                  height: 1.0,
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFFE8EAEC),
                                                   ),
@@ -455,30 +448,30 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(1, 0),
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: Container(
-                                              width: 30,
-                                              height: 40,
+                                              width: 30.0,
+                                              height: 40.0,
                                               decoration: BoxDecoration(
                                                 gradient: LinearGradient(
                                                   colors: [
                                                     Color(0x00FFFFFF),
                                                     Colors.white
                                                   ],
-                                                  stops: [0, 1],
+                                                  stops: [0.0, 1.0],
                                                   begin: AlignmentDirectional(
-                                                      -1, 0),
+                                                      -1.0, 0.0),
                                                   end: AlignmentDirectional(
-                                                      1, 0),
+                                                      1.0, 0),
                                                 ),
                                               ),
                                               child: Align(
-                                                alignment:
-                                                    AlignmentDirectional(1, 0),
+                                                alignment: AlignmentDirectional(
+                                                    1.0, 0.0),
                                                 child: Icon(
                                                   Icons.chevron_right,
                                                   color: Colors.black,
-                                                  size: 24,
+                                                  size: 24.0,
                                                 ),
                                               ),
                                             ),
