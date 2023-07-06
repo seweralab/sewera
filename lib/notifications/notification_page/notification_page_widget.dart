@@ -170,7 +170,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                     0.0, 0.0, 0.0, 8.0),
                                 child: Text(
                                   dateTimeFormat(
-                                    'd.M.y',
+                                    'dd.MM.y',
                                     notificationPageNotificationRecord.date!,
                                     locale: FFLocalizations.of(context)
                                         .languageCode,

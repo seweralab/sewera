@@ -416,7 +416,7 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                                     children: [
                                                       Text(
                                                         dateTimeFormat(
-                                                          'D.MM.y',
+                                                          'dd.MM.y',
                                                           notificationItem
                                                               .date!,
                                                           locale:

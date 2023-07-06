@@ -149,6 +149,8 @@ class _NotificationConfigPageWidgetState
                                         valueOrDefault<bool>(
                                             currentUserDocument?.push, false),
                                     onChanged: (newValue) async {
+                                      print(newValue);
+
                                       setState(() => _model
                                           .switchListTileValue1 = newValue!);
                                     },
