@@ -191,102 +191,113 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
       currentIndex = 3;
     }
     return Scaffold(
-      body: Stack(
-        children: [
-          // ignore: unnecessary_null_comparison
-          if (_currentPageName != null) tabs[_currentPageName]!,
-          if (_isOverlayVisible) _buildOverlay(),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() {
-          if (i == 3) {
-            // _toggleOverlay();
-            if (_isOverlayVisible) {
-              _hideOverlay();
-            } else {
-              _showOverlay();
-            }
-          } else {
-            _currentPage = null;
-            _hideOverlay();
-            _currentPageName = tabs.keys.toList()[i];
-          }
-        }),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedLabelStyle: TextStyle(
-            fontWeight: FontWeight
-                .w500), // Установить жирный стиль для выбранного элемента
-        unselectedLabelStyle: TextStyle(
-            fontWeight: FontWeight
-                .w500), // Установить обычный стиль для невыбранных элементов
-        unselectedFontSize: 14.0,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/home.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            activeIcon: SvgPicture.asset(
-              'assets/images/home_active.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            label: 'Главный',
-            tooltip: '',
+        body: Stack(
+          children: [
+            // ignore: unnecessary_null_comparison
+            if (_currentPageName != null) tabs[_currentPageName]!,
+            if (_isOverlayVisible) _buildOverlay(),
+          ],
+        ),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 7,
+                offset: Offset(0, -3),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/orders.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            activeIcon: SvgPicture.asset(
-              'assets/images/orders_active.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            label: 'Заказы',
-            tooltip: '',
+          child: BottomNavigationBar(
+            elevation: 10,
+            currentIndex: currentIndex,
+            onTap: (i) => setState(() {
+              if (i == 3) {
+                // _toggleOverlay();
+                if (_isOverlayVisible) {
+                  _hideOverlay();
+                } else {
+                  _showOverlay();
+                }
+              } else {
+                _currentPage = null;
+                _hideOverlay();
+                _currentPageName = tabs.keys.toList()[i];
+              }
+            }),
+            backgroundColor: Colors.white,
+            selectedItemColor: FlutterFlowTheme.of(context).primary,
+            unselectedItemColor: Color(0x8A000000),
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            selectedLabelStyle: TextStyle(
+                fontWeight: FontWeight
+                    .w500), // Установить жирный стиль для выбранного элемента
+            unselectedLabelStyle: TextStyle(
+                fontWeight: FontWeight
+                    .w500), // Установить обычный стиль для невыбранных элементов
+            unselectedFontSize: 14.0,
+            type: BottomNavigationBarType.fixed,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/images/home.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                activeIcon: SvgPicture.asset(
+                  'assets/images/home_active.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                label: 'Главный',
+                tooltip: '',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/images/orders.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                activeIcon: SvgPicture.asset(
+                  'assets/images/orders_active.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                label: 'Заказы',
+                tooltip: '',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/images/profile.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                activeIcon: SvgPicture.asset(
+                  'assets/images/profile_active.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                label: 'Профиль',
+                tooltip: '',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/images/support.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                activeIcon: SvgPicture.asset(
+                  'assets/images/support_active.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+                label: 'Поддержка',
+                tooltip: '',
+              )
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/profile.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            activeIcon: SvgPicture.asset(
-              'assets/images/profile_active.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            label: 'Профиль',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/support.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            activeIcon: SvgPicture.asset(
-              'assets/images/support_active.svg',
-              height: 24.0,
-              width: 24.0,
-            ),
-            label: 'Поддержка',
-            tooltip: '',
-          )
-        ],
-      ),
-    );
+        ));
   }
 
   void _toggleOverlay() {

@@ -126,7 +126,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: FutureBuilder<List<OrdersRecord>>(
                         future: (_model.firestoreRequestCompleter ??=
                                 Completer<List<OrdersRecord>>()
@@ -171,7 +171,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          18.0, 0.0, 18.0, 12.0),
+                                          18.0, 0.0, 18.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -219,7 +219,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 24.0),
+                                        0.0, 0.0, 0.0, 34.0),
                                     child: Builder(
                                       builder: (context) {
                                         final unformed =
@@ -444,7 +444,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 30.0, 0.0),
+                                                  0.0, 0.0, 16.0, 0.0),
                                           child: Image.network(
                                             columnCatalogRecord
                                                 .icon.first.downloadURL,
@@ -508,7 +508,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                           return Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 16.0),
+                                                    0.0, 0.0, 0.0, 30.0),
                                             child: Container(
                                               width: 150.0,
                                               child: Stack(
