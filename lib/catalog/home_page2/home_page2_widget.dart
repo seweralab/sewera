@@ -444,7 +444,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 16.0, 0.0),
+                                                  0.0, 0.0, 30.0, 0.0),
                                           child: Image.network(
                                             columnCatalogRecord
                                                 .icon.first.downloadURL,

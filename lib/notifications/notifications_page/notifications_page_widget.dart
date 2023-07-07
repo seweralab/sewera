@@ -4,10 +4,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'notifications_page_model.dart';
 export 'notifications_page_model.dart';
 
@@ -28,6 +31,13 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationsPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await currentUserReference!.update(createUsersRecordData(
+        newNotification: false,
+      ));
+    });
   }
 
   @override

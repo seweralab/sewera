@@ -220,6 +220,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                         enablePinAutofill: true,
                                         errorTextSpace: 16,
                                         showCursor: false,
+                                        keyboardType: TextInputType.phone,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,

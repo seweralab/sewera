@@ -114,9 +114,9 @@ class _TopNotificationWidgetState extends State<TopNotificationWidget> {
                         ),
                       ),
                     ),
-                    if ((currentUserDocument?.newNotifications?.toList() ?? [])
-                            .length >
-                        0)
+                    if (valueOrDefault<bool>(
+                            currentUserDocument?.newNotification, false) ==
+                        true)
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 10.0),
