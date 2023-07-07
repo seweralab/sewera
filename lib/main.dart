@@ -209,7 +209,6 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
             ],
           ),
           child: BottomNavigationBar(
-            elevation: 10,
             currentIndex: currentIndex,
             onTap: (i) => setState(() {
               if (i == 3) {
