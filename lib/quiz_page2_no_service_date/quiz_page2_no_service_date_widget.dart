@@ -456,7 +456,7 @@ class _QuizPage2NoServiceDateWidgetState
                                     return;
                                   }
                                 },
-                                text: 'Продолжить1',
+                                text: 'Продолжить',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
