@@ -158,7 +158,7 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Ошибка входа'),
+          content: Text(e.message!),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
