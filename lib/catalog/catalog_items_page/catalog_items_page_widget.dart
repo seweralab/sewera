@@ -326,10 +326,10 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                           padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      0.0,
-                                                                      3.0,
-                                                                      0.0,
-                                                                      3.0),
+                                                                      0,
+                                                                      10,
+                                                                      0,
+                                                                      10),
                                                           child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -339,11 +339,10 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                     .spaceBetween,
                                                             children: [
                                                               Container(
-                                                                width: MediaQuery.of(
+                                                                width: MediaQuery.sizeOf(
                                                                             context)
-                                                                        .size
                                                                         .width *
-                                                                    0.9,
+                                                                    0.85,
                                                                 decoration:
                                                                     BoxDecoration(
                                                                   color: FlutterFlowTheme.of(
@@ -369,9 +368,24 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                       ),
                                                                 ),
                                                               ),
+                                                              ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8),
+                                                                child:
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                  'assets/images/arr_right.svg',
+                                                                  width: 8,
+                                                                  height: 12,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
                                                             ],
                                                           ),
-                                                        ),
+                                                        )
                                                       ],
                                                     ),
                                                   ),

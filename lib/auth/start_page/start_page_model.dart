@@ -14,7 +14,7 @@ class StartPageModel extends FlutterFlowModel {
   final unfocusNode = FocusNode();
   // State field(s) for phonefield widget.
   TextEditingController? phonefieldController;
-  final phonefieldMask = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
+  final phonefieldMask = SpecialMaskTextInputFormatter();
   String? Function(BuildContext, String?)? phonefieldControllerValidator;
 
   /// Initialization and disposal methods.
@@ -29,4 +29,40 @@ class StartPageModel extends FlutterFlowModel {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+}
+
+class SpecialMaskTextInputFormatter extends MaskTextInputFormatter {
+  static String maskA = "+# (###) ###-##-##";
+  static String maskB = "+7 (###) ###-##-##";
+  static String maskC = "+7 (###) ###-##-##";
+
+  SpecialMaskTextInputFormatter({String? initialText})
+      : super(
+            mask: maskA,
+            filter: {"#": RegExp('[0-9]')},
+            initialText: initialText);
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    String firstChar =
+        newValue.text.isNotEmpty ? newValue.text.substring(0, 1) : "";
+
+    if (firstChar == "7") {
+      print(newValue.text.substring(1));
+      newValue = TextEditingValue(
+        text: "+7" + newValue.text.substring(1),
+        selection: newValue.selection.copyWith(baseOffset: 2, extentOffset: 2),
+      );
+      updateMask(mask: maskA);
+    } else if (firstChar == "9") {
+      newValue = TextEditingValue(
+        text: "+79" + newValue.text.substring(1),
+        selection: newValue.selection.copyWith(baseOffset: 3, extentOffset: 3),
+      );
+      updateMask(mask: maskB);
+    }
+    print(newValue);
+
+    return super.formatEditUpdate(oldValue, newValue);
+  }
 }

@@ -187,10 +187,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
                                                     TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType
-                                                          .rightToLeft,
+                                                  hasTransition: false,
                                                 ),
                                               },
                                             );

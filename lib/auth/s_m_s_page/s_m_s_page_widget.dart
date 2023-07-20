@@ -30,7 +30,7 @@ class SMSPageWidget extends StatefulWidget {
 
 class _SMSPageWidgetState extends State<SMSPageWidget> {
   late SMSPageModel _model;
-
+  FocusNode _focusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -183,107 +183,124 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 5, 0, 30),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF3F4F5),
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: valueOrDefault<Color>(
-                                        functions
-                                            .pincodeBorderErr(_model.showErr),
-                                        Color(0xFF82959C),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () {
+                                    FocusScope.of(context)
+                                        .requestFocus(_focusNode);
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFF3F4F5),
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: valueOrDefault<Color>(
+                                          functions
+                                              .pincodeBorderErr(_model.showErr),
+                                          Color(0xFF82959C),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 15, 0, 0),
-                                      child: PinCodeTextField(
-                                        autoDisposeControllers: false,
-                                        appContext: context,
-                                        length: 6,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Fira Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        enableActiveFill: false,
-                                        autoFocus: true,
-                                        enablePinAutofill: true,
-                                        errorTextSpace: 16,
-                                        showCursor: false,
-                                        keyboardType: TextInputType.phone,
-                                        cursorColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        obscureText: false,
-                                        hintCharacter: '●',
-                                        pinTheme: PinTheme(
-                                          fieldHeight: 30,
-                                          fieldWidth: 20,
-                                          borderWidth: 0,
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          shape: PinCodeFieldShape.circle,
-                                          activeColor: Color(0xFFF3F4F5),
-                                          inactiveColor: Color(0xFFF3F4F5),
-                                          selectedColor: Color(0xFFF3F4F5),
-                                          activeFillColor: Color(0xFFF3F4F5),
-                                          inactiveFillColor: Color(0xFFF3F4F5),
-                                          selectedFillColor: Color(0xFFF3F4F5),
-                                        ),
-                                        controller: _model.pinCodeController,
-                                        onChanged: (_) {},
-                                        onCompleted: (_) async {
-                                          Function() _navigate = () {};
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          final smsCodeVal =
-                                              _model.pinCodeController!.text;
-                                          if (smsCodeVal == null ||
-                                              smsCodeVal.isEmpty) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                    'Введите код подтверждения'),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 15, 0, 0),
+                                        child: PinCodeTextField(
+                                          focusNode:
+                                              _focusNode, // Устанавливаем фокус на поле пин-кода
+                                          autoDisposeControllers: false,
+                                          appContext: context,
+                                          length: 6,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Fira Sans',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
                                               ),
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          enableActiveFill: false,
+                                          autoFocus: true,
+                                          enablePinAutofill: true,
+                                          errorTextSpace: 16,
+                                          showCursor: false,
+                                          backgroundColor: Color(0xFFF3F4F5),
+                                          keyboardType: TextInputType.phone,
+                                          cursorColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          obscureText: false,
+                                          hintCharacter: '●',
+                                          pinTheme: PinTheme(
+                                            fieldHeight: 40,
+                                            fieldWidth: 20,
+                                            borderWidth: 0,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            shape: PinCodeFieldShape.circle,
+                                            activeColor: Color(0xFFF3F4F5),
+                                            inactiveColor: Color(0xFFF3F4F5),
+                                            selectedColor: Color(0xFFF3F4F5),
+                                            activeFillColor: Color(0xFFF3F4F5),
+                                            inactiveFillColor:
+                                                Color(0xFFF3F4F5),
+                                            selectedFillColor:
+                                                Color(0xFFF3F4F5),
+                                          ),
+                                          controller: _model.pinCodeController,
+                                          onChanged: (_) {},
+                                          onCompleted: (_) async {
+                                            Function() _navigate = () {};
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            final smsCodeVal =
+                                                _model.pinCodeController!.text;
+                                            if (smsCodeVal == null ||
+                                                smsCodeVal.isEmpty) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                      'Введите код подтверждения'),
+                                                ),
+                                              );
+                                              return;
+                                            }
+                                            final phoneVerifiedUser =
+                                                await authManager.verifySmsCode(
+                                              context: context,
+                                              smsCode: smsCodeVal,
                                             );
-                                            return;
-                                          }
-                                          final phoneVerifiedUser =
-                                              await authManager.verifySmsCode(
-                                            context: context,
-                                            smsCode: smsCodeVal,
-                                          );
-                                          if (phoneVerifiedUser == null) {
-                                            return;
-                                          }
+                                            if (phoneVerifiedUser == null) {
+                                              return;
+                                            }
 
-                                          _navigate = () => context.goNamedAuth(
-                                              'HomePage2', context.mounted);
-                                          if (!loggedIn) {
-                                            setState(() {
-                                              _model.showSendBtn = false;
-                                              _model.showTimer = true;
-                                            });
-                                          }
+                                            _navigate = () =>
+                                                context.goNamedAuth('HomePage2',
+                                                    context.mounted);
+                                            if (!loggedIn) {
+                                              setState(() {
+                                                _model.showSendBtn = false;
+                                                _model.showTimer = true;
+                                              });
+                                            }
 
-                                          _navigate();
-                                        },
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        validator: _model
-                                            .pinCodeControllerValidator
-                                            .asValidator(context),
+                                            _navigate();
+                                          },
+                                          autovalidateMode: AutovalidateMode
+                                              .onUserInteraction,
+                                          validator: _model
+                                              .pinCodeControllerValidator
+                                              .asValidator(context),
+                                        ),
                                       ),
                                     ),
                                   ),

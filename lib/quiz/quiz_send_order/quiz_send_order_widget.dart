@@ -791,6 +791,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         childAspectRatio: 1,
                                                       ),
                                                       shrinkWrap: true,
+                                                      physics:
+                                                          NeverScrollableScrollPhysics(),
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount:
