@@ -304,26 +304,16 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                             child: InkWell(
                                               onTap: () async {
                                                 context.pushNamed(
-                                                  'QuizNoService',
-                                                  queryParameters: {
-                                                    'customServiceName':
-                                                        serializeParam(
-                                                      _model
-                                                          .searchFieldController
-                                                          .text,
-                                                      ParamType.String,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    kTransitionInfoKey:
-                                                        TransitionInfo(
-                                                      hasTransition: true,
-                                                      transitionType:
-                                                          PageTransitionType
-                                                              .rightToLeft,
-                                                    ),
-                                                  },
-                                                );
+                                                    'QuizNoService',
+                                                    queryParameters: {
+                                                      'customServiceName':
+                                                          serializeParam(
+                                                        _model
+                                                            .searchFieldController
+                                                            .text,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls);
                                               },
                                               borderRadius: BorderRadius.circular(
                                                   40), // Установите радиус закругления
@@ -396,13 +386,6 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.rightToLeft,
-                                      ),
-                                    },
                                   );
                                 },
                                 borderRadius: BorderRadius.circular(

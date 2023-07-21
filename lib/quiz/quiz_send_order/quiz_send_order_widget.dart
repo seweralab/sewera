@@ -107,16 +107,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed(
-                                'QuizComment',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType:
-                                        PageTransitionType.leftToRight,
-                                  ),
-                                },
-                              );
+                              context.pushNamed('QuizComment');
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,

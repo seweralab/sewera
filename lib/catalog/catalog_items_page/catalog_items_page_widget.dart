@@ -409,22 +409,11 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                         Colors.transparent,
                                                     onTap: () async {
                                                       context.pushNamed(
-                                                        'QuizNoService',
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          kTransitionInfoKey:
-                                                              TransitionInfo(
-                                                            hasTransition: true,
-                                                            transitionType:
-                                                                PageTransitionType
-                                                                    .rightToLeft,
-                                                          ),
-                                                        },
-                                                      );
+                                                          'QuizNoService');
                                                     },
                                                     child: Container(
                                                       width: double.infinity,
-                                                      height: 48.0,
+                                                      height: 58.0,
                                                       decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFFF3F4F5),
@@ -436,7 +425,7 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    14.0,
+                                                                    23.0,
                                                                     14.0,
                                                                     14.0,
                                                                     14.0),
@@ -450,29 +439,22 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          14.0,
+                                                                          12.0,
                                                                           0.0),
                                                               child: SvgPicture
                                                                   .asset(
                                                                 'assets/images/noservice.svg',
-                                                                width: 20.0,
-                                                                height: 20.0,
+                                                                width: 24.0,
+                                                                height: 24.0,
                                                                 fit: BoxFit
                                                                     .cover,
                                                               ),
                                                             ),
                                                             Text(
-                                                              'Тут нет моей услуги',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Fira Sans',
-                                                                    fontSize:
-                                                                        14.0,
-                                                                  ),
-                                                            ),
+                                                                'Тут нет моей услуги',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium),
                                                           ],
                                                         ),
                                                       ),

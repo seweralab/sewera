@@ -206,27 +206,16 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                             false;
 
                                                         context.pushNamed(
-                                                          'QuizPage2',
-                                                          queryParameters: {
-                                                            'serviceRef':
-                                                                serializeParam(
-                                                              widget.serviceRef,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                          }.withoutNulls,
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                TransitionInfo(
-                                                              hasTransition:
-                                                                  true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .leftToRight,
-                                                            ),
-                                                          },
-                                                        );
+                                                            'QuizPage2',
+                                                            queryParameters: {
+                                                              'serviceRef':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .serviceRef,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                            }.withoutNulls);
                                                       } else {
                                                         await showModalBottomSheet(
                                                           isScrollControlled:
@@ -631,18 +620,8 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                           .currentQuizDeadline,
                                                     ));
 
-                                                context.goNamed(
-                                                  'QuizSelectAddr',
-                                                  extra: <String, dynamic>{
-                                                    kTransitionInfoKey:
-                                                        TransitionInfo(
-                                                      hasTransition: true,
-                                                      transitionType:
-                                                          PageTransitionType
-                                                              .rightToLeft,
-                                                    ),
-                                                  },
-                                                );
+                                                context
+                                                    .goNamed('QuizSelectAddr');
 
                                                 return;
                                               }
@@ -749,28 +728,17 @@ class _QuizPage2WidgetState extends State<QuizPage2Widget>
                                                                 false;
 
                                                             context.pushNamed(
-                                                              'QuizPage2',
-                                                              queryParameters: {
-                                                                'serviceRef':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .serviceRef,
-                                                                  ParamType
-                                                                      .DocumentReference,
-                                                                ),
-                                                              }.withoutNulls,
-                                                              extra: <String,
-                                                                  dynamic>{
-                                                                kTransitionInfoKey:
-                                                                    TransitionInfo(
-                                                                  hasTransition:
-                                                                      true,
-                                                                  transitionType:
-                                                                      PageTransitionType
-                                                                          .leftToRight,
-                                                                ),
-                                                              },
-                                                            );
+                                                                'QuizPage2',
+                                                                queryParameters:
+                                                                    {
+                                                                  'serviceRef':
+                                                                      serializeParam(
+                                                                    widget
+                                                                        .serviceRef,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                }.withoutNulls);
                                                           },
                                                           child: Icon(
                                                             Icons

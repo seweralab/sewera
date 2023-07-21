@@ -575,7 +575,7 @@ class TransitionInfo {
   const TransitionInfo({
     required this.hasTransition,
     this.transitionType = PageTransitionType.fade,
-    this.duration = const Duration(milliseconds: 300),
+    this.duration = const Duration(milliseconds: 50),
     this.alignment,
   });
 

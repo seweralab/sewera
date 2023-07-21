@@ -133,33 +133,16 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                   onTap: () async {
                                     if (quizSelectAddrOrdersRecord.service !=
                                         null) {
-                                      context.goNamed(
-                                        'QuizPage2',
-                                        queryParameters: {
-                                          'serviceRef': serializeParam(
-                                            quizSelectAddrOrdersRecord.service,
-                                            ParamType.DocumentReference,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.leftToRight,
-                                          ),
-                                        },
-                                      );
+                                      context.goNamed('QuizPage2',
+                                          queryParameters: {
+                                            'serviceRef': serializeParam(
+                                              quizSelectAddrOrdersRecord
+                                                  .service,
+                                              ParamType.DocumentReference,
+                                            ),
+                                          }.withoutNulls);
                                     } else {
-                                      context.goNamed(
-                                        'QuizPage2NoServiceDate',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.leftToRight,
-                                          ),
-                                        },
-                                      );
+                                      context.goNamed('QuizPage2NoServiceDate');
                                     }
                                   },
                                   child: Row(

@@ -279,16 +279,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed(
-                                        'EditProfilePage',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.rightToLeft,
-                                          ),
-                                        },
-                                      );
+                                      context.pushNamed('EditProfilePage');
                                     },
                                     child: Container(
                                       width: 30,

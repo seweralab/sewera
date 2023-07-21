@@ -508,15 +508,7 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                             .currentOrder!
                             .update(ordersUpdateData);
 
-                        context.goNamed(
-                          'QuizSendOrder',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.rightToLeft,
-                            ),
-                          },
-                        );
+                        context.goNamed('QuizSendOrder');
                       } else {
                         setState(() {
                           _model.showInputErr = true;

@@ -374,22 +374,13 @@ class _NotificationsPageWidgetState extends State<NotificationsPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'NotificationPage',
-                                          queryParameters: {
-                                            'notication': serializeParam(
-                                              notificationItem.reference,
-                                              ParamType.DocumentReference,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('NotificationPage',
+                                            queryParameters: {
+                                              'notication': serializeParam(
+                                                notificationItem.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls);
                                       },
                                       child: Stack(
                                         alignment:

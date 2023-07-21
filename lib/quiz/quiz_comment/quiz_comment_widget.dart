@@ -114,16 +114,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.goNamed(
-                                  'QuizSelectAddr',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType:
-                                          PageTransitionType.leftToRight,
-                                    ),
-                                  },
-                                );
+                                context.goNamed('QuizSelectAddr');
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,

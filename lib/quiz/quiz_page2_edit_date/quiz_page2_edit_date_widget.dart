@@ -342,15 +342,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                 deadline: _model.selected,
                               ));
 
-                          context.goNamed(
-                            'QuizSendOrder',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.rightToLeft,
-                              ),
-                            },
-                          );
+                          context.goNamed('QuizSendOrder');
 
                           return;
                         }

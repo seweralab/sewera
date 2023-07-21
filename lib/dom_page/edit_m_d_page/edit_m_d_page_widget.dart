@@ -153,16 +153,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'EditMDNamePage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('EditMDNamePage');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -289,16 +280,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'EditMDTypePage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('EditMDTypePage');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -425,16 +407,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'EditMDAddrPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('EditMDAddrPage');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -569,16 +542,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'EditMDAreaPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('EditMDAreaPage');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -705,16 +669,7 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'EditMDSepticPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .rightToLeft,
-                                            ),
-                                          },
-                                        );
+                                        context.pushNamed('EditMDSepticPage');
                                       },
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,

@@ -436,16 +436,7 @@ class _QuizPage2NoServiceDateWidgetState
                                                 .currentQuizDeadline,
                                           ));
 
-                                      context.goNamed(
-                                        'QuizSelectAddr',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.rightToLeft,
-                                          ),
-                                        },
-                                      );
+                                      context.goNamed('QuizSelectAddr');
 
                                       return;
                                     }
