@@ -505,6 +505,7 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                             (rowIndex) {
                                           final rowServicesRecord =
                                               rowServicesRecordList[rowIndex];
+
                                           return Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -703,14 +704,18 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                             children: [
                                                               if (rowServicesRecord
                                                                           .img
-                                                                          .first
-                                                                          .downloadURL !=
-                                                                      null &&
-                                                                  rowServicesRecord
-                                                                          .img
-                                                                          .first
-                                                                          .downloadURL !=
-                                                                      '')
+                                                                          .length >
+                                                                      0 &&
+                                                                  (rowServicesRecord
+                                                                              .img
+                                                                              .first
+                                                                              .downloadURL !=
+                                                                          null &&
+                                                                      rowServicesRecord
+                                                                              .img
+                                                                              .first
+                                                                              .downloadURL !=
+                                                                          ''))
                                                                 ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -731,15 +736,9 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                   ),
                                                                 ),
                                                               if (rowServicesRecord
-                                                                          .img
-                                                                          .first
-                                                                          .downloadURL ==
-                                                                      null ||
-                                                                  rowServicesRecord
-                                                                          .img
-                                                                          .first
-                                                                          .downloadURL ==
-                                                                      '')
+                                                                      .img
+                                                                      .length ==
+                                                                  0)
                                                                 ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius

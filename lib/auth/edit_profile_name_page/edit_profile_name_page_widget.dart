@@ -228,8 +228,12 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: 'Введите ваше имя',
-                                hintStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Fira Sans',
+                                      fontSize: 16,
+                                    ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
@@ -280,8 +284,12 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: 'Введите ваше отчество',
-                                hintStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Fira Sans',
+                                      fontSize: 16,
+                                    ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),

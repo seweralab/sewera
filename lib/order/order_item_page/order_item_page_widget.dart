@@ -1053,17 +1053,27 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                                     _model.reorder!.reference;
                                 FFAppState().currentQuizIndex = 0;
                               });
-
-                              context.goNamed(
-                                'QuizPage2',
-                                queryParameters: {
-                                  'serviceRef': serializeParam(
-                                    orderItemPageOrdersRecord.service,
-                                    ParamType.DocumentReference,
-                                  ),
-                                }.withoutNulls,
-                              );
-
+                              if (orderItemPageOrdersRecord.service != null) {
+                                context.goNamed(
+                                  'QuizPage2',
+                                  queryParameters: {
+                                    'serviceRef': serializeParam(
+                                      orderItemPageOrdersRecord.service,
+                                      ParamType.DocumentReference,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              } else {
+                                context.pushNamed(
+                                  'QuizNoService',
+                                  queryParameters: {
+                                    'customServiceName': serializeParam(
+                                      orderItemPageOrdersRecord.servicename,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
                               setState(() {});
                             },
                             text: 'Повторить заказ',
