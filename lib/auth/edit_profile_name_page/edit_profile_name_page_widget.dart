@@ -176,7 +176,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     .bodySmall
                                     .override(
                                       fontFamily: 'Fira Sans',
-                                      fontSize: 16.0,
+                                      fontSize: 14.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -212,7 +212,12 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                 fillColor:
                                     FlutterFlowTheme.of(context).primaryBtnText,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Fira Sans',
+                                    fontSize: 14,
+                                  ),
                               validator: _model.surnameFieldControllerValidator
                                   .asValidator(context),
                             ),
@@ -232,7 +237,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     .bodySmall
                                     .override(
                                       fontFamily: 'Fira Sans',
-                                      fontSize: 16,
+                                      fontSize: 14,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -268,7 +273,12 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                 fillColor:
                                     FlutterFlowTheme.of(context).primaryBtnText,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Fira Sans',
+                                    fontSize: 14,
+                                  ),
                               validator: _model.nameFieldControllerValidator
                                   .asValidator(context),
                             ),
@@ -288,7 +298,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                     .bodySmall
                                     .override(
                                       fontFamily: 'Fira Sans',
-                                      fontSize: 16,
+                                      fontSize: 14,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -324,7 +334,12 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                 fillColor:
                                     FlutterFlowTheme.of(context).primaryBtnText,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Fira Sans',
+                                    fontSize: 14,
+                                  ),
                               validator: _model
                                   .patronymicFieldControllerValidator
                                   .asValidator(context),
