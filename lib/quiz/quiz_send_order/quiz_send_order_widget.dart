@@ -460,7 +460,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Когда нужно указать услугу',
+                                                    'Когда нужно оказать услугу',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -788,6 +788,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         childAspectRatio: 1,
                                                       ),
                                                       shrinkWrap: true,
+                                                      physics:
+                                                          NeverScrollableScrollPhysics(),
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount:

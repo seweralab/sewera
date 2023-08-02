@@ -410,7 +410,7 @@ class _QuizPage2NoServiceDateWidgetState
                                               padding: MediaQuery.of(context)
                                                   .viewInsets,
                                               child: Container(
-                                                height: 460.0,
+                                                height: 500.0,
                                                 child: Scaffold(
                                                   backgroundColor:
                                                       Colors.transparent,

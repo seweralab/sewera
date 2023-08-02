@@ -285,7 +285,10 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                               smsCode: smsCodeVal,
                                             );
                                             if (phoneVerifiedUser == null) {
-                                              _model.showErr = true;
+                                              setState(() {
+                                                _model.showErr = true;
+                                              });
+
                                               return;
                                             }
 

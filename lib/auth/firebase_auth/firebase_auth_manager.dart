@@ -262,7 +262,7 @@ class FirebaseAuthManager extends AuthManager
           ? null
           : SeweraFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
-      print(e);
+      // print(e.message);
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       // ScaffoldMessenger.of(context).showSnackBar(
       //   SnackBar(content: Text(e.message as String)),
