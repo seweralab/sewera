@@ -9,7 +9,6 @@ import '/flutter_flow/upload_data.dart';
 import '/widgets/close_quiz/close_quiz_widget.dart';
 import '/widgets/top_notification/top_notification_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -50,11 +49,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return FutureBuilder<OrdersRecord>(
-      future: (_model.documentRequestCompleter ??= Completer<OrdersRecord>()
-            ..complete(
-                OrdersRecord.getDocumentOnce(FFAppState().currentOrder!)))
-          .future,
+    return StreamBuilder<OrdersRecord>(
+      stream: OrdersRecord.getDocument(FFAppState().currentOrder!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -65,7 +61,9 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                 width: 40,
                 height: 40,
                 child: CircularProgressIndicator(
-                  color: FlutterFlowTheme.of(context).primary,
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
               ),
             ),
@@ -107,7 +105,16 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('QuizComment');
+                              context.pushNamed(
+                                'QuizComment',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.leftToRight,
+                                  ),
+                                },
+                              );
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -156,8 +163,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                 .requestFocus(
                                                     _model.unfocusNode),
                                             child: Padding(
-                                              padding: MediaQuery.of(context)
-                                                  .viewInsets,
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
                                               child: CloseQuizWidget(),
                                             ),
                                           );
@@ -364,11 +371,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                           .spaceBetween,
                                                   children: [
                                                     Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.8,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.8,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
                                                                 .of(context)
@@ -511,10 +517,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.8,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.8,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -598,10 +604,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.8,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.8,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -674,10 +680,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.8,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.8,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -782,8 +788,6 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                         childAspectRatio: 1,
                                                       ),
                                                       shrinkWrap: true,
-                                                      physics:
-                                                          NeverScrollableScrollPhysics(),
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       itemCount:
@@ -836,6 +840,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                 type: PageTransitionType.fade,
                                                                                 child: FlutterFlowExpandedImageView(
                                                                                   image: CachedNetworkImage(
+                                                                                    fadeInDuration: Duration(milliseconds: 500),
+                                                                                    fadeOutDuration: Duration(milliseconds: 500),
                                                                                     imageUrl: mdPhotosEditItem,
                                                                                     fit: BoxFit.contain,
                                                                                   ),
@@ -856,6 +862,8 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(8),
                                                                               child: CachedNetworkImage(
+                                                                                fadeInDuration: Duration(milliseconds: 500),
+                                                                                fadeOutDuration: Duration(milliseconds: 500),
                                                                                 imageUrl: mdPhotosEditItem,
                                                                                 width: 100,
                                                                                 height: 100,
@@ -903,8 +911,6 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                     mdPhotosEditItem
                                                                                   ]),
                                                                                 });
-                                                                                setState(() => _model.documentRequestCompleter = null);
-                                                                                await _model.waitForDocumentRequestCompleted();
                                                                               },
                                                                               child: Icon(
                                                                                 Icons.close_sharp,
@@ -964,6 +970,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                                 true);
                                                                         var selectedUploadedFiles =
                                                                             <FFUploadedFile>[];
+
                                                                         var downloadUrls =
                                                                             <String>[];
                                                                         try {
@@ -1015,11 +1022,6 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                                                                               .uploadedFileUrl
                                                                         ]),
                                                                       });
-                                                                      setState(() =>
-                                                                          _model.documentRequestCompleter =
-                                                                              null);
-                                                                      await _model
-                                                                          .waitForDocumentRequestCompleted();
                                                                     },
                                                                     child:
                                                                         Material(

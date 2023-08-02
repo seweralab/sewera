@@ -216,7 +216,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Fira Sans',
-                                    fontSize: 14,
+                                    fontSize: 16,
                                   ),
                               validator: _model.surnameFieldControllerValidator
                                   .asValidator(context),
@@ -277,7 +277,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Fira Sans',
-                                    fontSize: 14,
+                                    fontSize: 16,
                                   ),
                               validator: _model.nameFieldControllerValidator
                                   .asValidator(context),
@@ -338,7 +338,7 @@ class _EditProfileNamePageWidgetState extends State<EditProfileNamePageWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Fira Sans',
-                                    fontSize: 14,
+                                    fontSize: 16,
                                   ),
                               validator: _model
                                   .patronymicFieldControllerValidator

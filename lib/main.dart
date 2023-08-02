@@ -408,7 +408,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
                               ),
                               GestureDetector(
                                 onTap: () async =>
-                                    await launchURL('tel:+79263345863'),
+                                    await launchURL('tel:+79251650885'),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 16),

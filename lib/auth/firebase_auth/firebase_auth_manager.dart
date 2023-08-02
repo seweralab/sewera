@@ -75,7 +75,7 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text(
-                  'Too long since most recent sign in. Sign in again before deleting your account.')),
+                  'Слишком много времени прошло с момента последнего входа в систему. Войдите в систему еще раз, прежде чем удалять свою учетную запись.')),
         );
       }
     }
@@ -262,10 +262,11 @@ class FirebaseAuthManager extends AuthManager
           ? null
           : SeweraFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
+      print(e);
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e as String)),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text(e.message as String)),
+      // );
       return null;
     }
   }

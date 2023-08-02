@@ -182,7 +182,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 5, 0, 30),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(7),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -201,15 +201,16 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                         color: valueOrDefault<Color>(
                                           functions
                                               .pincodeBorderErr(_model.showErr),
-                                          Color(0xFF82959C),
+                                          Color.fromARGB(0, 255, 255, 255),
                                         ),
+                                        width: 1,
                                       ),
                                     ),
                                     child: Align(
                                       alignment: AlignmentDirectional(0, 0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 15, 0, 0),
+                                            0, 17, 0, 3),
                                         child: PinCodeTextField(
                                           focusNode:
                                               _focusNode, // Устанавливаем фокус на поле пин-кода
@@ -230,7 +231,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                           enableActiveFill: false,
                                           autoFocus: true,
                                           enablePinAutofill: true,
-                                          errorTextSpace: 16,
+                                          errorTextSpace: 12,
                                           showCursor: false,
                                           backgroundColor: Color(0xFFF3F4F5),
                                           keyboardType: TextInputType.phone,
@@ -240,7 +241,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                           obscureText: false,
                                           hintCharacter: '●',
                                           pinTheme: PinTheme(
-                                            fieldHeight: 40,
+                                            fieldHeight: 33,
                                             fieldWidth: 20,
                                             borderWidth: 0,
                                             borderRadius:
@@ -256,7 +257,11 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                                 Color(0xFFF3F4F5),
                                           ),
                                           controller: _model.pinCodeController,
-                                          onChanged: (_) {},
+                                          onChanged: (_) async {
+                                            setState(() {
+                                              _model.showErr = false;
+                                            });
+                                          },
                                           onCompleted: (_) async {
                                             Function() _navigate = () {};
                                             GoRouter.of(context)
@@ -280,6 +285,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                               smsCode: smsCodeVal,
                                             );
                                             if (phoneVerifiedUser == null) {
+                                              _model.showErr = true;
                                               return;
                                             }
 
@@ -290,6 +296,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                               setState(() {
                                                 _model.showSendBtn = false;
                                                 _model.showTimer = true;
+                                                _model.showErr = true;
                                               });
                                             }
 
@@ -349,8 +356,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                                   !phoneNumberVal.startsWith('+')) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content:
-                                        Text('Телефонный номер обязателен'),
+                                    content: Text('Введите номер телефона'),
                                   ),
                                 );
                                 return;
@@ -488,6 +494,56 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, 1),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Продолжая, вы соглашаетесь ',
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Fira Sans',
+                                    fontSize: 14,
+                                    lineHeight: 1.25,
+                                  ),
+                        ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await launchURL(
+                                'https://sewera.ru/confidential/app');
+                          },
+                          child: Text(
+                            'на сбор и обработку персональных данных',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Fira Sans',
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],

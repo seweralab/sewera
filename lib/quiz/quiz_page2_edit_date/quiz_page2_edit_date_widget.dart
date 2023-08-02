@@ -93,7 +93,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  18.0, 0.0, 18.0, 0.0),
+                                  18.0, 16.0, 18.0, 14.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -316,7 +316,7 @@ class _QuizPage2EditDateWidgetState extends State<QuizPage2EditDateWidget> {
                                 child: Padding(
                                   padding: MediaQuery.of(context).viewInsets,
                                   child: Container(
-                                    height: 460.0,
+                                    height: 500.0,
                                     child: Scaffold(
                                       body: GestureDetector(
                                         onTap: () => Navigator.pop(context),

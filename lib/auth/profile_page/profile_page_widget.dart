@@ -104,7 +104,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8),
                                                 child: Image.asset(
-                                                  'assets/images/no-photo.jpg',
+                                                  'assets/images/no-photo.png',
                                                   width: 48,
                                                   height: 48,
                                                   fit: BoxFit.cover,
@@ -687,7 +687,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed('onBoardingPage');
+                              await launchURL(
+                                  'https://sewera.ru/confidential/app');
                             },
                             child: Container(
                               width: double.infinity,

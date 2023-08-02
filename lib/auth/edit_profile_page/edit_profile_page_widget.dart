@@ -164,7 +164,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/no-photo.jpg',
+                                              'assets/images/no-photo.png',
                                               width: 48.0,
                                               height: 48.0,
                                               fit: BoxFit.cover,
