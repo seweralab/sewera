@@ -231,7 +231,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
               Align(
                 alignment: AlignmentDirectional(0, 1),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(

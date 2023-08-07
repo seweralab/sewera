@@ -72,7 +72,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 60),
+                    padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 70),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -502,7 +502,7 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
               Align(
                 alignment: AlignmentDirectional(0, 1),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
