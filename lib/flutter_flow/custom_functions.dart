@@ -273,7 +273,7 @@ String jsonMDecode(
   print(jsonval);
   if (jsonval != null && jsonval != '') {
     var jsoned = json.decode(jsonval);
-    return jsoned[field];
+    return jsoned[field].replaceAll(',', ', ');
   } else {
     return '';
   }

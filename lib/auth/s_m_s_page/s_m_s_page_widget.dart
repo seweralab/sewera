@@ -499,56 +499,6 @@ class _SMSPageWidgetState extends State<SMSPageWidget> {
                   ],
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0, 1),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Продолжая, вы соглашаетесь ',
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Fira Sans',
-                                    fontSize: 14,
-                                    lineHeight: 1.25,
-                                  ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await launchURL(
-                                'https://sewera.ru/confidential/app');
-                          },
-                          child: Text(
-                            'на сбор и обработку персональных данных',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Fira Sans',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
