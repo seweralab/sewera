@@ -787,6 +787,166 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                         ],
                                                       ),
                                                     ),
+                                                  if (rowServicesRecord
+                                                          .cashback >
+                                                      0)
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              1, -1),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    10, 0),
+                                                        child: Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          elevation: 0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(8),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(0),
+                                                              topRight: Radius
+                                                                  .circular(8),
+                                                            ),
+                                                          ),
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(8),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(0),
+                                                              topRight: Radius
+                                                                  .circular(8),
+                                                            ),
+                                                            child: Container(
+                                                              width: 64,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                image:
+                                                                    DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .fill,
+                                                                  image: Image
+                                                                      .asset(
+                                                                    'assets/images/cb.png',
+                                                                  ).image,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          8),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          8),
+                                                                ),
+                                                                border:
+                                                                    Border.all(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  width: 0,
+                                                                ),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8,
+                                                                            5,
+                                                                            8,
+                                                                            5),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              2,
+                                                                              0),
+                                                                      child: SvgPicture
+                                                                          .asset(
+                                                                        'assets/images/Union.svg',
+                                                                        width:
+                                                                            12,
+                                                                        height:
+                                                                            12,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      rowServicesRecord
+                                                                          .cashback
+                                                                          .toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Fira Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryBtnText,
+                                                                            fontWeight:
+                                                                                FontWeight.w800,
+                                                                            fontStyle:
+                                                                                FontStyle.italic,
+                                                                          ),
+                                                                    ),
+                                                                    Text(
+                                                                      '%',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Fira Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryBtnText,
+                                                                            fontWeight:
+                                                                                FontWeight.w800,
+                                                                            fontStyle:
+                                                                                FontStyle.italic,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    )
                                                 ],
                                               ),
                                             ),

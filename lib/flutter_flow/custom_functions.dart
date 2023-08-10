@@ -44,7 +44,7 @@ List<String> quizGetRadioDates() {
   final week_month = week.month;
   return [
     'В течение недели, до $week_day ${monthes[week_month]}',
-    'Сегодня, $today_day ${monthes[today_month]}',
+    // 'Сегодня, $today_day ${monthes[today_month]}',
     'Завтра, $tomorrow_day ${monthes[tomorrow_month]}',
     'Выберу день в календаре',
   ];
