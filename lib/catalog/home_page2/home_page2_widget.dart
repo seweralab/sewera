@@ -797,8 +797,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                       child: Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(0, 0,
-                                                                    10, 0),
+                                                                .fromSTEB(
+                                                                    0, 0, 8, 0),
                                                         child: Material(
                                                           color: Colors
                                                               .transparent,
@@ -836,7 +836,6 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                   .circular(8),
                                                             ),
                                                             child: Container(
-                                                              width: 64,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: FlutterFlowTheme.of(
@@ -885,26 +884,8 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
-                                                                          .max,
+                                                                          .min,
                                                                   children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              2,
-                                                                              0),
-                                                                      child: SvgPicture
-                                                                          .asset(
-                                                                        'assets/images/Union.svg',
-                                                                        width:
-                                                                            12,
-                                                                        height:
-                                                                            12,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
                                                                     Text(
                                                                       rowServicesRecord
                                                                           .cashback
@@ -923,21 +904,23 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                                                 FontStyle.italic,
                                                                           ),
                                                                     ),
-                                                                    Text(
-                                                                      '%',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Fira Sans',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryBtnText,
-                                                                            fontWeight:
-                                                                                FontWeight.w800,
-                                                                            fontStyle:
-                                                                                FontStyle.italic,
-                                                                          ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              2,
+                                                                              1,
+                                                                              0,
+                                                                              0),
+                                                                      child: SvgPicture
+                                                                          .asset(
+                                                                        'assets/images/rub.svg',
+                                                                        width:
+                                                                            14,
+                                                                        height:
+                                                                            13,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),

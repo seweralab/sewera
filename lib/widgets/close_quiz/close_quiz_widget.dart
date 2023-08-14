@@ -106,6 +106,7 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                   FFAppState().currentQuizTopErr = false;
                   FFAppState().currentCheckInputQuizErr = false;
                   FFAppState().currentQuizRadieInputErr = false;
+                  FFAppState().currentQuizAddr = '';
                 });
 
                 context.goNamed('HomePage2');
@@ -142,6 +143,7 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
                     FFAppState().currentQuizTopErr = false;
                     FFAppState().currentCheckInputQuizErr = false;
                     FFAppState().currentQuizRadieInputErr = false;
+                    FFAppState().currentQuizAddr = '';
                   });
 
                   context.goNamed('HomePage2');

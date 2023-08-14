@@ -1113,6 +1113,7 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                               ));
                               FFAppState().currentQuizIndex = 0;
                               FFAppState().currentOrder = null;
+                              FFAppState().currentQuizAddr = '';
 
                               context.goNamed('orderSubmittedPage');
                             },
