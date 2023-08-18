@@ -18,7 +18,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+
 import 'index.dart';
+
+AppMetricaConfig get _config =>
+    const AppMetricaConfig('19fafed6-7366-4d54-8cdb-e1a38da6e996', logs: true);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -216,6 +221,7 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
                 if (_isOverlayVisible) {
                   _hideOverlay();
                 } else {
+                  AppMetrica.reportEvent('supportOpen');
                   _showOverlay();
                 }
               } else {
