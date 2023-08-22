@@ -22,10 +22,9 @@ import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 import 'index.dart';
 
-AppMetricaConfig get _config =>
-    const AppMetricaConfig('19fafed6-7366-4d54-8cdb-e1a38da6e996', logs: true);
-
 void main() async {
+  AppMetrica.activate(AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+  AppMetrica.reportEvent('My first AppMetrica event!');
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   await initFirebase();
@@ -221,6 +220,8 @@ class _NavBarPageState extends State<NavBarPage> with TickerProviderStateMixin {
                 if (_isOverlayVisible) {
                   _hideOverlay();
                 } else {
+                  AppMetrica.activate(
+                      AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
                   AppMetrica.reportEvent('supportOpen');
                   _showOverlay();
                 }

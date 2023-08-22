@@ -14,6 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page2_model.dart';
 export 'home_page2_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class HomePage2Widget extends StatefulWidget {
   const HomePage2Widget({Key? key}) : super(key: key);
@@ -29,6 +30,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
 
   @override
   void initState() {
+    AppMetrica.activate(
+        AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+    AppMetrica.reportEvent('openMainPage');
+
     super.initState();
     _model = createModel(context, () => HomePage2Model());
   }
