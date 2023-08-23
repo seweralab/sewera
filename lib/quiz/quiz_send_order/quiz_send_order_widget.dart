@@ -16,7 +16,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'quiz_send_order_model.dart';
 export 'quiz_send_order_model.dart';
 
@@ -1107,6 +1107,10 @@ class _QuizSendOrderWidgetState extends State<QuizSendOrderWidget> {
                               EdgeInsetsDirectional.fromSTEB(18, 0, 18, 30),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              AppMetrica.activate(AppMetricaConfig(
+                                  "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                              AppMetrica.reportEvent('sendOrder');
+
                               await quizSendOrderOrdersRecord.reference
                                   .update(createOrdersRecordData(
                                 status: 'Активный',

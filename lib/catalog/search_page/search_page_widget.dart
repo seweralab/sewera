@@ -14,6 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'search_page_model.dart';
 export 'search_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class SearchPageWidget extends StatefulWidget {
   const SearchPageWidget({Key? key}) : super(key: key);
@@ -228,6 +229,10 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                           color: Color(0xFFF3F4F5),
                                           child: InkWell(
                                             onTap: () async {
+                                              AppMetrica.activate(AppMetricaConfig(
+                                                  "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                              AppMetrica.reportEvent(
+                                                  'quizStartSearch');
                                               FFAppState().currentQuizIndex = 0;
 
                                               final ordersCreateData =
@@ -303,6 +308,11 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                             color: Color(0xFFF3F4F5),
                                             child: InkWell(
                                               onTap: () async {
+                                                AppMetrica.activate(
+                                                    AppMetricaConfig(
+                                                        "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                                AppMetrica.reportEvent(
+                                                    'quizStartSearch');
                                                 context.pushNamed(
                                                     'QuizNoService',
                                                     queryParameters: {
@@ -378,6 +388,9 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                               color: Color(0xFFF3F4F5),
                               child: InkWell(
                                 onTap: () async {
+                                  AppMetrica.activate(AppMetricaConfig(
+                                      "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                  AppMetrica.reportEvent('quizStartSearch');
                                   context.pushNamed(
                                     'QuizNoService',
                                     queryParameters: {

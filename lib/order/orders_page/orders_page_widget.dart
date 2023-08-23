@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'orders_page_model.dart';
 export 'orders_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class OrdersPageWidget extends StatefulWidget {
   const OrdersPageWidget({Key? key}) : super(key: key);
@@ -720,6 +721,9 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          AppMetrica.activate(AppMetricaConfig(
+                              "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                          AppMetrica.reportEvent('openSearchPageFromOrders');
                           context.goNamed('SearchPage');
                         },
                         child: ClipRRect(

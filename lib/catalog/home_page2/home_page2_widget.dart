@@ -91,6 +91,9 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            AppMetrica.activate(AppMetricaConfig(
+                                "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                            AppMetrica.reportEvent('openSearchPage');
                             context.goNamed('SearchPage');
                           },
                           child: Row(
@@ -259,6 +262,11 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        AppMetrica.activate(
+                                                            AppMetricaConfig(
+                                                                "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                                        AppMetrica.reportEvent(
+                                                            'quizStartPostpone');
                                                         setState(() {
                                                           FFAppState()
                                                               .currentQuizIndex = 0;
@@ -433,6 +441,10 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      AppMetrica.activate(AppMetricaConfig(
+                                          "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                      AppMetrica.reportEvent(
+                                          'PressCatalogPage');
                                       context.pushNamed(
                                         'CatalogItemsPage',
                                         queryParameters: {
@@ -538,6 +550,11 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          AppMetrica.activate(
+                                                              AppMetricaConfig(
+                                                                  "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                                          AppMetrica.reportEvent(
+                                                              'PressAllServices');
                                                           context.pushNamed(
                                                             'CatalogItemsPage',
                                                             queryParameters: {
@@ -628,6 +645,12 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        AppMetrica.activate(
+                                                            AppMetricaConfig(
+                                                                "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                                        AppMetrica.reportEvent(
+                                                            'quizStartCard');
+
                                                         var _shouldSetState =
                                                             false;
                                                         if (FFAppState()

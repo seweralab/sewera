@@ -16,6 +16,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'order_item_page_model.dart';
 export 'order_item_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class OrderItemPageWidget extends StatefulWidget {
   const OrderItemPageWidget({
@@ -1019,6 +1020,9 @@ class _OrderItemPageWidgetState extends State<OrderItemPageWidget> {
                               18.0, 0.0, 18.0, 30.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              AppMetrica.activate(AppMetricaConfig(
+                                  "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                              AppMetrica.reportEvent('repeatOrder');
                               var ordersRecordReference =
                                   OrdersRecord.collection.doc();
                               await ordersRecordReference

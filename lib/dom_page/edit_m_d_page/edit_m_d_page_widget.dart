@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'edit_m_d_page_model.dart';
 export 'edit_m_d_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class EditMDPageWidget extends StatefulWidget {
   const EditMDPageWidget({Key? key}) : super(key: key);
@@ -22,6 +23,9 @@ class _EditMDPageWidgetState extends State<EditMDPageWidget> {
 
   @override
   void initState() {
+    AppMetrica.activate(
+        AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+    AppMetrica.reportEvent('openMoyDom');
     super.initState();
     _model = createModel(context, () => EditMDPageModel());
   }

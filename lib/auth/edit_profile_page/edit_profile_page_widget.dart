@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'edit_profile_page_model.dart';
 export 'edit_profile_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class EditProfilePageWidget extends StatefulWidget {
   const EditProfilePageWidget({Key? key}) : super(key: key);
@@ -27,6 +28,10 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
 
   @override
   void initState() {
+    AppMetrica.activate(
+        AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+    AppMetrica.reportEvent('openEditProfile');
+
     super.initState();
     _model = createModel(context, () => EditProfilePageModel());
   }
@@ -697,6 +702,10 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        AppMetrica.activate(AppMetricaConfig(
+                            "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                        AppMetrica.reportEvent('deleteUser');
+
                         await authManager.deleteUser(context);
 
                         context.goNamedAuth('HomePage2', context.mounted);
@@ -750,6 +759,9 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        AppMetrica.activate(AppMetricaConfig(
+                            "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                        AppMetrica.reportEvent('signOut');
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();

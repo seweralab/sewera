@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import 'profile_page_model.dart';
 export 'profile_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class ProfilePageWidget extends StatefulWidget {
   const ProfilePageWidget({Key? key}) : super(key: key);
@@ -27,6 +28,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
 
   @override
   void initState() {
+    AppMetrica.activate(
+        AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+    AppMetrica.reportEvent('openProfilePage');
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
   }

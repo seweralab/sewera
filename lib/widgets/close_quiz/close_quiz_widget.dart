@@ -9,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'close_quiz_model.dart';
 export 'close_quiz_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class CloseQuizWidget extends StatefulWidget {
   const CloseQuizWidget({Key? key}) : super(key: key);
@@ -100,6 +101,9 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
             ),
             FFButtonWidget(
               onPressed: () async {
+                AppMetrica.activate(
+                    AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                AppMetrica.reportEvent('cancelQuiz');
                 await FFAppState().currentOrder!.delete();
                 setState(() {
                   FFAppState().currentOrder = null;
@@ -133,6 +137,9 @@ class _CloseQuizWidgetState extends State<CloseQuizWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 24.0),
               child: FFButtonWidget(
                 onPressed: () async {
+                  AppMetrica.activate(
+                      AppMetricaConfig("19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                  AppMetrica.reportEvent('postponeQuiz');
                   await FFAppState()
                       .currentOrder!
                       .update(createOrdersRecordData(

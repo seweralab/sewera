@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'catalog_items_page_model.dart';
 export 'catalog_items_page_model.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 
 class CatalogItemsPageWidget extends StatefulWidget {
   const CatalogItemsPageWidget({
@@ -92,6 +93,9 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                AppMetrica.activate(AppMetricaConfig(
+                                    "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                AppMetrica.reportEvent('openSearchPage');
                                 context.pushNamed('SearchPage');
                               },
                               child: Row(
@@ -247,6 +251,11 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
+                                                      AppMetrica.activate(
+                                                          AppMetricaConfig(
+                                                              "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                                      AppMetrica.reportEvent(
+                                                          'quizStartAllServices');
                                                       FFAppState()
                                                           .currentQuizIndex = 0;
 
@@ -408,6 +417,11 @@ class _CatalogItemsPageWidgetState extends State<CatalogItemsPageWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
+                                                      AppMetrica.activate(
+                                                          AppMetricaConfig(
+                                                              "19fafed6-7366-4d54-8cdb-e1a38da6e996"));
+                                                      AppMetrica.reportEvent(
+                                                          'quizStartAllServices');
                                                       context.pushNamed(
                                                           'QuizNoService');
                                                     },
