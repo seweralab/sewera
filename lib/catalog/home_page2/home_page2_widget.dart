@@ -151,7 +151,17 @@ class _HomePage2WidgetState extends State<HomePage2Widget> {
                             .future,
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
-
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 40.0,
+                                height: 40.0,
+                                // child: CircularProgressIndicator(
+                                //   color: FlutterFlowTheme.of(context).primary,
+                                // ),
+                              ),
+                            );
+                          }
                           List<OrdersRecord> unformordersOrdersRecordList =
                               snapshot.data!;
                           return Container(
