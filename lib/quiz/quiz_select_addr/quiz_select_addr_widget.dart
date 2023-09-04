@@ -420,18 +420,26 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
+                                                      border: Border(
+                                                        bottom: BorderSide(
+                                                          color: Color(
+                                                              0xFFF3F4F5), // Установка цвета рамки
+                                                          width:
+                                                              1.0, // Толщина бордера
+                                                        ),
+                                                      ),
                                                     ),
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0, 0),
+                                                            -1.0, 0.0),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  3.0,
+                                                                  8.0,
                                                                   5.0,
                                                                   3.0,
-                                                                  5.0),
+                                                                  8.0),
                                                       child: Text(
                                                         addrItem.toString(),
                                                         style:
