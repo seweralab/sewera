@@ -271,56 +271,64 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                                   ''),
                                             )?.toList() ??
                                             [];
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: addr.length,
-                                      itemBuilder: (context, addrIndex) {
-                                        final addrItem = addr[addrIndex];
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            setState(() {
-                                              _model.textController?.text =
-                                                  addrItem.toString();
-                                            });
-                                            setState(() {
-                                              _model.showSuggestions = false;
-                                            });
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            elevation: 1.0,
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                    return Container(
+                                        height:
+                                            300.0, // Устанавливаем фиксированную высоту
+                                        child: ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: addr.length,
+                                          itemBuilder: (context, addrIndex) {
+                                            final addrItem = addr[addrIndex];
+                                            return InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  _model.textController?.text =
+                                                      addrItem.toString();
+                                                });
+                                                setState(() {
+                                                  _model.showSuggestions =
+                                                      false;
+                                                });
+                                              },
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 0.0,
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 50.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryBackground,
-                                              ),
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        3.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  addrItem.toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                  ),
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(3.0, 5.0,
+                                                                3.0, 5.0),
+                                                    child: Text(
+                                                      addrItem.toString(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
+                                            );
+                                          },
+                                        ));
                                   },
                                 ),
                             ],

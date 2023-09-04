@@ -370,67 +370,81 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                                     ''),
                                               )?.toList() ??
                                               [];
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: addr.length,
-                                        itemBuilder: (context, addrIndex) {
-                                          final addrItem = addr[addrIndex];
-                                          return InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              setState(() {
-                                                _model.textController?.text =
-                                                    getJsonField(
-                                                  addrItem,
-                                                  r'''$''',
-                                                ).toString();
-                                              });
-                                              setState(() {
-                                                FFAppState().currentQuizTopErr =
-                                                    false;
-                                                FFAppState().currentQuizAddr =
-                                                    getJsonField(
-                                                  addrItem,
-                                                  r'''$''',
-                                                ).toString();
-                                              });
-                                              setState(() {
-                                                _model.showSuggestion = false;
-                                              });
-                                            },
-                                            child: Material(
-                                              color: Colors.transparent,
-                                              elevation: 1,
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                alignment:
-                                                    AlignmentDirectional(-1, 0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(3, 0, 0, 0),
-                                                  child: Text(
-                                                    addrItem.toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
+                                      return Container(
+                                          height:
+                                              280.0, // Устанавливаем фиксированную высоту
+                                          child: ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: addr.length,
+                                            itemBuilder: (context, addrIndex) {
+                                              final addrItem = addr[addrIndex];
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  setState(() {
+                                                    _model.textController
+                                                        ?.text = getJsonField(
+                                                      addrItem,
+                                                      r'''$''',
+                                                    ).toString();
+                                                  });
+                                                  setState(() {
+                                                    FFAppState()
+                                                            .currentQuizTopErr =
+                                                        false;
+                                                    FFAppState()
+                                                            .currentQuizAddr =
+                                                        getJsonField(
+                                                      addrItem,
+                                                      r'''$''',
+                                                    ).toString();
+                                                  });
+                                                  setState(() {
+                                                    _model.showSuggestion =
+                                                        false;
+                                                  });
+                                                },
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 0,
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    height: 50,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0, 0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  3.0,
+                                                                  5.0,
+                                                                  3.0,
+                                                                  5.0),
+                                                      child: Text(
+                                                        addrItem.toString(),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
+                                              );
+                                            },
+                                          ));
                                     },
                                   ),
                               ],
