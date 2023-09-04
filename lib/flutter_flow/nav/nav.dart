@@ -330,11 +330,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => OnBoardingPageWidget(),
         ),
         FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => TestWidget(),
-        ),
-        FFRoute(
           name: 'HomePage2',
           path: '/homePage2',
           requireAuth: true,

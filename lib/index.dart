@@ -56,7 +56,7 @@ export '/quiz/quiz_no_service_edit/quiz_no_service_edit_widget.dart'
     show QuizNoServiceEditWidget;
 export '/onboarding/on_boarding_page/on_boarding_page_widget.dart'
     show OnBoardingPageWidget;
-export '/test/test_widget.dart' show TestWidget;
+
 export '/catalog/home_page2/home_page2_widget.dart' show HomePage2Widget;
 export '/quiz_page2_edit_order/quiz_page2_edit_order_widget.dart'
     show QuizPage2EditOrderWidget;

@@ -20,6 +20,7 @@ version: 1.0.0+55
 environment:
   sdk: ">=3.0.0 <4.0.0"
 
+
 dependencies:
   flutter:
     sdk: flutter
@@ -31,7 +32,7 @@ dependencies:
   cached_network_image: 3.2.1
   calendar_date_picker2: ^0.5.2
   cloud_firestore: 4.8.0
-  cloud_firestore_platform_interface: 5.15.0
+  cloud_firestore_platform_interface: 5.15.0 
   cloud_firestore_web: 3.6.0
   cloud_functions: 4.3.2
   cloud_functions_platform_interface: 5.4.2
