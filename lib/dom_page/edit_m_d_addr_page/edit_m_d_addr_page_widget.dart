@@ -296,6 +296,9 @@ class _EditMDAddrPageWidgetState extends State<EditMDAddrPageWidget> {
                                                   _model.showSuggestions =
                                                       false;
                                                 });
+                                                  final textLength = _model.textController?.text.length ?? 0;
+  _model.textController?.selection =
+      TextSelection.fromPosition(TextPosition(offset: textLength));
                                               },
                                               child: Material(
                                                 color: Colors.transparent,

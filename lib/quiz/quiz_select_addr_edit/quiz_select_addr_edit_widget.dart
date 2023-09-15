@@ -453,6 +453,9 @@ class _QuizSelectAddrEditWidgetState extends State<QuizSelectAddrEditWidget> {
                                                             _model.showSuggestion =
                                                                 false;
                                                           });
+                                                            final textLength = _model.textController?.text.length ?? 0;
+  _model.textController?.selection =
+      TextSelection.fromPosition(TextPosition(offset: textLength));
                                                         },
                                                         child: Material(
                                                           color: Colors

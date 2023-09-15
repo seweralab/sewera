@@ -409,6 +409,10 @@ class _QuizSelectAddrWidgetState extends State<QuizSelectAddrWidget> {
                                                     _model.showSuggestion =
                                                         false;
                                                   });
+                                                   // Перемещение курсора в конец поля ввода 
+  final textLength = _model.textController?.text.length ?? 0;
+  _model.textController?.selection =
+      TextSelection.fromPosition(TextPosition(offset: textLength));
                                                 },
                                                 child: Material(
                                                   color: Colors.transparent,

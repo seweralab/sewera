@@ -56,9 +56,9 @@
 	<false/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>Пожалуйста, разрешите доступ к камере. Это необходимо для прикрепления фото к заказу и оформления профиля.</string>
+    <string>Пожалуйста, разрешите доступ к камере. Это необходимо для прикрепления фото к заказу и оформления профиля</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>Пожалуйста, разрешите доступ к библиотеке изображений. Это необходимо для прикрепления фото к заказу и оформления профиля.</string>
+    <string>Пожалуйста, разрешите доступ к библиотеке изображений. Это необходимо для прикрепления фото к заказу и оформления профиля</string>
 
     <key>UIBackgroundModes</key>
     <array>
@@ -90,5 +90,9 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>
