@@ -56,9 +56,9 @@
 	<false/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>Разрешите доступ к камере для оформления профиля и прикрепления фото к заказам</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
+    <string>Разрешите доступ к библиотеке изображений для оформления профиля и прикрепления фото к заказам</string>
 
     <key>UIBackgroundModes</key>
     <array>
