@@ -296,7 +296,7 @@ class _QuizCommentWidgetState extends State<QuizCommentWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 10.0),
                                       child: Text(
-                                        'Пожалуйста, разрешите доступ к камере. Это необходимо для прикрепления фото к заказу и оформления профиля.',
+                                        'Загрузите фото, которые помогут нам понять в чем проблема.',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
